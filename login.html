@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione donatore</title>
+</head>
+<body>
+<div class="container">
+    <h1>Iscrizione per donatori di sangue</h1>
+    <p>Compila il modulo sottostante per registrarti come potenziale donatore</p>
+
+    <form action="/submit-registration" method="POST">
+        <fieldset>
+            <legend><b>Dati Personali</b></legend><br>
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required><br><br>
+            <label for="cognome">Cognome:</label>
+            <input type="text" id="cognome" name="cognome" required><br><br>
+            <label for="data_nascita">Data di Nascita:</label>
+            <input type="date" id="data_nascita" name="data_nascita" required><br><br>
+            <label for="luogo_nascita">Luogo di Nascita:</label>
+            <input type="text" id="luogo_nascita" name="luogo_nascita" required><br><br>
+            <label for="codice_fiscale">Codice Fiscale:</label>
+            <input type="text" id="codice_fiscale" name="codice_fiscale" required minlength="16" maxlength="16" pattern="^[a-zA-Z0-9]{16}$" title="Inserisci il Codice Fiscale di 16 caratteri"><br><br>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend><b>Contatti e Residenza</b></legend><br>
+            <label for="residenza">Indirizzo di Residenza Completo:</label>
+            <input type="text" id="residenza" name="residenza" required><br><br>
+            <label for="telefono">Numero di Telefono:</label>
+            <input type="tel" id="telefono" name="telefono" required pattern="^(\+39)?\s?\d{3}[\s-]?\d{3}[\s-]?\d{4}$" title="Esempio: 333 1234567"><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+        </fieldset>
+        <br>
+        <fieldset>
+            <legend><b>Informazioni Sanitarie</b></legend><br>
+            <label for="gruppo_sanguigno">Gruppo Sanguigno:</label>
+            <select id="gruppo_sanguigno" name="gruppo_sanguigno" required>
+                <option value="">Seleziona...</option>
+                <option value="Apos">A+</option>
+                <option value="Aneg">A-</option>
+                <option value="Bpos">B+</option>
+                <option value="Bneg">B-</option>
+                <option value="ABpos">AB+</option>
+                <option value="ABneg">AB-</option>
+                <option value="Opos">O+</option>
+                <option value="Oneg">O-</option>
+                <option value="Sconosciuto">Sconosciuto</option>
+            </select><br><br>
+            <label for="sesso">Sesso:</label>
+            <select id="sesso" name="" required><br><br>
+                <option value="">Seleziona...</option>
+                <option value="maschio">M</option>
+                <option value="femmina">F</option>
+            </select><br><br>
+            <label for="peso_corporeo_in_kg">Peso Corporeo in Kg</label>
+            <input type="number" id="peso_corporeo_in_kg" name="peso_corporeo_in_kg" min="0" step="0.1" required><br><br>
+        </fieldset>
+        <br>
+        <button type="submit">Invia Registrazione</button>
+    </form>
+</div>
+ <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>ATDS</h3>
+                    <p>Associazione per la promozione della donazione volontaria di sangue. Insieme salviamo vite.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Link Utili</h3>
+                    <p><a href="chi-siamo.html">Chi Siamo</a></p>
+                    
+                    <!-- Link gestito dinamicamente da JS -->
+                    <p><a href="login.php" id="footer-dona-link">Diventa Donatore</a></p>
+                    
+                    <p><a href="eventi.html">Eventi</a></p>
+                    <p><a href="#">Privacy Policy</a></p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contatti</h3>
+                    <p>📧 info@atds.it</p>
+                    <p>📞 +39 02 1234 5678</p>
+                    <p>📍 <br>indirizzo</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Seguici</h3>
+                    <p><a href="#">Facebook</a></p>
+                    <p><a href="#">Instagram</a></p>
+                    <p><a href="#">Twitter</a></p>
+                    <p><a href="#">LinkedIn</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 ATDS. Tutti i diritti riservati.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
