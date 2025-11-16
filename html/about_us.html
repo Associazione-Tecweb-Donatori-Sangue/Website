@@ -5,21 +5,40 @@
         <meta charset="utf-8">
         <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
+        <link rel="stylesheet" href="style.css">
+
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     </head>
     <body>
         <header>
-            <h1>La nostra storia</h1>
-            <h2>3 anni di obiettivi, valori e solidarietà</h2>
+            <div class="logo">
+                <a href="index.html" aria-label="Torna alla home di ATDS">
+                    <img src="/immagini/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                </a>
+            </div>
+
+            <nav id="menu" aria-label="Menu principale">
+                <ul>
+                    <li><a lang="en" href="index.html" lang="en">Home</a></li>
+                    <li><a href="dona_ora.html">Dona ora</a></li>
+                    <li><a href="about_us.html" lang="en" aria-current="page">About us</a></li>
+                    <li><a href="dove_trovarci.html">Dove trovarci</a></li>
+                </ul>
+            </nav>
+
+            <!--<div class="profilo">
+                <a href="profilo.html" aria-label="Vai al tuo profilo">
+                    <img src="immagini/icona-profilo.png" alt="" aria-hidden="true">
+                    <span class="visually-hidden">Profilo utente</span>
+                </a>
+            </div>-->
         </header>
 
-        <nav id="breadcrumb">
-            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> >> <span lang="en">About us</span></p>
-        </nav>
+        
 
-        <nav id="menu">
+        <!--<nav id="menu">
             <ul>
                 <li><a lang="en" href="index.html">Home</a></li>
                 <li><a href="dona_ora.html">Dona ora</a></li>
@@ -27,6 +46,12 @@
                 <li><a href="dove_trovarci.html">Dove trovarci</a></li>
                 <li><a href="profilo.html.html">Profilo</a></li>
             </ul>
+        </nav>-->
+
+        
+
+        <nav id="breadcrumb">
+            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> >> <span lang="en">About us</span></p>
         </nav>
 
         <main id="content">
