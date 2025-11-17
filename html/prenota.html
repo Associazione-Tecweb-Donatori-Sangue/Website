@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Prenotazione</title>
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+<div>[HEADER - placeholder]</div>
+
+
+<h1>Prenotazione</h1>
+
+
+<form action="#" method="post">
+
+
+<label for="luogo">Luogo</label>
+<select id="luogo" name="luogo" required>
+<option value="">Seleziona il luogo</option>
+<option value="dietro-stazione">Dietro Stazione</option>
+<option value="lum250">Lum250</option>
+<option value="piovego">Piovego</option>
+<option value="portello">Portello</option>
+<option value="prato-della-valle">Prato della Valle</option>
+<option value="stanga">Stanga</option>
+</select>
+
+
+<label for="data">Data</label>
+<input type="date" id="data" name="data" required>
+
+
+<label for="ora">Ora</label>
+<select id="ora" name="ora" required>
+<option value="">Seleziona l'ora</option>
+<option value="07:00">07:00</option>
+<option value="07:30">07:30</option>
+<option value="08:00">08:00</option>
+<option value="08:30">08:30</option>
+<option value="09:00">09:00</option>
+<option value="09:30">09:30</option>
+<option value="10:00">10:00</option>
+<option value="10:30">10:30</option>
+<option value="11:00">11:00</option>
+<option value="11:30">11:30</option>
+<option value="12:00">12:00</option>
+</select>
+
+
+<fieldset>
+<legend>Cosa vuoi donare</legend>
+<div>
+<input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required>
+<label for="sangue-intero">Sangue intero</label>
+</div>
+<div>
+<input type="radio" id="piastrine" name="donazione" value="piastrine">
+<label for="piastrine">Piastrine (piastrinoaferesi)</label>
+</div>
+<div>
+<input type="radio" id="plasma" name="donazione" value="plasma">
+<label for="plasma">Plasma (plasmaferesi)</label>
+</div>
+</fieldset>
+
+
+<button type="submit">Prenota</button>
+
+
+</form>
+
+
+<div>[FOOTER - placeholder]</div>
+
+
+<script>
+(function(){
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(e){
+        const luogo = document.getElementById('luogo');
+        const data = document.getElementById('data');
+        const ora = document.getElementById('ora');
+        const donazione = document.querySelector('input[name="donazione"]:checked');
+        let msg = '';
+        if(!luogo.value) msg += 'Seleziona il luogo.\n';
+        if(!data.value) msg += 'Seleziona la data.\n';
+        if(!ora.value) msg += "Seleziona l'ora.\n";
+        if(!donazione) msg += 'Seleziona cosa vuoi donare.\n';
+        if(msg){
+          e.preventDefault();
+          alert(msg);
+        }
+      });
+    })();
+</script>
+
+
+</body>
+</html>
