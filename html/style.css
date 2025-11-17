@@ -18,7 +18,7 @@
     --color-white: #ffffff;
     
     --gradient-hero: linear-gradient(135deg, rgba(229, 57, 53, 0.93) 0%, rgba(255, 112, 67, 0.9) 100%);
-    --gradient-primary: linear-gradient(135deg, #ff7043 0%, #ff7979f9 100%);
+    --gradient-primary: linear-gradient(135deg, #e1b07d 0%, #ff7979f9 100%);
     --gradient-secondary: linear-gradient(135deg, #ffd54f 0%, #ffeb3b 100%);
     --gradient-text: linear-gradient(135deg, #e53935 0%, #ff7043 100%);
     
@@ -42,7 +42,7 @@
 
 html, body{
     font-size: 100%;
-    font-family: "Inter", Arial, sans-serif;
+    font-family: "Jost", Arial, sans-serif;
     line-height: 1.5em; 
 }
 
@@ -115,11 +115,11 @@ nav#breadcrumb{
 /*SEZIONE MENU*/
 /*-----------------*/
 
-/*#menu{
-    float: left;
-    width: 18%;
-    padding: 0.8em;
+#menu{
+    width: 100%;
+    padding: 3.0em;
     font-size: 1.3em;
+    
 }
 
 #menu a:link{
@@ -135,6 +135,12 @@ nav#breadcrumb{
 
 #menu ul li{
     margin-top: 1.5em;
+    display: inline;
+}
+
+#menu img{
+    width: 100px;
+    height: 100px;
 }
 
 #currentLink{
@@ -143,7 +149,7 @@ nav#breadcrumb{
     background-size: 1.2em;
     background-repeat: no-repeat;
     padding-left: 1.5em;
-}*/
+}
 
 /*-----------------*/
 /*SEZIONE MAIN*/
