@@ -87,16 +87,11 @@ header{
     background: var(--gradient-primary);
     box-shadow: var(--shadow-soft);
     width: 100%;
-}
-
-header h1{
-    background-image: url('/immagini/atds.jpg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    text-indent: -9999px;
-    font-size: 6em;
-    line-height: 1.5em;
+    /*position: sticky;
+    top: 0;*/
+    height: 9em;
+    display: flex; 
+    align-items: center; /* centra verticalmente il contenuto */
 }
 
 /*-----------------*/
@@ -104,11 +99,32 @@ header h1{
 /*-----------------*/
 
 nav#breadcrumb{
-    background-color: var(--breadcolor);
-    color: var(--txtcolor);
-    font-size: 1.1em;
-    border: 1px solid #000;
-    padding: 0.5em 0em 0.5em 1em;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 0.8em 2em; /* padding interno */
+    margin: 2em auto; /* margine verticale e centrato */
+    width: fit-content; /* larghezza adattata al contenuto */
+
+    background-color: rgba(201, 170, 170, 0.489);
+    border: 0.1em solid #ff7979bc;
+    outline: #fa8253 solid 0.3em;
+    border-radius: 2em;
+}
+
+nav#breadcrumb p{
+    color: var(--txtcolor); 
+    font-size: 1em;
+    margin: 0;
+}
+
+nav#breadcrumb a{
+    color: var(--txtcolor); /* link bianchi */
+    margin: 0 0.3em;
+}
+
+nav#breadcrumb a:hover{
+    color: var(--color-secondary-light); /* colore al passaggio del mouse */
 }
 
 /*-----------------*/
@@ -116,39 +132,77 @@ nav#breadcrumb{
 /*-----------------*/
 
 #menu{
-    width: 100%;
-    padding: 3.0em;
-    font-size: 1.3em;
-    
+    display: flex; /* container flessibile */
+    align-items: center; /* allinea verticalmente al centro */
+    justify-content: center; /* centro orizzontale */
+    width: 100%; /* larghezza completa */
+    padding: 0 2em; /* padding laterale */
+    position: relative; /* necessario per il posizionamento assoluto dei figli */
 }
 
 #menu a:link{
-    color: var(--linkcolor);
+    color: var(--linkcolor); /* colore dei link non visitati */
 }
 #menu a:visited{
-    color: var(--visitedcolor);
+    color: var(--visitedcolor); /* colore dei link visitati */
 }
 
 #menu ul{
-    list-style-type: none;
+    list-style-type: none; /* rimuove i pallini della lista */
+    display: flex; /* lista come contenitore flessibile */
+    align-items: center; /* allinea verticalmente al centro */
+    gap: 2em; /* spazio tra gli elementi */
+    margin: 0em; /* rimuove margini */
+    padding: 0em; /* rimuove padding */
 }
 
-#menu ul li{
-    margin-top: 1.5em;
-    display: inline;
+#menu ul li:not(:first-child, :last-child){
+    margin-top: 1.5em; /* margine superiore */
+    display: inline-block; /* elementi disposti orizzontalmente */
+
+    border: 0.1em solid rgb(223, 86, 86);
+    outline: #fa8253 solid 0.3em;
+    background-color: lightgrey; /* sfondo grigio chiaro */
+    border-radius: 1em; /* angoli arrotondati */
+
+    padding: 0.5em 0.8em; /* spazio interno */
+    width: 10em; /* larghezza fissa */
+    margin: 0.2em; /* margine esterno */
+    text-align: center; /* testo centrato */
+    text-transform: uppercase; /* testo in maiuscolo */
+    font-size: 1.2em; /* dimensione del testo */
 }
 
-#menu img{
-    width: 100px;
-    height: 100px;
+#menu ul li:first-child{
+    position: absolute; /* posizione assoluta per l'immagine */
+    left: 0; /* all'estrema sinistra */
+    margin: 0; /* rimuove margini */
+}
+
+#menu ul li:first-child img{
+    display: block; /* immagine come blocco */
+    width: 10em; /* larghezza immagine */
+    height: 10em; /* altezza immagine */
+}
+
+#menu ul li:last-child{
+    position: absolute; /* posizione assoluta per l'immagine */
+    right: 0; /* all'estrema destra */
+    margin: 1.5em; /* rimuove margini */
+}
+
+#menu ul li:last-child img{
+    display: block; /* immagine come blocco */
+    width: 6em; /* larghezza ridotta */
+    height: 6em; /* altezza ridotta */
 }
 
 #currentLink{
-    background-image: url('materiale/images/palla.png');
-    background-position: left center;
-    background-size: 1.2em;
-    background-repeat: no-repeat;
-    padding-left: 1.5em;
+    background-image: url('materiale/images/palla.png'); /* immagine di sfondo */
+    background-position: left center; /* posizione immagine a sinistra */
+    background-size: 1.2em; /* dimensione immagine */
+    background-repeat: no-repeat; /* non ripete l'immagine */
+    padding-left: 1.5em; /* spazio a sinistra per l'icona */
 }
 
 /*-----------------*/
