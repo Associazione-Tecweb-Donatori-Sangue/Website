@@ -1,37 +1,29 @@
 <!DOCTYPE html>
 <html lang = "it">
     <head>
-        <title>ATDS - Dove trovarci</title>
+        <title>Dove trovarci</title>
 
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
         <meta name="description" content="Pagina con la mappa che visualizza dove sono le sedi dell'associazione in cui è possibile donare il sangue">
         <meta name="keywords" content="sangue, mappa, donare, sedi, associazione">
-
+        <link rel="stylesheet" href="../css/style.css">
     </head>
 
     <body>
-        <header>
-            <h1>Dove trovarci</h1>
-        </header>
-
-        <nav id="breadcrumb">
-            <p>Ti trovi in: <a href="index.html" lang="en">Home</a> >> Dove trovarci</p>
-        </nav>
-
-        <nav id="menu">
-            <ul>
-                <li lang="en"><a href="index.html">Home</a></li>
-                <li><a href="dona_ora.html">Dona ora</a></li>
-                <li>Dove trovarci</li>
-                <li lang="en"><a href="about_us.html">About us</a></li>
-            </ul>
-        </nav>
-
+        
+        <div id="header-placeholder"></div>
+        
         <main>
+            <nav id="breadcrumb"></nav>
+
+            <h1>Dove trovarci</h1>
+
             <div class="search-container">
                 <label for="ricerca-sedi">Cerca una sede:</label>
                 <input type="text" id="ricerca-sedi" name="ricerca-sedi" placeholder="Inserisci il nome della sede..." aria-label="Cerca una sede">
             </div>
+            
             <div class="container">
                 <div class="sede">
                     <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Piovego</h3>
@@ -78,9 +70,9 @@
             </div>
         </main>
 
-        <footer>
-            <p><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All rights Reserved</span></p>
-        </footer>
+        <div id="footer-placeholder"></div>
+
+        <script src="../js/loader.js"></script>
 
     </body>
 </html>
