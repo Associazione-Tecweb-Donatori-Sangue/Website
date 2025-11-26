@@ -1,0 +1,322 @@
+* {
+    padding: 0em;
+    margin: 0em;
+    box-sizing: border-box;
+}
+
+:root{
+    --color-primary: #e53935;
+    --color-primary-light: #ff6b6b;
+    --color-primary-dark: #c62828;
+    --color-secondary: #ffd54f;
+    --color-secondary-light: #ffeb3b;
+    --color-accent: #ff7043;
+    
+    --color-dark: #2c3e50;
+    --color-darker: #1a252f;
+    --color-light: #fef5f5;
+    --color-white: #ffffff;
+    
+    --gradient-hero: linear-gradient(135deg, rgba(229, 57, 53, 0.93) 0%, rgba(255, 112, 67, 0.9) 100%);
+    --gradient-primary: linear-gradient(135deg, #e1b07d 0%, #ff7979f9 100%);
+    --gradient-secondary: linear-gradient(135deg, #ffd54f 0%, #ffeb3b 100%);
+    --gradient-text: linear-gradient(135deg, #e53935 0%, #ff7043 100%);
+    
+    --shadow-soft: 0 8px 30px rgba(229, 57, 53, 0.15);
+    --shadow-medium: 0 12px 40px rgba(229, 57, 53, 0.2);
+    --shadow-strong: 0 20px 60px rgba(229, 57, 53, 0.25);
+    
+    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.3s ease;
+
+    --bgcolor:#d88a89;
+    --txtcolor:#FFF;
+    --breadcolor:#163F77;
+    --newscolor:#F3C42B;
+    --newstxtcolor: #000;
+    --contexttxtcolor: #000;
+    --contentbgcolor:#FFF;
+    --linkcolor:#FFF;
+    --visitedcolor:#F3C42B;
+}
+
+html, body{
+    font-size: 100%;
+    font-family: "Jost", Arial, sans-serif;
+    line-height: 1.5em; 
+}
+
+/*html{
+    background-image: 
+    url('materiale/images/palla.png'),
+    url('materiale/images/palla.png'),
+    url('materiale/images/palla.png'), 
+    linear-gradient(to bottom right, rgb(22 63 119/100%), transparent);
+}
+
+body{
+    background-color: var(--bgcolor);
+    color: var(--txtcolor);
+    max-width: 1200px;
+    margin: auto;
+}*/
+
+/*-----------------*/
+/*AIUTI ALLA NAVIGAZIONE*/
+/*-----------------*/
+
+.navigationHelp{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navigationHelp:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp ul{
+    list-style-type: none;
+}
+
+/*-----------------*/
+/*SEZIONE HEADER*/
+/*-----------------*/
+
+header{
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-soft);
+    width: 100%;
+    /*position: sticky;
+    top: 0;*/
+    height: 9em;
+    display: flex; 
+    align-items: center; /* centra verticalmente il contenuto */
+}
+
+/*-----------------*/
+/*SEZIONE BRADCRUMB*/
+/*-----------------*/
+
+nav#breadcrumb{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 0.8em 2em; /* padding interno */
+    margin: 2em auto; /* margine verticale e centrato */
+    width: fit-content; /* larghezza adattata al contenuto */
+
+    background-color: rgba(201, 170, 170, 0.489);
+    border: 0.1em solid #ff7979bc;
+    outline: #fa8253 solid 0.3em;
+    border-radius: 2em;
+}
+
+nav#breadcrumb p{
+    color: var(--txtcolor); 
+    font-size: 1em;
+    margin: 0;
+}
+
+nav#breadcrumb a{
+    color: var(--txtcolor); /* link bianchi */
+    margin: 0 0.3em;
+}
+
+nav#breadcrumb a:hover{
+    color: var(--color-secondary-light); /* colore al passaggio del mouse */
+}
+
+/*-----------------*/
+/*SEZIONE MENU*/
+/*-----------------*/
+
+#menu{
+    display: flex; /* container flessibile */
+    align-items: center; /* allinea verticalmente al centro */
+    justify-content: center; /* centro orizzontale */
+    width: 100%; /* larghezza completa */
+    padding: 0 2em; /* padding laterale */
+    position: relative; /* necessario per il posizionamento assoluto dei figli */
+}
+
+#menu a:link{
+    color: var(--linkcolor); /* colore dei link non visitati */
+}
+#menu a:visited{
+    color: var(--visitedcolor); /* colore dei link visitati */
+}
+
+#menu ul{
+    list-style-type: none; /* rimuove i pallini della lista */
+    display: flex; /* lista come contenitore flessibile */
+    align-items: center; /* allinea verticalmente al centro */
+    gap: 2em; /* spazio tra gli elementi */
+    margin: 0em; /* rimuove margini */
+    padding: 0em; /* rimuove padding */
+}
+
+#menu ul li:not(:first-child, :last-child){
+    margin-top: 1.5em; /* margine superiore */
+    display: inline-block; /* elementi disposti orizzontalmente */
+
+    border: 0.1em solid rgb(223, 86, 86);
+    outline: #fa8253 solid 0.3em;
+    background-color: lightgrey; /* sfondo grigio chiaro */
+    border-radius: 1em; /* angoli arrotondati */
+
+    padding: 0.5em 0.8em; /* spazio interno */
+    width: 10em; /* larghezza fissa */
+    margin: 0.2em; /* margine esterno */
+    text-align: center; /* testo centrato */
+    text-transform: uppercase; /* testo in maiuscolo */
+    font-size: 1.2em; /* dimensione del testo */
+}
+
+#menu ul li:first-child{
+    position: absolute; /* posizione assoluta per l'immagine */
+    left: 0; /* all'estrema sinistra */
+    margin: 0; /* rimuove margini */
+}
+
+#menu ul li:first-child img{
+    display: block; /* immagine come blocco */
+    width: 10em; /* larghezza immagine */
+    height: 10em; /* altezza immagine */
+}
+
+#menu ul li:last-child{
+    position: absolute; /* posizione assoluta per l'immagine */
+    right: 0; /* all'estrema destra */
+    margin: 1.5em; /* rimuove margini */
+}
+
+#menu ul li:last-child img{
+    display: block; /* immagine come blocco */
+    width: 6em; /* larghezza ridotta */
+    height: 6em; /* altezza ridotta */
+}
+
+#currentLink{
+    background-image: url('materiale/images/palla.png'); /* immagine di sfondo */
+    background-position: left center; /* posizione immagine a sinistra */
+    background-size: 1.2em; /* dimensione immagine */
+    background-repeat: no-repeat; /* non ripete l'immagine */
+    padding-left: 1.5em; /* spazio a sinistra per l'icona */
+}
+
+/*-----------------*/
+/*SEZIONE MAIN*/
+/*-----------------*/
+
+/*main{
+    background-color: var(--contentbgcolor);
+    color: var(--contexttxtcolor);
+    margin-left: 20%;
+    padding-top: 2em;
+    padding-left: 3.5em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+    border-left: 1px solid black;
+    margin-right: 1em;
+}
+
+aside{
+    float: right;
+}
+
+main h1{
+    line-height: 1.5em;
+    text-align: center;
+}
+
+main h2{
+    line-height: 1.5em;
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.polaroid{
+    width: 30%;
+    float: right;
+    background-color: white;
+    padding: 0.5em;
+    border: 1px solid black;
+    margin-top: 2em;
+    transform: rotate(-3deg);
+    margin: 1em;
+}
+
+#premi dt{
+    list-style-image: url('materiale/images/coppa.png');
+    margin-left: 2em;
+    background-repeat: no-repeat;
+    padding-left: 2.5em;
+}
+
+#premi dd{
+    padding-left: 2.5em;
+}*/
+
+/*-----------------*/
+/*SEZIONE NEWS*/
+/*-----------------*/
+
+/*#breakingNews{
+    float: right;
+    width: 18%;
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+    border: 1px solid black;
+    padding: 0.5em;
+    margin-right: 2%;
+    margin-top: 1.0em;
+}
+
+#breakingNews h2{
+    background-color: var(--newscolor);
+    color: var(--newstxtcolor);
+    font-size: 1.2em;
+    padding: 0.2em;
+}
+
+#breakingNews dt{
+    font-weight: bold;
+    margin-left: 0.8em;
+}
+
+#breakingNews dl dd{
+    margin-left: 1.5em;
+}*/
+
+/*-----------------*/
+/*SEZIONE FOOTER*/
+/*-----------------*/
+
+/*footer p{
+    display: inline;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+footer{
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+    text-align: center;
+    padding: 1.1em;
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+footer img{
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: 0.7em;
+    vertical-align: middle;
+}
+
+.imgValidCode{
+    vertical-align: middle; 
+}*/
+
