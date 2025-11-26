@@ -1,76 +1,121 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="it">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="keywords" content="atds, prenotazione, donazione, sangue">
-    <title>Dona ora</title>
-    <link rel="stylesheet" href="../css/style.css">
-</head>
-<body>
+    <head>
+        <title>ATDS - Prenotazione</title>
+        <meta charset="utf-8">
 
-<div id="header-placeholder"></div>
+        <meta name="description" content="Pagina per prenotare una donazione di sangue presso l'Associazione Tecweb Donatori Sangue">
+        <meta name="keywords" content="prenotazione, donazione, sangue, associazione, volontario, ATDS">
+
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+
+    <header>
+        <nav id="menu" aria-label="Menu principale">
+            <ul>
+                <li><img src="../immagini/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></li>
+                <li><a lang="en" href="index.html">Home</a></li>
+                <li>Dona ora</li>
+                <li><a href="about_us.html">Chi siamo</a></li>
+                <li><a href="dove_trovarci.html">Dove trovarci</a></li>
+                <li><a href="login.html"><img src="../immagini/profilo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a></li>
+            </ul>
+        </nav>
+    </header>
 
     <nav id="breadcrumb">
-        <p>Ti trovi in: <a href="../index.html" lang="en">Home</a>; <span>Dona ora</span></p>
+        <p>Ti trovi in: <a href="index.html" lang="en">Home</a> >> Dona ora</p>
     </nav>
 
-<h1>Prenota donazione</h1>
 
-<form id="prenotaForm" action="../php/prenota.php" method="post">
+<form action="#" method="post">
 
-    <label for="luogo">Luogo</label>
-    <select id="luogo" name="luogo" required>
-        <option value="">Seleziona il luogo</option>
-        <option value="dietro-stazione">Dietro Stazione</option>
-        <option value="lum250">Lum250</option>
-        <option value="piovego">Piovego</option>
-        <option value="portello">Portello</option>
-        <option value="prato-della-valle">Prato della Valle</option>
-        <option value="stanga">Stanga</option>
-    </select>
 
-    <label for="data">Data</label>
-    <input type="date" id="data" name="data" required>
+<label for="luogo">Luogo</label>
+<select id="luogo" name="luogo" required>
+<option value="">Seleziona il luogo</option>
+<option value="dietro-stazione">Dietro Stazione</option>
+<option value="lum250">Lum250</option>
+<option value="piovego">Piovego</option>
+<option value="portello">Portello</option>
+<option value="prato-della-valle">Prato della Valle</option>
+<option value="stanga">Stanga</option>
+</select>
 
-    <label for="ora">Ora</label>
-    <select id="ora" name="ora" required>
-        <option value="">Seleziona l'ora</option>
-        <option value="07:00">07:00</option>
-        <option value="07:30">07:30</option>
-        <option value="08:00">08:00</option>
-        <option value="08:30">08:30</option>
-        <option value="09:00">09:00</option>
-        <option value="09:30">09:30</option>
-        <option value="10:00">10:00</option>
-        <option value="10:30">10:30</option>
-        <option value="11:00">11:00</option>
-        <option value="11:30">11:30</option>
-        <option value="12:00">12:00</option>
-    </select>
 
-    <fieldset>
-        <legend>Cosa vuoi donare</legend>
-        <div>
-            <input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required>
-            <label for="sangue-intero">Sangue intero</label>
-        </div>
-        <div>
-            <input type="radio" id="piastrine" name="donazione" value="piastrine">
-            <label for="piastrine">Piastrine (piastrinoaferesi)</label>
-        </div>
-        <div>
-            <input type="radio" id="plasma" name="donazione" value="plasma">
-            <label for="plasma">Plasma (plasmaferesi)</label>
-        </div>
-    </fieldset>
+<label for="data">Data</label>
+<input type="date" id="data" name="data" required>
 
-    <button type="submit">Prenota</button>
+
+<label for="ora">Ora</label>
+<select id="ora" name="ora" required>
+<option value="">Seleziona l'ora</option>
+<option value="07:00">07:00</option>
+<option value="07:30">07:30</option>
+<option value="08:00">08:00</option>
+<option value="08:30">08:30</option>
+<option value="09:00">09:00</option>
+<option value="09:30">09:30</option>
+<option value="10:00">10:00</option>
+<option value="10:30">10:30</option>
+<option value="11:00">11:00</option>
+<option value="11:30">11:30</option>
+<option value="12:00">12:00</option>
+</select>
+
+
+<fieldset>
+<legend>Cosa vuoi donare</legend>
+<div>
+<input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required>
+<label for="sangue-intero">Sangue intero</label>
+</div>
+<div>
+<input type="radio" id="piastrine" name="donazione" value="piastrine">
+<label for="piastrine">Piastrine (piastrinoaferesi)</label>
+</div>
+<div>
+<input type="radio" id="plasma" name="donazione" value="plasma">
+<label for="plasma">Plasma (plasmaferesi)</label>
+</div>
+</fieldset>
+
+
+<button type="submit">Prenota</button>
+
+
 </form>
 
-<div id="footer-placeholder"></div>
 
-<script src="../js/loader.js"></script>
+<div>[FOOTER - placeholder]</div>
+
+
+<script>
+(function(){
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function(e){
+        const luogo = document.getElementById('luogo');
+        const data = document.getElementById('data');
+        const ora = document.getElementById('ora');
+        const donazione = document.querySelector('input[name="donazione"]:checked');
+        let msg = '';
+        if(!luogo.value) msg += 'Seleziona il luogo.\n';
+        if(!data.value) msg += 'Seleziona la data.\n';
+        if(!ora.value) msg += "Seleziona l'ora.\n";
+        if(!donazione) msg += 'Seleziona cosa vuoi donare.\n';
+        if(msg){
+          e.preventDefault();
+          alert(msg);
+        }
+      });
+    })();
+</script>
+
 
 </body>
 </html>
