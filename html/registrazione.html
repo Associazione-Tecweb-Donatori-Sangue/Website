@@ -43,21 +43,27 @@
                     id="username"
                     minlength="4"
                     maxlength="50"
-                    required>
+                    required
+                    autocomplete="username"
+                    aria-describedby="informazioni username"> <small id="informazioni username" class="suggerimento"> Es: ombretta (minimo 4 caratteri)</small>
+
                 <label for="password"><span lang="en">Password</span>:</label>
                 <input 
                     type="password" 
                     name="password" 
                     id="password"
-                    minlength="4"
+                    minlength="8"
                     maxlength="50"
-                    required>
+                    required
+                    autocomplete="new-password"
+                    aria-describedby="informazioni password"> <small id="informazioni password" class="suggerimento">Es: Password1! (minimo 8 caratteri)</small>
+
                 <label for="password_confirm">Conferma <span lang="en">Password</span>:</label>
                 <input 
                     type="password" 
                     name="password_confirm" 
                     id="password_confirm"
-                    minlength="4"
+                    minlength="8"
                     maxlength="50"
                     required>
                 <input 

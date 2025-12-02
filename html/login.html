@@ -33,6 +33,11 @@
             <div class="titolo_principale">
                 <h1>Login Utente</h1>
             </div>
+
+           <!--<div class="display-error">
+                <p class="input-error-regular" role="alert">Errore: credenziali non corrette</p>
+            </div>-->
+
             <div class="form_std">
                 <fieldset>  
                     <legend>Dati di Accesso</legend>
@@ -44,16 +49,19 @@
                         minlength="4"
                         maxlength="50"
                         required
-                        autocomplete="username">
+                        autocomplete="username"
+                        aria-describedby="informazioni username"> <small id="informazioni username" class="suggerimento"> Es: ombretta</small>
+
                     <label for="password"><span lang="en">Password</span>:</label>
                     <input 
                         type="password" 
                         name="password" 
                         id="password"
-                        minlength="4"
+                        minlength="8"
                         maxlength="50"
                         required
-                        autocomplete="current-password">
+                        autocomplete="current-password"
+                        aria-describedby="informazioni password"> <small id="informazioni password" class="suggerimento"> Es: Password1!</small>
                     <input 
                         type="submit" 
                         value="Accedi">
