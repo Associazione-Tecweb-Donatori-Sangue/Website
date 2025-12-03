@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
     <head>
         <title>ATDS - Prenotazione</title>
@@ -35,8 +35,10 @@
     <h1>Prenota donazione</h1>
 
     <form id="prenotaForm" action="../php/prenota.php" method="post">
-        <fieldset>
-            <label for="luogo">Scegli il luogo</label>
+        <fieldset class="form">
+            <legend>Luogo</legend>
+
+            <div class="select_std"><label for="luogo">Scegli il luogo</label>
             <select name="luogo" id="luogo" required>
                 <option value="dietro-stazione">Dietro Stazione</option>
                 <option value="lum250">Lum250</option>
@@ -44,14 +46,16 @@
                 <option value="portello">Portello</option>
                 <option value="prato-della-valle">Prato della Valle</option>
                 <option value="stanga">Stanga</option>
-            </select>
-            <br>
+            </select></div>
+        </fieldset>
 
-            <label for="data">Data</label>
-            <input name="data" id="data" type="date" required>
-            <br>
+        <fieldset class="form">
+            <legend>Data e Ora</legend>
 
-            <label for="ora">Ora</label>
+            <div class="date_std"><label for="data">Data</label>
+            <input name="data" id="data" type="date" required></div>
+
+            <div class="select_std"><label for="ora">Ora</label>
             <select name="ora" id="ora" required>
                 <option value="07:00">07:00</option>
                 <option value="07:30">07:30</option>
@@ -64,25 +68,23 @@
                 <option value="11:00">11:00</option>
                 <option value="11:30">11:30</option>
                 <option value="12:00">12:00</option>
-            </select>
+            </select></div>
         </fieldset>
 
-        <fieldset>
+        <fieldset class="form">
             <legend>Cosa vuoi donare</legend>
-                <div><label for="sangue-intero">Sangue intero</label>
-                <input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required>
-                </div><br>
 
-                <div><label for="piastrine">Piastrine (piastrinoaferesi)</label>
-                <input type="radio" id="piastrine" name="donazione" value="piastrine">
-                </div><br>
+            <div class="radio_std"><label for="sangue-intero">Sangue intero</label>
+            <input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required></div>
 
-                <div><label for="plasma">Plasma (plasmaferesi)</label>
-                <input type="radio" id="plasma" name="donazione" value="plasma">
-                </div>
+            <div class="radio_std"><label for="piastrine">Piastrine (piastrinoaferesi)</label>
+            <input type="radio" id="piastrine" name="donazione" value="piastrine"></div>
+
+            <div class="radio_std"><label for="plasma">Plasma (plasmaferesi)</label>
+            <input type="radio" id="plasma" name="donazione" value="plasma"></div>
         </fieldset>
 
-        <button type="submit">Prenota</button>
+        <div class="button_std"><button type="submit">Prenota</button></div>
     </form>
 
 </body>
