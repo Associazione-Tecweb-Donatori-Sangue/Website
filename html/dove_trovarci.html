@@ -12,18 +12,20 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
         <header>
             <nav id="menu" aria-label="Menu principale">
                 <ul>
-                    <li><img src="../immagini/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></li>
+                    <li><img src="../images/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></li>
                     <li><a lang="en" href="index.html">Home</a></li>
-                    <li><a href="prenota.html">Dona ora</a></li>
+                    <li><a href="dona_ora.html">Dona ora</a></li>
                     <li><a href="about_us.html">Chi siamo</a></li>
                     <li>Dove trovarci</li>
-                    <li><a href="login.html"><img src="../immagini/profilo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a></li>
+                    <li><a href="login.html"><img src="../images/profilo.jpg" alt="Accedi al profilo utente"></a></li>
                 </ul>
             </nav>
         </header>
@@ -33,54 +35,84 @@
         </nav>
 
         <main>
-            <div class="search-container">
+            <h1 class="titolo_principale">Dove trovarci</h1>
+            <!-- <div class="search-container">
                 <label for="ricerca-sedi">Cerca una sede:</label>
                 <input type="text" id="ricerca-sedi" name="ricerca-sedi" placeholder="Inserisci il nome della sede..." aria-label="Cerca una sede">
-            </div>
+            </div> -->
+            
+            <h2 class="titolo_secondario">Esplora le sedi</h2>
+
             <div class="container">
-                <div class="sede">
-                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Piovego</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3291.8255971888184!2d11.887039407909372!3d45.410726834026946!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477edaf60d6b6371%3A0x2c00159331ead3d8!2sRistorEsu%20Nord%20Piovego!5e0!3m2!1sit!2sit!4v1762526684957!5m2!1sit!2sit" title="Mappa sede Piovego" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p>Sede Piovego ecc ecc</p>
-                    <p>Indirizzo: Via Piovego, 35141 Nostri Cuori PD</p>
-                    <p>Telefono: <a href="tel:+390123456789">+39 0123456789</a></p>
+                <div class="sede testo_std">
+                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Piovego</h3>
+                    <img src="../images/sede_piovego.jpg" alt="Sede ATDS Piovego">
+                    <p>Piccola struttura nel quartiere Piovego, facilmente raggiungibile, con personale qualificato e orari flessibili per le donazioni.</p>
+                    <p> 
+                        Indirizzo: Viale Giuseppe Colombo, 1, 35131 Padova 
+                        <abbr title="Provincia di Padova">PD</abbr>
+                        <a href="https://maps.app.goo.gl/vEC15q9E76uzmeAt6" target="_blank">Visualizza su Google Maps</a>
+                    </p>
+                    <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
-                <div class="sede">
-                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Lum250</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d763.6422907469865!2d11.886429059312341!3d45.408287806721226!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477eda58124401cd%3A0x72809479b2ddac94!2sAula%20LuM250%20-%20Dipartimento%20di%20Matematica!5e0!3m2!1sit!2sit!4v1762527015408!5m2!1sit!2sit" title="Mappa sede Lum250" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p>Sede Lum250</p>
-                    <p>Indirizzo: Aula LuM250 - Dipartimento di Matematica, 35127 Padova PD</p>
-                    <p>Telefono: <a href="tel:+390123456789">+39 0123456789</a></p>
+
+                <div class="sede testo_std">
+                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Lum250</h3>
+                    <img src="../images/sede_lum250.jpg" alt="Sede ATDS Lum250">
+                    <p>Piccolo punto donazioni vicino all'Aula LuM250, comodo soprattutto per studenti e personale universitario.</p>
+                    <p>
+                        Indirizzo: Via Luigi Luzzatti, 8, 35121 Padova
+                        <abbr title="Padova">PD</abbr>
+                        <a href="https://maps.app.goo.gl/fH1NsTRULSp1PnAG6" target="_blank">Visualizza su Google Maps</a>
+                    </p>
+                    <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
-                <div class="sede">
-                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Stanga</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.5073138449748!2d11.898786462843434!3d45.40904460345932!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477edaee16309dd5%3A0x7b23193048cb9e48!2sStanga!5e0!3m2!1sit!2sit!4v1762527080451!5m2!1sit!2sit" title="Mappa sede Stanga" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p>Sede Stanga</p>
-                    <p>Indirizzo: Via Stanga, 1, 35127 Padova PD</p>
-                    <p>Telefono: <a href="tel:+390123456789">+39 0123456789</a></p>
+
+                <div class="sede testo_std">
+                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Stanga</h3>
+                    <img src="../images/sede_stanga.jpg" alt="Sede ATDS Stanga">
+                    <p>Punto donazioni nel bel mezzo della famosa Stanga, con un ambiente accogliente e pulito, e personale disponibile per ogni esigenza.</p>
+                    <p>Indirizzo: Piazzale Stanga, 35131 Padova 
+                        <abbr title="Padova">PD</abbr>
+                        <a href="https://maps.app.goo.gl/4iB8YhxApCZcrsM88" target="_blank">Visualizza su Google Maps</a>
+                    </p>
+                    <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
-                <div class="sede">
-                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Portello</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1400.4916553700928!2d11.891385577619063!3d45.409676117676696!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477edaf6e98ba303%3A0x7f3c415f865c3106!2sPorta%20Portello!5e0!3m2!1sit!2sit!4v1762527113471!5m2!1sit!2sit" title="Mappa sede Portello" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p>Sede Portello</p>
-                    <p>Indirizzo: Porta Portello, 35129 Padova PD</p>
-                    <p>Telefono: <a href="tel:+390123456789">+39 0123456789</a></p>
+
+                <div class="sede testo_std">
+                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Portello</h3>
+                    <img src="../images/sede_portello.jpg" alt="Sede ATDS Portello">
+                    <p>Punto donazioni nella zona del Portello, appena rinnovato, con facile accesso e un ambiente confortevole per i donatori.</p>
+                    <p>Indirizzo: Via Giovanni Gradenigo, Via del Portello, 35131 Padova 
+                        <abbr title="Padova">PD</abbr>
+                        <a href="https://maps.app.goo.gl/o6FZ4fJ1Bzae7RTn6" target="_blank">Visualizza su Google Maps</a>
+                    </p>
+                    <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
-                <div class="sede">
-                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Prato della Valle</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6228.770472283271!2d11.874362656726925!3d45.40042367776866!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477edbacb2aee6dd%3A0x6b754ed1a760a8e7!2sPrato%20della%20Valle!5e0!3m2!1sit!2sit!4v1762527161102!5m2!1sit!2sit" title="Mappa sede Prato della Valle" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p>Sede Prato della Valle</p>
-                    <p>Indirizzo: Prato della Valle, 35123 Padova PD</p>
-                    <p>Telefono: <a href="tel:+390123456789">+39 0123456789</a></p>
+
+                <div class="sede testo_std">
+                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Prato della Valle</h3>
+                    <img src="../images/sede_prato.jpg" alt="Sede ATDS Prato della Valle">
+                    <p>Sede principale e punto donazioni in una delle piazze più belle di Padova, con un ambiente accogliente e personale disponibile.</p>
+                    <p>Indirizzo: Prato della Valle, 35141 Padova
+                        <abbr title="Padova">PD</abbr>
+                        <a href="https://maps.app.goo.gl/3kNyunAYoqmqTya58" target="_blank">Visualizza su Google Maps</a>
+                    </p>
+                    <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
-                <div class="sede">
-                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Dietro Stazione</h3>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1247.500674666337!2d11.88005915747948!3d45.41852570796798!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477edbea70aecf1d%3A0xc18fdc484f2ade11!2sAccesso%20Nord%20stazione%20di%20Padova!5e0!3m2!1sit!2sit!4v1762527302033!5m2!1sit!2sit" title="Mappa sede Dietro Stazione" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    <p>Sede Dietro Stazione</p>
-                    <p>Indirizzo: Accesso Nord stazione di Padova, 35131 Padova PD</p>
-                    <p>Telefono: <a href="tel:+390123456789">+39 0123456789</a></p>
+                
+                <div class="sede testo_std">
+                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Dietro Stazione</h3>
+                    <img src="../images/sede_dietro_stazione.jpg" alt="Sede ATDS Dietro Stazione">
+                    <p>Punto donazioni situato dietro la stazione di Padova, comodo per chi arriva in treno e desidera donare sangue in modo rapido, semplice e pulito.</p>
+                    <p>Indirizzo: Via Jacopo d'Avanzo, 23, 35132 Padova 
+                        <abbr title="Padova">PD</abbr>
+                        <a href="https://maps.app.goo.gl/SVBms5SxPz9xDRF66" target="_blank">Visualizza su Google Maps</a>
+                    </p>
+                    <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
             </div>
+
         </main>
 
         <footer>
