@@ -1,0 +1,32 @@
+.burgerMenu{
+    display: flex; /* mostra l'hamburger su mobile */
+}
+
+#menu ul{
+    display: none; /* nasconde il menu di default */
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background-color: #acd2e6;
+    flex-direction: column;
+    padding: 1em 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 100;
+}
+
+#burgerInput:checked ~ ul{
+    display: flex; /* mostra il menu quando il checkbox è checked */
+}
+
+#burgerInput:checked ~ .burgerMenu span:nth-child(1){
+    transform: rotate(45deg) translate(6px, 5px);
+}
+
+#burgerInput:checked ~ .burgerMenu span:nth-child(2){
+    opacity: 0;
+}
+
+#burgerInput:checked ~ .burgerMenu span:nth-child(3){
+    transform: rotate(-45deg) translate(6px, -5px);
+}

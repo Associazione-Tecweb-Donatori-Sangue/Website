@@ -1,11 +1,7 @@
 * {
-    padding: 0em;
-    margin: 0em;
+    padding: 0;
+    margin: 0;
     box-sizing: border-box;
-}
-
-:root{
-    
 }
 
 html, body{
@@ -15,26 +11,11 @@ html, body{
     background-color: #f7eee7 ;
 }
 
-/*html{
-    background-image: 
-    url('materiale/images/palla.png'),
-    url('materiale/images/palla.png'),
-    url('materiale/images/palla.png'), 
-    linear-gradient(to bottom right, rgb(22 63 119/100%), transparent);
-}
-
-body{
-    background-color: var(--bgcolor);
-    color: var(--txtcolor);
-    max-width: 1200px;
-    margin: auto;
-}*/
-
 /*-----------------*/
 /*AIUTI ALLA NAVIGAZIONE*/
 /*-----------------*/
 
-.navigationHelp{
+/* .navigationHelp{
     position: absolute;
     text-indent: -999em;
 }
@@ -46,22 +27,20 @@ body{
 
 .listHelp ul{
     list-style-type: none;
-}
+} */
 
 /*---------------------*/
 /*SEZIONE HEADER E MENU*/
 /*---------------------*/
 
 header{
-    background: #acd2e6;
-    width: 80%;
-    height: auto;
-    display: flex; 
-    align-items: center; /* centra verticalmente il contenuto */
-    margin: auto;
-    margin-top: 1.3em;
-    border-radius: 3em;
-    padding: 1em;
+    background-color: #acd2e6;
+    width: 95%;
+    max-width: 1300px;
+    height: 6.1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 2.4em;
+    margin: 1.3em auto; /* spazio sopra e centro orizzontale */
 }
 
 #menu{
@@ -69,89 +48,70 @@ header{
     align-items: center; /* allinea verticalmente al centro */
     justify-content: space-between; /* centro orizzontale */
     width: 100%; /* larghezza completa */
-    padding: 0; /* padding laterale */
-    position: relative; /* necessario per il posizionamento assoluto dei figli */
+    padding: 0.6em 1em; 
+    padding-left: 0.8em;
 }
 
-#menu li{ 
-    display: inline-block; /* elementi disposti orizzontalmente */
+#menu ul{
+    list-style: none; /* rimuove i pallini della lista */
+    display: flex; /* container flessibile orizzontale */
+    align-items: center; /* allinea verticalmente al centro */
+    justify-content: center;
+    gap: 0.8em; /* spazio tra gli elementi */
 }
 
-#currentLink{
-    text-decoration: none; /* rimuove la sottolineatura */
+#menu ul li a, #menu ul li#currentLink{
+    text-decoration: none;
     background-color: #ffffff; 
     color: #000000;
-    border-style: solid;
-    border-width: 0.1em;
-    border-color: #000000;
-    border-radius: 1.3em; /* angoli arrotondati */
-    padding: 0.8em 0.8em; /* spazio interno */
-    /* width: auto; larghezza fissa */
-    margin: 0.2em; /* margine esterno */
-    text-align: center; /* testo centrato */
-    text-transform: uppercase; /* testo in maiuscolo */
-    font-size: 1.3em; /* dimensione del testo */
-    white-space: nowrap; /* impedisce la rottura del testo */
-    flex-shrink: 1;
-    min-width: fit-content;
+    border: 0.1em solid #000000;
+    border-radius: 1.3em;
+    padding: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: all 0.2s ease;
 }
 
-#menu a{
-    text-decoration: none; /* rimuove la sottolineatura */
-    background-color: #ffffff; /* sfondo grigio chiaro */
-    color: #000000;
-    border-radius: 1.3em; /* angoli arrotondati */
-    padding: 0.5em 1em; /* spazio interno */
-    /* width: auto; larghezza */
-    margin: 0.1em; /* margine esterno */
-    text-align: center; /* testo centrato */
-    text-transform: uppercase; /* testo in maiuscolo */
-    font-size: 1.3em; /* dimensione del testo */
-    display: inline-block;
-    transition: all 0.3s ease;
-    cursor : pointer;
-    white-space: nowrap; /* impedisce la rottura del testo */
-    min-width: fit-content;
-    flex-shrink: 1;
+#menu img {
+    height: 5em; 
+    width: auto;
+    display: block;
 }
 
 #menu a:hover{
     background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
     color: #ffffff;
-    
 }
 
-#menu ul{
-    list-style-type: none; /* rimuove i pallini della lista */
-    display: flex; /* lista come contenitore flessibile */
-    align-items: center; /* allinea verticalmente al centro */
-    gap: 1.5em; /* spazio tra gli elementi */
-    margin: 0;
-    padding: 0;
-    flex-wrap: wrap;
-    justify-content: center;
-    flex: 1 1 auto;
-}
-
-#menu img{
-    position: static;
-    height: 6em; /* altezza fissa */
-    object-fit: contain; /* mantiene le proporzioni dell'immagine */;
-    flex-shrink: 0;
-}
-
-#menu a#profilo{
+#menu a#profilo{ 
     background-color: transparent;
     padding: 0;
-    border-radius: 0;
-    width: auto;
-    margin-left: auto;
-    flex-shrink: 0;
+    border-radius: 2em;
+    border: none;
 }
 
 #menu a#profilo img{
     height: 3.5em;
-    width: auto;
+}
+
+#burgerInput{
+    display: none;
+}
+
+.burgerMenu{
+    display: none; /* nascosto su desktop */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 0.8em;
+}
+
+.burgerMenu span{
+    width: 30px;
+    height: 3px;
+    background-color: #000000;
+    transition: all 0.3s ease;
 }
 
 /*-----------------*/

@@ -4,10 +4,14 @@
         <title>ATDS - Home</title>
         <meta charset="utf-8">
         
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta name="description" content="Pagina principale del sito dell'Associazione Tecweb Donatori Sangue">
         <meta name="keywords" content="sangue, donazione, associazione, volontario, solidarietà, ATDS">
+        <meta name="author" content="ATDS Team">
 
         <link rel="stylesheet" href="../css/desktop.css">
+        <link rel="stylesheet" href="../css/mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,15 +21,22 @@
     <body>
         <header>
             <nav id="menu" aria-label="Menu principale">
-                <img src="../../images/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
                 <ul>
                     <li id="currentLink" lang="en">Home</li>
                     <li><a href="dona_ora.html">Dona ora</a></li>
                     <li><a href="about_us.html">Chi siamo</a></li>
                     <li><a href="dove_trovarci.html">Dove trovarci</a></li>
-                    <li><a id="profilo" href="login.html"><img src="../../images/profilo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a></li>
                 </ul>
-            </nav>
+                <a id="profilo" href="login.html"><img src="../../images/profilo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a>
+
+                <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
+                <label class="burgerMenu" for="burgerInput">    
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </nav>           
         </header>
 
         <nav id="breadcrumb">
