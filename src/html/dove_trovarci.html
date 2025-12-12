@@ -3,30 +3,39 @@
     <head>
         <title>ATDS - Dove trovarci</title>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <meta name="description" content="Pagina con la mappa che visualizza dove sono le sedi dell'associazione in cui è possibile donare il sangue">
         <meta name="keywords" content="sangue, mappa, donare, sedi, associazione, ATDS">
+        <meta name="author" content="ATDS Team">
 
-        <link rel="stylesheet" href="desktop.css">
+        <link rel="stylesheet" href="../css/desktop.css">
+        <link rel="stylesheet" href="../css/mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="../css/print.css" media="print">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
     <body>
         <header>
             <nav id="menu" aria-label="Menu principale">
+                <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
                 <ul>
-                    <li><img src="../images/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></li>
-                    <li><a lang="en" href="index.html">Home</a></li>
+                    <li lang="en"><a href="index.html">Home</a></li>
                     <li><a href="dona_ora.html">Dona ora</a></li>
                     <li><a href="about_us.html">Chi siamo</a></li>
-                    <li>Dove trovarci</li>
-                    <li><a href="login.html"><img src="../images/profilo.jpg" alt="Accedi al profilo utente"></a></li>
+                    <li id="currentLink">Dove trovarci</li>
                 </ul>
+                <a id="profilo" href="login.html"><img src="../../images/profilo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a>
+
+                <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
+                <label class="burgerMenu" for="burgerInput">    
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
             </nav>
         </header>
 
@@ -46,7 +55,7 @@
             <div class="container">
                 <div class="sede testo_std">
                     <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Piovego</h3>
-                    <img src="../images/sede_piovego.jpg" alt="Sede ATDS Piovego">
+                    <img src="../../images/sede_piovego.jpg" alt="Sede ATDS Piovego">
                     <p>Piccola struttura nel quartiere Piovego, facilmente raggiungibile, con personale qualificato e orari flessibili per le donazioni.</p>
                     <p> 
                         Indirizzo: Viale Giuseppe Colombo, 1, 35131 Padova 
@@ -58,7 +67,7 @@
 
                 <div class="sede testo_std">
                     <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Lum250</h3>
-                    <img src="../images/sede_lum250.jpg" alt="Sede ATDS Lum250">
+                    <img src="../../images/sede_lum250.jpg" alt="Sede ATDS Lum250">
                     <p>Piccolo punto donazioni vicino all'Aula LuM250, comodo soprattutto per studenti e personale universitario.</p>
                     <p>
                         Indirizzo: Via Luigi Luzzatti, 8, 35121 Padova
@@ -70,7 +79,7 @@
 
                 <div class="sede testo_std">
                     <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Stanga</h3>
-                    <img src="../images/sede_stanga.jpg" alt="Sede ATDS Stanga">
+                    <img src="../../images/sede_stanga.jpg" alt="Sede ATDS Stanga">
                     <p>Punto donazioni nel bel mezzo della famosa Stanga, con un ambiente accogliente e pulito, e personale disponibile per ogni esigenza.</p>
                     <p>Indirizzo: Piazzale Stanga, 35131 Padova 
                         <abbr title="Padova">PD</abbr>
@@ -81,7 +90,7 @@
 
                 <div class="sede testo_std">
                     <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Portello</h3>
-                    <img src="../images/sede_portello.jpg" alt="Sede ATDS Portello">
+                    <img src="../../images/sede_portello.jpg" alt="Sede ATDS Portello">
                     <p>Punto donazioni nella zona del Portello, appena rinnovato, con facile accesso e un ambiente confortevole per i donatori.</p>
                     <p>Indirizzo: Via Giovanni Gradenigo, Via del Portello, 35131 Padova 
                         <abbr title="Padova">PD</abbr>
@@ -92,7 +101,7 @@
 
                 <div class="sede testo_std">
                     <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Prato della Valle</h3>
-                    <img src="../images/sede_prato.jpg" alt="Sede ATDS Prato della Valle">
+                    <img src="../../images/sede_prato.jpg" alt="Sede ATDS Prato della Valle">
                     <p>Sede principale e punto donazioni in una delle piazze più belle di Padova, con un ambiente accogliente e personale disponibile.</p>
                     <p>Indirizzo: Prato della Valle, 35141 Padova
                         <abbr title="Padova">PD</abbr>
@@ -103,7 +112,7 @@
                 
                 <div class="sede testo_std">
                     <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Dietro Stazione</h3>
-                    <img src="../images/sede_dietro_stazione.jpg" alt="Sede ATDS Dietro Stazione">
+                    <img src="../../images/sede_dietro_stazione.jpg" alt="Sede ATDS Dietro Stazione">
                     <p>Punto donazioni situato dietro la stazione di Padova, comodo per chi arriva in treno e desidera donare sangue in modo rapido, semplice e pulito.</p>
                     <p>Indirizzo: Via Jacopo d'Avanzo, 23, 35132 Padova 
                         <abbr title="Padova">PD</abbr>

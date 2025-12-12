@@ -10,15 +10,23 @@
 <body>
     <header>
         <nav id="menu" aria-label="Menu principale">
-            <ul>
-                <li><img src="../images/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></li>
-                <li><a lang="en" href="index.html">Home</a></li>
-                <li><a href="dona_ora.html">Dona ora</a></li>
-                <li><a href="about_us.html">Chi siamo</a></li>
-                <li>Dove trovarci</li>
-                <li><a href="login.html"><img src="../images/profilo.jpg" alt="Accedi al profilo utente"></a></li>
-            </ul>
-        </nav>
+                <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                <ul>
+                    <li lang="en"><a href="index.html">Home</a></li>
+                    <li><a href="dona_ora.html">Dona ora</a></li>
+                    <li><a href="about_us.html">Chi siamo</a></li>
+                    <li><a href="dove_trovarci.html">Dove trovarci</a></li>
+                </ul>
+                <!-- Link circolare da sistemare -->
+                <a id="profilo" href="login.html"><img src="../../images/profilo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a>
+
+                <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
+                <label class="burgerMenu" for="burgerInput">    
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </nav>
     </header>
 
     <main>
