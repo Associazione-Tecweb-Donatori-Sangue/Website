@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html{
+    scrollbar-gutter: stable;
+}
+
 html, body{
     font-size: 100%;
     font-family: "Jost", Arial, sans-serif;
@@ -60,7 +64,8 @@ header{
     gap: 0.8em; /* spazio tra gli elementi */
 }
 
-#menu ul li a, #menu ul li#currentLink{
+#menu ul li a{
+    display: inline-block;
     text-decoration: none;
     background-color: #ffffff; 
     color: #000000;
@@ -70,10 +75,22 @@ header{
     font-weight: bold;
     text-transform: uppercase;
     white-space: nowrap;
-    transition: all 0.2s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#menu img {
+#menu ul li a#currentLink {
+    background: #7b68ee;
+    color: #ffffff; 
+    cursor: default;
+}
+
+#menu ul li a#currentLink:hover {
+    background: #7b68ee;
+    color: #ffffff; 
+    cursor: default;
+}
+
+#logo {
     height: 5em; 
     width: auto;
     display: block;
@@ -84,15 +101,17 @@ header{
     color: #ffffff;
 }
 
-#menu a#profilo{ 
+#linkProfilo{ 
     background-color: transparent;
     padding: 0;
     border-radius: 2em;
     border: none;
 }
 
-#menu a#profilo img{
+#imgProfilo{ 
     height: 3.5em;
+    width: auto;
+    display: block;
 }
 
 #burgerInput{
