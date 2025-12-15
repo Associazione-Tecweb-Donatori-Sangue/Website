@@ -12,7 +12,7 @@ html, body{
     font-size: 100%;
     font-family: "Jost", Arial, sans-serif;
     line-height: 1.5em; 
-    background-color: #f7eee7 ;
+    background-color: #f7fbfc ;
 }
 
 /*-----------------*/
@@ -69,7 +69,6 @@ header{
     text-decoration: none;
     background-color: #ffffff; 
     color: #000000;
-    border: 0.1em solid #000000;
     border-radius: 1.3em;
     padding: 1.2em;
     font-weight: bold;
@@ -79,13 +78,7 @@ header{
 }
 
 #menu ul li a#currentLink {
-    background: #7b68ee;
-    color: #ffffff; 
-    cursor: default;
-}
-
-#menu ul li a#currentLink:hover {
-    background: #7b68ee;
+    background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
     color: #ffffff; 
     cursor: default;
 }
@@ -106,12 +99,19 @@ header{
     padding: 0;
     border-radius: 2em;
     border: none;
+    margin-right: 0.2em;
+}
+
+#menu #linkProfilo:hover{
+    background: none;
+    color: inherit;
 }
 
 #imgProfilo{ 
-    height: 3.5em;
+    height: 3.7em;
     width: auto;
     display: block;
+    border-radius: 50%;
 }
 
 #burgerInput{
@@ -136,41 +136,36 @@ header{
 /*-----------------*/
 /*SEZIONE BREADCRUMB*/
 /*-----------------*/
-
-nav#breadcrumb{
+#breadcrumb{
     justify-content: center;
     display: flex;
     align-items: center;
-    padding: 0.8em 2em; /* padding interno */
-    margin: 2em auto; /* margine verticale e centrato */
-    width: fit-content; /* larghezza adattata al contenuto */
-
-    background-color: rgba(201, 170, 170, 0.489);
-    border: 0.1em solid #ff7979bc;
-    outline: #fa8253 solid 0.3em;
-    border-radius: 2em;
+    background-color: #acd2e6;
+    padding: 0.4em 1em; 
+    margin: 1.2em auto; 
+    width: fit-content; 
+    border-radius: 0.8em;
 }
 
-nav#breadcrumb p{
-    color: var(--txtcolor); 
-    font-size: 1em;
+#breadcrumb p{
+    color: #000000; 
+    font-size: 1.1em;
     margin: 0;
 }
 
-nav#breadcrumb a{
-    color: var(--txtcolor); /* link bianchi */
-    margin: 0 0.3em;
+#breadcrumb span{   
+    color: #000000;
+    font-weight: bold; 
 }
-
-nav#breadcrumb a:hover{
-    color: var(--color-secondary-light); /* colore al passaggio del mouse */
-}
-
-
 
 /*-----------------*/
 /*SEZIONE MAIN*/
 /*-----------------*/
+
+main img{
+    width: 200px;
+    height: 200px;
+}
 
 /*main{
     background-color: var(--contentbgcolor);
