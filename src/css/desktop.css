@@ -1,0 +1,285 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html{
+    scrollbar-gutter: stable;
+}
+
+html, body{
+    font-size: 100%;
+    font-family: "Jost", Arial, sans-serif;
+    line-height: 1.5em; 
+    background-color: #f7eee7 ;
+}
+
+/*-----------------*/
+/*AIUTI ALLA NAVIGAZIONE*/
+/*-----------------*/
+
+/* .navigationHelp{
+    position: absolute;
+    text-indent: -999em;
+}
+
+.navigationHelp:focus{
+    position: static;
+    text-indent: 0;
+}
+
+.listHelp ul{
+    list-style-type: none;
+} */
+
+/*---------------------*/
+/*SEZIONE HEADER E MENU*/
+/*---------------------*/
+
+header{
+    background-color: #acd2e6;
+    width: 95%;
+    max-width: 1300px;
+    height: 6.1em;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 2.4em;
+    margin: 1.3em auto; /* spazio sopra e centro orizzontale */
+}
+
+#menu{
+    display: flex; /* container flessibile */
+    align-items: center; /* allinea verticalmente al centro */
+    justify-content: space-between; /* centro orizzontale */
+    width: 100%; /* larghezza completa */
+    padding: 0.6em 1em; 
+    padding-left: 0.8em;
+}
+
+#menu ul{
+    list-style: none; /* rimuove i pallini della lista */
+    display: flex; /* container flessibile orizzontale */
+    align-items: center; /* allinea verticalmente al centro */
+    justify-content: center;
+    gap: 0.8em; /* spazio tra gli elementi */
+}
+
+#menu ul li a{
+    display: inline-block;
+    text-decoration: none;
+    background-color: #ffffff; 
+    color: #000000;
+    border: 0.1em solid #000000;
+    border-radius: 1.3em;
+    padding: 1.2em;
+    font-weight: bold;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#menu ul li a#currentLink {
+    background: #7b68ee;
+    color: #ffffff; 
+    cursor: default;
+}
+
+#menu ul li a#currentLink:hover {
+    background: #7b68ee;
+    color: #ffffff; 
+    cursor: default;
+}
+
+#logo {
+    height: 5em; 
+    width: auto;
+    display: block;
+}
+
+#menu a:hover{
+    background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
+    color: #ffffff;
+}
+
+#linkProfilo{ 
+    background-color: transparent;
+    padding: 0;
+    border-radius: 2em;
+    border: none;
+}
+
+#imgProfilo{ 
+    height: 3.5em;
+    width: auto;
+    display: block;
+}
+
+#burgerInput{
+    display: none;
+}
+
+.burgerMenu{
+    display: none; /* nascosto su desktop */
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+    padding: 0.8em;
+}
+
+.burgerMenu span{
+    width: 30px;
+    height: 3px;
+    background-color: #000000;
+    transition: all 0.3s ease;
+}
+
+/*-----------------*/
+/*SEZIONE BREADCRUMB*/
+/*-----------------*/
+
+nav#breadcrumb{
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 0.8em 2em; /* padding interno */
+    margin: 2em auto; /* margine verticale e centrato */
+    width: fit-content; /* larghezza adattata al contenuto */
+
+    background-color: rgba(201, 170, 170, 0.489);
+    border: 0.1em solid #ff7979bc;
+    outline: #fa8253 solid 0.3em;
+    border-radius: 2em;
+}
+
+nav#breadcrumb p{
+    color: var(--txtcolor); 
+    font-size: 1em;
+    margin: 0;
+}
+
+nav#breadcrumb a{
+    color: var(--txtcolor); /* link bianchi */
+    margin: 0 0.3em;
+}
+
+nav#breadcrumb a:hover{
+    color: var(--color-secondary-light); /* colore al passaggio del mouse */
+}
+
+
+
+/*-----------------*/
+/*SEZIONE MAIN*/
+/*-----------------*/
+
+/*main{
+    background-color: var(--contentbgcolor);
+    color: var(--contexttxtcolor);
+    margin-left: 20%;
+    padding-top: 2em;
+    padding-left: 3.5em;
+    padding-right: 2em;
+    padding-bottom: 2em;
+    border-left: 1px solid black;
+    margin-right: 1em;
+}
+
+aside{
+    float: right;
+}
+
+main h1{
+    line-height: 1.5em;
+    text-align: center;
+}
+
+main h2{
+    line-height: 1.5em;
+    text-align: center;
+    margin-bottom: 0.5em;
+    margin-top: 0.5em;
+}
+
+.polaroid{
+    width: 30%;
+    float: right;
+    background-color: white;
+    padding: 0.5em;
+    border: 1px solid black;
+    margin-top: 2em;
+    transform: rotate(-3deg);
+    margin: 1em;
+}
+
+#premi dt{
+    list-style-image: url('materiale/images/coppa.png');
+    margin-left: 2em;
+    background-repeat: no-repeat;
+    padding-left: 2.5em;
+}
+
+#premi dd{
+    padding-left: 2.5em;
+}*/
+
+/*-----------------*/
+/*SEZIONE NEWS*/
+/*-----------------*/
+
+/*#breakingNews{
+    float: right;
+    width: 18%;
+    color: var(--txtcolor);
+    background-color: var(--bgcolor);
+    border: 1px solid black;
+    padding: 0.5em;
+    margin-right: 2%;
+    margin-top: 1.0em;
+}
+
+#breakingNews h2{
+    background-color: var(--newscolor);
+    color: var(--newstxtcolor);
+    font-size: 1.2em;
+    padding: 0.2em;
+}
+
+#breakingNews dt{
+    font-weight: bold;
+    margin-left: 0.8em;
+}
+
+#breakingNews dl dd{
+    margin-left: 1.5em;
+}*/
+
+/*-----------------*/
+/*SEZIONE FOOTER*/
+/*-----------------*/
+
+/*footer p{
+    display: inline;
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+footer{
+    background-color: var(--breadcolor);
+    color: var(--txtcolor);
+    text-align: center;
+    padding: 1.1em;
+    border: 1px solid black;
+    padding: 0.5em;
+}
+
+footer img{
+    margin-right: 1em;
+    margin-left: 1em;
+    margin-bottom: 0.7em;
+    vertical-align: middle;
+}
+
+.imgValidCode{
+    vertical-align: middle; 
+}*/
+

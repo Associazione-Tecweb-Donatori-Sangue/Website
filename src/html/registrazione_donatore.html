@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrazione donatore</title>
+    
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <nav id="menu" aria-label="Menu principale">
+                <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
+                <ul>
+                    <li lang="en"><a href="index.html">Home</a></li>
+                    <li><a href="dona_ora.html">Dona ora</a></li>
+                    <li><a href="about_us.html">Chi siamo</a></li>
+                    <li><a href="dove_trovarci.html">Dove trovarci</a></li>
+                </ul>
+                <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+
+                <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
+                <label class="burgerMenu" for="burgerInput">    
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+            </nav>
+    </header>
+
+    <main>
+        <nav id="breadcrumb"></nav> 
+
+        <div class="container">
+            <h1>Iscrizione per donatori di sangue</h1>
+            <p>Compila il modulo sottostante per registrarti come potenziale donatore</p>
+            <form action="/submit-registration" method="POST">
+                <fieldset class="form">
+                    <legend>Dati Personali</legend>
+
+                    <div class="input_std"><label for="nome">Nome:</label>
+                    <input name="nome" id="nome" type="text" required></div>
+
+                    <div class="input_std"><label for="cognome">Cognome:</label>
+                    <input name="cognome" id="cognome" type="text" required></div>
+
+                    <div class="input_std"><label for="data_nascita">Data di Nascita:</label>
+                    <input name="data_nascita" id="data_nascita" type="date" required></div>
+
+                    <div class="input_std"><label for="luogo_nascita">Luogo di Nascita:</label>
+                    <input name="luogo_nascita" id="luogo_nascita" type="text" required></div>
+
+                    <div class="input_std"><label for="codice_fiscale">Codice Fiscale:</label>
+                    <input name="codice_fiscale" id="codice_fiscale" type="text" required minlength="16" maxlength="16" pattern="^[a-zA-Z0-9]{16}$" title="Inserisci il Codice Fiscale di 16 caratteri"></div>
+                </fieldset>
+
+                <fieldset class="form">
+                    <legend>Contatti e Residenza</legend>
+
+                    <div class="input_std"><label for="residenza">Indirizzo di Residenza Completo:</label>
+                    <input name="residenza" id="residenza" type="text" required></div>
+
+                    <div class="input_std"><label for="telefono">Numero di Telefono:</label>
+                    <input name="telefono" id="telefono" type="tel" required pattern="^(\+39)?\s?\d{3}[\s-]?\d{3}[\s-]?\d{4}$" title="Esempio: 333 1234567"></div>
+
+                    <div class="input_std"><label for="email">Email:</label>
+                    <input name="email" id="email" type="email" required></div>
+                </fieldset>
+
+                <fieldset class="form">
+                    <legend>Informazioni Sanitarie</legend>
+
+                    <div class="select_std"></div><label for="gruppo_sanguigno">Gruppo Sanguigno:</label>
+                    <select name="gruppo_sanguigno" id="gruppo_sanguigno"required>
+                        <option value="">Seleziona...</option>
+                        <option value="Apos"><abbr title="A positivo">A+</abbr></option>
+                        <option value="Aneg"><abbr title="A negativo">A-</abbr></option>
+                        <option value="Bpos"><abbr title="B positivo">B+</abbr></option>
+                        <option value="Bneg"><abbr title="B negativo">B-</abbr></option>
+                        <option value="ABpos"><abbr title="AB positivo">AB+</abbr></option>
+                        <option value="ABneg"><abbr title="AB negativo">AB-</abbr></option>
+                        <option value="Opos"><abbr title="zero positivo">O+</abbr></option>
+                        <option value="Oneg"><abbr title="zero negativo">O-</abbr></option>
+                        <option value="Sconosciuto">Sconosciuto</option>
+                    </select></div>
+                </fieldset>
+
+                <fieldset class="form">
+                    <legend>Sesso:</legend>
+
+                    <div class="radio_std"><label for="sesso">Maschio</label>
+                    <input type="radio" id="sesso" name="sesso" value="maschio"></div>
+                    
+                    <div class="radio_std"><label for="sesso">Femmina</label>
+                    <input type="radio" id="sesso" name="sesso" value="femmina"></div>
+                </fieldset>
+                        
+                <fieldset class="form">
+                    <legend>Peso:</legend>  
+
+                    <div class="input_std"><label for="peso_corporeo_in_kg">Peso Corporeo in <abbr title="chilogrammi">Kg</abbr>:</label>
+                    <input name="peso_corporeo_in_kg" id="peso_corporeo_in_kg" type="number" min="0" step="0.1" required></div>
+                </fieldset>
+            
+                <div class="button_std"><button type="submit">Invia Registrazione</button></div>
+            </form>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../js/loader.js"></script>
+
+</body>
+</html>
