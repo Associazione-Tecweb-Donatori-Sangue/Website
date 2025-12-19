@@ -1,18 +1,23 @@
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 html{
-    scrollbar-gutter: stable;
+  scrollbar-gutter: stable;
+    
 }
 
 html, body{
-    font-size: 100%;
-    font-family: "Jost", Arial, sans-serif;
-    line-height: 1.5em; 
-    background-color: #f7fbfc ;
+  font-size: 100%;
+  font-family: "Jost", Arial, sans-serif;
+  line-height: 1.5em; 
+  background-color: #f7fbfc ;
+  background-image: url(../../images/sfondo_iniziale.jpg);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 /*-----------------*/
@@ -45,6 +50,9 @@ header{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     border-radius: 2.4em;
     margin: 1.3em auto; /* spazio sopra e centro orizzontale */
+    position: sticky;
+    top: 1.3em;
+    z-index: 1000;
 }
 
 #menu{
@@ -54,6 +62,7 @@ header{
     width: 100%; /* larghezza completa */
     padding: 0.6em 1em; 
     padding-left: 0.8em;
+    
 }
 
 #menu ul{
@@ -161,6 +170,208 @@ header{
 /*-----------------*/
 /*SEZIONE MAIN*/
 /*-----------------*/
+
+/*class e id generali*/
+main{
+  background-color: #f7fbfc;
+}
+
+.titolo_principale{
+  text-decoration-style: solid;
+  font-size: 6em;
+  color: gold;
+  text-shadow: -4px -4px 0 black, 4px -4px 0 black, -4px 4px 0 black, 4px 4px 0 black;
+}
+
+.titolo_principale abbr{
+  text-decoration: none;
+}
+
+.titolo_secondario{
+  font-size: 2em;
+  padding-top: 2em;
+  color: gold;
+  text-shadow: -4px -4px 0 black, 4px -4px 0 black, -4px 4px 0 black, 4px 4px 0 black;
+}
+
+/*index.html*/
+
+.hero-image{
+  width: 100%;        
+  height: calc(100vh - 12em);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding-top: 7em;
+}
+
+
+/* Prima card */
+.card_intro{
+    display: flex;
+    background-color: #ffbcb3;
+    width: 86%;
+    margin: auto;
+    margin-left: 4%;
+    height: calc(100vh - 16em);
+    border-radius: 1.5em;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 3em;
+}
+
+.card_intro div{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    margin-left: 4%;
+}
+
+.card_intro h2{
+    width: 100%;
+    margin: auto;
+    margin-bottom: 0;
+    font-size: 2.5em;
+    line-height: 1.5em;
+    text-align: left;
+    color: #082636;
+}
+
+.card_intro p{
+  margin: auto;
+  font-size: 1.4em;
+  line-height: 1.5em;
+  margin-top: 1em;
+}
+
+.card_intro a{
+  margin: auto;
+  margin-left: 0;
+  text-decoration: none;
+  background-color: #ffffff; 
+  color: #000000;
+  border-radius: 1.3em;
+  padding: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card_intro a:hover{
+    background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
+    color: #ffffff;
+}
+
+.card_intro img{
+  width: 23%;
+  height: auto;
+  margin: auto;
+  margin-right: 4%;
+  border-radius: 1.4em;
+}
+
+/* Seconda card */
+.carosello{
+  background-color: #ffbcb3;
+  width: 86%;
+  height: calc(100vh - 12em);
+  border-radius: 1.5em;
+  margin: auto;
+  margin-top: 3em;
+}
+
+.carosello ul{
+  display: flex;
+  gap: 2em;
+  padding: 2em;
+  list-style: none;
+  height: 100%;
+}
+
+.card_carosello{
+  background-color: #ffffff;
+  border-radius: 1.2em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  flex: 1;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.4s;
+}
+
+.card_carosello img{
+  width: 90%;
+  margin: auto;
+  margin-top: 4%;
+  height: 60%;
+  border-radius: 1em;
+}
+
+.card_carosello p{
+  padding: 1em;
+  padding-left: 1.6em;
+  padding-right: 1.6em;
+  font-size: 1.1em;
+  color: #082636;
+  text-align: left;
+}
+
+.card_carosello:hover{
+  transform: scale(1.02);
+}
+
+/* Terza card */
+.aspirante_donatore{
+  display: block;
+  background-color: #ffbcb3;
+  width: 86%;
+  margin: auto;
+  margin-right: 4%;
+  height: calc(100vh - 12em);
+  border-radius: 1.5em;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 3em;
+  align-items: center;
+  text-align: center;
+}
+
+.aspirante_donatore h2{
+  display: inline-block;
+  width: 90%;
+  margin-bottom: 0;
+  padding-top: 0.7em;
+  font-size: 2.5em;
+  line-height: 1.5em;
+  color: #082636;
+  text-align: left;
+}
+
+.aspirante_donatore p{
+  width: 70%;
+  display: inline-block;
+  text-align: left;
+  font-size: 1.4em;
+  line-height: 1.5em;
+  margin-bottom: 0.8em;
+} 
+
+.aspirante_donatore img{
+  display: block;
+  width: 86%;
+  height: auto;
+  margin: auto;
+  border-radius: 1.4em;
+}
+
+
+
+/*about_us.html*/
+
+
+
 
 main img{
     width: 200px;
@@ -281,7 +492,6 @@ main img{
 .form_std input[type="submit"]:active {
   background-color: #3d4799;
 }
-
 
 /*dona ora*/
 
@@ -414,6 +624,33 @@ main img{
 #prenotaForm input[type="submit"]:active {
   background-color: #3d4799;
   color: #ffffff;
+}
+
+/*sezione form registrazione donatore*/
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+fieldset.form {
+    border: 2px solid #acd2e6;
+    border-radius: 8px;
+    padding: 1.5rem;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+}
+fieldset.form:hover {
+    border-color: #4f5abb;
+    box-shadow: 0 2px 12px rgba(79, 90, 187, 0.08);
+}
+fieldset.form legend {
+    color: #2c5f7a;
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0 0.5rem;
+    background-color: #ffffff;
 }
 
 /*main{
