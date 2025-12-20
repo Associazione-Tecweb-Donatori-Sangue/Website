@@ -14,12 +14,11 @@ html, body{
   font-family: "Jost", Arial, sans-serif;
   line-height: 1.5em; 
   background-color: #f7fbfc ;
-  background-image: url(../../images/sfondo_iniziale.jpg);
+  background-image: url(../../images/landing.jpg);
   background-attachment: fixed;
-  background-repeat: no-repeat;
   background-size: cover;
+  background-repeat: no-repeat;
 }
-
 /*-----------------*/
 /*AIUTI ALLA NAVIGAZIONE*/
 /*-----------------*/
@@ -43,16 +42,18 @@ html, body{
 /*---------------------*/
 
 header{
-    background-color: #acd2e6;
-    width: 95%;
+    /* background-color: #acd2e6; */
+    background-color: none;
+    width: 66%;
     max-width: 1300px;
     height: 6.1em;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     border-radius: 2.4em;
-    margin: 1.3em auto; /* spazio sopra e centro orizzontale */
-    position: sticky;
+    margin: 1em auto; /* spazio sopra e centro orizzontale */
+    /* position: sticky;
     top: 1.3em;
-    z-index: 1000;
+    z-index: 1000; */
+    
 }
 
 #menu{
@@ -76,7 +77,7 @@ header{
 #menu ul li a{
     display: inline-block;
     text-decoration: none;
-    background-color: #ffffff; 
+    background-color: #ffffffd7; 
     color: #000000;
     border-radius: 1.3em;
     padding: 1.2em;
@@ -87,7 +88,7 @@ header{
 }
 
 #menu ul li a#currentLink {
-    background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
+    background: linear-gradient(135deg, #4f5abbb6 0%, #7c68eeb2 100%);
     color: #ffffff; 
     cursor: default;
 }
@@ -99,7 +100,7 @@ header{
 }
 
 #menu a:hover{
-    background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
+    background: linear-gradient(135deg, #4f5abbb6 0%, #7c68eeb2 100%);
     color: #ffffff;
 }
 
@@ -171,72 +172,106 @@ header{
 /*SEZIONE MAIN*/
 /*-----------------*/
 
-/*class e id generali*/
-main{
-  background-color: #f7fbfc;
-}
-
-.titolo_principale{
-  text-decoration-style: solid;
-  font-size: 6em;
-  color: gold;
-  text-shadow: -4px -4px 0 black, 4px -4px 0 black, -4px 4px 0 black, 4px 4px 0 black;
-}
-
-.titolo_principale abbr{
-  text-decoration: none;
-}
-
-.titolo_secondario{
-  font-size: 2em;
-  padding-top: 2em;
-  color: gold;
-  text-shadow: -4px -4px 0 black, 4px -4px 0 black, -4px 4px 0 black, 4px 4px 0 black;
-}
-
 /*index.html*/
 
-.hero-image{
+.landing_title{
   width: 100%;        
   height: calc(100vh - 12em);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center;
-  text-align: center;
   padding-top: 7em;
 }
 
+.landing_title h1, h2{
+  color: white;
+  text-align: center;
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.04em;
+}
+
+.landing_title h1{
+  font-size: 5em;
+  font-weight: 900;
+  margin-top: -0.9em;
+  margin-left: -1.8em;
+}
+
+.landing_title h1 abbr{
+  text-decoration: none;
+}
+
+.landing_title h2{
+  font-size: 1.7em;
+  font-weight: 400;
+  margin-top: 1.6em;
+  margin-left: 8em;
+}
+
+.drop{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 6%;
+  height: 3.1em;
+  background-color: #f7fbfc;
+  margin: auto;
+  margin-top: -3em;
+  border-radius: 1.6em 1.6em 0 0;
+  cursor: pointer;
+}
+
+.drop span{
+  display: block;
+  width: 0.2em;
+  height: 1.7em;
+  background-color: black;
+  border-radius: 1em;
+}
+
+.drop span:nth-child(1){
+  height: 1em;
+  transform: rotate(45deg) translate(11px, 0px);
+}
+
+.drop span:nth-child(3){
+  height: 1em;
+  transform: rotate(-45deg) translate(-11px, 0px);
+}
+
+main{
+  padding-top: 1em;
+  background-color: #f7fbfc;
+}
 
 /* Prima card */
 .card_intro{
-    display: flex;
-    background-color: #ffbcb3;
-    width: 86%;
-    margin: auto;
-    margin-left: 4%;
-    height: calc(100vh - 16em);
-    border-radius: 1.5em;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    margin-top: 3em;
+  display: flex;
+  background-color: #a0c7cf;
+  width: 90%;
+  margin: auto;
+  height: calc(100vh - 14em);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  margin-top: 2.5em;
 }
 
 .card_intro div{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    width: 60%;
-    margin-left: 4%;
+  float: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 52%;
+  margin-left: 4%;
 }
 
 .card_intro h2{
-    width: 100%;
-    margin: auto;
-    margin-bottom: 0;
-    font-size: 2.5em;
-    line-height: 1.5em;
-    text-align: left;
-    color: #082636;
+  width: 100%;
+  margin: auto;
+  margin-bottom: 0;
+  font-size: 2.5em;
+  line-height: 1.5em;
+  text-align: left;
+  color: #082636;
 }
 
 .card_intro p{
@@ -266,32 +301,34 @@ main{
 }
 
 .card_intro img{
-  width: 23%;
-  height: auto;
-  margin: auto;
-  margin-right: 4%;
-  border-radius: 1.4em;
+  float: right;
+  height: 100%;
+  width: auto;
+  margin-right: 0;
+  margin-left: auto;
 }
 
 /* Seconda card */
-.carosello{
-  background-color: #ffbcb3;
-  width: 86%;
-  height: calc(100vh - 12em);
-  border-radius: 1.5em;
+.card_carosello{
+  background-color: #a0c7cf;
+  width: 90%;
+  height: calc(100vh - 14em);
   margin: auto;
   margin-top: 3em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
 }
 
-.carosello ul{
+.card_carosello ul{
   display: flex;
-  gap: 2em;
+  gap: 4em;
   padding: 2em;
+  padding-right: 5em;
+  padding-left: 5em;
   list-style: none;
   height: 100%;
 }
 
-.card_carosello{
+.item_carosello{
   background-color: #ffffff;
   border-radius: 1.2em;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -302,7 +339,7 @@ main{
   transition: transform 0.4s;
 }
 
-.card_carosello img{
+.item_carosello img{
   width: 90%;
   margin: auto;
   margin-top: 4%;
@@ -310,7 +347,7 @@ main{
   border-radius: 1em;
 }
 
-.card_carosello p{
+.item_carosello p{
   padding: 1em;
   padding-left: 1.6em;
   padding-right: 1.6em;
@@ -319,64 +356,85 @@ main{
   text-align: left;
 }
 
-.card_carosello:hover{
+.item_carosello:hover{
   transform: scale(1.02);
 }
 
 /* Terza card */
-.aspirante_donatore{
-  display: block;
-  background-color: #ffbcb3;
-  width: 86%;
+.card_unisciti{
+  background-color: #a0c7cf;
+  width: 90%;
+  height: calc(100vh - 14em);
   margin: auto;
-  margin-right: 4%;
-  height: calc(100vh - 12em);
-  border-radius: 1.5em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 3em;
-  align-items: center;
-  text-align: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
 }
 
-.aspirante_donatore h2{
-  display: inline-block;
-  width: 90%;
-  margin-bottom: 0;
-  padding-top: 0.7em;
+.card_unisciti div{
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+  width: 100%;
+}
+
+.card_unisciti h2{
+  margin: 0;
+  margin-left: 1em;
+  margin-top: 0.1em;
   font-size: 2.5em;
   line-height: 1.5em;
   color: #082636;
   text-align: left;
+  white-space: nowrap;
 }
 
-.aspirante_donatore p{
-  width: 70%;
-  display: inline-block;
+.card_unisciti p{
+  margin: 0;
+  margin-top: 1.1em;
   text-align: left;
   font-size: 1.4em;
   line-height: 1.5em;
-  margin-bottom: 0.8em;
 } 
 
-.aspirante_donatore img{
+.card_unisciti img{
   display: block;
-  width: 86%;
-  height: auto;
+  height: 72%;
+  width: auto;
+  max-width: calc(100% - 6em);
   margin: auto;
-  border-radius: 1.4em;
+  border-radius: 1em;
+}
+
+/* Quarta card */
+.card_sceglierci{
+  background-color: #a0c7cf;
+  width: 90%;
+  height: calc(100vh - 14em);
+  margin: auto;
+  margin-top: 3em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  padding: 2em;
+}
+
+/* Quinta card */
+.card_sedi{
+  background-color: #a0c7cf;
+  width: 90%;
+  height: calc(100vh - 14em);
+  margin: auto;
+  margin-top: 3em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 
 
 /*about_us.html*/
-
-
-
-
-main img{
-    width: 200px;
-    height: 200px;
-}
 
 
 /*main{

@@ -1,0 +1,1 @@
+- Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente)
