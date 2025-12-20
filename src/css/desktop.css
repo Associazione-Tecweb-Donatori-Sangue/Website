@@ -514,14 +514,13 @@ fieldset.form, .form_std fieldset, #prenotaForm fieldset {
 fieldset.form legend, .form_std legend, #prenotaForm legend {
   width: 100%;
   padding: 18px;
-  margin: 0 0 15px 0; /* Aumentato il margine per staccarla dal contenuto */
+  margin: 0 0 15px 0;
   background: #acd2e6;
   font-size: 18px;
   font-weight: 700;
   color: #1a1a1a;
   text-align: center;
   box-sizing: border-box;
-  /* Richiesta: Arrotondato uguale sopra e sotto */
   border-radius: 0.8em; 
   display: block;
   border: none;
