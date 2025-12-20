@@ -378,280 +378,6 @@ main img{
     height: 200px;
 }
 
-/*form login-registrazione*/
-
-.form_std {
-  max-width: 380px;
-  margin: 50px auto;
-  padding: 0;
-  background: #f5f9fb;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(172, 210, 230, 0.4);
-  overflow: hidden;
-}
-
-.form_std fieldset {
-  border: none;
-  margin: 15px;
-  padding: 0;
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px rgba(172, 210, 230, 0.2);
-  overflow: hidden;
-}
-
-.form_std legend {
-  width: 100%;
-  padding: 18px;
-  margin: 0;
-  background: #acd2e6;
-  color: #1a1a1a;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: center;
-  border: none;
-  border-radius: 0.8em;
-}
-
-.form_std fieldset > :not(legend) {
-  margin-left: 25px;
-  margin-right: 25px;
-  padding-bottom: 20px;
-}
-
-.form_std label {
-  display: block;
-  margin-top: 18px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #2c5f7a;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-}
-
-.form_std input,
-.form_std select,
-.form_std textarea {
-  width: calc(100% - 100px);
-  padding: 10px 14px;
-  margin-left: 50px;
-  margin-right: 50px;
-  border: 2px solid #acd2e6;
-  border-radius: 0.8em;
-  font-size: 14px;
-  background: #f9fcfe;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-
-.form_std input:focus,
-.form_std select:focus,
-.form_std textarea:focus {
-  outline: none;
-  border-color: #4f5abb;
-  background: white;
-  box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
-}
-
-.form_std small {
-  display: block;
-  margin-top: 6px;
-  margin-bottom: 8px;
-  margin-left: 30px;
-  margin-right: 30px;
-  color: #6b9bb3;
-  font-size: 13px;
-  font-style: italic;
-}
-
-.form_std button,
-.form_std input[type="submit"] {
-  width: calc(100% - 60px);
-  padding: 14px;
-  margin: 25px 30px 30px 30px;
-  background-color: #acd2e6;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 0.8em;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
-}
-
-.form_std button:hover,
-.form_std input[type="submit"]:hover {
-  background-color: #4f5abb;
-  color: #ffffff;
-}
-
-.form_std button:active,
-.form_std input[type="submit"]:active {
-  background-color: #3d4799;
-}
-
-/*dona ora*/
-
-#prenotaForm {
-  max-width: 380px;
-  margin: 50px auto;
-  padding: 0;
-  background: #f5f9fb;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(172, 210, 230, 0.4);
-}
-
-#prenotaForm fieldset {
-  border: none;
-  margin: 15px;
-  padding: 0;
-  background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 2px 10px rgba(172, 210, 230, 0.2);
-  overflow: hidden;
-}
-
-#prenotaForm legend {
-  width: 100%;
-  padding: 18px;
-  margin: 0;
-  border-radius: 0.8em;
-  background: #acd2e6;
-  font-size: 18px;
-  font-weight: 700;
-  color: #1a1a1a;
-  text-align: center;
-  border: none;
-}
-
-#prenotaForm fieldset > :not(legend) {
-  margin-left: 25px;
-  margin-right: 25px;
-  padding-bottom: 20px;
-}
-
-#prenotaForm label {
-  display: block;
-  margin-top: 18px;
-  margin-bottom: 8px;
-  font-weight: 600;
-  color: #2c5f7a;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-}
-
-#prenotaForm select,
-#prenotaForm input[type="date"],
-#prenotaForm input[type="time"] {
-  width: 100%;
-  padding: 10px 14px;
-  margin: 0;
-  border: 2px solid #acd2e6;
-  border-radius: 0.8em;
-  font-size: 14px;
-  background: #f9fcfe;
-  transition: all 0.3s ease;
-  box-sizing: border-box;
-}
-
-#prenotaForm select:focus,
-#prenotaForm input[type="date"]:focus,
-#prenotaForm input[type="time"]:focus {
-  outline: none;
-  border-color: #4f5abb;
-  background: white;
-  box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
-}
-
-#prenotaForm .radio_std {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 12px 0;
-  padding: 10px 15px;
-  background: #f9fcfe;
-  border-radius: 0.8em;
-  transition: background 0.3s ease;
-}
-
-#prenotaForm .radio_std:hover {
-  background: #e8f4f8;
-}
-
-#prenotaForm .radio_std input[type="radio"] {
-  width: auto;
-  margin: 0;
-  accent-color: #4f5abb;
-  cursor: pointer;
-}
-
-#prenotaForm .radio_std label {
-  margin: 0;
-  font-weight: 500;
-  cursor: pointer;
-  color: #2c5f7a;
-}
-
-#prenotaForm button,
-#prenotaForm input[type="submit"] {
-  width: calc(100% - 30px);
-  padding: 16px;
-  margin: 20px 15px 15px 15px;
-  background: #acd2e6;
-  color: #1a1a1a;
-  border: none;
-  border-radius: 0.8em;
-  font-size: 16px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
-}
-
-#prenotaForm button:hover,
-#prenotaForm input[type="submit"]:hover {
-  background-color: #4f5abb;
-  color: #ffffff;
-  box-shadow: 0 6px 20px rgba(79, 90, 187, 0.4);
-}
-
-#prenotaForm button:active,
-#prenotaForm input[type="submit"]:active {
-  background-color: #3d4799;
-  color: #ffffff;
-}
-
-/*sezione form registrazione donatore*/
-
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-fieldset.form {
-    border: 2px solid #acd2e6;
-    border-radius: 8px;
-    padding: 1.5rem;
-    background-color: #ffffff;
-    transition: all 0.3s ease;
-}
-fieldset.form:hover {
-    border-color: #4f5abb;
-    box-shadow: 0 2px 12px rgba(79, 90, 187, 0.08);
-}
-fieldset.form legend {
-    color: #2c5f7a;
-    font-weight: 600;
-    font-size: 1.1rem;
-    padding: 0 0.5rem;
-    background-color: #ffffff;
-}
 
 /*main{
     background-color: var(--contentbgcolor);
@@ -764,4 +490,150 @@ footer img{
     vertical-align: middle; 
 }*/
 
+/*TUTTI I FORM!! */
 
+form, .form_std, #prenotaForm {
+  max-width: 380px;
+  margin: 50px auto;
+  background: #f5f9fb;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(172, 210, 230, 0.4);
+  overflow: hidden;
+}
+
+fieldset.form, .form_std fieldset, #prenotaForm fieldset {
+  border: none;
+  margin: 15px;
+  padding: 0 0 10px 0;
+  background: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 2px 10px rgba(172, 210, 230, 0.2);
+  overflow: hidden;
+}
+
+fieldset.form legend, .form_std legend, #prenotaForm legend {
+  width: 100%;
+  padding: 18px;
+  margin: 0 0 15px 0; /* Aumentato il margine per staccarla dal contenuto */
+  background: #acd2e6;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1a1a1a;
+  text-align: center;
+  box-sizing: border-box;
+  /* Richiesta: Arrotondato uguale sopra e sotto */
+  border-radius: 0.8em; 
+  display: block;
+  border: none;
+}
+
+fieldset.form > div, .form_std fieldset > div, #prenotaForm fieldset > div {
+  margin: 0 25px 15px 25px;
+}
+
+.input_std label, label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #2c5f7a;
+  font-size: 14px;
+}
+
+.input_std input, select, textarea, #prenotaForm input {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #acd2e6;
+  border-radius: 0.8em;
+  font-size: 14px;
+  background: #f9fcfe;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #4f5abb;
+  background: white;
+  box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
+}
+
+small, .form_std small {
+  display: block;
+  margin-top: 5px;
+  color: #6b9bb3;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.radio_std {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #f9fcfe;
+  border: 2px solid #acd2e6;
+  border-radius: 0.8em;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.radio_std:hover {
+  background: #e8f4f8;
+}
+
+.radio_std input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: #4f5abb;
+  cursor: pointer;
+}
+
+.radio_std label {
+  margin: 0;
+  flex: 1;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+
+.button_std {
+  padding: 0;
+  margin: 0;
+}
+
+.button_std button, 
+.button_std input[type="submit"] {
+  width: calc(100% - 30px);
+  padding: 16px;
+  margin: 20px 15px 15px 15px;
+  
+  background: #acd2e6;
+  color: #1a1a1a;
+  
+  border: none;
+  border-radius: 0.8em;
+  font-size: 16px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+  box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
+}
+
+.button_std button:hover, 
+.button_std input[type="submit"]:hover {
+  background-color: #4f5abb;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(79, 90, 187, 0.4);
+}
+
+.button_std button:active, 
+.button_std input[type="submit"]:active {
+  background-color: #3d4799;
+  color: #ffffff;
+  transform: scale(0.98);
+}
