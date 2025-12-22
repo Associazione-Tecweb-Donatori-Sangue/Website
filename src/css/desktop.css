@@ -45,33 +45,25 @@ header{
     /* background-color: #acd2e6; */
     background-color: none;
     width: 66%;
-    max-width: 1300px;
-    height: 6.1em;
+    height: auto;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
     border-radius: 2.4em;
     margin: 1em auto; /* spazio sopra e centro orizzontale */
-    /* position: sticky;
-    top: 1.3em;
-    z-index: 1000; */
-    
 }
 
 #menu{
-    display: flex; /* container flessibile */
-    align-items: center; /* allinea verticalmente al centro */
-    justify-content: space-between; /* centro orizzontale */
-    width: 100%; /* larghezza completa */
-    padding: 0.6em 1em; 
-    padding-left: 0.8em;
-    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;     
 }
 
 #menu ul{
-    list-style: none; /* rimuove i pallini della lista */
-    display: flex; /* container flessibile orizzontale */
-    align-items: center; /* allinea verticalmente al centro */
+    list-style: none;
+    display: flex; 
+    align-items: center; 
     justify-content: center;
-    gap: 0.8em; /* spazio tra gli elementi */
+    gap: 0.8em; 
 }
 
 #menu ul li a{
@@ -94,9 +86,10 @@ header{
 }
 
 #logo {
-    height: 5em; 
+    height: 4.8em; 
     width: auto;
     display: block;
+    margin-right: 1em;
 }
 
 #menu a:hover{
@@ -109,7 +102,7 @@ header{
     padding: 0;
     border-radius: 2em;
     border: none;
-    margin-right: 0.2em;
+    margin-left: 1em;
 }
 
 #menu #linkProfilo:hover{
@@ -150,9 +143,8 @@ header{
     justify-content: center;
     display: flex;
     align-items: center;
-    background-color: #acd2e6;
     padding: 0.4em 1em; 
-    margin: 1.2em auto; 
+    margin: 0em auto; 
     width: fit-content; 
     border-radius: 0.8em;
 }
@@ -180,7 +172,7 @@ header{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 7em;
+  padding-top: 9em;
 }
 
 .landing_title h1, h2{
@@ -216,7 +208,7 @@ header{
   height: 3.1em;
   background-color: #f7fbfc;
   margin: auto;
-  margin-top: -3em;
+  margin-top: -3px;
   border-radius: 1.6em 1.6em 0 0;
   cursor: pointer;
 }
@@ -250,9 +242,10 @@ main{
   background-color: #a0c7cf;
   width: 90%;
   margin: auto;
-  height: calc(100vh - 14em);
+  height: 28em;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
   margin-top: 2.5em;
+  border-radius: 1.4em;
 }
 
 .card_intro div{
@@ -306,247 +299,213 @@ main{
   width: auto;
   margin-right: 0;
   margin-left: auto;
+  border-radius: 0 1.4em 1.4em 0;
 }
 
 /* Seconda card */
-.card_carosello{
-  background-color: #a0c7cf;
-  width: 90%;
-  height: calc(100vh - 14em);
-  margin: auto;
-  margin-top: 3em;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
-}
-
-.card_carosello ul{
-  display: flex;
-  gap: 4em;
-  padding: 2em;
-  padding-right: 5em;
-  padding-left: 5em;
-  list-style: none;
-  height: 100%;
-}
-
-.item_carosello{
-  background-color: #ffffff;
-  border-radius: 1.2em;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  flex: 1;
-  align-items: center;
-  text-align: center;
-  transition: transform 0.4s;
-}
-
-.item_carosello img{
-  width: 90%;
-  margin: auto;
-  margin-top: 4%;
-  height: 60%;
-  border-radius: 1em;
-}
-
-.item_carosello p{
-  padding: 1em;
-  padding-left: 1.6em;
-  padding-right: 1.6em;
-  font-size: 1.1em;
-  color: #082636;
-  text-align: left;
-}
-
-.item_carosello:hover{
-  transform: scale(1.02);
-}
-
-/* Terza card */
 .card_unisciti{
   background-color: #a0c7cf;
   width: 90%;
-  height: calc(100vh - 14em);
+  height: 28em;
   margin: auto;
   margin-top: 3em;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
   display: flex;
   flex-direction: column;
+  border-radius: 1.4em;
 }
 
-.card_unisciti div{
-  display: flex;
-  flex-direction: row;
-  gap: 2em;
-  width: 100%;
+.card_title{
+  margin: 0 auto;
+  margin-bottom: 1em;
+  padding-top: 1em;
+  height: 22%;
 }
 
-.card_unisciti h2{
-  margin: 0;
-  margin-left: 1em;
-  margin-top: 0.1em;
+.card_title h2{
+  margin: auto;
   font-size: 2.5em;
   line-height: 1.5em;
   color: #082636;
-  text-align: left;
-  white-space: nowrap;
+  text-align: center;
+  width: 100%;
 }
 
-.card_unisciti p{
-  margin: 0;
-  margin-top: 1.1em;
-  text-align: left;
+.card_title p{
   font-size: 1.4em;
   line-height: 1.5em;
+  margin-top: 0.2em;
 } 
 
-.card_unisciti img{
-  display: block;
-  height: 72%;
-  width: auto;
-  max-width: calc(100% - 6em);
+.card_unisciti ul{
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 74%;
+  width: 80%;
   margin: auto;
-  border-radius: 1em;
+  justify-content: center;
+  padding-bottom: 2em;
+  margin-top: 1em;
 }
 
-/* Quarta card */
+.card_unisciti li{
+  background-color: rgb(255, 255, 255);
+  border-radius: 1.2em;
+  height: 100%;
+  width: auto;
+  margin: auto;
+  transition: all 0.4s ease;
+}
+
+.card_unisciti li p{
+  text-align: center;
+}
+
+.card_unisciti img{
+  border-radius: 1em 1em 0 0;
+  height: 88%;
+  width: auto;
+}
+
+.card_unisciti li:hover{
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  transform: scale(1.05);
+}
+
+/* Terza card */
 .card_sceglierci{
   background-color: #a0c7cf;
   width: 90%;
-  height: calc(100vh - 14em);
-  margin: auto;
-  margin-top: 3em;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
-  padding: 2em;
-}
-
-/* Quinta card */
-.card_sedi{
-  background-color: #a0c7cf;
-  width: 90%;
-  height: calc(100vh - 14em);
+  height: 28em;
   margin: auto;
   margin-top: 3em;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: row-reverse;
+  border-radius: 1.4em;
 }
 
+.div_sceglierci{
+  width: 48%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 2%;
+  margin-right: 3%;
+}
 
+.div_sceglierci h2{
+  width: 100%;
+  font-size: 2.5em;
+  line-height: 1.5em;
+  text-align: left;
+  color: #082636;
+  margin-bottom: 0.2em;
+}
+
+.div_sceglierci ul{
+  list-style: none;
+  margin-top: 0;
+}
+
+.div_sceglierci li{
+  margin-top: 1.2em;
+}
+
+.div_sceglierci h3{
+  font-size: 1.6em;
+  line-height: 1.5em;
+  text-align: left;
+}
+
+.div_sceglierci p{
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+
+.card_sceglierci img{
+  height: 100%;
+  width: auto;
+  margin-right: auto;
+  margin-left: 0;
+  border-radius: 1.4em 0 0 1.4em;
+}
+
+/* Quarta card */
+.card_sedi{
+  width: 90%;
+  height: 28em;
+  margin: auto;
+  margin-top: 3em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
+  border-radius: 1.4em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.card_sedi::before{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: url(../../images/torreindex.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.7;
+  z-index: 0;
+  border-radius: 1.4em;
+}
+
+.card_sedi div{
+  width: 52%;
+  height: 14em;
+  padding: 2em;
+  background-color: #d9e6ef;
+  text-align: center;
+  border-radius: 1.4em;
+  position: relative;
+  z-index: 1;
+}
+
+.card_sedi h2{
+  width: 100%;
+  font-size: 2em;
+  line-height: 1.5em;
+  color: #082636;
+  margin-bottom: 0.2em;
+}
+
+.card_sedi p{
+  margin-bottom: 2em;
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+
+.card_sedi a{
+  text-decoration: none;
+  background-color: #ffffff; 
+  color: #000000;
+  border-radius: 1.3em;
+  padding: 1.2em;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.card_sedi a:hover{
+  background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
+  color: #ffffff;
+}
 
 /*about_us.html*/
 
 
-/*main{
-    background-color: var(--contentbgcolor);
-    color: var(--contexttxtcolor);
-    margin-left: 20%;
-    padding-top: 2em;
-    padding-left: 3.5em;
-    padding-right: 2em;
-    padding-bottom: 2em;
-    border-left: 1px solid black;
-    margin-right: 1em;
-}
-
-aside{
-    float: right;
-}
-
-main h1{
-    line-height: 1.5em;
-    text-align: center;
-}
-
-main h2{
-    line-height: 1.5em;
-    text-align: center;
-    margin-bottom: 0.5em;
-    margin-top: 0.5em;
-}
-
-.polaroid{
-    width: 30%;
-    float: right;
-    background-color: white;
-    padding: 0.5em;
-    border: 1px solid black;
-    margin-top: 2em;
-    transform: rotate(-3deg);
-    margin: 1em;
-}
-
-#premi dt{
-    list-style-image: url('materiale/images/coppa.png');
-    margin-left: 2em;
-    background-repeat: no-repeat;
-    padding-left: 2.5em;
-}
-
-#premi dd{
-    padding-left: 2.5em;
-}*/
-
-/*-----------------*/
-/*SEZIONE NEWS*/
-/*-----------------*/
-
-/*#breakingNews{
-    float: right;
-    width: 18%;
-    color: var(--txtcolor);
-    background-color: var(--bgcolor);
-    border: 1px solid black;
-    padding: 0.5em;
-    margin-right: 2%;
-    margin-top: 1.0em;
-}
-
-#breakingNews h2{
-    background-color: var(--newscolor);
-    color: var(--newstxtcolor);
-    font-size: 1.2em;
-    padding: 0.2em;
-}
-
-#breakingNews dt{
-    font-weight: bold;
-    margin-left: 0.8em;
-}
-
-#breakingNews dl dd{
-    margin-left: 1.5em;
-}*/
-
-/*-----------------*/
-/*SEZIONE FOOTER*/
-/*-----------------*/
-
-/*footer p{
-    display: inline;
-    font-size: 0.8em;
-    font-style: italic;
-}
-
-footer{
-    background-color: var(--breadcolor);
-    color: var(--txtcolor);
-    text-align: center;
-    padding: 1.1em;
-    border: 1px solid black;
-    padding: 0.5em;
-}
-
-footer img{
-    margin-right: 1em;
-    margin-left: 1em;
-    margin-bottom: 0.7em;
-    vertical-align: middle;
-}
-
-.imgValidCode{
-    vertical-align: middle; 
-}*/
 
 /*TUTTI I FORM!! */
 
