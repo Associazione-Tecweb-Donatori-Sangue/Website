@@ -233,6 +233,7 @@ header{
 
 main{
   padding-top: 1em;
+  padding-bottom: 3em;
   background-color: #f7fbfc;
 }
 
@@ -502,6 +503,154 @@ main{
   background: linear-gradient(135deg, #4f5abb 0%, #7b68ee 100%);
   color: #ffffff;
 }
+
+/* Footer */
+footer {
+  background: linear-gradient(135deg, #4d7d8a 0%, #b4d2d4 100%);
+  color: #082636;
+  padding: 2em 0 0 0;
+}
+
+.footer-container {
+  max-width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.left-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 35%;
+  margin-left: auto;
+}
+
+.vertical-divider {
+  width: 2px;
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  margin: 0 3em;
+}
+
+.right-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 35%;
+  margin-right: auto;
+  padding-top: 0.6em;
+}
+
+.left-footer img {
+  height: 6em;
+  width: auto;
+  margin-bottom: 0.5em;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1em;
+  margin: 2em 0;
+}
+
+.contatto-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.contatto-item .icon {
+  font-size: 1.5em;
+}
+
+.contatto-item p {
+  margin: 0;
+  font-size: 1em;
+}
+
+.title-item, .times-item{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1.2em 0;
+}
+
+.title-item h2 {
+  color: #ffffff;
+  font-size: 2em;
+  font-weight: 700;
+  margin-bottom: 0.3em;
+}
+
+.title-item abbr {
+  text-decoration: none;
+}
+
+.title-item p {
+  font-size: 1.2em;
+  color: #2c5f7a;
+}
+
+.times-item h3 {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 0.3em;
+  text-transform: uppercase;
+}
+
+.times-item p {
+  font-size: 1em;
+  color: #2c5f7a;
+}
+
+.footer-social {
+  display: flex;
+  justify-content: center;
+  gap: 1.4em;
+}
+
+.footer-social a {
+  display: inline-block;
+  width: 3.2em;
+  height: 3.2em;
+  background-color: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.footer-social a:hover {
+  transform: scale(1.1);
+}
+
+.footer-social img {
+  width: 2.2em;
+  height: 2.2em;
+  border-radius: 50%;
+  margin: 0;
+}
+
+.footer-copyright {
+  margin-top: 1.6em;
+  padding: 1em 0;
+  background-color: rgba(0, 0, 0, 0.2);
+  text-align: center;
+}
+
+.footer-copyright p {
+  margin: 0;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+
+
 
 /*about_us.html*/
 
