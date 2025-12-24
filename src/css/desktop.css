@@ -715,7 +715,11 @@ fieldset.form > div, .form_std fieldset > div, #prenotaForm fieldset > div {
   box-sizing: border-box;
 }
 
-input:focus, select:focus {
+#prenotaForm input:focus, 
+.input_std input:focus, 
+.form_std select:focus,
+select:focus,
+input[type="date"]:focus {
   outline: none;
   border-color: #4f5abb;
   background: white;
@@ -762,7 +766,14 @@ small, .form_std small {
   cursor: pointer;
   font-weight: 500;
 }
+.radio_std:has(input[type="radio"]:checked) {
+  border-color: #4f5abb; 
+  background: #f9fcfe;
+}
 
+.radio_std input[type="radio"]:checked {
+  accent-color: #4f5abb;
+}
 
 .button_std {
   padding: 0;
