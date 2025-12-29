@@ -674,11 +674,130 @@ footer {
   font-weight: 500;
 }
 
-
-
-
 /*chi siamo.html*/
+.titolo_principale {
+  font-size: 3em;
+  font-weight: 700;
+  color: #082636;
+  text-align: center;
+  margin: 2em auto 0.5em;
+  font-family: 'Playfair Display', Georgia, serif;
+}
 
+.titolo_secondario {
+  font-size: 1.8em;
+  font-weight: 400;
+  color: #2c5f7a;
+  text-align: center;
+  margin: 0 auto 2em;
+  font-family: 'Playfair Display', Georgia, serif;
+}
+
+.titolo_terziario {
+  font-size: 2em;
+  font-weight: 600;
+  color: #082636;
+  margin: 2em 0 1em;
+  padding-left: 1em;
+  border-left: 5px solid #4f5abb;
+}
+
+.testo_std {
+  background-color: #ffffff;
+  width: 80%;
+  margin: 2em auto;
+  padding: 2.5em;
+  border-radius: 1.4em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  line-height: 1.8em;
+}
+
+.testo_std p {
+  font-size: 1.2em;
+  color: #2c5f7a;
+  margin-bottom: 1.2em;
+}
+
+.testo_std ul {
+  list-style-position: inside;
+  margin-left: 1.5em;
+  margin-top: 1em;
+}
+
+.testo_std li {
+  font-size: 1.2em;
+  color: #2c5f7a;
+  margin-bottom: 0.8em;
+  padding-left: 0.5em;
+}
+
+.testo_std dl {
+  margin-top: 2em;
+}
+
+.testo_std dt {
+  font-size: 1.4em;
+  font-weight: 700;
+  color: #082636;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.testo_std dd {
+  font-size: 1.2em;
+  color: #2c5f7a;
+  margin-left: 2em;
+  margin-bottom: 1em;
+  line-height: 1.8em;
+}
+
+#fondatori {
+  background: linear-gradient(135deg, #a0c7cf 0%, #d9e6ef 100%);
+  width: 80%;
+  margin: 3em auto;
+  padding: 2.5em;
+  border-radius: 1.4em;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  text-align: center;
+}
+
+#fondatori h4 {
+  font-size: 2em;
+  font-weight: 700;
+  color: #082636;
+  margin-bottom: 1em;
+}
+
+#fondatori p {
+  font-size: 1.2em;
+  color: #2c5f7a;
+  margin-bottom: 1.5em;
+}
+
+#fondatori ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#fondatori li {
+  background-color: #ffffff;
+  padding: 1.2em;
+  border-radius: 0.8em;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #082636;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#fondatori li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
 
 /*dove_trovarci.html*/
 .sedi_container{
