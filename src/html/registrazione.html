@@ -16,6 +16,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -28,7 +29,7 @@
                     <li><a href="about_us.html">Chi siamo</a></li>
                     <li><a href="dove_trovarci.html">Dove trovarci</a></li>
                 </ul>
-                <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+                <a id="profiloActive" href=""></a><img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
 
                 <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
                 <label class="burgerMenu" for="burgerInput">    
@@ -42,60 +43,111 @@
         <nav id="breadcrumb">
             <p><a href="index.html" lang="en">Home</a> / <span>Registrazione</span></p>
         </nav>
-    <main>
-        <div class="titolo_principale">
-        <h1>Registrazione Utente</h1>
-        </div>
-        <!--<form action="/nuovo-utente" method="post">--> 
-         <div class="form_std">
-            <fieldset>  
-                <legend>Dati di Accesso</legend>  
-                <div class="input_std"> 
-                <label for="username"><span lang="en">Username</span>:</label>
-                <input 
-                    type="text" 
-                    name="username" 
-                    id="username"
-                    minlength="4"
-                    maxlength="50"
-                    required
-                    autocomplete="username"
-                    aria-describedby="informazioni username"> <small id="informazioni username" class="suggerimento"> Es: ombretta (minimo 4 caratteri)</small>
-                </div>
-                <div class="input_std">
-                <label for="password"><span lang="en">Password</span>:</label>
-                <input 
-                    type="password" 
-                    name="password" 
-                    id="password"
-                    minlength="8"
-                    maxlength="50"
-                    required
-                    autocomplete="new-password"
-                    aria-describedby="informazioni password"> <small id="informazioni password" class="suggerimento">Es: Password1! (minimo 8 caratteri)</small>
-                </div>
-                <div class="input_std">
-                <label for="password_confirm">Conferma <span lang="en">Password</span>:</label>
-                <input 
-                    type="password" 
-                    name="password_confirm" 
-                    id="password_confirm"
-                    minlength="8"
-                    maxlength="50"
-                    required>
-                </div>
-                <div class="button_std">
-                <input 
-                    type="submit" 
-                    value="Registrati">
-                </div>
-            </fieldset>
-        </div>   
-        <!--</form>-->
-        <p>
-            Hai già un <span lang="en">account</span>? Vai al <a href="login.html"><span lang="en">Login</span></a>
-        </p>
-    </main>
-</body>
 
+        <main>
+            <div class="titolo_principale">
+                <h1>Registrazione Utente</h1>
+            </div>
+            <!--<form action="/nuovo-utente" method="post">--> 
+            <div class="form_std">
+                <fieldset>  
+                    <legend>Dati di Accesso</legend>  
+                    <div class="input_std"> 
+                    <label for="username"><span lang="en">Username</span>:</label>
+                    <input 
+                        type="text" 
+                        name="username" 
+                        id="username"
+                        minlength="4"
+                        maxlength="50"
+                        required
+                        autocomplete="username"
+                        aria-describedby="informazioni username"> <small id="informazioni username" class="suggerimento"> Es: ombretta (minimo 4 caratteri)</small>
+                    </div>
+                    <div class="input_std">
+                    <label for="password"><span lang="en">Password</span>:</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        id="password"
+                        minlength="8"
+                        maxlength="50"
+                        required
+                        autocomplete="new-password"
+                        aria-describedby="informazioni password"> <small id="informazioni password" class="suggerimento">Es: Password1! (minimo 8 caratteri)</small>
+                    </div>
+                    <div class="input_std">
+                    <label for="password_confirm">Conferma <span lang="en">Password</span>:</label>
+                    <input 
+                        type="password" 
+                        name="password_confirm" 
+                        id="password_confirm"
+                        minlength="8"
+                        maxlength="50"
+                        required>
+                    </div>
+                    <div class="button_std">
+                    <input 
+                        type="submit" 
+                        value="Registrati">
+                    </div>
+                </fieldset>
+            </div>   
+            <!--</form>-->
+            <p>
+                Hai già un <span lang="en">account</span>? Vai al <a href="login.html"><span lang="en">Login</span></a>
+            </p>
+        </main>
+
+        <footer>
+            <div class="footer-buttons">
+                <a href="#menu" aria-label="Torna all'inizio della pagina">Torna all'inizio</a>
+            </div>
+
+            <div class="footer-container">
+                <div class="left-footer">
+                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                    <div class="contact-info">
+                        <div class="contatto-item">
+                            <p>Via Università, Padova, Italia</p>
+                            <img class="icon" src="../../images/location.jpg" alt="Icona posizione">
+                        </div>
+                        <div class="contatto-item">
+                            <p>049 827 5000</p>
+                            <img class="icon" src="../../images/phone-call.jpg" alt="Icona telefono">
+                        </div>
+                        <div class="contatto-item">
+                            <p>info.atds@gmail.com</p>
+                            <img class="icon" src="../../images/mail.jpg" alt="Icona email">
+                        </div>
+                    </div>
+                </div>
+
+                <span class="vertical-divider"></span>
+
+                <div class="right-footer">
+                    <div class="title-item">
+                        <h2><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr></h2>
+                        <p>Associazione Tecweb Donatori Sangue</p>
+                    </div>
+                    <div class="times-item">
+                        <h3>Orari di apertura</h3>
+                        <p>07:30 - 11:30, 14:00 - 18:00</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/universitapadova" aria-label="Facebook"><img src="../../images/fblogo.jpg" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/unipd/" aria-label="Instagram"><img src="../../images/iglogo.jpg" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/@unipd" aria-label="YouTube"><img src="../../images/ytlogo.jpg" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>
+                    <abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All Rights Reserved</span>
+                </p>
+            </div>
+        </footer>
+    </body>
 </html> 

@@ -104,6 +104,11 @@ header{
     margin-left: 1em;
 }
 
+#profiloActive{
+  cursor: none;
+  margin-left: 1em;
+}
+
 #menu #linkProfilo:hover{
     background: none;
     color: inherit;
@@ -171,12 +176,13 @@ header{
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  padding-top: 9em;
+  padding-top: 3em;
 }
 
 .landing_title h1, h2{
+  width: 40%;
+  text-align: left;
   color: black;
-  text-align: center;
   font-family: 'Playfair Display', Georgia, serif;
   letter-spacing: 0.04em;
 }
@@ -184,8 +190,8 @@ header{
 .landing_title h1{
   font-size: 5em;
   font-weight: 900;
-  margin-top: -0.9em;
-  margin-left: -1.8em;
+  margin-bottom: 0.7em;
+  margin-left: 38%;
 }
 
 .landing_title h1 abbr{
@@ -195,8 +201,7 @@ header{
 .landing_title h2{
   font-size: 1.7em;
   font-weight: 400;
-  margin-top: 1.6em;
-  margin-left: 8em;
+  margin-left: 42%;
 }
 
 .drop{
@@ -675,23 +680,6 @@ footer {
 }
 
 /*chi siamo.html*/
-.titolo_principale {
-  font-size: 3em;
-  font-weight: 700;
-  color: #082636;
-  text-align: center;
-  margin: 2em auto 0.5em;
-  font-family: 'Playfair Display', Georgia, serif;
-}
-
-.titolo_secondario {
-  font-size: 1.8em;
-  font-weight: 400;
-  color: #2c5f7a;
-  text-align: center;
-  margin: 0 auto 2em;
-  font-family: 'Playfair Display', Georgia, serif;
-}
 
 .titolo_terziario {
   font-size: 2em;
