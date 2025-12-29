@@ -16,6 +16,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -43,18 +44,25 @@
             <p><a href="index.html" lang="en">Home</a> / <span>Dove trovarci</span></p>
         </nav>
 
-        <main>
-            <h1 class="titolo_principale">Dove trovarci</h1>
-            <!-- <div class="search-container">
-                <label for="ricerca-sedi">Cerca una sede:</label>
-                <input type="text" id="ricerca-sedi" name="ricerca-sedi" placeholder="Inserisci il nome della sede..." aria-label="Cerca una sede">
-            </div> -->
-            
+        <div class="landing_title">
+            <h1 class="titolo_principale"><abbr title="Associazione Tecweb Donatori Sangue">Dove trovarci</abbr></h1>
             <h2 class="titolo_secondario">Esplora le sedi</h2>
+        </div>
 
-            <div class="container">
-                <div class="sede testo_std">
-                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Piovego</h3>
+        <a href="#main" class="drop" aria-label="Scorri al contenuto principale">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+
+        <main id="main">
+            <!-- <h1 class="titolo_principale">Dove trovarci</h1>
+            
+            <h2 class="titolo_secondario">Esplora le sedi</h2> -->
+
+            <div class="sedi_container">
+                <div class="sede">
+                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Piovego</h3>
                     <img src="../../images/sede_piovego.jpg" alt="Sede ATDS Piovego">
                     <p>Piccola struttura nel quartiere Piovego, facilmente raggiungibile, con personale qualificato e orari flessibili per le donazioni.</p>
                     <p> 
@@ -65,8 +73,8 @@
                     <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
 
-                <div class="sede testo_std">
-                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Lum250</h3>
+                <div class="sede">
+                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Lum250</h3>
                     <img src="../../images/sede_lum250.jpg" alt="Sede ATDS Lum250">
                     <p>Piccolo punto donazioni vicino all'Aula LuM250, comodo soprattutto per studenti e personale universitario.</p>
                     <p>
@@ -77,8 +85,8 @@
                     <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
 
-                <div class="sede testo_std">
-                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Stanga</h3>
+                <div class="sede">
+                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Stanga</h3>
                     <img src="../../images/sede_stanga.jpg" alt="Sede ATDS Stanga">
                     <p>Punto donazioni nel bel mezzo della famosa Stanga, con un ambiente accogliente e pulito, e personale disponibile per ogni esigenza.</p>
                     <p>Indirizzo: Piazzale Stanga, 35131 Padova 
@@ -88,8 +96,8 @@
                     <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
 
-                <div class="sede testo_std">
-                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Portello</h3>
+                <div class="sede">
+                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Portello</h3>
                     <img src="../../images/sede_portello.jpg" alt="Sede ATDS Portello">
                     <p>Punto donazioni nella zona del Portello, appena rinnovato, con facile accesso e un ambiente confortevole per i donatori.</p>
                     <p>Indirizzo: Via Giovanni Gradenigo, Via del Portello, 35131 Padova 
@@ -99,8 +107,8 @@
                     <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
 
-                <div class="sede testo_std">
-                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Prato della Valle</h3>
+                <div class="sede">
+                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Prato della Valle</h3>
                     <img src="../../images/sede_prato.jpg" alt="Sede ATDS Prato della Valle">
                     <p>Sede principale e punto donazioni in una delle piazze più belle di Padova, con un ambiente accogliente e personale disponibile.</p>
                     <p>Indirizzo: Prato della Valle, 35141 Padova
@@ -110,8 +118,8 @@
                     <p>Telefono: <a href="tel:+390123456789" aria-label="Chiama +39 0123456789">+39 0123456789</a></p>
                 </div>
                 
-                <div class="sede testo_std">
-                    <h3 class="titolo_terziario"><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Dietro Stazione</h3>
+                <div class="sede">
+                    <h3><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr> Dietro Stazione</h3>
                     <img src="../../images/sede_dietro_stazione.jpg" alt="Sede ATDS Dietro Stazione">
                     <p>Punto donazioni situato dietro la stazione di Padova, comodo per chi arriva in treno e desidera donare sangue in modo rapido, semplice e pulito.</p>
                     <p>Indirizzo: Via Jacopo d'Avanzo, 23, 35132 Padova 
@@ -125,7 +133,54 @@
         </main>
 
         <footer>
-            <p><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All rights Reserved</span></p>
+            <div class="footer-buttons">
+                <a href="#menu" aria-label="Torna all'inizio della pagina">Torna all'inizio</a>
+            </div>
+
+            <div class="footer-container">
+                <div class="left-footer">
+                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                    <div class="contact-info">
+                        <div class="contatto-item">
+                            <p>Via Università, Padova, Italia</p>
+                            <img class="icon" src="../../images/location.jpg" alt="Icona posizione">
+                        </div>
+                        <div class="contatto-item">
+                            <p>049 827 5000</p>
+                            <img class="icon" src="../../images/phone-call.jpg" alt="Icona telefono">
+                        </div>
+                        <div class="contatto-item">
+                            <p>info.atds@gmail.com</p>
+                            <img class="icon" src="../../images/mail.jpg" alt="Icona email">
+                        </div>
+                    </div>
+                </div>
+
+                <span class="vertical-divider"></span>
+
+                <div class="right-footer">
+                    <div class="title-item">
+                        <h2><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr></h2>
+                        <p>Associazione Tecweb Donatori Sangue</p>
+                    </div>
+                    <div class="times-item">
+                        <h3>Orari di apertura</h3>
+                        <p>07:30 - 11:30, 14:00 - 18:00</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/universitapadova" aria-label="Facebook"><img src="../../images/fblogo.jpg" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/unipd/" aria-label="Instagram"><img src="../../images/iglogo.jpg" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/@unipd" aria-label="YouTube"><img src="../../images/ytlogo.jpg" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>
+                    <abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All Rights Reserved</span>
+                </p>
+            </div>
         </footer>
 
     </body>
