@@ -927,10 +927,10 @@ small, .form_std small {
 
 .radio_std {
   display: flex;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
+  flex-direction: row;
+  justify-content: flex-start;
   align-items: center;
-  gap: 12px;
+  gap: 15px;
   padding: 10px 14px;
   background: #f9fcfe;
   border: 2px solid #acd2e6;
@@ -953,7 +953,7 @@ small, .form_std small {
 
 .radio_std label {
   margin: 0;
-  flex: 1;
+  
   cursor: pointer;
   font-weight: 500;
 }
