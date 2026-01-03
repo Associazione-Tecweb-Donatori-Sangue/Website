@@ -29,7 +29,7 @@
                     <li><a href="about_us.html">Chi siamo</a></li>
                     <li><a href="dove_trovarci.html">Dove trovarci</a></li>
                 </ul>
-                <a id="profiloActive" href=""></a><img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+                <a id="linkProfilo" href="login.html"><img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo"></a>
 
                 <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
                 <label class="burgerMenu" for="burgerInput">    
@@ -44,58 +44,43 @@
             <p><a href="index.html" lang="en">Home</a> / <span>Registrazione</span></p>
         </nav>
 
-        <main>
-            <div class="titolo_principale">
-                <h1>Registrazione Utente</h1>
-            </div>
-            <!--<form action="/nuovo-utente" method="post">--> 
-            <div class="form_std">
+        <div class="landing_title">
+            <h1>Registrazione</h1>
+            <h2>Entra a far parte della nostra <span lang="en">community</span></h2>
+        </div>
+
+        <a href="#main" class="drop" aria-label="Scorri al contenuto principale">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+
+        <main id="main">
+            <form action="../php/registrazione.php" method="post" class="form_std">
                 <fieldset>  
                     <legend>Dati di Accesso</legend>  
                     <div class="input_std"> 
-                    <label for="username"><span lang="en">Username</span>:</label>
-                    <input 
-                        type="text" 
-                        name="username" 
-                        id="username"
-                        minlength="4"
-                        maxlength="50"
-                        required
-                        autocomplete="username"
-                        aria-describedby="informazioni username"> <small id="informazioni username" class="suggerimento"> Es: ombretta (minimo 4 caratteri)</small>
+                        <label for="username"><span lang="en">Username</span>:</label>
+                        <input type="text" name="username" id="username" minlength="4" maxlength="50" required autocomplete="username" aria-describedby="info-user"> 
+                        <small id="info-user" class="suggerimento"> Es: ombretta (minimo 4 caratteri)</small>
                     </div>
                     <div class="input_std">
-                    <label for="password"><span lang="en">Password</span>:</label>
-                    <input 
-                        type="password" 
-                        name="password" 
-                        id="password"
-                        minlength="8"
-                        maxlength="50"
-                        required
-                        autocomplete="new-password"
-                        aria-describedby="informazioni password"> <small id="informazioni password" class="suggerimento">Es: Password1! (minimo 8 caratteri)</small>
+                        <label for="password"><span lang="en">Password</span>:</label>
+                        <input type="password" name="password" id="password" minlength="8" maxlength="50" required autocomplete="new-password" aria-describedby="info-pass"> 
+                        <small id="info-pass" class="suggerimento">Es: Password1! (minimo 8 caratteri)</small>
                     </div>
                     <div class="input_std">
-                    <label for="password_confirm">Conferma <span lang="en">Password</span>:</label>
-                    <input 
-                        type="password" 
-                        name="password_confirm" 
-                        id="password_confirm"
-                        minlength="8"
-                        maxlength="50"
-                        required>
+                        <label for="password_confirm">Conferma <span lang="en">Password</span>:</label>
+                        <input type="password" name="password_confirm" id="password_confirm" minlength="8" maxlength="50" required>
                     </div>
                     <div class="button_std">
-                    <input 
-                        type="submit" 
-                        value="Registrati">
+                        <input type="submit" value="Registrati">
                     </div>
                 </fieldset>
-            </div>   
-            <!--</form>-->
-            <p>
-                Hai già un <span lang="en">account</span>? Vai al <a href="login.html"><span lang="en">Login</span></a>
+            </form>
+
+            <p class="testo_std">
+                Hai già un <span lang="en">account</span>? Vai al <a href="login.html"><span lang="en">Login</span></a>.
             </p>
         </main>
 

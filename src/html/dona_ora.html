@@ -16,6 +16,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
     </head>
 
     <body>
@@ -23,7 +24,7 @@
         <nav id="menu" aria-label="Menu principale">
             <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
             <ul>
-                <li><a lang="en" href="index.html">Home</a></li>
+                <li lang="en"><a href="index.html">Home</a></li>
                 <li><a id="currentLink">Dona ora</a></li>
                 <li><a href="about_us.html">Chi siamo</a></li>
                 <li><a href="dove_trovarci.html">Dove trovarci</a></li>
@@ -43,66 +44,126 @@
         <p><a href="index.html" lang="en">Home</a> / <span>Dona ora</span></p>
     </nav>
 
-    <h1>Prenota donazione</h1>
-
-    <form id="prenotaForm" action="../php/prenota.php" method="post">
-        <fieldset class="form">
-            <legend>Luogo</legend>
-
-            <div class="select_std"><label for="luogo">Scegli il luogo</label>
-            <select name="luogo" id="luogo" required>
-                <option value="dietro-stazione">Dietro Stazione</option>
-                <option value="lum250">Lum250</option>
-                <option value="piovego">Piovego</option>
-                <option value="portello">Portello</option>
-                <option value="prato-della-valle">Prato della Valle</option>
-                <option value="stanga">Stanga</option>
-            </select></div>
-        </fieldset>
-
-        <fieldset class="form">
-            <legend>Data e Ora</legend>
-
-            <div class="input_std"><label for="data">Data</label>
-            <input name="data" id="data" type="date" required></div>
-
-            <div class="select_std"><label for="ora">Ora</label>
-            <select name="ora" id="ora" required>
-                <option value="07:00">07:00</option>
-                <option value="07:30">07:30</option>
-                <option value="08:00">08:00</option>
-                <option value="08:30">08:30</option>
-                <option value="09:00">09:00</option>
-                <option value="09:30">09:30</option>
-                <option value="10:00">10:00</option>
-                <option value="10:30">10:30</option>
-                <option value="11:00">11:00</option>
-                <option value="11:30">11:30</option>
-                <option value="12:00">12:00</option>
-            </select></div>
-        </fieldset>
-
-       <fieldset class="form">
-    <legend>Cosa vuoi donare</legend>
-
-    <div class="radio_std">
-        <input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required>
-        <label for="sangue-intero">Sangue intero</label>
+    <div class="landing_title">
+        <h1>Dona ora</h1>
+        <h2>Prenota la tua donazione di sangue</h2>
     </div>
 
-    <div class="radio_std">
-        <input type="radio" id="piastrine" name="donazione" value="piastrine">
-        <label for="piastrine">Piastrine (piastrinoaferesi)</label>
-    </div>
+    <a href="#main" class="drop" aria-label="Scorri al contenuto principale">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
 
-    <div class="radio_std">
-        <input type="radio" id="plasma" name="donazione" value="plasma">
-        <label for="plasma">Plasma (plasmaferesi)</label>
-    </div>
-</fieldset>
+    <main id="main">
+        <form id="prenotaForm" action="../php/prenota.php" method="post">
+            <fieldset class="form">
+                <legend>Luogo</legend>
+                <div class="select_std">
+                    <label for="luogo">Scegli il luogo</label>
+                    <select name="luogo" id="luogo" required>
+                        <option value="dietro-stazione">Dietro Stazione</option>
+                        <option value="lum250">Lum250</option>
+                        <option value="piovego">Piovego</option>
+                        <option value="portello">Portello</option>
+                        <option value="prato-della-valle">Prato della Valle</option>
+                        <option value="stanga">Stanga</option>
+                    </select>
+                </div>
+            </fieldset>
 
-        <div class="button_std"><button type="submit">Prenota</button></div>
-    </form>
+            <fieldset class="form">
+                <legend>Data e Ora</legend>
+                <div class="input_std">
+                    <label for="data">Data</label>
+                    <input name="data" id="data" type="date" required>
+                </div>
+                <div class="select_std">
+                    <label for="ora">Ora</label>
+                    <select name="ora" id="ora" required>
+                        <option value="07:00">07:00</option>
+                        <option value="07:30">07:30</option>
+                        <option value="08:00">08:00</option>
+                        <option value="08:30">08:30</option>
+                        <option value="09:00">09:00</option>
+                        <option value="09:30">09:30</option>
+                        <option value="10:00">10:00</option>
+                        <option value="10:30">10:30</option>
+                        <option value="11:00">11:00</option>
+                        <option value="11:30">11:30</option>
+                        <option value="12:00">12:00</option>
+                    </select>
+                </div>
+            </fieldset>
 
-</body>
+            <fieldset class="form">
+                <legend>Cosa vuoi donare</legend>
+                <div class="radio_std">
+                    <label for="sangue-intero">Sangue intero</label>
+                    <input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required>
+                </div>
+                <div class="radio_std">
+                    <label for="piastrine">Piastrine (piastrinoaferesi)</label>
+                    <input type="radio" id="piastrine" name="donazione" value="piastrine">
+                </div>
+                <div class="radio_std">
+                    <label for="plasma">Plasma (plasmaferesi)</label>
+                    <input type="radio" id="plasma" name="donazione" value="plasma">
+                </div>
+            </fieldset>
+
+            <div class="button_std"><button type="submit">Prenota</button></div>
+        </form>
+    </main>
+     <footer>
+            <div class="footer-buttons">
+                <a href="#menu" aria-label="Torna all'inizio della pagina">Torna all'inizio</a>
+            </div>
+
+            <div class="footer-container">
+                <div class="left-footer">
+                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                    <div class="contact-info">
+                        <div class="contatto-item">
+                            <p>Via Università, Padova, Italia</p>
+                            <img class="icon" src="../../images/location.jpg" alt="Icona posizione">
+                        </div>
+                        <div class="contatto-item">
+                            <p>049 827 5000</p>
+                            <img class="icon" src="../../images/phone-call.jpg" alt="Icona telefono">
+                        </div>
+                        <div class="contatto-item">
+                            <p>info.atds@gmail.com</p>
+                            <img class="icon" src="../../images/mail.jpg" alt="Icona email">
+                        </div>
+                    </div>
+                </div>
+
+                <span class="vertical-divider"></span>
+
+                <div class="right-footer">
+                    <div class="title-item">
+                        <h2><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr></h2>
+                        <p>Associazione Tecweb Donatori Sangue</p>
+                    </div>
+                    <div class="times-item">
+                        <h3>Orari di apertura</h3>
+                        <p>07:30 - 11:30, 14:00 - 18:00</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/universitapadova" aria-label="Facebook"><img src="../../images/fblogo.jpg" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/unipd/" aria-label="Instagram"><img src="../../images/iglogo.jpg" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/@unipd" aria-label="YouTube"><img src="../../images/ytlogo.jpg" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>
+                    <abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All Rights Reserved</span>
+                </p>
+            </div>
+        </footer>
+    </body>
 </html>

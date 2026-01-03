@@ -3,11 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrazione donatore</title>
+    <title>ATDS - Registrazione donatore</title>
+    
+    <meta name="description" content="Pagina per registrarsi come nuovo donatore presso l'Associazione Tecweb Donatori Sangue">
+    <meta name="keywords" content="registrazione, donatore, sangue, volontariato, ATDS">
+    <meta name="author" content="ATDS Team">
+
     <link rel="stylesheet" href="../css/desktop.css">
+    <link rel="stylesheet" href="../css/mobile.css" media="screen and (max-width:768px)">
+    <link rel="stylesheet" href="../css/print.css" media="print">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -19,7 +28,7 @@
                 <li><a href="about_us.html">Chi siamo</a></li>
                 <li><a href="dove_trovarci.html">Dove trovarci</a></li>
             </ul>
-            <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+            <a href="login.html"><img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo"></a>
 
             <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
             <label class="burgerMenu" for="burgerInput">    
@@ -30,100 +39,152 @@
         </nav>
     </header>
 
-    <main>
-        <nav id="breadcrumb">
-            <p><a href="index.html" lang="en">Home</a> / <span lang="en">Registrazione Donatore</span></p>
-        </nav> 
+    <nav id="breadcrumb">
+        <p><a href="index.html" lang="en">Home</a> / <span>Registrazione Donatore</span></p>
+    </nav> 
 
-        <div class="container">
-            <h1>Registrazione donatori di sangue</h1>
-            <p>Compila il modulo sottostante per registrarti come potenziale donatore</p>
-            
-            <form action="/submit-registration" method="POST">
-                <fieldset class="form">
-                    <legend>Dati Personali</legend>
-                    <div class="input_std">
-                        <label for="nome">Nome:</label>
-                        <input name="nome" id="nome" type="text" required>
-                    </div>
-                    <div class="input_std">
-                        <label for="cognome">Cognome:</label>
-                        <input name="cognome" id="cognome" type="text" required>
-                    </div>
-                    <div class="input_std">
-                        <label for="data_nascita">Data di Nascita:</label>
-                        <input name="data_nascita" id="data_nascita" type="date" required>
-                    </div>
-                    <div class="input_std">
-                        <label for="luogo_nascita">Luogo di Nascita:</label>
-                        <input name="luogo_nascita" id="luogo_nascita" type="text" required>
-                    </div>
-                    <div class="input_std">
-                        <label for="codice_fiscale">Codice Fiscale:</label>
-                        <input name="codice_fiscale" id="codice_fiscale" type="text" required minlength="16" maxlength="16" pattern="^[a-zA-Z0-9]{16}$" title="Inserisci il Codice Fiscale di 16 caratteri">
-                    </div>
-                </fieldset>
+    <div class="landing_title">
+        <h1>Registrazione Donatore</h1>
+        <h2>Diventa un eroe, entra nella nostra rete di donatori</h2>
+    </div>
 
-                <fieldset class="form">
-                    <legend>Contatti e Residenza</legend>
-                    <div class="input_std">
-                        <label for="residenza">Indirizzo di Residenza Completo:</label>
-                        <input name="residenza" id="residenza" type="text" required>
-                    </div>
-                    <div class="input_std">
-                        <label for="telefono">Numero di Telefono:</label>
-                        <input name="telefono" id="telefono" type="tel" required pattern="^(\+39)?\s?\d{3}[\s-]?\d{3}[\s-]?\d{4}$" title="Esempio: 333 1234567">
-                    </div>
-                    <div class="input_std">
-                        <label for="email">Email:</label>
-                        <input name="email" id="email" type="email" required>
-                    </div>
-                </fieldset>
+    <a href="#main" class="drop" aria-label="Scorri al contenuto principale">
+        <span></span>
+        <span></span>
+        <span></span>
+    </a>
 
-                <fieldset class="form">
-                    <legend>Informazioni Sanitarie</legend>
-                    <div class="input_std">
-                        <label for="gruppo_sanguigno">Gruppo Sanguigno:</label>
-                        <select name="gruppo_sanguigno" id="gruppo_sanguigno" required>
-                            <option value="">Seleziona...</option>
-                            <option value="Apos">A+</option>
-                            <option value="Aneg">A-</option>
-                            <option value="Bpos">B+</option>
-                            <option value="Bneg">B-</option>
-                            <option value="ABpos">AB+</option>
-                            <option value="ABneg">AB-</option>
-                            <option value="Opos">O+</option>
-                            <option value="Oneg">O-</option>
-                            <option value="Sconosciuto">Sconosciuto</option>
-                        </select>
-                    </div>
-                </fieldset>
+    <main id="main">
+        <form action="/submit-registration" method="POST" class="form_std">
+         <fieldset>
+    <legend>Dati Personali</legend>
+    <div class="input_std">
+        <label for="nome">Nome:</label>
+        <input name="nome" id="nome" type="text" required>
+    </div>
+    <div class="input_std">
+        <label for="cognome">Cognome:</label>
+        <input name="cognome" id="cognome" type="text" required>
+    </div>
+    <div class="input_std">
+        <label for="data_nascita">Data di Nascita:</label>
+        <input name="data_nascita" id="data_nascita" type="date" required>
+    </div>
+    <div class="input_std">
+        <label for="luogo_nascita">Luogo di Nascita:</label>
+        <input name="luogo_nascita" id="luogo_nascita" type="text" required>
+    </div>
+    <div class="input_std">
+        <label for="codice_fiscale">Codice Fiscale:</label>
+        <input name="codice_fiscale" id="codice_fiscale" type="text" required minlength="16" maxlength="16" pattern="^[a-zA-Z0-9]{16}$" title="Inserisci il Codice Fiscale di 16 caratteri">
+    </div>
+</fieldset>
 
-                <fieldset class="form">
-                    <legend>Sesso</legend>
-                    <div class="radio_std">
-                        <input type="radio" id="sesso_maschio" name="sesso" value="maschio">
-                        <label for="sesso_maschio">Maschio</label>
-                    </div>
-                    <div class="radio_std">
-                        <input type="radio" id="sesso_femmina" name="sesso" value="femmina">
-                        <label for="sesso_femmina">Femmina</label>
-                    </div>
-                </fieldset>
-                
-                <fieldset class="form">
-                    <legend>Peso</legend>
-                    <div class="input_std">
-                        <label for="peso_corporeo_in_kg">Peso Corporeo in <abbr title="chilogrammi">Kg</abbr>:</label>
-                        <input name="peso_corporeo_in_kg" id="peso_corporeo_in_kg" type="number" min="0" step="0.1" required>
-                    </div>
-                </fieldset>
-            
-                <div class="button_std">
-                    <button type="submit">Invia Registrazione</button>
-                </div>
-            </form>
-        </div>
+<fieldset>
+    <legend>Contatti e Residenza</legend>
+    <div class="input_std">
+        <label for="residenza">Indirizzo di Residenza Completo:</label>
+        <input name="residenza" id="residenza" type="text" required>
+    </div>
+    <div class="input_std">
+        <label for="telefono">Numero di Telefono:</label>
+        <input name="telefono" id="telefono" type="tel" required pattern="^(\+39)?\s?\d{3}[\s-]?\d{3}[\s-]?\d{4}$" title="Esempio: 333 1234567">
+    </div>
+    <div class="input_std">
+        <label for="email">Email:</label>
+        <input name="email" id="email" type="email" required>
+    </div>
+</fieldset>
+
+<fieldset>
+    <legend>Informazioni Sanitarie</legend>
+    <div class="select_std">
+        <label for="gruppo_sanguigno">Gruppo Sanguigno:</label>
+        <select name="gruppo_sanguigno" id="gruppo_sanguigno" required>
+            <option value="">Seleziona...</option>
+            <option value="Apos">A+</option>
+            <option value="Aneg">A-</option>
+            <option value="Bpos">B+</option>
+            <option value="Bneg">B-</option>
+            <option value="ABpos">AB+</option>
+            <option value="ABneg">AB-</option>
+            <option value="Opos">O+</option>
+            <option value="Oneg">O-</option>
+            <option value="Sconosciuto">Sconosciuto</option>
+        </select>
+    </div>
+    
+    <div class="radio_std" role="group" aria-labelledby="label-sesso">
+        <span class="label_radio" id="label-sesso">Sesso:</span>
+        
+        <label for="sesso_maschio">Maschio</label>
+        <input type="radio" id="sesso_maschio" name="sesso" value="maschio" required>
+        
+        <label for="sesso_femmina">Femmina</label>
+        <input type="radio" id="sesso_femmina" name="sesso" value="femmina">
+    </div>
+
+    <div class="input_std">
+        <label for="peso_corporeo_in_kg">Peso Corporeo in <abbr title="chilogrammi">Kg</abbr>:</label>
+        <input name="peso_corporeo_in_kg" id="peso_corporeo_in_kg" type="number" min="0" step="0.1" required>
+    </div>
+</fieldset>
+        
+            <div class="button_std">
+                <button type="submit">Invia Registrazione</button>
+            </div>
+        </form>
     </main>
+
+    <footer>
+            <div class="footer-buttons">
+                <a href="#menu" aria-label="Torna all'inizio della pagina">Torna all'inizio</a>
+            </div>
+
+            <div class="footer-container">
+                <div class="left-footer">
+                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                    <div class="contact-info">
+                        <div class="contatto-item">
+                            <p>Via Università, Padova, Italia</p>
+                            <img class="icon" src="../../images/location.jpg" alt="Icona posizione">
+                        </div>
+                        <div class="contatto-item">
+                            <p>049 827 5000</p>
+                            <img class="icon" src="../../images/phone-call.jpg" alt="Icona telefono">
+                        </div>
+                        <div class="contatto-item">
+                            <p>info.atds@gmail.com</p>
+                            <img class="icon" src="../../images/mail.jpg" alt="Icona email">
+                        </div>
+                    </div>
+                </div>
+
+                <span class="vertical-divider"></span>
+
+                <div class="right-footer">
+                    <div class="title-item">
+                        <h2><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr></h2>
+                        <p>Associazione Tecweb Donatori Sangue</p>
+                    </div>
+                    <div class="times-item">
+                        <h3>Orari di apertura</h3>
+                        <p>07:30 - 11:30, 14:00 - 18:00</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/universitapadova" aria-label="Facebook"><img src="../../images/fblogo.jpg" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/unipd/" aria-label="Instagram"><img src="../../images/iglogo.jpg" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/@unipd" aria-label="YouTube"><img src="../../images/ytlogo.jpg" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>
+                    <abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All Rights Reserved</span>
+                </p>
+            </div>
+        </footer>
 </body>
 </html>
