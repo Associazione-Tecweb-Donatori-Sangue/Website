@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="it">
     <head>
         <title>ATDS - Profilo Admin</title>
@@ -16,6 +16,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
     </head>
     
     <body>
@@ -28,7 +29,9 @@
                     <li><a href="about_us.html">Chi siamo</a></li>
                     <li><a href="dove_trovarci.html">Dove trovarci</a></li>
                 </ul>
-                <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+                <a id="linkProfilo" class="active" href="profilo_admin.html">
+                    <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+                </a>
 
                 <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
                 <label class="burgerMenu" for="burgerInput">    
@@ -40,87 +43,127 @@
         </header>
 
         <nav id="breadcrumb">
-            <p><a href="index.html" lang="en">Home</a> / <span>Profilo</span></p>
+            <p><a href="index.html" lang="en">Home</a> / <span>Profilo Admin</span></p>
         </nav>
 
-        <main>
-            <h1 class="titolo_principale">Profilo Admin</h1>
+        <div class="landing_title">
+            <h1>Profilo Admin</h1>
+            <h2>Ti diamo il benvenuto nell'area gestionale</h2>
+        </div>
+
+        <a href="#main" class="drop" aria-label="Scorri al contenuto principale">
+            <span></span>
+            <span></span>
+            <span></span>
+        </a>
+
+        <main id="main">
+            <p class="testo_std">Gestisci qui le operazioni relative ai donatori e alle donazioni di sangue dell'Associazione.</p>
+
+            <h3 class="titolo_terziario">Riepilogo donazioni prenotate</h3>
             
-            <p class="testo_std">Benvenuto nell'area amministrativa di Associazione Tecweb Donatori Sangue. Qui puoi gestire le operazioni relative ai donatori e alle donazioni di sangue.</p>
+            <div class="form_filtro">
+                <label for="sede-donazioni">Seleziona una sede:</label>
+                <div class="select_std">
+                    <select id="sede-donazioni" name="sede-donazioni">
+                        <option value="tutte">Tutte le sedi</option>
+                        <option value="piovego">ATDS Piovego</option>
+                        <option value="lum250">ATDS Lum250</option>
+                        <option value="stanga">ATDS Stanga</option>
+                        <option value="portello">ATDS Portello</option>
+                        <option value="prato_della_valle">ATDS Prato della Valle</option>
+                        <option value="dietro_stazione">ATDS Dietro Stazione</option>
+                    </select>
+                </div>
+            </div>
 
-            <h2 class="titolo_secondario">Tabella donazioni prenotate</h2>
-            <p>Seleziona una sede per visualizzare le donazioni prenotate:</p>
-            <select id="sede-donazioni" name="sede-donazioni" aria-label="Seleziona una sede">
-                <option value="tutte">Tutte le sedi</option>
-                <option value="piovego">ATDS Piovego</option>
-                <option value="lum250">ATDS Lum250</option>
-                <option value="stanga">ATDS Stanga</option>
-                <option value="portello">ATDS Portello</option>
-                <option value="prato_della_valle">ATDS Prato della Valle</option>
-                <option value="dietro_stazione">ATDS Dietro Stazione</option>
-            </select>
-
-            <table class="tabella_dati" id="tabella-donazioni" aria-describedby="tabella-donazioni-desc">
-                <caption>Donazioni prenotate</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Nome Donatore</th>
-                        <th scope="col">Data Prenotazione</th>
-                        <th scope="col">Ora Prenotazione</th>
-                        <th scope="col">Sede Donazione</th>
-                        <th scope="col">Azioni</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Mario Rossi</th>
-                        <td>2026-07-15</td>
-                        <td>10:00</td>
-                        <td>ATDS Piovego</td>
-                        <td>
-                            <button type="button" aria-label="Modifica donazione di Mario Rossi">Modifica</button>
-                            <button type="button" aria-label="Elimina donazione di Mario Rossi">Elimina</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Luisa Bianchi</th>
-                        <td>2026-07-16</td>
-                        <td>14:30</td>
-                        <td>ATDS Stanga</td>
-                        <td>
-                            <button type="button" aria-label="Modifica donazione di Luisa Bianchi">Modifica</button>
-                            <button type="button" aria-label="Elimina donazione di Luisa Bianchi">Elimina</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Giovanni Verdi</th>
-                        <td>2026-07-17</td>
-                        <td>09:00</td>
-                        <td>ATDS Prato della Valle</td>
-                        <td>
-                            <button type="button" aria-label="Modifica donazione di Giovanni Verdi">Modifica</button>
-                            <button type="button" aria-label="Elimina donazione di Giovanni Verdi">Elimina</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row">Anna Neri</th>
-                        <td>2026-07-18</td>
-                        <td>11:30</td>
-                        <td>ATDS Lum250</td>
-                        <td>
-                            <button type="button" aria-label="Modifica donazione di Anna Neri">Modifica</button>
-                            <button type="button" aria-label="Elimina donazione di Anna Neri">Elimina</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        
+            <div class="contenitore_tabella">
+                <table class="tabella_dati" aria-describedby="tabella-donazioni-desc">
+                    <caption>Tabella delle donazioni prenotate</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Nome Donatore</th>
+                            <th scope="col">Data</th>
+                            <th scope="col">Ora</th>
+                            <th scope="col">Sede</th>
+                            <th scope="col">Azioni</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Mario Rossi</th>
+                            <td>15/07/2026</td>
+                            <td>10:00</td>
+                            <td>ATDS Piovego</td>
+                            <td class="celle_azioni">
+                                <button type="button" class="btn_tabella btn_edit" aria-label="Modifica donazione di Mario Rossi">Modifica</button>
+                                <button type="button" class="btn_tabella btn_delete" aria-label="Elimina donazione di Mario Rossi">Elimina</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">Luisa Bianchi</th>
+                            <td>16/07/2026</td>
+                            <td>14:30</td>
+                            <td>ATDS Stanga</td>
+                            <td class="celle_azioni">
+                                <button type="button" class="btn_tabella btn_edit" aria-label="Modifica donazione di Luisa Bianchi">Modifica</button>
+                                <button type="button" class="btn_tabella btn_delete" aria-label="Elimina donazione di Luisa Bianchi">Elimina</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </main>
-    </body>
 
-    <footer>
-        <p>
-            <abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">all rights reserved</span>
-        </p>
-    </footer>
+         <footer>
+            <div class="footer-buttons">
+                <a href="#menu" aria-label="Torna all'inizio della pagina">Torna all'inizio</a>
+            </div>
+
+            <div class="footer-container">
+                <div class="left-footer">
+                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
+                    <div class="contact-info">
+                        <div class="contatto-item">
+                            <p>Via Università, Padova, Italia</p>
+                            <img class="icon" src="../../images/location.jpg" alt="Icona posizione">
+                        </div>
+                        <div class="contatto-item">
+                            <p>049 827 5000</p>
+                            <img class="icon" src="../../images/phone-call.jpg" alt="Icona telefono">
+                        </div>
+                        <div class="contatto-item">
+                            <p>info.atds@gmail.com</p>
+                            <img class="icon" src="../../images/mail.jpg" alt="Icona email">
+                        </div>
+                    </div>
+                </div>
+
+                <span class="vertical-divider"></span>
+
+                <div class="right-footer">
+                    <div class="title-item">
+                        <h2><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr></h2>
+                        <p>Associazione Tecweb Donatori Sangue</p>
+                    </div>
+                    <div class="times-item">
+                        <h3>Orari di apertura</h3>
+                        <p>07:30 - 11:30, 14:00 - 18:00</p>
+                    </div>
+
+                    <div class="footer-social">
+                        <a href="https://www.facebook.com/universitapadova" aria-label="Facebook"><img src="../../images/fblogo.jpg" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/unipd/" aria-label="Instagram"><img src="../../images/iglogo.jpg" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/@unipd" aria-label="YouTube"><img src="../../images/ytlogo.jpg" alt="YouTube"></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-copyright">
+                <p>
+                    <abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All Rights Reserved</span>
+                </p>
+            </div>
+        </footer>
+    </body>
 </html>
