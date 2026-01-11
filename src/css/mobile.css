@@ -30,3 +30,19 @@
 #burgerInput:checked ~ .burgerMenu span:nth-child(3){
     transform: rotate(-45deg) translate(6px, -5px);
 }
+
+
+/* --------------- */
+/*  DOVE TROVARCI  */
+/* --------------- */
+
+@media screen and (max-width: 650px) {
+  .sedi_container {
+    grid-template-columns: 1fr;
+    width: 95%;
+  }
+}
+
+.search-container input {
+    width: 90%;
+}
