@@ -659,7 +659,7 @@ footer {
 }
 
 #title_std{
-  margin-top: 4%;
+  margin-top: 2%;
   text-align: center;
 }
 
@@ -671,9 +671,10 @@ footer {
 }
 
 #title_std h1{
+  line-height: 1em;
   font-size: 5em;
   font-weight: 900;
-  margin-bottom: 0.6em;
+  margin-bottom: 0.4em;
 }
 
 #title_std h2{
