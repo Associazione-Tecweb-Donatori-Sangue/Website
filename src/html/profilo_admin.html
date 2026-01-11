@@ -17,38 +17,42 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+
+        <script src="../js/script.js"></script>
     </head>
     
     <body class="page_background">
-        <header>
-            <nav aria-label = "Aiuti alla navigazione" class="navigationHelper">
-                <a href="#content" class="navHelper">Vai al contenuto</a>
+        <div class="sticky-header">
+            <header>
+                <nav aria-label = "Aiuti alla navigazione" class="navigationHelper">
+                    <a href="#content" class="navHelper">Vai al contenuto</a>
+                </nav>
+
+                <nav id="menu" aria-label="Menu principale">
+                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
+                    <ul>
+                        <li lang="en"><a href="index.html">Home</a></li>
+                        <li><a href="dona_ora.html">Dona ora</a></li>
+                        <li><a href="about_us.html">Chi siamo</a></li>
+                        <li><a href="dove_trovarci.html">Dove trovarci</a></li>
+                    </ul>
+                    <span id="linkProfilo">
+                        <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+                    </span>
+
+                    <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
+                    <label class="burgerMenu" for="burgerInput">    
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </label>
+                </nav>
+            </header>
+
+            <nav id="breadcrumb">
+                <p><a href="index.html" lang="en">Home</a> / <span>Profilo Admin</span></p>
             </nav>
-
-            <nav id="menu" aria-label="Menu principale">
-                <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
-                <ul>
-                    <li lang="en"><a href="index.html">Home</a></li>
-                    <li><a href="dona_ora.html">Dona ora</a></li>
-                    <li><a href="about_us.html">Chi siamo</a></li>
-                    <li><a href="dove_trovarci.html">Dove trovarci</a></li>
-                </ul>
-                <span id="linkProfilo">
-                    <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
-                </span>
-
-                <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
-                <label class="burgerMenu" for="burgerInput">    
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </label>
-            </nav>
-        </header>
-
-        <nav id="breadcrumb">
-            <p><a href="index.html" lang="en">Home</a> / <span>Profilo Admin</span></p>
-        </nav>
+        </div>
 
         <div id="title_std">
             <h1>Profilo Admin</h1>

@@ -74,14 +74,26 @@ html, body{
 /*SEZIONE HEADER E MENU*/
 /*---------------------*/
 
+.sticky-header{
+  width: 54%;
+  margin: 0 auto;
+  border-radius: 1.6em;
+  position: sticky;
+  top: 0.5em;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
 header{
-  /* background-color: #acd2e6; DA INSERIRE QUANDO SI SCROLLA */ 
-  /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
   background-color: transparent;
-  width: 66%;
   height: auto;
   border-radius: 2.4em;
-  margin: 1em auto; /* spazio sopra e centro orizzontale */
+  margin: 0.5em auto;
+}
+
+.sticky-header.scrolled {
+  background-color: #acd2e6fb;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 #menu{
@@ -212,7 +224,7 @@ header{
 /*index.html*/
 
 #landing_title{      
-  height: calc(100vh - 12em);
+  height: calc(100vh - 11em);
   display: flex;
   flex-direction: column;
   padding-top: 4%;
