@@ -41,23 +41,34 @@ html, body{
   background-repeat: no-repeat;
   background-position: 16% center;
 }
+
 /*-----------------*/
 /*AIUTI ALLA NAVIGAZIONE*/
 /*-----------------*/
 
-/* .navigationHelp{
-    position: absolute;
-    text-indent: -999em;
+.navigationHelper{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 }
 
-.navigationHelp:focus{
-    position: static;
-    text-indent: 0;
+.navHelper{
+  display: inline-block;
+  padding: 1em;
+  background-color: var(--link-active-bg-color2);
+  color: var(--link-active-txt-color) !important;
+  text-decoration: none;
+  font-weight: bold;
+  position: absolute;
+  left: -9999px;
 }
 
-.listHelp ul{
-    list-style-type: none;
-} */
+.navHelper:focus{
+  position: static;
+  left: auto;
+  outline: 3px solid #ff0;
+}
 
 /*---------------------*/
 /*SEZIONE HEADER E MENU*/
