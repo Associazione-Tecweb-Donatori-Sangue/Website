@@ -32,7 +32,7 @@ html{
 
 html, body{
   font-size: 100%;
-  font-family: Arial, sans-serif;
+  font-family: "Jost", Arial, sans-serif;
   line-height: 1.5em; 
   background-color: var(--primary-bg-color);
   background-image: url(../../images/landing.jpg);
@@ -658,15 +658,16 @@ footer {
   background-image: url(../../images/back.jpg);
 }
 
+/*-----------------*/
+/* DONA ORA */
+/*-----------------*/
 .main_std{
-  width: 90%;
-  margin: 1.2em auto;
-  border-radius: 1.4em;
+  margin-top: 4%;
   padding: 2em;
 }
 
 #title_std{
-  margin-top: 1%;
+  margin-top: 4%;
   text-align: center;
 }
 
@@ -687,8 +688,6 @@ footer {
   font-size: 1.7em;
   font-weight: 400;
 }
-
-/* DONA ORA */
 
 
 /*chi siamo.html*/
@@ -863,8 +862,8 @@ footer {
 
 form, .form_std, #prenotaForm {
   max-width: 380px;
-  margin: 50px auto;
-  background: #f5f9fb;
+  margin: 1% auto;
+  background: var(--card-sedi-bg-color);
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(172, 210, 230, 0.4);
   overflow: hidden;
