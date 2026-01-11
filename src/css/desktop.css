@@ -139,11 +139,6 @@ header{
   margin-left: 1em;
 }
 
-#profiloActive{
-  cursor: default;
-  margin-left: 1em;
-}
-
 #menu #linkProfilo:hover{
   background: none;
   color: inherit;
@@ -678,7 +673,7 @@ footer {
 #title_std h1{
   font-size: 5em;
   font-weight: 900;
-  margin-bottom: 4.5%;
+  margin-bottom: 0.6em;
 }
 
 #title_std h2{

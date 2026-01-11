@@ -15,11 +15,11 @@
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
     </head>
 
-    <body>
+    <body class="page_background">
         <header>
             <nav id="menu" aria-label="Menu principale">
                 <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
@@ -29,7 +29,9 @@
                     <li><a href="about_us.html">Chi siamo</a></li>
                     <li><a href="dove_trovarci.html">Dove trovarci</a></li>
                 </ul>
-                <a id="currentLink" href="profilo.html"><img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo"></a>
+                <span id="linkProfilo">
+                    <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
+                </span>
 
                 <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
                 <label class="burgerMenu" for="burgerInput">    
@@ -44,18 +46,12 @@
             <p><a href="index.html" lang="en">Home</a> / <span>Profilo</span></p>
         </nav>
 
-        <div class="landing_title">
+        <div id="title_std">
             <h1>Profilo</h1>
             <h2>Ti diamo il benvenuto nella tua area riservata</h2>
-        </div>
+        </div> 
 
-        <a href="#main" class="drop" aria-label="Scorri al contenuto principale">
-            <span></span>
-            <span></span>
-            <span></span>
-        </a>
-
-        <main id="main">
+        <main id="main" class="main_std">
             <section class="testo_std">
                 <p>Ti diamo il benvenuto. In questa sezione puoi monitorare le tue attività e gestire le prenotazioni effettuate presso le nostre sedi.</p>
             </section>
