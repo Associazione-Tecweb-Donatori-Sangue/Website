@@ -1,5 +1,7 @@
 <?php
 require_once "../utility.php";
+require_once "../db.php";
+
 session_start();
 
 $paginaHTML = file_get_contents('../../html/login.html');
@@ -7,29 +9,46 @@ $paginaHTML = file_get_contents('../../html/login.html');
 // Variabile per eventuali messaggi di errore
 $messaggioErrore = "";
 
-// Controllo se il form è stato inviato
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $username = pulisciInput($_POST['username']);
-    $password = pulisciInput($_POST['password']);
-
-    // --- TODO: INSERIRE CONNESSIONE AL DB ---
-    // Per ora, simuliamo che l'utente "user" con password "user" possa entrare e che "admin" con password "admin" sia l'amministratore
-    // TODO: Sostituire con DBAccess->autenticaUtente($username, $password)
+if (isset($_SESSION['messaggio_flash'])) {
     
-    if ($username == "user" && $password == "user") {
-        // Login riuscito
-        $_SESSION['username'] = $username;
-        header("Location: profilo.php");
-        exit();
-    } elseif ($username == "admin" && $password == "admin") {
-        // Login riuscito come admin
-        $_SESSION['username'] = $username;
-        $_SESSION['is_admin'] = true;
-        header("Location: profilo_admin.php");
-        exit();
-    } else {
-        // Login fallito
-        $messaggioErrore = "<p class='errore' style='color: red; text-align: center;'>Username o password errati.</p>";
+    $messaggioErrore = "<p style='color:green; text-align:center; font-weight:bold;'>" . $_SESSION['messaggio_flash'] . "</p>";
+    
+    // Importante: cancelliamo il messaggio subito dopo averlo salvato nella variabile
+    // così se ricarichi la pagina sparisce
+    unset($_SESSION['messaggio_flash']);
+}
+
+// Controllo se il form è stato inviato
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = pulisciInput($_POST['username']);
+    $password = $_POST['password'];
+
+    try {
+        // Cerchiamo l'utente nel DB
+        $stmt = $pdo->prepare("SELECT * FROM utenti WHERE username = ?");
+        $stmt->execute([$username]);
+        $user = $stmt->fetch();
+        
+        // Verifica Password Hash
+        if ($user && password_verify($password, $user['password'])) {
+            // Login OK
+            $_SESSION['user_id'] = $user['id'];  // Fondamentale per le chiavi esterne
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['ruolo']    = $user['ruolo'];
+            
+            // Redirect in base al ruolo
+            if ($user['ruolo'] === 'admin') {
+                $_SESSION['is_admin'] = true; // Per compatibilità con utility.php
+                header("Location: profilo_admin.php");
+            } else {
+                header("Location: profilo.php");
+            }
+            exit();
+        } else {
+            $messaggioErrore = "<p class='errore' style='color: red; text-align: center;'>Username o password errati.</p>";
+        }
+    } catch (PDOException $e) {
+        $messaggioErrore = "<p class='errore' style='color: red;'>Errore DB: " . $e->getMessage() . "</p>";
     }
 }
 
@@ -37,7 +56,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 $paginaHTML = str_replace('[messaggioErrore]', $messaggioErrore, $paginaHTML);
 
 // 3. Definisco il Breadcrumb
-$breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span lang="en">Login</span></p>';
+$breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span lang="en">Login</span></p>';
 
 // 4. Costruisco la pagina
 // Passo "login.php" così se non sono loggato l'icona diventa non cliccabile

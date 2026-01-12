@@ -30,8 +30,7 @@ services:
       MARIADB_PASSWORD: pass       # Password
     volumes:
       - db_data:/var/lib/mysql
-      # OPZIONALE: Se abbiamo un file .sql iniziale, scommentare la riga sotto:
-      # - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - my-network
 

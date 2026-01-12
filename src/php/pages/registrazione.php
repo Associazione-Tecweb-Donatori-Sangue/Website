@@ -1,31 +1,50 @@
 <?php
 require_once "../utility.php";
+require_once "../db.php";
+
 session_start();
 
-// 1. Carico il template HTML
+// Template HTML
 $paginaHTML = file_get_contents('../../html/registrazione.html');
 
-// 2. Variabili per la gestione degli errori e messaggi
+// Variabile per la gestione degli errori e messaggi
 $messaggio = "";
 
 // 3. Gestione del Form di Registrazione (POST)
-if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['password_confirm'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $username = pulisciInput($_POST['username']);
-    $password = pulisciInput($_POST['password']);
-    $confirm  = pulisciInput($_POST['password_confirm']);
+    $password = $_POST['password'];
+    $confirm  = $_POST['password_confirm'];
 
-    // Controllo base: le password coincidono?
     if ($password !== $confirm) {
-        $messaggio = "<p class='errore' style='color:red; text-align:center; font-weight:bold;'>Le password non coincidono.</p>";
+        $messaggio = "<p class='errore' style='color:red; text-align:center;'>Le password non coincidono.</p>";
     } else {
-        // --- TODO: INSERIMENTO NEL DB ---
-        // DBAccess->registraUtente($username, $password)...
-        
-        // Simulazione successo: logghiamo l'utente direttamente
-        $_SESSION['username'] = $username;
-        header("Location: profilo.php");
-        exit();
+        try {
+            // 1. Controllo se l'utente esiste già
+            $stmt = $pdo->prepare("SELECT id FROM utenti WHERE username = ?");
+            $stmt->execute([$username]);
+            
+            if ($stmt->rowCount() > 0) {
+                $messaggio = "<p class='errore' style='color:red; text-align:center;'>Username già esistente!</p>";
+            } else {
+                // 2. Inserimento con HASH della password (Sicurezza Top!)
+                $hash = password_hash($password, PASSWORD_DEFAULT);
+                // Di default il ruolo è 'user'
+                $stmt = $pdo->prepare("INSERT INTO utenti (username, password, ruolo) VALUES (?, ?, 'user')");
+                
+                if ($stmt->execute([$username, $hash])) {
+                    // Successo!
+                    $_SESSION['messaggio_flash'] = "Registrazione completata! Ora puoi accedere.";
+                    header("Location: login.php");
+                    exit;
+                } else {
+                    $messaggio = "<p class='errore' style='color:red;'>Errore nel database.</p>";
+                }
+            }
+        } catch (PDOException $e) {
+            $messaggio = "<p class='errore' style='color:red;'>Errore tecnico: " . $e->getMessage() . "</p>";
+        }
     }
 }
 

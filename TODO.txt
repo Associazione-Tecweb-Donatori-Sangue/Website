@@ -3,10 +3,15 @@
 - Modalità scura ?
 - Fare pagine 404.html e 500.html
 - Mappa del sito ?
-- Aggiungere gli "aiuti alla navigazione"
+- Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore
 
+- LINK CIRCOLARI DA ELIMINARE
+- Da implementare persistenza sessione
 
 PHP
 - classe per il database (DBAccess.php)
 - rendere dinamiche le <select> in dona_ora e registrazione_donatore
 - rendere dinamiche le tabelle in profilo e profilo_admin
+
+DB
+- creare tabella "Prenotazioni" ? (quella da visualizzare nel profilo di ogni utente e nel profilo admin)
