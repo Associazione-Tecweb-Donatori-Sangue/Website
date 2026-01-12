@@ -4,3 +4,9 @@
 - Fare pagine 404.html e 500.html
 - Mappa del sito ?
 - Aggiungere gli "aiuti alla navigazione"
+
+
+PHP
+- classe per il database (DBAccess.php)
+- rendere dinamiche le <select> in dona_ora e registrazione_donatore
+- rendere dinamiche le tabelle in profilo e profilo_admin

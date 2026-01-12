@@ -1,0 +1,57 @@
+services:
+
+# Configurazione del server web Apache con PHP
+  web:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM php:8.4.11-apache
+        RUN docker-php-ext-install mysqli pdo pdo_mysql
+        RUN a2enmod rewrite
+    container_name: sito_universita
+    ports:
+      - "80:80"
+    volumes:
+      - ./src:/var/www/html
+      - ./images:/var/www/html/images
+    depends_on:
+      - db
+    networks:
+      - my-network
+
+# Configurazione del database MariaDB
+  db:
+    image: mariadb:11.8.3 
+    container_name: database_universita
+    environment:
+      MARIADB_ROOT_PASSWORD: root  # Password del database
+      MARIADB_DATABASE: miodb      # Il nome del database
+      MARIADB_USER: studente       # Username
+      MARIADB_PASSWORD: pass       # Password
+    volumes:
+      - db_data:/var/lib/mysql
+      # OPZIONALE: Se abbiamo un file .sql iniziale, scommentare la riga sotto:
+      # - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - my-network
+
+# Configurazione di PhpMyAdmin per la gestione del database
+  pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: root
+    ports:
+      - "8080:80" # Accedi a PhpMyAdmin su localhost:8080
+    depends_on:
+      - db
+    networks:
+      - my-network
+
+volumes:
+  db_data:
+
+networks:
+  my-network:

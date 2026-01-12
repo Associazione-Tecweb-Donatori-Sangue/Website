@@ -9,50 +9,20 @@
         <meta name="keywords" content="login, utente, associazione, sangue, ATDS">
         <meta name="author" content="ATDS Team">
 
-        <link rel="stylesheet" href="../css/desktop.css">
-        <link rel="stylesheet" href="../css/mobile.css" media="screen and (max-width:768px)">
-        <link rel="stylesheet" href="../css/print.css" media="print">
+        <link rel="stylesheet" href="../../css/desktop.css">
+        <link rel="stylesheet" href="../../css/mobile.css" media="screen and (max-width:768px)">
+        <link rel="stylesheet" href="../../css/print.css" media="print">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
 
-        <script src="../js/script.js"></script>
+        <script src="../../js/script.js"></script>
     </head>
 
     <body class="page_background">
-        <div class="sticky-header">
-            <header>
-                <nav aria-label = "Aiuti alla navigazione" class="navigationHelper">
-                    <a href="#content" class="navHelper">Vai al contenuto</a>
-                </nav>
-
-                <nav id="menu" aria-label="Menu principale">
-                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
-                    <ul>
-                        <li lang="en"><a href="index.html">Home</a></li>
-                        <li><a href="dona_ora.html">Dona ora</a></li>
-                        <li><a href="about_us.html">Chi siamo</a></li>
-                        <li><a href="dove_trovarci.html">Dove trovarci</a></li>
-                    </ul>
-                    <span id="linkProfilo">
-                        <img src="../../images/profilo.jpg" alt="Profilo" id="imgProfilo">
-                    </span>
-
-                    <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
-                    <label class="burgerMenu" for="burgerInput">    
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </label>
-                </nav>
-            </header>
-
-            <nav id="breadcrumb">
-                <p><a href="index.html" lang="en">Home</a> / <span lang="en">Login</span></p>
-            </nav>
-        </div>
+        [HEADER]
         
         <div id="title_std">
             <h1><span lang="en">Login</span></h1>
@@ -60,7 +30,9 @@
         </div>
 
         <main id="content" class="main_std">
-            <form action="../php/login.php" method="post" class="form_std">
+            [messaggioErrore]
+
+            <form action="login.php" method="post" class="form_std">
                 <fieldset>  
                     <legend>Dati di Accesso</legend>
                     <div class="input_std">
@@ -82,7 +54,7 @@
                             type="password" 
                             name="password" 
                             id="password"
-                            minlength="8"
+                            minlength="4"
                             maxlength="50"
                             required
                             autocomplete="current-password"
@@ -96,59 +68,10 @@
             </form>
 
             <p class="testo_std">
-                Non hai un <span lang="en">account</span>? <a href="registrazione.html">Registrati ora</a>.
+                Non hai un <span lang="en">account</span>? <a href="registrazione.php">Registrati ora</a>.
             </p>
         </main>
 
-          <footer>
-            <div class="footer-buttons">
-                <a href="#menu" aria-label="Torna all'inizio della pagina">Torna all'inizio</a>
-            </div>
-
-            <div class="footer-container">
-                <div class="left-footer">
-                    <img src="../../images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue">
-                    <div class="contact-info">
-                        <div class="contatto-item">
-                            <p>Via Università, Padova, Italia</p>
-                            <img class="icon" src="../../images/location.jpg" alt="Icona posizione">
-                        </div>
-                        <div class="contatto-item">
-                            <p>049 827 5000</p>
-                            <img class="icon" src="../../images/phone-call.jpg" alt="Icona telefono">
-                        </div>
-                        <div class="contatto-item">
-                            <p>info.atds@gmail.com</p>
-                            <img class="icon" src="../../images/mail.jpg" alt="Icona email">
-                        </div>
-                    </div>
-                </div>
-
-                <span class="vertical-divider"></span>
-
-                <div class="right-footer">
-                    <div class="title-item">
-                        <h2><abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr></h2>
-                        <p>Associazione Tecweb Donatori Sangue</p>
-                    </div>
-                    <div class="times-item">
-                        <h3>Orari di apertura</h3>
-                        <p>07:30 - 11:30, 14:00 - 18:00</p>
-                    </div>
-
-                    <div class="footer-social">
-                        <a href="https://www.facebook.com/universitapadova" aria-label="Facebook"><img src="../../images/fblogo.jpg" alt="Facebook"></a>
-                        <a href="https://www.instagram.com/unipd/" aria-label="Instagram"><img src="../../images/iglogo.jpg" alt="Instagram"></a>
-                        <a href="https://www.youtube.com/@unipd" aria-label="YouTube"><img src="../../images/ytlogo.jpg" alt="YouTube"></a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="footer-copyright">
-                <p>
-                    <abbr title="Associazione Tecweb Donatori Sangue">ATDS</abbr>, Associazione Tecweb Donatori Sangue - <span lang="en">All Rights Reserved</span>
-                </p>
-            </div>
-        </footer>
+        [FOOTER]
     </body>
 </html>

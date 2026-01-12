@@ -1,29 +1,29 @@
-<!DOCTYPE html>
-<html lang="it">
-    <head> 
-        <title>ATDS - About us</title>
-        <meta charset="utf-8">
-        <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<div class="sticky-header">
+    <header>
+        <nav aria-label = "Aiuti alla navigazione" class="navigationHelper">
+            <a href="#content" class="navHelper">Vai al contenuto</a>
+        </nav>
+        
+        <nav id="menu" aria-label="Menu principale">
+            <img src="/images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
+            <ul>
+                <li lang="en"><a href="/index.php">Home</a></li>
+                <li><a href="/php/pages/dona_ora.php">Dona ora</a></li>
+                <li><a href="/php/pages/about_us.php">Chi siamo</a></li>
+                <li><a href="/php/pages/dove_trovarci.php">Dove trovarci</a></li>
+            </ul>
+            [linkProfilo]
 
-        <!--<link rel="stylesheet" href="style.css">-->
+            <input type="checkbox" id="burgerInput" aria-label="Apri/Chiudi menu">
+            <label class="burgerMenu" for="burgerInput">    
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
+        </nav>           
+    </header>     
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
-        <header>
-            <nav id="menu" aria-label="Menu principale">
-                <ul>
-                    <li><a href="index.html"><img src="../immagini/atds.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a></li>
-                    <li><a lang="en" href="index.html" lang="en">Home</a></li>
-                    <li><a href="dona_ora.html">Dona ora</a></li>
-                    <li><a href="about_us.html" lang="en" aria-current="page">About us</a></li>
-                    <li><a href="dove_trovarci.html">Dove trovarci</a></li>
-                    <li><a href="profilo.html"><img src="../immagini/profilo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue"></a></li>
-                </ul>
-            </nav>
-        </header>
-    </body>
-
-</html>
+    <nav id="breadcrumb">
+        [BREADCRUMB]
+    </nav>
+</div>
