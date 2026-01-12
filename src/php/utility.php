@@ -29,10 +29,16 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
         }
     }
 
-    // Se sono sulla pagina di Login e NON sono loggato -> Non cliccabile
+    // Se sono sulla pagina login.php e NON sono loggato -> Non cliccabile
     if ($paginaAttiva == "login.php" && !isset($_SESSION['username'])) {
         $tagHTML = "span"; 
     }
+
+    // Se sono sulla pagina di registrazione.php e NON sono loggato -> Non cliccabile
+    if ($paginaAttiva == "registrazione.php" && !isset($_SESSION['username'])) {
+        $tagHTML = "span";
+    }
+
     // Se sono sulla pagina profilo.php (o profilo_admin.php) e SONO loggato -> Non cliccabile
     if (($paginaAttiva == "profilo.php" || $paginaAttiva == "profilo_admin.php") && isset($_SESSION['username'])) {
         $tagHTML = "span";

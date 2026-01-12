@@ -58,5 +58,5 @@ $breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span>Registraz
 // 4. Costruisco la pagina
 // Non passo "registrazione.php" come pagina attiva perché non è nel menu principale,
 // quindi passo stringa vuota o nulla.
-echo costruisciPagina($paginaHTML, $breadcrumb, "");
+echo costruisciPagina($paginaHTML, $breadcrumb, "registrazione.php");
 ?>
