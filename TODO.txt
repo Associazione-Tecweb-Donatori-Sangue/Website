@@ -13,10 +13,12 @@ CSS
 - modificare stili nei blocchi html presenti nei file .php
 
 PHP
-- far funzionare la prenotazione di una prenotazione per un utente
 -collegare gli annulla/modifica/elimina prenotazione delle dashboard al db, e quindi collegare anche i filtri sempre nella dash (seleziona una sede)
 -disattivare la funzione di prenotazione dall'admin
--far girare l'inserimento delle prenotazioni nel db (attualmente 404)
+- mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra ?
+
+DB
+- sistemare salvataggio tipo di donazione (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola)
 
 GENERALI
 - sistemare tutti i commenti
@@ -24,3 +26,4 @@ GENERALI
 -Una volta aggiunti i dati donatore sulla dashboard si vede solo nome, gruppo sanguigno, mail e cell. Io direi di rendere visibile tutto
 -Manca nella dashboard anche la sezione dove modificare i dati principali dell'account, cioè username e password
 - inserire un widget per visualizzare quanto manca a poter prenotare un'altra prenotazione ?
+- mettere una disponibilità di posti da poter prenotare in una determinata ora di un determinato giorno per ogni sede (esempio in sede Piovego il giorno 16/02 alle ore 8:00 ci sono 5 posti disponibili) e se non ci sono più posti non mostrare quell'orario nella lista degli orari ?

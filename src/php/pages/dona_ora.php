@@ -3,7 +3,29 @@ require_once "../utility.php";
 require_once "../db.php";
 session_start();
 
+// --- 1. GESTIONE MESSAGGI FLASH (Nuovo Blocco) ---
+$msgHTML = "";
+if (isset($_SESSION['messaggio_flash'])) {
+    // Determino il colore in base al messaggio (verde per successo, rosso/giallo per errori)
+    // Se il messaggio contiene "Errore" o "già", uso uno stile diverso, altrimenti verde successo.
+    $style = "background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;"; // Verde default
+    
+    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false || strpos($_SESSION['messaggio_flash'], 'già') !== false) {
+        $style = "background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;"; // Rosso errore
+    }
+
+    $msgHTML = '<div style="' . $style . ' padding: 15px; margin: 20px auto; width: 100%; max-width: 600px; border-radius: 5px; text-align: center;">
+                    ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
+                </div>';
+    
+    unset($_SESSION['messaggio_flash']);
+}
+
 $paginaHTML = file_get_contents('../../html/dona_ora.html');
+
+// --- 2. INIEZIONE MESSAGGIO NELLA PAGINA ---
+// Lo inserisco subito dopo l'apertura del tag <main>
+$paginaHTML = str_replace('<main id="content" class="main_std">', '<main id="content" class="main_std">' . $msgHTML, $paginaHTML);
 
 // 1. Controllo se l'utente è loggato, se si mostro la pagina, altrimenti mostro tasti di login/registrazione
 if (!isset($_SESSION['user_id'])) {
@@ -84,7 +106,7 @@ if (!isset($_SESSION['user_id'])) {
             }
 
             // Sostituisco il segnaposto nel form
-            $paginaHTML = str_replace('[OPZIONI_SEDI]', $optionsSedi, $paginaHTML);
+            $paginaHTML = str_replace('[listaNomiSedi]', $optionsSedi, $paginaHTML);
         }
 
     } catch (PDOException $e) {

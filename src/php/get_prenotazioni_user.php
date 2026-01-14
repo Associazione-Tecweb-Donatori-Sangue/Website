@@ -8,24 +8,25 @@ if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     exit('Accesso negato');
 }
 
-$username = $_SESSION['username'];
+$userId = $_SESSION['user_id'];
 $sede_filtro = isset($_GET['sede']) ? $_GET['sede'] : 'tutte';
 
 try {
     // Query per prenotazioni future dell'utente specifico
-    $sql = "SELECT id, data_prenotazione, ora_prenotazione, nome_sede 
-            FROM lista_prenotazioni 
-            WHERE username = :username 
-            AND data_prenotazione >= CURDATE()";
-    
+    $sql = "SELECT p.id, p.data_prenotazione, p.ora_prenotazione, s.nome as nome_sede 
+            FROM lista_prenotazioni p 
+            JOIN sedi s ON p.sede_id = s.id 
+            WHERE p.user_id = :user_id 
+            AND p.data_prenotazione >= CURDATE()";
+
     if ($sede_filtro !== 'tutte') {
-        $sql .= " AND nome_sede = :sede";
+        $sql .= " AND s.nome = :sede";
     }
     
-    $sql .= " ORDER BY data_prenotazione, ora_prenotazione";
+    $sql .= " ORDER BY p.data_prenotazione ASC, p.ora_prenotazione ASC";
     
     $stmt = $pdo->prepare($sql);
-    $stmt->bindParam(':username', $username);
+    $stmt->bindParam(':user_id', $userId);
     
     if ($sede_filtro !== 'tutte') {
         $stmt->bindParam(':sede', $sede_filtro);
@@ -37,11 +38,14 @@ try {
     // Genera HTML della tabella
     if (count($prenotazioni) > 0) {
         foreach ($prenotazioni as $prenotazione) {
+            $dataIt = date("d/m/Y", strtotime($prenotazione['data_prenotazione']));
+            $oraIt = substr($prenotazione['ora_prenotazione'], 0, 5);
+
             echo '<tr>';
-            echo '<td>' . htmlspecialchars($prenotazione['data_prenotazione']) . '</td>';
-            echo '<td>' . htmlspecialchars($prenotazione['ora_prenotazione']) . '</td>';
+            echo '<td>' . $dataIt . '</td>';
+            echo '<td>' . $oraIt . '</td>';
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
-            echo '<td><button type="button" class="link_azione" data-id="' . $prenotazione['id'] . '">Annulla</button></td>';
+            echo '<td><button type="button" class="link_azione" onclick="alert(\'Funzionalità annulla da implementare\')">Annulla</button></td>';
             echo '</tr>';
         }
     } else {

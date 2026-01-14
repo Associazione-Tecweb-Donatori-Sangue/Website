@@ -3,7 +3,7 @@ session_start();
 require_once 'db.php';
 
 // Verifica che l'utente sia admin
-if (!isset($_SESSION['user_id']) || $_SESSION['ruolo'] !== 'admin') {
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
     header('HTTP/1.1 403 Forbidden');
     exit('Accesso negato');
 }
@@ -12,15 +12,17 @@ $sede_filtro = isset($_GET['sede']) ? $_GET['sede'] : 'tutte';
 
 try {
     // Query per prenotazioni future
-    $sql = "SELECT id, user_id, username, data_prenotazione, ora_prenotazione, nome_sede 
-            FROM lista_prenotazioni 
-            WHERE data_prenotazione >= CURDATE()";
+    $sql = "SELECT p.id, u.username, p.data_prenotazione, p.ora_prenotazione, s.nome as nome_sede 
+            FROM lista_prenotazioni p 
+            JOIN utenti u ON p.user_id = u.id
+            JOIN sedi s ON p.sede_id = s.id
+            WHERE p.data_prenotazione >= CURDATE()";
     
     if ($sede_filtro !== 'tutte') {
-        $sql .= " AND nome_sede = :sede";
+        $sql .= " AND s.nome = :sede";
     }
     
-    $sql .= " ORDER BY data_prenotazione, ora_prenotazione";
+    $sql .= " ORDER BY p.data_prenotazione ASC, p.ora_prenotazione ASC";
     
     $stmt = $pdo->prepare($sql);
     
@@ -33,14 +35,17 @@ try {
     
     if (count($prenotazioni) > 0) {
         foreach ($prenotazioni as $prenotazione) {
+            $dataIt = date("d/m/Y", strtotime($prenotazione['data_prenotazione']));
+            $oraIt = substr($prenotazione['ora_prenotazione'], 0, 5);
+
             echo '<tr>';
             echo '<th scope="row">' . htmlspecialchars($prenotazione['username']) . '</th>';
-            echo '<td>' . htmlspecialchars($prenotazione['data_prenotazione']) . '</td>';
-            echo '<td>' . htmlspecialchars($prenotazione['ora_prenotazione']) . '</td>';
+            echo '<td>' . $dataIt . '</td>';
+            echo '<td>' . $oraIt . '</td>';
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
             echo '<td class="celle_azioni">';
-            echo '<button type="button" class="btn_tabella btn_edit" data-id="' . $prenotazione['id'] . '" aria-label="Modifica prenotazione di ' . htmlspecialchars($prenotazione['username']) . '">Modifica</button>';
-            echo '<button type="button" class="btn_tabella btn_delete" data-id="' . $prenotazione['id'] . '" aria-label="Elimina prenotazione di ' . htmlspecialchars($prenotazione['username']) . '">Elimina</button>';
+            echo '<button type="button" class="btn_tabella btn_edit">Modifica</button>';
+            echo '<button type="button" class="btn_tabella btn_delete">Elimina</button>';
             echo '</td>';
             echo '</tr>';
         }

@@ -46,54 +46,43 @@ CREATE TABLE IF NOT EXISTS `donatori` (
   CONSTRAINT `fk_donatore_utente` FOREIGN KEY (`user_id`) REFERENCES `utenti` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- Inserimento donatore di esempio
+INSERT INTO donatori (user_id, nome, cognome, data_nascita, luogo_nascita, codice_fiscale, indirizzo, telefono, email, gruppo_sanguigno, sesso, peso) VALUES
+(1, 'Mario', 'Rossi', '1990-05-15', 'Milano', 'RSSMRA90E15F205X', 'Via Roma 1, Milano', '+39 1234567890', 'user@user.com', 'A+', 'Maschio', 82.5);
+
 -- --------------------------------------------------------
 -- 3. Struttura della tabella `donazioni`
 -- --------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `lista_prenotazioni` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `username` varchar(50) NOT NULL,
-  `data_prenotazione` date NOT NULL,
-  `ora_prenotazione` time NOT NULL,
-  `nome_sede` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_prenotazione_utente` (`user_id`),
-  CONSTRAINT `fk_prenotazione_utente` FOREIGN KEY (`user_id`) REFERENCES `utenti` (`id`) ON DELETE CASCADE
+CREATE TABLE IF NOT EXISTS lista_prenotazioni (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  sede_id INT NOT NULL,
+  data_prenotazione DATE NOT NULL,
+  ora_prenotazione VARCHAR(5) NOT NULL,
+  tipo_donazione VARCHAR(50) NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES utenti(id) ON DELETE CASCADE,
+  FOREIGN KEY (sede_id) REFERENCES sedi(id) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Inserimento prenotazioni
-INSERT INTO `lista_prenotazioni` (`id`, `user_id`, `username`, `data_prenotazione`, `ora_prenotazione`, `nome_sede`) VALUES
-(1, 1, 'user', '2026-01-10', '09:00:00', 'ATDS Piovego'),
-(2, 1, 'user', '2026-01-25', '10:00:00', 'ATDS Lum250'),
-(3, 1, 'user', '2026-02-15', '11:30:00', 'ATDS Stanga'),
-(4, 1, 'user', '2026-03-01', '14:00:00', 'ATDS Portello'),
-(5, 1, 'user', '2026-03-20', '09:30:00', 'ATDS Prato della Valle'),
-(6, 1, 'user', '2026-04-05', '15:00:00', 'ATDS Dietro Stazione'),
-(7, 1, 'user', '2026-04-28', '10:30:00', 'ATDS del Bo'),
-(8, 1, 'user', '2026-05-15', '11:00:00', 'ATDS Specola'),
-(9, 1, 'user', '2026-06-08', '09:00:00', 'ATDS Piovego'),
-(10, 1, 'user', '2026-06-25', '14:30:00', 'ATDS Lum250'),
-(11, 3, 'prova', '2026-01-15', '09:00:00', 'ATDS Piovego'),
-(12, 4, 'diana', '2026-01-20', '10:30:00', 'ATDS Lum250'),
-(13, 3, 'prova', '2026-02-10', '11:00:00', 'ATDS Stanga'),
-(14, 4, 'diana', '2026-02-25', '14:00:00', 'ATDS Portello'),
-(15, 3, 'prova', '2026-03-05', '09:30:00', 'ATDS Prato della Valle'),
-(16, 4, 'diana', '2026-03-18', '15:30:00', 'ATDS Dietro Stazione'),
-(17, 3, 'prova', '2026-04-12', '10:00:00', 'ATDS del Bo'),
-(18, 4, 'diana', '2026-04-22', '11:30:00', 'ATDS Specola'),
-(19, 3, 'prova', '2026-05-08', '09:00:00', 'ATDS Piovego'),
-(20, 4, 'diana', '2026-05-30', '14:30:00', 'ATDS Lum250'),
-(21, 3, 'prova', '2026-06-14', '10:30:00', 'ATDS Stanga'),
-(22, 4, 'diana', '2026-06-28', '16:00:00', 'ATDS Portello'),
-(23, 3, 'prova', '2026-07-10', '09:00:00', 'ATDS Prato della Valle'),
-(24, 4, 'diana', '2026-07-25', '11:00:00', 'ATDS Dietro Stazione'),
-(25, 3, 'prova', '2026-08-15', '10:00:00', 'ATDS del Bo'),
-(26, 4, 'diana', '2026-08-29', '14:00:00', 'ATDS Specola'),
-(27, 3, 'prova', '2026-09-12', '09:30:00', 'ATDS Piovego'),
-(28, 4, 'diana', '2026-09-26', '15:00:00', 'ATDS Lum250'),
-(29, 3, 'prova', '2026-10-18', '10:00:00', 'ATDS Stanga'),
-(30, 4, 'diana', '2026-10-30', '11:30:00', 'ATDS Portello');
+-- Inserimento prenotazioni (15 esempi)
+INSERT INTO lista_prenotazioni (id, user_id, sede_id, data_prenotazione, ora_prenotazione, tipo_donazione) VALUES
+(1, 1, 1, '2026-07-15', '10:00', 'Sangue intero'),
+(2, 1, 3, '2026-07-20', '14:30', 'Plasma'),
+(3, 1, 5, '2026-08-01', '09:00', 'Piastrine'),
+(4, 1, 2, '2026-08-05', '11:15', 'Sangue intero'),
+(5, 1, 4, '2026-08-10', '13:00', 'Plasma'),
+(6, 1, 6, '2026-08-15', '15:30', 'Piastrine'),
+(7, 1, 7, '2026-08-20', '10:45', 'Sangue intero'),
+(8, 1, 8, '2026-08-25', '12:00', 'Plasma'),
+(9, 1, 1, '2026-09-01', '14:00', 'Piastrine'),
+(10, 1, 3, '2026-09-05', '09:30', 'Sangue intero'),
+(11, 1, 5, '2026-09-10', '11:45', 'Plasma'),
+(12, 1, 2, '2026-09-15', '13:15', 'Piastrine'),
+(13, 1, 4, '2026-09-20', '15:00', 'Sangue intero'),
+(14, 1, 6, '2026-09-25', '10:30', 'Plasma'),
+(15, 1, 7, '2026-09-30', '12:45', 'Piastrine');
+
 
 -- --------------------------------------------------------
 -- 4. Struttura della tabella `sedi`
