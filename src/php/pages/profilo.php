@@ -62,7 +62,7 @@ try {
 $paginaHTML = str_replace('[sezioneDonatore]', $htmlDonatore, $paginaHTML);
 
 // 3. Gestione contenuto specifico della pagina
-$nomeUtente = '<h1> Profilo di ' . htmlspecialchars($_SESSION['username']) . '</h1>';
+$nomeUtente = '<h1>' . htmlspecialchars($_SESSION['username']) . '</h1>';
 $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo</span></p>';
