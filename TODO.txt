@@ -1,25 +1,23 @@
+HTML
+- Modalità scura ?
+- Fare pagine 404.html e 500.htm
+
+CSS
+- fare print.css
+- fare mobile.css
 - Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente)
 - Sistemare i colori (tanti non sono in contrasto)
-- Modalità scura ?
-- Fare pagine 404.html e 500.html
 - Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore
-
--Implementare pop-up di conferma in logout ed elimina profilo (sei sicuro di voler...)
-
--Una volta aggiunti i dati donatore sulla dashboard si vede solo nome, gruppo sanguigno, mail e cell. Io direi di rendere visibile tutto
-
--Manca nella dashboard anche la sezione dove modificare i dati principali dell'account, cioè username e password
-
--collegare gli annulla/modifica/elimina prenotazione delle dashboard al db, e quindi collegare anche i filtri sempre nella dash (seleziona una sede)
-
--disattivare la funzione di prenotazione dall'admin
-
--far girare l'inserimento delle prenotazioni nel db (attualmente 404)
-
+- sistemare i pochi stili inline
 
 PHP
 - far funzionare la prenotazione di una prenotazione per un utente
+-collegare gli annulla/modifica/elimina prenotazione delle dashboard al db, e quindi collegare anche i filtri sempre nella dash (seleziona una sede)
+-disattivare la funzione di prenotazione dall'admin
+-far girare l'inserimento delle prenotazioni nel db (attualmente 404)
 
 GENERALI
 - sistemare tutti i commenti
-- sistemare i pochi stili inline
+-Implementare pop-up di conferma in logout ed elimina profilo (sei sicuro di voler...)
+-Una volta aggiunti i dati donatore sulla dashboard si vede solo nome, gruppo sanguigno, mail e cell. Io direi di rendere visibile tutto
+-Manca nella dashboard anche la sezione dove modificare i dati principali dell'account, cioè username e password
