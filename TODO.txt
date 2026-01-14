@@ -18,6 +18,8 @@
 
 -far girare l'inserimento delle prenotazioni nel db (attualmente 404)
 
+-messaggio di errore se la ricerca con filtri non produce risultati
+
 PHP
 - rendere dinamiche le <select> in e registrazione_donatore 
 - far funzionare la prenotazione di una prenotazione per un utente
