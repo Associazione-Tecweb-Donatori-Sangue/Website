@@ -4,6 +4,15 @@ require_once "../db.php";
 
 session_start();
 
+// Se arrivo con un parametro GET 'redirect' (es. da dona_ora), me lo segno
+if (isset($_GET['redirect'])) {
+    $_SESSION['redirect_post_login'] = $_GET['redirect'];
+} 
+// Se arrivo "pulito" (es. dal menu) e NON sto facendo POST, dimentico vecchi redirect
+elseif ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    unset($_SESSION['redirect_post_login']);
+}
+
 $paginaHTML = file_get_contents('../../html/login.html');
 
 // Variabile per eventuali messaggi di errore
@@ -36,13 +45,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username'] = $user['username'];
             $_SESSION['ruolo']    = $user['ruolo'];
             
-            // Redirect in base al ruolo
+            // A. Se è admin, vince sempre il profilo admin
             if ($user['ruolo'] === 'admin') {
-                $_SESSION['is_admin'] = true; // Per compatibilità con utility.php
+                $_SESSION['is_admin'] = true;
                 header("Location: profilo_admin.php");
-            } else {
-                header("Location: profilo.php");
+                exit();
+            } 
+            
+            // B. Se c'è un redirect in sospeso (es. voleva donare), lo accontento
+            if (isset($_SESSION['redirect_post_login'])) {
+                $destinazione = $_SESSION['redirect_post_login'];
+                unset($_SESSION['redirect_post_login']); // Pulisco subito dopo l'uso
+                header("Location: " . $destinazione);
+                exit();
             }
+
+            // C. Default standard: Profilo utente
+            header("Location: profilo.php");
             exit();
         } else {
             $messaggioErrore = "<p class='errore' style='color: red; text-align: center;'>Username o password errati.</p>";
