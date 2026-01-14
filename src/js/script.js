@@ -55,10 +55,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Gestione ricerca sedi
     const searchInput = document.getElementById('searchInput');
+    const noResultsMessage = document.getElementById('noResults');
+
     if (searchInput) {
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.toLowerCase();
             const sedi = document.querySelectorAll('.sede');
+            let visibileCount = 0; 
             
             sedi.forEach(sede => {
                 const nome = sede.querySelector('h3').textContent.toLowerCase();
@@ -66,10 +69,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 if (nome.includes(searchTerm) || indirizzo.includes(searchTerm)) {
                     sede.classList.remove('hidden');
+                    visibileCount++;
                 } else {
                     sede.classList.add('hidden');
                 }
             });
+
+            if (noResultsMessage) {
+                if (visibileCount === 0) {
+                    noResultsMessage.style.display = 'block';
+                } else {
+                    noResultsMessage.style.display = 'none';
+                }
+            }
         });
     }
 
