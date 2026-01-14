@@ -4,8 +4,19 @@
 - Fare pagine 404.html e 500.html
 - Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore
 
-- LINK CIRCOLARI DA ELIMINARE
-- Da implementare persistenza sessione
+-Implementare pop-up di conferma in logout ed elimina profilo (sei sicuro di voler...)
+
+-Una volta aggiunti i dati donatore sulla dashboard si vede solo nome, gruppo sanguigno, mail e cell. Io direi di rendere visibile tutto
+
+-Manca nella dashboard anche la sezione dove modificare i dati principali dell'account, cioè username e password
+
+-implementare effettivamente la pagina elimina profilo, nel senso che porti alla sezione profilo di login (attualmente l'account lo elimina correttamente ma dà 404)
+
+-collegare gli annulla/modifica/elimina prenotazione delle dashboard al db, e quindi collegare anche i filtri sempre nella dash (seleziona una sede)
+
+-disattivare la funzione di prenotazione dall'admin
+
+-far girare l'inserimento delle prenotazioni nel db (attualmente 404)
 
 PHP
 - rendere dinamiche le <select> in dona_ora e registrazione_donatore
