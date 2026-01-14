@@ -1,6 +1,7 @@
 HTML
-- Modalità scura ?
-- Fare pagine 404.html e 500.htm
+- Modalità scura
+- Fare pagine 404.html e 500.html
+- sistemare modalità di visualizzazione della sezione "le tue donazioni" nel profilo di un donatore
 
 CSS
 - fare print.css
@@ -9,6 +10,7 @@ CSS
 - Sistemare i colori (tanti non sono in contrasto)
 - Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore
 - sistemare i pochi stili inline
+- modificare stili nei blocchi html presenti nei file .php
 
 PHP
 - far funzionare la prenotazione di una prenotazione per un utente
@@ -21,3 +23,4 @@ GENERALI
 -Implementare pop-up di conferma in logout ed elimina profilo (sei sicuro di voler...)
 -Una volta aggiunti i dati donatore sulla dashboard si vede solo nome, gruppo sanguigno, mail e cell. Io direi di rendere visibile tutto
 -Manca nella dashboard anche la sezione dove modificare i dati principali dell'account, cioè username e password
+- inserire un widget per visualizzare quanto manca a poter prenotare un'altra prenotazione ?

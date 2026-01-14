@@ -28,15 +28,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($stmt->rowCount() > 0) {
                 $messaggio = "<p class='errore' style='color:red; text-align:center;'>Username già esistente!</p>";
             } else {
-                // 2. Inserimento con HASH della password (Sicurezza Top!)
+                // 2. Inserimento con HASH della password
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 // Di default il ruolo è 'user'
                 $stmt = $pdo->prepare("INSERT INTO utenti (username, password, ruolo) VALUES (?, ?, 'user')");
                 
                 if ($stmt->execute([$username, $hash])) {
-                    // Successo!
-                    $_SESSION['messaggio_flash'] = "Registrazione completata! Ora puoi accedere.";
-                    header("Location: login.php");
+                    // Successo! Imposto la sessione e reindirizzo
+                    $newUserId = $pdo->lastInsertId();
+
+                    $_SESSION['user_id'] = $newUserId;
+                    $_SESSION['username'] = $username;
+                    $_SESSION['ruolo'] = 'user';
+
+                    header("Location: profilo.php");
                     exit;
                 } else {
                     $messaggio = "<p class='errore' style='color:red;'>Errore nel database.</p>";
@@ -56,7 +61,5 @@ $paginaHTML = str_replace('<form', $messaggio . '<form', $paginaHTML);
 $breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span>Registrazione</span></p>';
 
 // 4. Costruisco la pagina
-// Non passo "registrazione.php" come pagina attiva perché non è nel menu principale,
-// quindi passo stringa vuota o nulla.
 echo costruisciPagina($paginaHTML, $breadcrumb, "registrazione.php");
 ?>

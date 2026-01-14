@@ -40,26 +40,57 @@ if (!isset($_SESSION['user_id'])) {
 
 } else {
     // UTENTE LOGGATO
-    // Recupero le sedi dal database
-    try {
-        // Prendo ID e Nome delle sedi
-        $stmt = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
-        $sedi = $stmt->fetchAll();
 
-        $optionsSedi = "";
-        foreach ($sedi as $sede) {
-            // Value = ID (per il database), Testo = Nome (per l'utente)
-            // Esempio generato: <option value="1">ATDS Piovego</option>
-            $optionsSedi .= '<option value="' . $sede['id'] . '">' . htmlspecialchars($sede['nome']) . '</option>';
+    try {
+        // Controllo se esiste nella tabella donatori
+        $stmtCheck = $pdo->prepare("SELECT user_id FROM donatori WHERE user_id = ?");
+        $stmtCheck->execute([$_SESSION['user_id']]);
+        $isDonatore = $stmtCheck->fetch();
+
+        if (!$isDonatore) {
+            
+            // --- LIVELLO 2: UTENTE LOGGATO MA NON DONATORE ---
+            $messaggioNonDonatore = '
+            <div class="testo_std" style="text-align: center;">
+                <h3 style="margin-bottom: 1em;">Profilo Donatore Incompleto</h3>
+                <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
+                <p>Per poter prenotare una donazione, abbiamo bisogno di raccogliere alcuni dati sanitari obbligatori.</p>
+                <p>La procedura richiede pochi minuti.</p>
+                
+                <div style="margin-top: 2em; display: flex; justify-content: center;">
+                    <form action="registrazione_donatore.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:350px;">
+                        <div class="button_std" style="margin:0;">
+                            <button type="submit" style="margin:0; width:100%;">Diventa Donatore</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            ';
+            
+            // Sostituisco il form con il messaggio "Diventa Donatore"
+            $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioNonDonatore, $paginaHTML);
+
+        } else {
+            
+            // --- LIVELLO 3: UTENTE LOGGATO E DONATORE (Mostro il form) ---
+            
+            // Carico le sedi dal DB per popolare la Select
+            $stmt = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
+            $sedi = $stmt->fetchAll();
+
+            $optionsSedi = "";
+            foreach ($sedi as $sede) {
+                $optionsSedi .= '<option value="' . $sede['id'] . '">' . htmlspecialchars($sede['nome']) . '</option>';
+            }
+
+            // Sostituisco il segnaposto nel form
+            $paginaHTML = str_replace('[OPZIONI_SEDI]', $optionsSedi, $paginaHTML);
         }
 
-        // Sostituisco il segnaposto nel form
-        $paginaHTML = str_replace('[listaNomiSedi]', $optionsSedi, $paginaHTML);
-
     } catch (PDOException $e) {
-        // Se qualcosa va storto, mostro un'opzione di errore
-        $errorOption = '<option value="">Errore caricamento sedi</option>';
-        $paginaHTML = str_replace('[listaNomiSedi]', $errorOption, $paginaHTML);
+        // Fallback errore DB
+        $errore = '<p class="errore">Si è verificato un errore nel caricamento dei dati. Riprova più tardi.</p>';
+        $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $errore, $paginaHTML);
     }
 }
 
