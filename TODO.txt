@@ -11,6 +11,3 @@ PHP
 - rendere dinamiche le <select> in dona_ora e registrazione_donatore
 - rendere dinamiche le tabelle in profilo e profilo_admin
 - far funzionare la prenotazione di una prenotazione per un utente
-
-DB
-- creare tabella "Prenotazioni" ? (quella da visualizzare nel profilo di ogni utente e nel profilo admin)
