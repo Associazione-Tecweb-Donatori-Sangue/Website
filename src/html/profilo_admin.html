@@ -30,20 +30,25 @@
         </div>
 
         <main id="content" class="main_std">
-            <div class="button_std">
-                <a href="../logout.php" class="button"><span lang="en">Logout</span></a>
-            </div>
-            <div class="button_std">
-                <a href="../deleteProfile.php" class="button">Elimina Profilo</a>
-            </div>
+            <div class="dashboard-container">
+                <div class="profile-header">
+                    <div class="profile-picture [CLASS_DEFAULT]">
+                        <img src="[FOTO_PROFILO]" alt="Foto profilo utente" id="profile-img">
+                        <input type="file" id="photo-upload" name="foto_profilo" style="display:none;">
+                        <div class="remove-photo" id="remove-photo-btn" role="button" tabindex="0" title="Rimuovi foto profilo">&times;</div>
+                    </div>
+                    <div class="button-container">
+                        <a href="../logout.php" class="btn-custom btn-logout"><span lang="en">Logout</span></a>
+                    </div>
+                </div>
             
             <p class="testo_std">Gestisci qui le operazioni relative ai donatori e alle donazioni di sangue dell'Associazione.</p>
 
             <h3 class="titolo_terziario">Riepilogo donazioni prenotate</h3>
             
-            <div class="form_filtro">
+            <!-- <div class="form_filtro"> -->
                 <label for="sede-donazioni">Seleziona una sede:</label>
-                <div class="select_std">
+                <div class="select_sedi">
                     <select id="sede-donazioni" name="sede-donazioni">
                         <option value="tutte">Tutte le sedi</option>
                         <option value="ATDS Piovego">ATDS Piovego</option>
@@ -56,7 +61,7 @@
                         <option value="ATDS Specola">ATDS Specola</option>
                     </select>
                 </div>
-            </div>
+            <!-- </div> -->
 
             <div class="contenitore_tabella">
                 <table class="tabella_dati" aria-describedby="tabella-donazioni-desc">
@@ -76,7 +81,6 @@
                 </table>
             </div>
         </main>
-
         [FOOTER]
     </body>
 </html>
