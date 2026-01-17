@@ -57,7 +57,7 @@ html, body{
   display: inline-block;
   padding: 1em;
   background-color: var(--link-active-bg-color2);
-  color: var(--link-active-txt-color) !important;
+  color: var(--link-active-txt-color);
   text-decoration: none;
   font-weight: bold;
   position: absolute;
@@ -670,8 +670,18 @@ footer {
   font-weight: 500;
 }
 
+.main_std {
+    background-color: white;
+    padding: 40px;
+    border-radius: 15px;      /* Arrotondamento leggermente minore del contenitore esterno */
+}
 
-/* Stili comunti a tutte le pagine tranne index */
+.dashboard-container {
+    max-width: 800px; /* Larghezza desiderata */
+    margin: 0 auto; /* Centratura */
+    width: 100%;
+}
+
 .page_background{
   background-image: url(../../images/back.jpg);
 }
@@ -993,6 +1003,34 @@ input[type="date"]:focus {
   box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
 }
 
+/* Il contenitore serve solo a gestire lo spazio, non deve avere bordi */
+.select_sedi {
+    width: 100%;
+    max-width: 300px; /* Larghezza stretta */
+    margin: 10px 0;   /* Allinea a sinistra (0 a destra) */
+    display: block;
+}
+
+/* Applichiamo lo stile direttamente alla select */
+.select_sedi select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #acd2e6;
+    border-radius: 0.8em;
+    font-size: 14px;
+    background: #f9fcfe;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.select_sedi select:focus {
+    outline: none;
+    border-color: #4f5abb;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
+}
+
 small, .form_std small {
   display: block;
   margin-top: 5px;
@@ -1047,8 +1085,21 @@ small, .form_std small {
   margin: 0;
 }
 
+.button_std .button {
+  display: inline-block;
+  padding: 8px 18px;          
+  margin-top: 10px;           
+  background-color: #a7cce7;  
+  color: #000000;             
+  text-decoration: none;      
+  font-size: 14px;            
+  font-weight: 600;
+  border-radius: 0.8em;          
+  cursor: pointer;
+}
+
 .button_std button, 
-.button_std input[type="submit"] {
+.button_std input[type="submit"]{
   width: calc(100% - 30px);
   padding: 16px;
   margin: 20px 15px 15px 15px;
@@ -1067,7 +1118,7 @@ small, .form_std small {
   box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
 }
 
-.button_std button:hover, 
+.button_std button:hover, .button_std .button:hover,
 .button_std input[type="submit"]:hover {
   background-color: #4f5abb;
   color: #ffffff;
@@ -1079,6 +1130,170 @@ small, .form_std small {
   background-color: #3d4799;
   color: #ffffff;
   transform: scale(0.98);
+}
+
+.profile-header {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start;
+  margin-top: 50px;
+  margin-bottom: 80px;
+  gap: 120px; 
+  max-width: 600px; 
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.profile-picture {
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+  width: 130px;
+  height: 130px;
+  
+}
+
+.profile-picture img {
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #acd2e6;
+  box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
+  transition: opacity 0.3s ease;
+}
+
+.profile-picture.is-default #remove-photo-btn {
+    display: none;
+}
+
+.profile-picture::after {
+  content: 'Modifica Foto';
+  position: absolute;
+  top: 65%;
+  left: 65%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none; 
+}
+
+
+#imgProfilo.nav-profile-icon {
+    height: 3.7em;
+    width: 3.7em;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.remove-photo {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 30px;
+    height: 30px;
+    background-color: #ff4d4d;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 10;
+    font-family: Arial, sans-serif;
+}
+
+
+.remove-photo:focus {
+    outline: 3px solid #ff4d4d;
+    outline-offset: 2px;
+}
+
+.profile-picture:hover .remove-photo {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.remove-photo:hover {
+    background-color: #d93636;
+    transform: scale(1.1);
+}
+
+.profile-picture:hover::after {
+  opacity: 1;
+}
+
+.profile-picture:hover img {
+  opacity: 0.8;
+}
+
+.profile-picture input[type="file"] {
+  display: none;
+}
+
+.button-container {
+  margin-top: 30px;   
+  right: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;              
+  float: right;           
+  margin-left: 20px;      
+  max-width: 200px;
+}
+
+.btn-custom {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-width: unset; 
+  margin: 0; 
+  padding: 10px 15px; 
+  border-radius: 0.8em;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-logout {
+    background-color: #acd2e6;
+    color: #000000;
+}
+
+
+.btn-logout:hover {
+    background-color: #4f5abb;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #e58d8d;
+    color: #000000;
+}
+
+.btn-delete:hover {
+    background-color: #c24242;
+    color: white;
 }
 
 #disclaimer {
@@ -1121,4 +1336,62 @@ small, .form_std small {
     padding: 1.25rem;
     font-size: 0.9rem;
   }
+}
+
+/* Titolo della sezione sobrio */
+.titolo-dashboard {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.4rem;
+    color: #1a3a5a;
+    margin-bottom: 25px;
+    font-weight: 700;
+    display: block;
+    border-bottom: 2px solid #acd2e6; /* Linea azzurra sottile */
+    padding-bottom: 5px;
+    width: fit-content;
+}
+
+/* Lista dati verticale (Senza griglia) */
+.lista_dati {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Contenitore di ogni riga */
+.lista_dati div {
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f4f8; /* Separatore leggerissimo */
+    display: flex;
+    justify-content: flex-start;
+    align-items: baseline;
+}
+
+/* Rimuove l'ultimo bordo per pulizia */
+.lista_dati div:last-child {
+    border-bottom: none;
+}
+
+/* Etichette (DT) */
+.lista_dati dt {
+    width: 180px;      /* Allinea tutti i dati sulla stessa colonna immaginaria */
+    font-size: 0.85rem;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    font-weight: 600;
+    flex-shrink: 0;    /* Impedisce all'etichetta di restringersi */
+}
+
+/* Valori (DD) */
+.lista_dati dd {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+/* Gruppo Sanguigno sobrio ma chiaro */
+.lista_dati dd.evidenziato {
+    color: #d90429;
+    font-weight: 700;
 }
