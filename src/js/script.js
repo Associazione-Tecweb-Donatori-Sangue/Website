@@ -128,3 +128,119 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const profilePicture = document.querySelector('.profile-picture');
+    const photoUpload = document.getElementById('photo-upload');
+    const removeBtn = document.getElementById('remove-photo-btn');
+    const profileImg = document.getElementById('profile-img');
+    const navImg = document.getElementById('imgProfilo'); // L'immagine nella navbar
+
+    if (!profilePicture || !photoUpload || !profileImg) return;
+
+    let isOpeningFilePicker = false;
+
+    /* ===============================
+       APERTURA FILE PICKER
+    =============================== */
+    const openFilePicker = () => {
+        if (isOpeningFilePicker) return;
+        isOpeningFilePicker = true;
+        photoUpload.click();
+        setTimeout(() => { isOpeningFilePicker = false; }, 300);
+    };
+
+    profilePicture.addEventListener('click', (e) => {
+        if (e.target.closest('#remove-photo-btn')) return;
+        if (e.target === photoUpload) return;
+        openFilePicker();
+    });
+
+    profilePicture.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            // Se il focus è sul tasto X, non aprire il selettore file
+            if (document.activeElement === removeBtn) return;
+            openFilePicker();
+        }
+    });
+
+    /* ===============================
+       UPLOAD FOTO (Profilo + Navbar)
+    =============================== */
+    photoUpload.addEventListener('change', () => {
+        if (!photoUpload.files || !photoUpload.files[0]) return;
+
+        const formData = new FormData();
+        formData.append('foto_profilo', photoUpload.files[0]);
+
+        fetch('../uploadFoto.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (!data.success) {
+                alert('Errore: ' + data.message);
+                return;
+            }
+
+            // Aggiungiamo il timestamp per evitare la cache del browser
+            const timestamp = new Date().getTime();
+            const newSrc = '../../images/profili/' + data.filename + '?t=' + timestamp;
+
+            // Aggiorna foto grande
+            profileImg.src = newSrc;
+            
+            // AGGIUNTA: Aggiorna icona Navbar
+            if (navImg) {
+                navImg.src = newSrc;
+            }
+
+            profilePicture.classList.remove('is-default');
+            photoUpload.value = ''; // Reset per consentire ri-selezione
+        })
+        .catch(err => console.error('Errore upload:', err));
+    });
+
+    /* ===============================
+       RIMOZIONE FOTO (Profilo + Navbar)
+    =============================== */
+    if (removeBtn) {
+        const handleRemoval = (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+
+            if (!confirm('Vuoi rimuovere la tua foto profilo?')) return;
+
+            fetch('../rimuoviFoto.php', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    if (!data.success) {
+                        alert('Errore: ' + data.message);
+                        return;
+                    }
+
+                    const defaultSrc = '../../images/profilo.jpg';
+                    
+                    // Reset foto grande
+                    profileImg.src = defaultSrc;
+                    
+                    // AGGIUNTA: Reset icona Navbar
+                    if (navImg) {
+                        navImg.src = defaultSrc;
+                    }
+
+                    profilePicture.classList.add('is-default');
+                })
+                .catch(err => console.error('Errore rimozione:', err));
+        };
+
+        removeBtn.addEventListener('click', handleRemoval);
+        removeBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                handleRemoval(e);
+            }
+        });
+    }
+});
