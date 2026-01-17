@@ -14,7 +14,7 @@ CSS
 - sistemare css about_us
 - Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente)
 - Sistemare i colori (tanti non sono in contrasto) --IMPORTANTEEEEEE--> DG
-- Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore --> DG
+-✅ Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore --> DG
 - sistemare i pochi stili inline --> chiedere alla prof
 - modificare stili nei blocchi html presenti nei file .php
 - sistemare tabelle prenotazioni --> GN
@@ -47,9 +47,10 @@ GENERALI
 - mettere una disponibilità di posti da poter prenotare in una determinata ora di un determinato giorno per ogni sede (esempio in sede Piovego il giorno 16/02 alle ore 8:00 ci sono 5 posti disponibili) e se non ci sono più posti non mostrare quell'orario nella lista degli orari ?
 
 EXTRA
-- aggiungere foto profilo (poterla caricare e visualizzarla al posto dell'icona)
+✅ aggiungere foto profilo (poterla caricare e visualizzarla al posto dell'icona) DG
 - aggiungere foto ai fondatori
-
+- aggiungere "prenota qui" sotto le card delle sedi in "dove trovarci"
+- accorciare "chi siamo" e trasformarlo in FAQ
 
 MAIL A PROF
 - lo stile inline si può lasciare nel php oppure va messa una classe e messo lo stile dal css? 
