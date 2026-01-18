@@ -175,7 +175,7 @@ $nuovoContenutoTabelle = '
 $paginaHTML = str_replace('[tabellePrenotazioni]', $nuovoContenutoTabelle, $paginaHTML);
 
 
-$nomeUtente = '<h1>' . htmlspecialchars($_SESSION['username']) . '</h1>';
+$nomeUtente = '<h1>' . htmlspecialchars(ucfirst($_SESSION['username'])) . '</h1>';
 $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo</span></p>';

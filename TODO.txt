@@ -26,7 +26,7 @@ PHP
 -disattivare la funzione di prenotazione dall'admin --> GG
 - mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra
 ✅ gruppo sanguigno e sesso non sono precompilati nel modifica dati donatore di user --> GG
-- lettera maiuscola dello username nella pagina profilo --> GG
+✅ lettera maiuscola dello username nella pagina profilo --> GG
 - admin se va in dona_ora visualizza un messaggio tipo "bro cazzo fai" --> GG
 - unire file get_prenotazioni --> GN
 - mettere controlli sui campi inseriti in registrazione donatore (data di nascita, peso) --> GG
