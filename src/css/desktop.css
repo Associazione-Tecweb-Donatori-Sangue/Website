@@ -154,7 +154,7 @@ header{
   margin-right: 1em;
 }
 
-#linkProfilo{ 
+#linkProfilo, #linkProfiloActive { 
   background-color: transparent;
   padding: 0;
   border-radius: 50%;
@@ -162,8 +162,16 @@ header{
   margin-left: 1em;
 }
 
+#linkProfilo{
+  background-color: #ffffff;
+}
+
+#linkProfiloActive {
+  background: linear-gradient(135deg, var(--link-active-bg-color2) 0%, var(--link-active-bg-color1) 100%);
+}
+
 #menu #linkProfilo:hover{
-  background: none;
+  background: linear-gradient(135deg, var(--link-active-bg-color2) 0%, var(--link-active-bg-color1) 100%);
   color: inherit;
 }
 

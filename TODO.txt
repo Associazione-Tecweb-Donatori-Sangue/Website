@@ -19,7 +19,7 @@ CSS
 - sistemare i pochi stili inline --> chiedere alla prof
 - modificare stili nei blocchi html presenti nei file .php
 - sistemare tabelle prenotazioni --> GN
-- sistemare hover icona profilo --> GG
+✅ sistemare hover icona profilo --> GG
 
 PHP
 -collegare gli annulla/modifica/elimina prenotazione delle dashboard al db, e quindi collegare anche i filtri sempre nella dash (seleziona una sede) --> GG

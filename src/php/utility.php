@@ -22,7 +22,7 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     $altText = "Accedi";
     $tagHTML = "a";
     
-    $fotoNavbar = "/images/profilo.jpg"; // Default base
+    $fotoNavbar = "/images/profilo.png"; // Default base
 
     // Se l'utente è loggato
     if (isset($_SESSION['username'])) {
@@ -66,7 +66,8 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     if ($tagHTML == "a") {
         $linkProfilo = '<a id="linkProfilo" href="'.$linkDestinazione.'"><img src="'.$fotoNavbar.'" alt="'.$altText.'" id="imgProfilo"></a>';
     } else {
-        $linkProfilo = '<span id="linkProfilo"><img src="'.$fotoNavbar.'" alt="'.$altText.'" id="imgProfilo"></span>';
+        // $fotoNavbar = "/images/profilo_dark.png";
+        $linkProfilo = '<span id="linkProfiloActive"><img src="'.$fotoNavbar.'" alt="'.$altText.'" id="imgProfilo"></span>';
     }
 
     // Sostituisco il segnaposto DENTRO l'header
