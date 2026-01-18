@@ -1,4 +1,7 @@
-// Carica prenotazioni admin
+/* =========================================
+   GESTIONE PRENOTAZIONI LATO ADMIN
+========================================= */
+
 function caricaPrenotazioniAdmin(sede = 'tutte') {
     console.log('Chiamata caricaPrenotazioniAdmin con sede:', sede);
     fetch(`/php/get_prenotazioni_admin.php?sede=${sede}`) 
@@ -24,36 +27,11 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
         });
 }
 
-// Carica prenotazioni user
-function caricaPrenotazioniUser(sede = 'tutte') {
-    console.log('Chiamata caricaPrenotazioniUser con sede:', sede);
-    fetch(`/php/get_prenotazioni_user.php?sede=${sede}`)  
-        .then(response => {
-            console.log('Response status:', response.status);
-            if (!response.ok) throw new Error('Errore nel caricamento');
-            return response.text();
-        })
-        .then(html => {
-            console.log('Risposta ricevuta:', html);
-            const tbody = document.querySelector('.tabella_dati tbody');
-            if (tbody) {
-                tbody.innerHTML = html;
-                console.log('Tabella aggiornata');
-            } else {
-                console.error('tbody non trovato');
-            }
-        })
-        .catch(error => {
-            console.error('Errore:', error);
-            const tbody = document.querySelector('.tabella_dati tbody');
-            if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Errore nel caricamento dei dati</td></tr>';
-        });
-}
 
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM caricato');
     
-    // Gestione ricerca sedi
+    // Gestione ricerca sedi (pagina dove_trovarci.html)
     const searchInput = document.getElementById('searchInput');
     const noResultsMessage = document.getElementById('noResults');
 
@@ -129,6 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+/* =========================================
+   GESTIONE FOTO PROFILO (Upload / Rimuovi)
+========================================= */
 document.addEventListener('DOMContentLoaded', () => {
     const profilePicture = document.querySelector('.profile-picture');
     const photoUpload = document.getElementById('photo-upload');
@@ -140,9 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let isOpeningFilePicker = false;
 
-    /* ===============================
-       APERTURA FILE PICKER
-    =============================== */
     const openFilePicker = () => {
         if (isOpeningFilePicker) return;
         isOpeningFilePicker = true;

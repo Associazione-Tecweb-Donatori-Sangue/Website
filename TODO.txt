@@ -1,7 +1,7 @@
 HTML
 - Modalità scura
 - Fare pagine 404.html e 500.html --> GN
-- sistemare modalità di visualizzazione della sezione "le tue donazioni" nel profilo di un donatore (un donatore vede anche le prenotazioni passate) --> GG
+✅ sistemare modalità di visualizzazione della sezione "le tue donazioni" nel profilo di un donatore (un donatore vede anche le prenotazioni passate) --> GG
 - sistemare orari di apertura/chiusura/prenotazione --> GN
 - inserire un tasto per tornare indietro in modifica dati donatore (e registra dati donatore) --> GG
 - hamburger menu --> GG
@@ -14,7 +14,7 @@ CSS
 - sistemare css about_us
 - Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente)
 - Sistemare i colori (tanti non sono in contrasto) --IMPORTANTEEEEEE--> DG
--✅ Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore --> DG
+✅ Modificare stile tasti "logout", "modifica i tuoi dati", "in profilo e profilo_donatore --> DG
 - sistemare i pochi stili inline --> chiedere alla prof
 - modificare stili nei blocchi html presenti nei file .php
 - sistemare tabelle prenotazioni --> GN
@@ -34,6 +34,7 @@ PHP
 DB
 - sistemare salvataggio "tipo di donazione" (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola) --> GN
 - sistemare tabelle --> GN
+- pulire file init.sql
 
 JS
 - far scomparire il menu quando si scorre verso l'alto --> GN
@@ -48,6 +49,7 @@ GENERALI
 
 EXTRA
 ✅ aggiungere foto profilo (poterla caricare e visualizzarla al posto dell'icona) DG
+    - il file picker è accessibile?
 - aggiungere foto ai fondatori
 - aggiungere "prenota qui" sotto le card delle sedi in "dove trovarci"
 - accorciare "chi siamo" e trasformarlo in FAQ
