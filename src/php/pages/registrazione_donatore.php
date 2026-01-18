@@ -154,6 +154,6 @@ if ($dati['sesso'] == 'maschio') {
 }
 
 // 5. STAMPA FINALE
-$breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>'.$titoloPagina.'</span></p>';
+$breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <a href="/php/pages/profilo.php">Profilo</a> / <span>'.$titoloPagina.'</span></p>';
 echo costruisciPagina($template, $breadcrumb, "registrazione_donatore.php");
 ?>

@@ -30,7 +30,7 @@ PHP
 - admin se va in dona_ora visualizza un messaggio tipo "bro cazzo fai" --> GG
 - unire file get_prenotazioni --> GN
 - mettere controlli sui campi inseriti in registrazione donatore (data di nascita, peso) --> GG
-- sistemare breadcrumb (modifica dati donatore e registra nuovo donatore) --> GG
+✅ sistemare breadcrumb (modifica dati donatore e registra nuovo donatore) --> GG
 
 DB
 - sistemare salvataggio "tipo di donazione" (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola) --> GN
