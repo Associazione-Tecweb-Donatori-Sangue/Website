@@ -9,6 +9,12 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+// se l'utente è ADMIN, viene reindirizzato al profilo admin
+if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
+    header("Location: profilo_admin.php");
+    exit();
+}
+
 $paginaHTML = file_get_contents('../../html/profilo.html');
 
 // --- LOGICA GESTIONE FOTO PROFILO ---

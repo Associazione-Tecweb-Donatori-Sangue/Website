@@ -23,7 +23,7 @@ CSS
 
 PHP
 -collegare gli annulla/modifica/elimina prenotazione delle dashboard al db, e quindi collegare anche i filtri sempre nella dash (seleziona una sede) --> GG
--disattivare la funzione di prenotazione dall'admin --> GG
+✅ disattivare la funzione di prenotazione dall'admin --> GG
 - mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra
 ✅ gruppo sanguigno e sesso non sono precompilati nel modifica dati donatore di user --> GG
 ✅ lettera maiuscola dello username nella pagina profilo --> GG

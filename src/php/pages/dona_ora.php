@@ -61,58 +61,79 @@ if (!isset($_SESSION['user_id'])) {
     $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioAvviso, $paginaHTML);
 
 } else {
-    // UTENTE LOGGATO
-
-    try {
-        // Controllo se esiste nella tabella donatori
-        $stmtCheck = $pdo->prepare("SELECT user_id FROM donatori WHERE user_id = ?");
-        $stmtCheck->execute([$_SESSION['user_id']]);
-        $isDonatore = $stmtCheck->fetch();
-
-        if (!$isDonatore) {
+    // UTENTE LOGGATO, controllo se è ADMIN
+    if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
+        $messaggioNonDonatoreoAdmin = '
+        <div class="testo_std" style="text-align: center;">
+            <h3 style="margin-bottom: 1em;">Profilo Admin</h3>
+            <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
+            <p>Per poter prenotare una donazione, devi utilizzare un account utente normale.</p>
+            <p>Gli account amministratori non possono effettuare donazioni.</p>
             
-            // --- LIVELLO 2: UTENTE LOGGATO MA NON DONATORE ---
-            $messaggioNonDonatore = '
-            <div class="testo_std" style="text-align: center;">
-                <h3 style="margin-bottom: 1em;">Profilo Donatore Incompleto</h3>
-                <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
-                <p>Per poter prenotare una donazione, abbiamo bisogno di raccogliere alcuni dati sanitari obbligatori.</p>
-                <p>La procedura richiede pochi minuti.</p>
-                
-                <div style="margin-top: 2em; display: flex; justify-content: center;">
-                    <form action="registrazione_donatore.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:350px;">
-                        <div class="button_std" style="margin:0;">
-                            <button type="submit" style="margin:0; width:100%;">Diventa Donatore</button>
-                        </div>
-                    </form>
-                </div>
+            <div style="margin-top: 2em; display: flex; justify-content: center;">
+                <form action="profilo.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:350px;">
+                    <div class="button_std" style="margin:0;">
+                        <button type="submit" style="margin:0; width:100%;">Torna al Profilo</button>
+                    </div>
+                </form>
             </div>
-            ';
-            
-            // Sostituisco il form con il messaggio "Diventa Donatore"
-            $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioNonDonatore, $paginaHTML);
+        </div>
+        ';
 
-        } else {
-            
-            // --- LIVELLO 3: UTENTE LOGGATO E DONATORE (Mostro il form) ---
-            
-            // Carico le sedi dal DB per popolare la Select
-            $stmt = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
-            $sedi = $stmt->fetchAll();
+        // Sostituisco il form con il messaggio "Non puoi prenotare come Admin"
+        $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioNonDonatoreoAdmin, $paginaHTML);
+    } else { // UTENTE NORMALE
+        try {
+            // Controllo se esiste nella tabella donatori
+            $stmtCheck = $pdo->prepare("SELECT user_id FROM donatori WHERE user_id = ?");
+            $stmtCheck->execute([$_SESSION['user_id']]);
+            $isDonatore = $stmtCheck->fetch();
 
-            $optionsSedi = "";
-            foreach ($sedi as $sede) {
-                $optionsSedi .= '<option value="' . $sede['id'] . '">' . htmlspecialchars($sede['nome']) . '</option>';
+            if (!$isDonatore) {
+                
+                // --- LIVELLO 2: UTENTE LOGGATO MA NON DONATORE ---
+                $messaggioNonDonatoreoAdmin = '
+                <div class="testo_std" style="text-align: center;">
+                    <h3 style="margin-bottom: 1em;">Profilo Donatore Incompleto</h3>
+                    <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
+                    <p>Per poter prenotare una donazione, abbiamo bisogno di raccogliere alcuni dati sanitari obbligatori.</p>
+                    <p>La procedura richiede pochi minuti.</p>
+                    
+                    <div style="margin-top: 2em; display: flex; justify-content: center;">
+                        <form action="registrazione_donatore.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:350px;">
+                            <div class="button_std" style="margin:0;">
+                                <button type="submit" style="margin:0; width:100%;">Diventa Donatore</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                ';
+                
+                // Sostituisco il form con il messaggio "Diventa Donatore"
+                $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioNonDonatoreoAdmin, $paginaHTML);
+
+            } else {
+                
+                // --- LIVELLO 3: UTENTE LOGGATO E DONATORE (Mostro il form) ---
+                
+                // Carico le sedi dal DB per popolare la Select
+                $stmt = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
+                $sedi = $stmt->fetchAll();
+
+                $optionsSedi = "";
+                foreach ($sedi as $sede) {
+                    $optionsSedi .= '<option value="' . $sede['id'] . '">' . htmlspecialchars($sede['nome']) . '</option>';
+                }
+
+                // Sostituisco il segnaposto nel form
+                $paginaHTML = str_replace('[listaNomiSedi]', $optionsSedi, $paginaHTML);
             }
 
-            // Sostituisco il segnaposto nel form
-            $paginaHTML = str_replace('[listaNomiSedi]', $optionsSedi, $paginaHTML);
+        } catch (PDOException $e) {
+            // Fallback errore DB
+            $errore = '<p class="errore">Si è verificato un errore nel caricamento dei dati. Riprova più tardi.</p>';
+            $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $errore, $paginaHTML);
         }
-
-    } catch (PDOException $e) {
-        // Fallback errore DB
-        $errore = '<p class="errore">Si è verificato un errore nel caricamento dei dati. Riprova più tardi.</p>';
-        $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $errore, $paginaHTML);
     }
 }
 

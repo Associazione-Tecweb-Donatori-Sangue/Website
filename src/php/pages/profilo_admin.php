@@ -6,9 +6,16 @@ require_once "../db.php";
 
 session_start();
 
-// 1. CONTROLLO SICUREZZA: L'utente è loggato ED è admin?
-if (!isset($_SESSION['username']) || !isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+// 1. CONTROLLO SICUREZZA
+// A. Se l'utente non è proprio loggato -> vai al Login
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
+    exit();
+}
+
+// B. Se è loggato, ma NON è admin -> vai al Profilo Utente
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    header("Location: profilo.php");
     exit();
 }
 
@@ -43,7 +50,7 @@ $paginaHTML = str_replace('[FOTO_PROFILO]', htmlspecialchars($fotoPath), $pagina
 $paginaHTML = str_replace('[CLASS_DEFAULT]', $isDefaultClass, $paginaHTML);
 
 // --- GESTIONE NOME UTENTE ---
-$nomeUtente = '<h1>' . htmlspecialchars($_SESSION['username']) . '</h1>';
+$nomeUtente = '<h1>' . htmlspecialchars(ucfirst($_SESSION['username'])) . '</h1>';
 $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 
 // 3. Gestione breadcrumb
