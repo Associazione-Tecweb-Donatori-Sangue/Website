@@ -18,7 +18,6 @@ CSS
 PHP
 -collegare gli modifica prenotazione 
 - mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra
-- unire file get_prenotazioni --> GN
 
 DB
 - sistemare salvataggio "tipo di donazione" (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola) --> GN
