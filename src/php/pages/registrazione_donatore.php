@@ -147,10 +147,10 @@ if ($dati['gruppo_sanguigno'] != "") {
 $template = str_replace('[checked_maschio]', '', $template);
 $template = str_replace('[checked_femmina]', '', $template);
 
-if ($dati['sesso'] == 'maschio') {
-    $template = str_replace('value="maschio"', 'value="maschio" checked', $template);
-} elseif ($dati['sesso'] == 'femmina') {
-    $template = str_replace('value="femmina"', 'value="femmina" checked', $template);
+if ($dati['sesso'] == 'Maschio') {
+    $template = str_replace('value="Maschio"', 'value="Maschio" checked', $template);
+} elseif ($dati['sesso'] == 'Femmina') {
+    $template = str_replace('value="Femmina"', 'value="Femmina" checked', $template);
 }
 
 // 5. STAMPA FINALE
