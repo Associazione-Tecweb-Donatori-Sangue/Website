@@ -54,17 +54,45 @@ try {
     if (!$datiDonatore) {
         $htmlDonatore = '<div class="button_std"><a href="/php/pages/registrazione_donatore.php" class="button">Completa la registrazione come donatore</a></div>';
     } else {
+        $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
+
         $htmlDonatore = '
         <section class="dati_donatore_box">
             <h3 class="titolo-dashboard">Il tuo profilo Donatore</h3>
             <dl class="lista_dati">
-                <dt>Nome e Cognome:</dt><dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
-                <dt>Gruppo Sanguigno:</dt><dd class="evidenziato">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</dd>
-                <dt>Email:</dt><dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
-                <dt>Telefono:</dt><dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
+                <dt>Nome e Cognome:</dt>
+                <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
+                
+                <dt>Data di Nascita:</dt>
+                <dd>' . $dataNascitaFormatted . '</dd>
+                
+                <dt>Luogo di Nascita:</dt>
+                <dd>' . htmlspecialchars($datiDonatore['luogo_nascita']) . '</dd>
+                
+                <dt>Codice Fiscale:</dt>
+                <dd style="text-transform: uppercase;">' . htmlspecialchars($datiDonatore['codice_fiscale']) . '</dd>
+                
+                <dt>Residenza:</dt>
+                <dd>' . htmlspecialchars($datiDonatore['indirizzo']) . '</dd>
+
+                <dt>Email:</dt>
+                <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
+                
+                <dt>Telefono:</dt>
+                <dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
+
+                <dt>Gruppo Sanguigno:</dt>
+                <dd class="evidenziato">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</dd>
+                
+                <dt>Sesso:</dt>
+                <dd>' . htmlspecialchars($datiDonatore['sesso']) . '</dd>
+                
+                <dt>Peso:</dt>
+                <dd>' . htmlspecialchars($datiDonatore['peso']) . ' Kg</dd>
             </dl>
             <div class="button_std" style="margin-top: 20px;"><a href="/php/pages/registrazione_donatore.php" class="button">Modifica i tuoi dati</a></div>
         </section>';
+        
         $_SESSION['dati_donatore'] = $datiDonatore;
     }
 } catch (PDOException $e) {
@@ -183,6 +211,32 @@ $paginaHTML = str_replace('[tabellePrenotazioni]', $nuovoContenutoTabelle, $pagi
 
 $nomeUtente = '<h1>' . htmlspecialchars(ucfirst($_SESSION['username'])) . '</h1>';
 $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
+
+// --- GESTIONE MESSAGGIO FLASH (Spostato all'inizio del Main) ---
+if (isset($_SESSION['messaggio_flash'])) {
+    $colore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f8d7da' : '#d4edda';
+    $testoColore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#721c24' : '#155724';
+    $bordo = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f5c6cb' : '#c3e6cb';
+
+    $msgHTML = '<div style="background-color: '.$colore.'; color: '.$testoColore.'; border: 1px solid '.$bordo.'; padding: 15px; margin: 20px auto; width: 90%; max-width: 800px; border-radius: 5px; text-align: center;">
+                    ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
+                </div>';
+    
+    // Cerco il tag <main ...> e ci incollo subito dopo il messaggio
+    // Nota: Assicurati che nel tuo file html/profilo.html il tag sia scritto così:
+    $tagMain = '<main id="content" class="main_std">';
+    
+    // Se non dovesse trovarlo, prova a cercare solo "<main>" o verifica il tuo HTML
+    if (strpos($paginaHTML, $tagMain) !== false) {
+        $paginaHTML = str_replace($tagMain, $tagMain . $msgHTML, $paginaHTML);
+    } else {
+        // Fallback: se il tag è scritto diversamente, lo metto all'inizio del contenuto grezzo
+        // (utile se magari hai classi diverse nel main)
+        $paginaHTML = preg_replace('/<main[^>]*>/', '$0' . $msgHTML, $paginaHTML, 1);
+    }
+    
+    unset($_SESSION['messaggio_flash']);
+}
 
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo</span></p>';
 echo costruisciPagina($paginaHTML, $breadcrumb, "profilo.php");
