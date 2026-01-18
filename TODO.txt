@@ -3,7 +3,7 @@ HTML
 - Fare pagine 404.html e 500.html --> GN
 ✅ sistemare modalità di visualizzazione della sezione "le tue donazioni" nel profilo di un donatore (un donatore vede anche le prenotazioni passate) --> GG
 - sistemare orari di apertura/chiusura/prenotazione --> GN
-- inserire un tasto per tornare indietro in modifica dati donatore (e registra dati donatore) --> GG
+✅ inserire un tasto per tornare indietro in modifica dati donatore (e registra dati donatore) --> GG
 - hamburger menu --> GG
 
 CSS

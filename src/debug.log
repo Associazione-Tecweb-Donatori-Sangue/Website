@@ -1,0 +1,580 @@
+2026-01-18 08:59:14 - === INIZIO costruisciPagina ===
+2026-01-18 08:59:14 - Pagina attiva: registrazione_donatore.php
+2026-01-18 08:59:14 - PDO da GLOBALS (file già incluso)
+2026-01-18 08:59:14 - PDO finale: DISPONIBILE
+2026-01-18 08:59:15 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 08:59:15 - Utente loggato: user
+2026-01-18 08:59:15 - User ID: 1
+2026-01-18 08:59:15 - PDO disponibile
+2026-01-18 08:59:15 - Foto recuperata dal DB: NESSUNA
+2026-01-18 08:59:15 - userFoto è vuoto, resto con default
+2026-01-18 08:59:15 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 08:59:15 - HTML link profilo generato
+2026-01-18 08:59:15 - === FINE costruisciPagina ===
+
+2026-01-18 09:07:37 - === INIZIO costruisciPagina ===
+2026-01-18 09:07:37 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:07:38 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:07:38 - PDO finale: DISPONIBILE
+2026-01-18 09:07:38 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:07:38 - Utente loggato: user
+2026-01-18 09:07:38 - User ID: 1
+2026-01-18 09:07:38 - PDO disponibile
+2026-01-18 09:07:38 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:07:38 - userFoto è vuoto, resto con default
+2026-01-18 09:07:38 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:07:38 - HTML link profilo generato
+2026-01-18 09:07:38 - === FINE costruisciPagina ===
+
+2026-01-18 09:07:40 - === INIZIO costruisciPagina ===
+2026-01-18 09:07:40 - Pagina attiva: profilo.php
+2026-01-18 09:07:40 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:07:40 - PDO finale: DISPONIBILE
+2026-01-18 09:07:40 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:07:40 - Utente loggato: user
+2026-01-18 09:07:40 - User ID: 1
+2026-01-18 09:07:40 - PDO disponibile
+2026-01-18 09:07:40 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:07:40 - userFoto è vuoto, resto con default
+2026-01-18 09:07:40 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:07:40 - HTML link profilo generato
+2026-01-18 09:07:40 - === FINE costruisciPagina ===
+
+2026-01-18 09:07:42 - === INIZIO costruisciPagina ===
+2026-01-18 09:07:42 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:07:42 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:07:42 - PDO finale: DISPONIBILE
+2026-01-18 09:07:42 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:07:42 - Utente loggato: user
+2026-01-18 09:07:42 - User ID: 1
+2026-01-18 09:07:42 - PDO disponibile
+2026-01-18 09:07:42 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:07:42 - userFoto è vuoto, resto con default
+2026-01-18 09:07:42 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:07:42 - HTML link profilo generato
+2026-01-18 09:07:42 - === FINE costruisciPagina ===
+
+2026-01-18 09:07:43 - === INIZIO costruisciPagina ===
+2026-01-18 09:07:43 - Pagina attiva: profilo.php
+2026-01-18 09:07:43 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:07:43 - PDO finale: DISPONIBILE
+2026-01-18 09:07:43 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:07:43 - Utente loggato: user
+2026-01-18 09:07:43 - User ID: 1
+2026-01-18 09:07:43 - PDO disponibile
+2026-01-18 09:07:43 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:07:43 - userFoto è vuoto, resto con default
+2026-01-18 09:07:43 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:07:43 - HTML link profilo generato
+2026-01-18 09:07:43 - === FINE costruisciPagina ===
+
+2026-01-18 09:07:47 - === INIZIO costruisciPagina ===
+2026-01-18 09:07:47 - Pagina attiva: login.php
+2026-01-18 09:07:47 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:07:47 - PDO finale: DISPONIBILE
+2026-01-18 09:07:47 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:07:47 - Utente NON loggato (SESSION username non settato)
+2026-01-18 09:07:47 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:07:47 - HTML link profilo generato
+2026-01-18 09:07:47 - === FINE costruisciPagina ===
+
+2026-01-18 09:08:04 - === INIZIO costruisciPagina ===
+2026-01-18 09:08:04 - Pagina attiva: profilo.php
+2026-01-18 09:08:04 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:08:05 - PDO finale: DISPONIBILE
+2026-01-18 09:08:05 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:08:05 - Utente loggato: prova
+2026-01-18 09:08:05 - User ID: 3
+2026-01-18 09:08:05 - PDO disponibile
+2026-01-18 09:08:05 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:08:05 - userFoto è vuoto, resto con default
+2026-01-18 09:08:05 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:08:05 - HTML link profilo generato
+2026-01-18 09:08:05 - === FINE costruisciPagina ===
+
+2026-01-18 09:08:08 - === INIZIO costruisciPagina ===
+2026-01-18 09:08:08 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:08:08 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:08:08 - PDO finale: DISPONIBILE
+2026-01-18 09:08:08 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:08:08 - Utente loggato: prova
+2026-01-18 09:08:08 - User ID: 3
+2026-01-18 09:08:08 - PDO disponibile
+2026-01-18 09:08:08 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:08:08 - userFoto è vuoto, resto con default
+2026-01-18 09:08:08 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:08:08 - HTML link profilo generato
+2026-01-18 09:08:08 - === FINE costruisciPagina ===
+
+2026-01-18 09:08:14 - === INIZIO costruisciPagina ===
+2026-01-18 09:08:14 - Pagina attiva: profilo.php
+2026-01-18 09:08:14 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:08:14 - PDO finale: DISPONIBILE
+2026-01-18 09:08:14 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:08:14 - Utente loggato: prova
+2026-01-18 09:08:14 - User ID: 3
+2026-01-18 09:08:14 - PDO disponibile
+2026-01-18 09:08:14 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:08:14 - userFoto è vuoto, resto con default
+2026-01-18 09:08:14 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:08:14 - HTML link profilo generato
+2026-01-18 09:08:14 - === FINE costruisciPagina ===
+
+2026-01-18 09:12:18 - === INIZIO costruisciPagina ===
+2026-01-18 09:12:18 - Pagina attiva: profilo.php
+2026-01-18 09:12:18 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:12:18 - PDO finale: DISPONIBILE
+2026-01-18 09:12:18 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:12:18 - Utente loggato: prova
+2026-01-18 09:12:18 - User ID: 3
+2026-01-18 09:12:18 - PDO disponibile
+2026-01-18 09:12:18 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:12:18 - userFoto è vuoto, resto con default
+2026-01-18 09:12:18 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:12:18 - HTML link profilo generato
+2026-01-18 09:12:18 - === FINE costruisciPagina ===
+
+2026-01-18 09:12:20 - === INIZIO costruisciPagina ===
+2026-01-18 09:12:20 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:12:20 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:12:20 - PDO finale: DISPONIBILE
+2026-01-18 09:12:20 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:12:20 - Utente loggato: prova
+2026-01-18 09:12:20 - User ID: 3
+2026-01-18 09:12:20 - PDO disponibile
+2026-01-18 09:12:20 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:12:20 - userFoto è vuoto, resto con default
+2026-01-18 09:12:20 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:12:20 - HTML link profilo generato
+2026-01-18 09:12:20 - === FINE costruisciPagina ===
+
+2026-01-18 09:12:23 - === INIZIO costruisciPagina ===
+2026-01-18 09:12:23 - Pagina attiva: profilo.php
+2026-01-18 09:12:23 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:12:23 - PDO finale: DISPONIBILE
+2026-01-18 09:12:23 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:12:23 - Utente loggato: prova
+2026-01-18 09:12:23 - User ID: 3
+2026-01-18 09:12:23 - PDO disponibile
+2026-01-18 09:12:23 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:12:23 - userFoto è vuoto, resto con default
+2026-01-18 09:12:23 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:12:23 - HTML link profilo generato
+2026-01-18 09:12:23 - === FINE costruisciPagina ===
+
+2026-01-18 09:12:26 - === INIZIO costruisciPagina ===
+2026-01-18 09:12:26 - Pagina attiva: profilo.php
+2026-01-18 09:12:26 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:12:26 - PDO finale: DISPONIBILE
+2026-01-18 09:12:26 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:12:26 - Utente loggato: prova
+2026-01-18 09:12:26 - User ID: 3
+2026-01-18 09:12:26 - PDO disponibile
+2026-01-18 09:12:26 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:12:26 - userFoto è vuoto, resto con default
+2026-01-18 09:12:26 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:12:26 - HTML link profilo generato
+2026-01-18 09:12:26 - === FINE costruisciPagina ===
+
+2026-01-18 09:12:30 - === INIZIO costruisciPagina ===
+2026-01-18 09:12:30 - Pagina attiva: profilo.php
+2026-01-18 09:12:30 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:12:30 - PDO finale: DISPONIBILE
+2026-01-18 09:12:30 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:12:30 - Utente loggato: prova
+2026-01-18 09:12:30 - User ID: 3
+2026-01-18 09:12:30 - PDO disponibile
+2026-01-18 09:12:30 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:12:30 - userFoto è vuoto, resto con default
+2026-01-18 09:12:30 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:12:30 - HTML link profilo generato
+2026-01-18 09:12:30 - === FINE costruisciPagina ===
+
+2026-01-18 09:12:48 - === INIZIO costruisciPagina ===
+2026-01-18 09:12:48 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:12:48 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:12:48 - PDO finale: DISPONIBILE
+2026-01-18 09:12:48 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:12:48 - Utente loggato: prova
+2026-01-18 09:12:48 - User ID: 3
+2026-01-18 09:12:49 - PDO disponibile
+2026-01-18 09:12:49 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:12:49 - userFoto è vuoto, resto con default
+2026-01-18 09:12:49 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:12:49 - HTML link profilo generato
+2026-01-18 09:12:49 - === FINE costruisciPagina ===
+
+2026-01-18 09:13:19 - === INIZIO costruisciPagina ===
+2026-01-18 09:13:19 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:13:19 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:13:19 - PDO finale: DISPONIBILE
+2026-01-18 09:13:19 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:13:19 - Utente loggato: prova
+2026-01-18 09:13:19 - User ID: 3
+2026-01-18 09:13:19 - PDO disponibile
+2026-01-18 09:13:19 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:13:19 - userFoto è vuoto, resto con default
+2026-01-18 09:13:19 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:13:19 - HTML link profilo generato
+2026-01-18 09:13:19 - === FINE costruisciPagina ===
+
+2026-01-18 09:13:23 - === INIZIO costruisciPagina ===
+2026-01-18 09:13:23 - Pagina attiva: profilo.php
+2026-01-18 09:13:23 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:13:23 - PDO finale: DISPONIBILE
+2026-01-18 09:13:23 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:13:23 - Utente loggato: prova
+2026-01-18 09:13:23 - User ID: 3
+2026-01-18 09:13:23 - PDO disponibile
+2026-01-18 09:13:23 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:13:23 - userFoto è vuoto, resto con default
+2026-01-18 09:13:23 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:13:23 - HTML link profilo generato
+2026-01-18 09:13:23 - === FINE costruisciPagina ===
+
+2026-01-18 09:13:36 - === INIZIO costruisciPagina ===
+2026-01-18 09:13:36 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:13:36 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:13:36 - PDO finale: DISPONIBILE
+2026-01-18 09:13:36 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:13:36 - Utente loggato: prova
+2026-01-18 09:13:36 - User ID: 3
+2026-01-18 09:13:36 - PDO disponibile
+2026-01-18 09:13:36 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:13:36 - userFoto è vuoto, resto con default
+2026-01-18 09:13:36 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:13:36 - HTML link profilo generato
+2026-01-18 09:13:36 - === FINE costruisciPagina ===
+
+2026-01-18 09:13:57 - === INIZIO costruisciPagina ===
+2026-01-18 09:13:57 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:13:57 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:13:57 - PDO finale: DISPONIBILE
+2026-01-18 09:13:57 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:13:57 - Utente loggato: prova
+2026-01-18 09:13:57 - User ID: 3
+2026-01-18 09:13:57 - PDO disponibile
+2026-01-18 09:13:57 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:13:57 - userFoto è vuoto, resto con default
+2026-01-18 09:13:57 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:13:57 - HTML link profilo generato
+2026-01-18 09:13:57 - === FINE costruisciPagina ===
+
+2026-01-18 09:14:10 - === INIZIO costruisciPagina ===
+2026-01-18 09:14:10 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:14:10 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:14:10 - PDO finale: DISPONIBILE
+2026-01-18 09:14:10 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:14:10 - Utente loggato: prova
+2026-01-18 09:14:10 - User ID: 3
+2026-01-18 09:14:10 - PDO disponibile
+2026-01-18 09:14:10 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:14:10 - userFoto è vuoto, resto con default
+2026-01-18 09:14:10 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:14:10 - HTML link profilo generato
+2026-01-18 09:14:10 - === FINE costruisciPagina ===
+
+2026-01-18 09:14:25 - === INIZIO costruisciPagina ===
+2026-01-18 09:14:25 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:14:25 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:14:25 - PDO finale: DISPONIBILE
+2026-01-18 09:14:25 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:14:25 - Utente loggato: prova
+2026-01-18 09:14:25 - User ID: 3
+2026-01-18 09:14:25 - PDO disponibile
+2026-01-18 09:14:26 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:14:26 - userFoto è vuoto, resto con default
+2026-01-18 09:14:26 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:14:26 - HTML link profilo generato
+2026-01-18 09:14:26 - === FINE costruisciPagina ===
+
+2026-01-18 09:14:32 - === INIZIO costruisciPagina ===
+2026-01-18 09:14:32 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:14:32 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:14:32 - PDO finale: DISPONIBILE
+2026-01-18 09:14:32 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:14:32 - Utente loggato: prova
+2026-01-18 09:14:32 - User ID: 3
+2026-01-18 09:14:32 - PDO disponibile
+2026-01-18 09:14:32 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:14:32 - userFoto è vuoto, resto con default
+2026-01-18 09:14:32 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:14:32 - HTML link profilo generato
+2026-01-18 09:14:32 - === FINE costruisciPagina ===
+
+2026-01-18 09:14:43 - === INIZIO costruisciPagina ===
+2026-01-18 09:14:43 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:14:43 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:14:43 - PDO finale: DISPONIBILE
+2026-01-18 09:14:44 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:14:44 - Utente loggato: prova
+2026-01-18 09:14:44 - User ID: 3
+2026-01-18 09:14:44 - PDO disponibile
+2026-01-18 09:14:44 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:14:44 - userFoto è vuoto, resto con default
+2026-01-18 09:14:44 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:14:44 - HTML link profilo generato
+2026-01-18 09:14:44 - === FINE costruisciPagina ===
+
+2026-01-18 09:14:50 - === INIZIO costruisciPagina ===
+2026-01-18 09:14:50 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:14:50 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:14:50 - PDO finale: DISPONIBILE
+2026-01-18 09:14:50 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:14:50 - Utente loggato: prova
+2026-01-18 09:14:50 - User ID: 3
+2026-01-18 09:14:50 - PDO disponibile
+2026-01-18 09:14:50 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:14:50 - userFoto è vuoto, resto con default
+2026-01-18 09:14:50 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:14:50 - HTML link profilo generato
+2026-01-18 09:14:50 - === FINE costruisciPagina ===
+
+2026-01-18 09:15:08 - === INIZIO costruisciPagina ===
+2026-01-18 09:15:08 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:15:08 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:15:08 - PDO finale: DISPONIBILE
+2026-01-18 09:15:08 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:15:08 - Utente loggato: prova
+2026-01-18 09:15:08 - User ID: 3
+2026-01-18 09:15:08 - PDO disponibile
+2026-01-18 09:15:08 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:15:08 - userFoto è vuoto, resto con default
+2026-01-18 09:15:08 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:15:08 - HTML link profilo generato
+2026-01-18 09:15:08 - === FINE costruisciPagina ===
+
+2026-01-18 09:15:14 - === INIZIO costruisciPagina ===
+2026-01-18 09:15:14 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:15:14 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:15:14 - PDO finale: DISPONIBILE
+2026-01-18 09:15:14 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:15:14 - Utente loggato: prova
+2026-01-18 09:15:14 - User ID: 3
+2026-01-18 09:15:14 - PDO disponibile
+2026-01-18 09:15:14 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:15:14 - userFoto è vuoto, resto con default
+2026-01-18 09:15:14 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:15:14 - HTML link profilo generato
+2026-01-18 09:15:14 - === FINE costruisciPagina ===
+
+2026-01-18 09:15:34 - === INIZIO costruisciPagina ===
+2026-01-18 09:15:34 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:15:35 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:15:35 - PDO finale: DISPONIBILE
+2026-01-18 09:15:35 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:15:35 - Utente loggato: prova
+2026-01-18 09:15:35 - User ID: 3
+2026-01-18 09:15:35 - PDO disponibile
+2026-01-18 09:15:35 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:15:35 - userFoto è vuoto, resto con default
+2026-01-18 09:15:35 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:15:35 - HTML link profilo generato
+2026-01-18 09:15:35 - === FINE costruisciPagina ===
+
+2026-01-18 09:16:06 - === INIZIO costruisciPagina ===
+2026-01-18 09:16:06 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:16:06 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:16:06 - PDO finale: DISPONIBILE
+2026-01-18 09:16:06 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:16:06 - Utente loggato: prova
+2026-01-18 09:16:06 - User ID: 3
+2026-01-18 09:16:06 - PDO disponibile
+2026-01-18 09:16:06 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:16:06 - userFoto è vuoto, resto con default
+2026-01-18 09:16:06 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:16:06 - HTML link profilo generato
+2026-01-18 09:16:06 - === FINE costruisciPagina ===
+
+2026-01-18 09:16:25 - === INIZIO costruisciPagina ===
+2026-01-18 09:16:25 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:16:25 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:16:25 - PDO finale: DISPONIBILE
+2026-01-18 09:16:25 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:16:25 - Utente loggato: prova
+2026-01-18 09:16:25 - User ID: 3
+2026-01-18 09:16:25 - PDO disponibile
+2026-01-18 09:16:25 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:16:25 - userFoto è vuoto, resto con default
+2026-01-18 09:16:25 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:16:25 - HTML link profilo generato
+2026-01-18 09:16:25 - === FINE costruisciPagina ===
+
+2026-01-18 09:16:36 - === INIZIO costruisciPagina ===
+2026-01-18 09:16:36 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:16:36 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:16:36 - PDO finale: DISPONIBILE
+2026-01-18 09:16:36 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:16:36 - Utente loggato: prova
+2026-01-18 09:16:36 - User ID: 3
+2026-01-18 09:16:36 - PDO disponibile
+2026-01-18 09:16:36 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:16:36 - userFoto è vuoto, resto con default
+2026-01-18 09:16:36 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:16:36 - HTML link profilo generato
+2026-01-18 09:16:36 - === FINE costruisciPagina ===
+
+2026-01-18 09:16:45 - === INIZIO costruisciPagina ===
+2026-01-18 09:16:45 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:16:45 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:16:45 - PDO finale: DISPONIBILE
+2026-01-18 09:16:46 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:16:46 - Utente loggato: prova
+2026-01-18 09:16:46 - User ID: 3
+2026-01-18 09:16:46 - PDO disponibile
+2026-01-18 09:16:46 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:16:46 - userFoto è vuoto, resto con default
+2026-01-18 09:16:46 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:16:46 - HTML link profilo generato
+2026-01-18 09:16:46 - === FINE costruisciPagina ===
+
+2026-01-18 09:16:53 - === INIZIO costruisciPagina ===
+2026-01-18 09:16:53 - Pagina attiva: profilo.php
+2026-01-18 09:16:54 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:16:54 - PDO finale: DISPONIBILE
+2026-01-18 09:16:54 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:16:54 - Utente loggato: prova
+2026-01-18 09:16:54 - User ID: 3
+2026-01-18 09:16:54 - PDO disponibile
+2026-01-18 09:16:54 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:16:54 - userFoto è vuoto, resto con default
+2026-01-18 09:16:54 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:16:54 - HTML link profilo generato
+2026-01-18 09:16:54 - === FINE costruisciPagina ===
+
+2026-01-18 09:16:56 - === INIZIO costruisciPagina ===
+2026-01-18 09:16:56 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:16:56 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:16:56 - PDO finale: DISPONIBILE
+2026-01-18 09:16:56 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:16:56 - Utente loggato: prova
+2026-01-18 09:16:56 - User ID: 3
+2026-01-18 09:16:56 - PDO disponibile
+2026-01-18 09:16:56 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:16:56 - userFoto è vuoto, resto con default
+2026-01-18 09:16:56 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:16:56 - HTML link profilo generato
+2026-01-18 09:16:56 - === FINE costruisciPagina ===
+
+2026-01-18 09:17:37 - === INIZIO costruisciPagina ===
+2026-01-18 09:17:37 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:17:37 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:17:37 - PDO finale: DISPONIBILE
+2026-01-18 09:17:37 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:17:37 - Utente loggato: prova
+2026-01-18 09:17:37 - User ID: 3
+2026-01-18 09:17:37 - PDO disponibile
+2026-01-18 09:17:37 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:17:37 - userFoto è vuoto, resto con default
+2026-01-18 09:17:37 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:17:38 - HTML link profilo generato
+2026-01-18 09:17:38 - === FINE costruisciPagina ===
+
+2026-01-18 09:17:53 - === INIZIO costruisciPagina ===
+2026-01-18 09:17:53 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:17:53 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:17:53 - PDO finale: DISPONIBILE
+2026-01-18 09:17:53 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:17:53 - Utente loggato: prova
+2026-01-18 09:17:53 - User ID: 3
+2026-01-18 09:17:53 - PDO disponibile
+2026-01-18 09:17:53 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:17:53 - userFoto è vuoto, resto con default
+2026-01-18 09:17:53 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:17:53 - HTML link profilo generato
+2026-01-18 09:17:53 - === FINE costruisciPagina ===
+
+2026-01-18 09:18:02 - === INIZIO costruisciPagina ===
+2026-01-18 09:18:02 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:18:02 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:18:02 - PDO finale: DISPONIBILE
+2026-01-18 09:18:02 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:18:02 - Utente loggato: prova
+2026-01-18 09:18:02 - User ID: 3
+2026-01-18 09:18:02 - PDO disponibile
+2026-01-18 09:18:02 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:18:02 - userFoto è vuoto, resto con default
+2026-01-18 09:18:02 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:18:02 - HTML link profilo generato
+2026-01-18 09:18:02 - === FINE costruisciPagina ===
+
+2026-01-18 09:18:13 - === INIZIO costruisciPagina ===
+2026-01-18 09:18:13 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:18:13 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:18:13 - PDO finale: DISPONIBILE
+2026-01-18 09:18:13 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:18:13 - Utente loggato: prova
+2026-01-18 09:18:13 - User ID: 3
+2026-01-18 09:18:13 - PDO disponibile
+2026-01-18 09:18:13 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:18:13 - userFoto è vuoto, resto con default
+2026-01-18 09:18:13 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:18:13 - HTML link profilo generato
+2026-01-18 09:18:13 - === FINE costruisciPagina ===
+
+2026-01-18 09:18:23 - === INIZIO costruisciPagina ===
+2026-01-18 09:18:23 - Pagina attiva: profilo.php
+2026-01-18 09:18:23 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:18:23 - PDO finale: DISPONIBILE
+2026-01-18 09:18:23 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:18:23 - Utente loggato: prova
+2026-01-18 09:18:23 - User ID: 3
+2026-01-18 09:18:23 - PDO disponibile
+2026-01-18 09:18:23 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:18:23 - userFoto è vuoto, resto con default
+2026-01-18 09:18:23 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:18:23 - HTML link profilo generato
+2026-01-18 09:18:23 - === FINE costruisciPagina ===
+
+2026-01-18 09:18:25 - === INIZIO costruisciPagina ===
+2026-01-18 09:18:25 - Pagina attiva: login.php
+2026-01-18 09:18:25 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:18:25 - PDO finale: DISPONIBILE
+2026-01-18 09:18:25 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:18:25 - Utente NON loggato (SESSION username non settato)
+2026-01-18 09:18:25 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:18:25 - HTML link profilo generato
+2026-01-18 09:18:25 - === FINE costruisciPagina ===
+
+2026-01-18 09:18:28 - === INIZIO costruisciPagina ===
+2026-01-18 09:18:28 - Pagina attiva: profilo.php
+2026-01-18 09:18:28 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:18:28 - PDO finale: DISPONIBILE
+2026-01-18 09:18:28 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:18:28 - Utente loggato: user
+2026-01-18 09:18:28 - User ID: 1
+2026-01-18 09:18:28 - PDO disponibile
+2026-01-18 09:18:29 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:18:29 - userFoto è vuoto, resto con default
+2026-01-18 09:18:29 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:18:29 - HTML link profilo generato
+2026-01-18 09:18:29 - === FINE costruisciPagina ===
+
+2026-01-18 09:18:33 - === INIZIO costruisciPagina ===
+2026-01-18 09:18:33 - Pagina attiva: registrazione_donatore.php
+2026-01-18 09:18:33 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:18:33 - PDO finale: DISPONIBILE
+2026-01-18 09:18:33 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:18:33 - Utente loggato: user
+2026-01-18 09:18:33 - User ID: 1
+2026-01-18 09:18:33 - PDO disponibile
+2026-01-18 09:18:33 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:18:33 - userFoto è vuoto, resto con default
+2026-01-18 09:18:33 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:18:33 - HTML link profilo generato
+2026-01-18 09:18:33 - === FINE costruisciPagina ===
+
+2026-01-18 09:18:35 - === INIZIO costruisciPagina ===
+2026-01-18 09:18:35 - Pagina attiva: profilo.php
+2026-01-18 09:18:35 - PDO da GLOBALS (file già incluso)
+2026-01-18 09:18:35 - PDO finale: DISPONIBILE
+2026-01-18 09:18:35 - Foto navbar iniziale (default): /images/profilo.jpg
+2026-01-18 09:18:35 - Utente loggato: user
+2026-01-18 09:18:35 - User ID: 1
+2026-01-18 09:18:35 - PDO disponibile
+2026-01-18 09:18:35 - Foto recuperata dal DB: NESSUNA
+2026-01-18 09:18:35 - userFoto è vuoto, resto con default
+2026-01-18 09:18:35 - Foto navbar finale: /images/profilo.jpg
+2026-01-18 09:18:35 - HTML link profilo generato
+2026-01-18 09:18:35 - === FINE costruisciPagina ===
+

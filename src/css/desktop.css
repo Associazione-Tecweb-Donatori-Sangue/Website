@@ -1395,3 +1395,33 @@ small, .form_std small {
     color: #d90429;
     font-weight: 700;
 }
+
+/*-----------------*/
+/* TASTO INDIETRO  */
+/*-----------------*/
+
+.back-button-container {
+  margin-left: 2%;
+  text-align: left;
+  position: absolute;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #a7cce7; /* Stesso azzurro degli altri bottoni */
+  color: #1a1a1a;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 700;
+  border-radius: 0.8em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(172, 210, 230, 0.3);
+}
+
+.back-button:hover {
+  background-color: #4f5abb; /* Blu scuro hover */
+  color: #ffffff;
+  box-shadow: 0 6px 15px rgba(79, 90, 187, 0.4);
+  transform: translateY(-2px);
+}
