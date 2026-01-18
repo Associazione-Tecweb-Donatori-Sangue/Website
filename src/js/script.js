@@ -222,3 +222,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+let resizeTimer;
+window.addEventListener("resize", () => {
+  // Aggiunge la classe che blocca le animazioni
+  document.body.classList.add("resize-animation-stopper");
+  
+  // Resetta il timer se stiamo ancora ridimensionando
+  clearTimeout(resizeTimer);
+  
+  // Dopo 400ms che hai finito di ridimensionare, riattiva le animazioni
+  resizeTimer = setTimeout(() => {
+    document.body.classList.remove("resize-animation-stopper");
+  }, 400);
+});

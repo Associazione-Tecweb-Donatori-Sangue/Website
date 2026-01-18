@@ -4,12 +4,13 @@ HTML
 ✅ sistemare modalità di visualizzazione della sezione "le tue donazioni" nel profilo di un donatore (un donatore vede anche le prenotazioni passate) --> GG
 - sistemare orari di apertura/chiusura/prenotazione --> GN
 ✅ inserire un tasto per tornare indietro in modifica dati donatore (e registra dati donatore) --> GG
-- hamburger menu --> GG
+✅ hamburger menu --> GG
 
 CSS
 - fare print.css --> MDP
 - fare mobile.css
-- hamburger menu --> GG
+    - il fatto che ci sia una fascia vuota a destra del main probabilmente è causato dal footer
+✅ hamburger menu --> GG
 - sistemare sfondo header
 - sistemare css about_us
 - Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente)
