@@ -44,8 +44,15 @@ try {
             echo '<td>' . $oraIt . '</td>';
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
             echo '<td class="celle_azioni">';
+            // Tasto Modifica (rimasto invariato, per ora solo grafico)
             echo '<button type="button" class="btn_tabella btn_edit">Modifica</button>';
-            echo '<button type="button" class="btn_tabella btn_delete">Elimina</button>';
+            
+            // --- TASTO ELIMINA (Ora è un FORM funzionante) ---
+            // Nota l'action "../cancellaPrenotazione.php": risale di un livello perché siamo dentro "pages/" virtualmente
+            echo '<form action="../cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler eliminare questa prenotazione?\');">';
+            echo '<input type="hidden" name="id_prenotazione" value="' . $prenotazione['id'] . '">';
+            echo '<button type="submit" class="btn_tabella btn_delete" style="cursor: pointer;">Elimina</button>';
+            echo '</form>';
             echo '</td>';
             echo '</tr>';
         }

@@ -124,7 +124,12 @@ try {
                 <td>' . $oraIt . '</td>
                 <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
                 <td>' . htmlspecialchars($p['nome_sede']) . '</td>
-                <td><button type="button" class="link_azione">Annulla</button></td>
+                <td>
+                    <form action="/php/cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
+                        <input type="hidden" name="id_prenotazione" value="' . $p['id'] . '">
+                        <button type="submit" class="link_azione" style="cursor: pointer; background: none; border: none; text-decoration: underline; color: #d9534f; padding: 0;">Annulla</button>
+                    </form>
+                </td>
             </tr>';
         }
     } else {
