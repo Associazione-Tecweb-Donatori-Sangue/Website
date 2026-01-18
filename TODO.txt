@@ -27,9 +27,9 @@ PHP
 - mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra
 ✅ gruppo sanguigno e sesso non sono precompilati nel modifica dati donatore di user --> GG
 ✅ lettera maiuscola dello username nella pagina profilo --> GG
-- admin se va in dona_ora visualizza un messaggio tipo "bro cazzo fai" --> GG
+✅ admin se va in dona_ora visualizza un messaggio tipo "bro cazzo fai" --> GG
 - unire file get_prenotazioni --> GN
-- mettere controlli sui campi inseriti in registrazione donatore (data di nascita, peso) --> GG
+✅ mettere controlli sui campi inseriti in registrazione donatore (data di nascita, peso) --> GG
 ✅ sistemare breadcrumb (modifica dati donatore e registra nuovo donatore) --> GG
 
 DB

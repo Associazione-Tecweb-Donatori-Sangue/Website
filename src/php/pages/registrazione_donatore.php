@@ -11,6 +11,28 @@ if (!isset($_SESSION['user_id'])) {
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+    // 1. Controllo Età
+    $dataNascita = new DateTime($_POST['data_nascita']);
+    $oggi = new DateTime();
+    $eta = $oggi->diff($dataNascita)->y;
+
+    if ($eta < 18 || $eta > 60) {
+        $_SESSION['messaggio_flash'] = "Errore: Devi avere almeno 18 anni e non più di 60 anni per registrarti come donatore.";
+        $_SESSION['dati_inseriti'] = $_POST; // <--- SALVO I DATI
+        header("Location: registrazione_donatore.php");
+        exit();
+    }
+
+    // 2. Controllo Peso (Standard 50kg)
+    $peso = floatval($_POST['peso_corporeo_in_kg']);
+    if ($peso < 50) {
+        $_SESSION['messaggio_flash'] = "Errore: Il peso minimo per donare è 50 Kg.";
+        $_SESSION['dati_inseriti'] = $_POST; // <--- SALVO I DATI
+        header("Location: registrazione_donatore.php");
+        exit();
+    }
+
     try {
         // Controllo se sto facendo INSERT (nuovo) o UPDATE (modifica)
         // Verifico se esiste già un record per questo user_id
@@ -70,6 +92,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // 2. PREPARAZIONE DELLA PAGINA (Visualizzazione)
 $template = file_get_contents('../../html/registrazione_donatore.html');
 
+if (isset($_SESSION['messaggio_flash'])) {
+    $colore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f8d7da' : '#d4edda';
+    $testoColore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#721c24' : '#155724';
+    $bordo = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f5c6cb' : '#c3e6cb';
+
+    $msgHTML = '<div style="background-color: '.$colore.'; color: '.$testoColore.'; border: 1px solid '.$bordo.'; max-width: 800px; padding: 15px; margin: 20px auto; border-radius: 5px; text-align: center;">
+                    ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
+                </div>';
+    
+    // Inserisco il messaggio prima del form
+    $template = str_replace('<form', $msgHTML . '<form', $template);
+    
+    unset($_SESSION['messaggio_flash']);
+}
+
 // Inizializzo variabili vuote (caso "Nuova Registrazione")
 $dati = [
     'nome' => '', 
@@ -114,6 +151,28 @@ if ($userDB) {
     $metaKeywords = "modifica, profilo, donatore, aggiornamento, dati, ATDS";
 }
 
+// Se ci sono dati inseriti precedentemente (errore di validazione), li uso per precompilare il form
+if (isset($_SESSION['dati_inseriti'])) {
+    $temp = $_SESSION['dati_inseriti'];
+    
+    // Mappo i campi del FORM ($temp) sui campi attesi dall'array $dati (DB)
+    // Nota: alcuni nomi nel form sono diversi da quelli nel DB/Array interno
+    $dati['nome'] = $temp['nome'];
+    $dati['cognome'] = $temp['cognome'];
+    $dati['data_nascita'] = $temp['data_nascita'];
+    $dati['luogo_nascita'] = $temp['luogo_nascita'];
+    $dati['codice_fiscale'] = $temp['codice_fiscale'];
+    $dati['indirizzo'] = $temp['residenza']; // Nel form si chiama 'residenza', nell'array 'indirizzo'
+    $dati['telefono'] = $temp['telefono'];
+    $dati['email'] = $temp['email'];
+    $dati['gruppo_sanguigno'] = $temp['gruppo_sanguigno'];
+    $dati['sesso'] = isset($temp['sesso']) ? $temp['sesso'] : '';
+    $dati['peso'] = $temp['peso_corporeo_in_kg']; // Nel form è 'peso_corporeo_in_kg', nell'array 'peso'
+
+    // Pulisco la sessione per non rivedere questi dati se ricarico la pagina domani
+    unset($_SESSION['dati_inseriti']);
+}
+
 // 3. SOSTITUZIONE DEI SEGNAPOSTI (Input di testo)
 $template = str_replace('[valore_nome]', $dati['nome'], $template);
 $template = str_replace('[valore_cognome]', $dati['cognome'], $template);
@@ -152,6 +211,11 @@ if ($dati['sesso'] == 'Maschio') {
 } elseif ($dati['sesso'] == 'Femmina') {
     $template = str_replace('value="Femmina"', 'value="Femmina" checked', $template);
 }
+
+// 1. Imposto la data massima selezionabile (Oggi - 18 anni)
+$dataMassima = date('Y-m-d', strtotime('-18 years'));
+// Aggiungo l'attributo max all'input data_nascita
+$template = str_replace('id="data_nascita"', 'id="data_nascita" max="'.$dataMassima.'"', $template);
 
 // 5. STAMPA FINALE
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <a href="/php/pages/profilo.php">Profilo</a> / <span>'.$titoloPagina.'</span></p>';
