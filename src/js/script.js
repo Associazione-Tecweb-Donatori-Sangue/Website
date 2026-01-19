@@ -65,13 +65,31 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Scroll effect per sticky header
     const header = document.querySelector('.sticky-header');
+    let lastScrollTop = 0; // Variabile per ricordare la posizione precedente
+
     if (header) {
         window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+            // 1. Logica Colore Sfondo (.scrolled)
+            if (scrollTop > 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
+
+            // 2. Logica Nascondi/Mostra (Direzione Scroll)
+            // Se scrollo GIÙ e sono oltre i 100px dall'inizio...
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // ...AGGIUNGO la classe che la nasconde
+                header.classList.add('header-hidden');
+            } else {
+                // Se scrollo SU (o clicco "torna su"), RIMUOVO la classe e la mostro
+                header.classList.remove('header-hidden');
+            }
+            
+            // Aggiorno la posizione per il prossimo controllo
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
         });
     }
     

@@ -82,7 +82,11 @@ html, body{
   position: sticky;
   top: 0.5em;
   z-index: 1000;
-  transition: all 0.3s ease;
+  transition: transform 0.6s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticky-header.header-hidden{
+  transform: translateY(-150%);
 }
 
 header{

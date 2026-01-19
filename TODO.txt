@@ -29,10 +29,6 @@ DB
 - sistemare tabelle --> DG
 - pulire file init.sql --> DG
 
-JS
-- far scomparire il menu quando si scorre verso l'alto --> GN
-- far scomparire la navbar anche quando nel footer si clicca torna su --> GN
-
 GENERALI
 - sistemare tutti i commenti --> DG
 - implementare pop-up di conferma in logout ed elimina profilo (sei sicuro di voler...) --> 🔴
@@ -45,7 +41,6 @@ EXTRA
 - aggiungere "prenota qui" sotto le card delle sedi in "dove trovarci" --> 🔴
 - accorciare "chi siamo" e trasformarlo in FAQ --> DG
 - Modalità scura
-- la navbar stessa conviene che scompaia quando nel footer si clicca torna su (oltre che ovviamente quando si scrolla verso il fondo della pagina), questo perchè è errato che la navbar copra anche parzialmente la pagina
 - quando ci sono errori nel form di registrazione (le password non coincidono) è meglio non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito
 - nello storico delle prenotazioni, nelle dashboard se un utente non ha prenotazioni o donazioni precedenti, nascondere l'intestazione della tabella (data, ora ecc)
 - nel footer mancano i link a telefono e email
