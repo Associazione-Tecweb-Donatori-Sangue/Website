@@ -5,13 +5,13 @@
 }
 
 :root{
-  --primary-bg-color: #f7fbfc;
+  --primary-bg-color: #fbfefe;
   --title-color: #000000;
 
   --link-button-color: #ffffff;
   --link-txt-color: #000000;
-  --link-active-bg-color1: #4849a0;
-  --link-active-bg-color2: #293d86;
+  --link-active-bg-color1: #17506f;
+  --link-active-bg-color2: #082636;
   --link-active-txt-color: #ffffff;
 
   --card-bg-color: #a0c7cf;
@@ -75,9 +75,10 @@ html, body{
 /*---------------------*/
 
 .sticky-header{
-  width: 54%;
+  width: fit-content;
   margin: 0 auto;
-  border-radius: 1.6em;
+  padding: 0 1.1em;
+  border-radius: 1.6em 1.6em 3em 3em;
   position: sticky;
   top: 0.5em;
   z-index: 1000;
@@ -92,7 +93,7 @@ header{
 }
 
 .sticky-header.scrolled {
-  background-color: #acd2e6fb;
+  background-color: #749BA3;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -138,10 +139,6 @@ header{
   color: var(--link-active-txt-color);
 }
 
-#menu ul li a{
-  border: 2px solid #000000;
-}
-
 #menu ul li a#currentLink {
   background: linear-gradient(135deg, var(--link-active-bg-color2) 0%, var(--link-active-bg-color1) 100%);
   color: var(--link-active-txt-color); 
@@ -158,7 +155,6 @@ header{
   background-color: transparent;
   padding: 0;
   border-radius: 50%;
-  border: 2px solid black;
   margin-left: 1em;
 }
 
