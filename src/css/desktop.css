@@ -47,9 +47,6 @@ body.error_background {
   background-color: #fbfefe;
 }
 
-/*-----------------*/
-/*AIUTI ALLA NAVIGAZIONE*/
-/*-----------------*/
 
 .navigationHelper{
   position: absolute;
@@ -75,9 +72,6 @@ body.error_background {
   outline: 3px solid #ff0;
 }
 
-/*---------------------*/
-/*SEZIONE HEADER E MENU*/
-/*---------------------*/
 
 .sticky-header{
   width: fit-content;
@@ -121,7 +115,6 @@ header{
   gap: 0.8em; 
 }
 
-/* Stile comune a tutti i link (bottoni) */
 #menu ul li a, 
 #card_intro a, 
 #card_sedi a, 
@@ -139,7 +132,7 @@ header{
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover comune a tutti i link (bottoni) */
+
 #menu a:hover,
 #card_intro a:hover,
 #card_sedi a:hover,
@@ -206,9 +199,7 @@ header{
   transition: all 0.3s ease;
 }
 
-/*-----------------*/
-/*SEZIONE BREADCRUMB*/
-/*-----------------*/
+
 #breadcrumb{
   justify-content: center;
   display: flex;
@@ -230,11 +221,7 @@ header{
   font-weight: bold; 
 }
 
-/*-----------------*/
-/*SEZIONE MAIN*/
-/*-----------------*/
 
-/*index.html*/
 
 #landing_title{      
   height: calc(100vh - 11em);
@@ -307,7 +294,7 @@ main{
   height: 100%;
 }
 
-/* Stile comune per tutte le card */
+
 #card_intro,
 #card_unisciti,
 #card_sceglierci,
@@ -340,7 +327,6 @@ main{
 }
 
 
-/* Prima card - INTRO */
 #card_intro{
   margin-top: 2.5em;
 }
@@ -375,7 +361,7 @@ main{
   border-radius: 0 1.4em 1.4em 0;
 }
 
-/* Seconda card - UNISCITI*/
+
 #card_unisciti{
   flex-direction: column;
 }
@@ -437,7 +423,7 @@ main{
   transform: scale(1.05);
 }
 
-/* Terza card - PERCHE SCEGLIERCI*/
+
 #card_sceglierci{
   flex-direction: row-reverse;
 }
@@ -479,7 +465,7 @@ main{
   border-radius: 1.4em 0 0 1.4em;
 }
 
-/* Quarta card - SEDI */
+
 #card_sedi{
   justify-content: center;
   align-items: center;
@@ -525,7 +511,7 @@ main{
   color: var(--card-sedi-subtitle-color);
 }
 
-/* Footer */
+
 footer {
   background: linear-gradient(135deg, var(--footer-primary-color) 0%, var(--footer-secondary-color) 100%);
   color: var(--card-title-color);
@@ -686,12 +672,12 @@ footer {
 .main_std {
     background-color: white;
     padding: 40px;
-    border-radius: 15px;      /* Arrotondamento leggermente minore del contenitore esterno */
+    border-radius: 15px;
 }
 
 .dashboard-container {
-    max-width: 800px; /* Larghezza desiderata */
-    margin: 0 auto; /* Centratura */
+    max-width: 800px;
+    margin: 0 auto;
     width: 100%;
 }
 
@@ -728,14 +714,6 @@ footer {
   font-weight: 400;
 }
 
-/*-----------------*/
-/* DONA ORA */
-/*-----------------*/
-
-
-/*-----------------*/
-/* CHI SIAMO */
-/*-----------------*/
 
 .titolo_terziario {
   font-size: 2em;
@@ -843,9 +821,6 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/*-----------------*/
-/*  DOVE TROVARCI  */
-/*-----------------*/
 
 .search-container {
   width: 90%;
@@ -946,7 +921,6 @@ footer {
 }
 
 
-/*TUTTI I FORM!! */
 
 form, .form_std, #prenotaForm {
   max-width: 380px;
@@ -994,15 +968,31 @@ fieldset.form > div, .form_std fieldset > div, #prenotaForm fieldset > div {
   font-size: 14px;
 }
 
-.input_std input, select, textarea, #prenotaForm input {
+
+.input_std input, 
+textarea, 
+#prenotaForm input,
+select {
   width: 100%;
   padding: 10px 14px;
   border: 2px solid #acd2e6;
   border-radius: 0.8em;
   font-size: 14px;
-  background: #f9fcfe;
+  background-color: #f9fcfe; 
   transition: all 0.3s ease;
   box-sizing: border-box;
+}
+
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%234f5abb" height="20" width="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polygon points="5,7 15,7 10,12"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
+  padding-right: 40px;
+  cursor: pointer;
 }
 
 #prenotaForm input:focus, 
@@ -1012,19 +1002,17 @@ select:focus,
 input[type="date"]:focus {
   outline: none;
   border-color: #4f5abb;
-  background: white;
+  background-color: white; 
   box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
 }
 
-/* Il contenitore serve solo a gestire lo spazio, non deve avere bordi */
 .select_sedi {
     width: 100%;
-    max-width: 300px; /* Larghezza stretta */
-    margin: 10px 0;   /* Allinea a sinistra (0 a destra) */
+    max-width: 300px;
+    margin: 10px 0; 
     display: block;
 }
 
-/* Applichiamo lo stile direttamente alla select */
 .select_sedi select {
     width: 100%;
     padding: 10px 14px;
@@ -1053,16 +1041,15 @@ small, .form_std small {
 }
 
 .radio_std {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: auto 20px;
+  column-gap: 10px; 
   align-items: center;
-  gap: 15px;
-  padding: 10px 14px;
+  padding: 8px 14px;
   background: #f9fcfe;
   border: 2px solid #acd2e6;
   border-radius: 0.8em;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
@@ -1071,26 +1058,22 @@ small, .form_std small {
   background: #e8f4f8;
 }
 
+.radio_std label {
+  font-weight: 500;
+  cursor: pointer;
+  margin: 0;
+}
+
 .radio_std input[type="radio"] {
   width: 18px;
   height: 18px;
   accent-color: #4f5abb;
   cursor: pointer;
+  justify-self: end;
 }
 
-.radio_std label {
-  margin: 0;
-  
-  cursor: pointer;
-  font-weight: 500;
-}
 .radio_std:has(input[type="radio"]:checked) {
-  border-color: #4f5abb; 
-  background: #f9fcfe;
-}
-
-.radio_std input[type="radio"]:checked {
-  accent-color: #4f5abb;
+  border-color: #4f5abb;
 }
 
 .button_std {
@@ -1351,7 +1334,7 @@ small, .form_std small {
   }
 }
 
-/* Titolo della sezione sobrio */
+
 .titolo-dashboard {
     font-family: 'Jost', sans-serif;
     font-size: 1.4rem;
@@ -1359,43 +1342,41 @@ small, .form_std small {
     margin-bottom: 25px;
     font-weight: 700;
     display: block;
-    border-bottom: 2px solid #acd2e6; /* Linea azzurra sottile */
+    border-bottom: 2px solid #acd2e6;
     padding-bottom: 5px;
     width: fit-content;
 }
 
-/* Lista dati verticale (Senza griglia) */
 .lista_dati {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-/* Contenitore di ogni riga */
 .lista_dati div {
     padding: 12px 0;
-    border-bottom: 1px solid #f0f4f8; /* Separatore leggerissimo */
+    border-bottom: 1px solid #f0f4f8;
     display: flex;
     justify-content: flex-start;
     align-items: baseline;
 }
 
-/* Rimuove l'ultimo bordo per pulizia */
+
 .lista_dati div:last-child {
     border-bottom: none;
 }
 
-/* Etichette (DT) */
+
 .lista_dati dt {
-    width: 180px;      /* Allinea tutti i dati sulla stessa colonna immaginaria */
+    width: 180px;
     font-size: 0.85rem;
     color: #7f8c8d;
     text-transform: uppercase;
     font-weight: 600;
-    flex-shrink: 0;    /* Impedisce all'etichetta di restringersi */
+    flex-shrink: 0;
 }
 
-/* Valori (DD) */
+
 .lista_dati dd {
     margin: 0;
     font-size: 1.1rem;
@@ -1403,15 +1384,12 @@ small, .form_std small {
     font-weight: 500;
 }
 
-/* Gruppo Sanguigno sobrio ma chiaro */
+
 .lista_dati dd.evidenziato {
     color: #d90429;
     font-weight: 700;
 }
 
-/*-----------------*/
-/* TASTO INDIETRO  */
-/*-----------------*/
 
 .back-button-container {
   margin-left: 2%;
@@ -1422,7 +1400,7 @@ small, .form_std small {
 .back-button {
   display: inline-block;
   padding: 10px 20px;
-  background-color: #a7cce7; /* Stesso azzurro degli altri bottoni */
+  background-color: #a7cce7;
   color: #1a1a1a;
   text-decoration: none;
   font-size: 14px;
@@ -1433,15 +1411,12 @@ small, .form_std small {
 }
 
 .back-button:hover {
-  background-color: #4f5abb; /* Blu scuro hover */
+  background-color: #4f5abb;
   color: #ffffff;
   box-shadow: 0 6px 15px rgba(79, 90, 187, 0.4);
   transform: translateY(-2px);
 }
 
-/* =========================================
-   PAGINE ERRORE (404, 500)
-========================================= */
 
 .error_page {
   min-height: 100vh;
@@ -1505,10 +1480,10 @@ small, .form_std small {
 .error_actions a {
   display: inline-block;
   padding: 1.2em;
-  background-color: var(--link-button-color); /* Bianco come navbar */
-  color: var(--link-txt-color); /* Nero come navbar */
+  background-color: var(--link-button-color);
+  color: var(--link-txt-color);
   text-decoration: none;
-  border-radius: 1.3em; /* Come i bottoni navbar */
+  border-radius: 1.3em;
   font-weight: bold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -1518,7 +1493,7 @@ small, .form_std small {
 
 .error_actions a:hover {
   background: linear-gradient(135deg, var(--link-active-bg-color2) 0%, var(--link-active-bg-color1) 100%);
-  color: var(--link-active-txt-color); /* Bianco come navbar */
+  color: var(--link-active-txt-color);
   box-shadow: 0 6px 15px rgba(23, 80, 111, 0.4);
 }
 
