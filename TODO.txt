@@ -1,6 +1,5 @@
 HTML
 - Fare pagine 404.html e 500.html --> GN
-- sistemare orari di apertura/chiusura/prenotazione --> GN
 - aggiungere collegamenti link a telefono e email nel footer --> DG
 
 CSS
@@ -13,7 +12,7 @@ CSS
 - Sistemare i colori (tanti non sono in contrasto) --IMPORTANTEEEEEE--> DG
 - sistemare i pochi stili inline --> 🔴
 - modificare stili nei blocchi html presenti nei file .php --> 🔴
-- sistemare tabelle prenotazioni --> GN
+- sistemare tabelle prenotazioni --> GN (prenotazioni verosimili ogni tot mesi in base al sesso)
 - gestire bene lo stretch della navabar --> 🔴
 
 PHP

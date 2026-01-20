@@ -3,19 +3,15 @@
 ========================================= */
 
 function caricaPrenotazioniAdmin(sede = 'tutte') {
-    console.log('Chiamata caricaPrenotazioniAdmin con sede:', sede);
     fetch(`/php/get_prenotazioni_admin.php?sede=${sede}`) 
         .then(response => {
-            console.log('Response status:', response.status);
             if (!response.ok) throw new Error('Errore nel caricamento');
             return response.text();
         })
         .then(html => {
-            console.log('Risposta ricevuta:', html);
             const tbody = document.querySelector('.tabella_dati tbody');
             if (tbody) {
                 tbody.innerHTML = html;
-                console.log('Tabella aggiornata');
             } else {
                 console.error('tbody non trovato');
             }
@@ -27,10 +23,33 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
         });
 }
 
+/* =========================================
+   GESTIONE PRENOTAZIONI LATO USER
+========================================= */
+
+function caricaPrenotazioniUser(sede = 'tutte') {
+    fetch(`/php/get_prenotazioni_user.php?sede=${sede}`)
+        .then(response => {
+            if (!response.ok) throw new Error('Errore nel caricamento');
+            return response.text();
+        })
+        .then(html => {
+            const tbody = document.querySelector('.tabella_dati tbody');
+            if (tbody) {
+                tbody.innerHTML = html;
+            } else {
+                console.error('tbody non trovato');
+            }
+        })
+        .catch(error => {
+            console.error('Errore:', error);
+            const tbody = document.querySelector('.tabella_dati tbody');
+            if (tbody) tbody.innerHTML = '<tr><td colspan="4" style="text-align: center;">Errore nel caricamento dei dati</td></tr>';
+        });
+}
+
 
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM caricato');
-    
     // Gestione ricerca sedi (pagina dove_trovarci.html)
     const searchInput = document.getElementById('searchInput');
     const noResultsMessage = document.getElementById('noResults');
@@ -98,16 +117,10 @@ document.addEventListener('DOMContentLoaded', function() {
     const isAdminPage = document.body.classList.contains('profilo-admin');
     const isUserPage = document.body.classList.contains('profilo-user');
     
-    console.log('Admin page:', isAdminPage);
-    console.log('User page:', isUserPage);
-    console.log('Select trovato:', selectSede !== null);
-    
     // Carica dati iniziali
     if (isAdminPage) {
-        console.log('Avvio caricamento prenotazioni admin...');
         caricaPrenotazioniAdmin();
     } else if (isUserPage) {
-        console.log('Avvio caricamento prenotazioni user...');
         caricaPrenotazioniUser();
     }
     
@@ -115,11 +128,67 @@ document.addEventListener('DOMContentLoaded', function() {
     if (selectSede) {
         selectSede.addEventListener('change', function() {
             const sede = this.value;
-            console.log('Filtro sede cambiato:', sede);
             if (isAdminPage) {
                 caricaPrenotazioniAdmin(sede);
             } else if (isUserPage) {
                 caricaPrenotazioniUser(sede);
+            }
+        });
+    }
+
+    /* =========================================
+       BLOCCA DATE PASSATE NEL FORM PRENOTAZIONE
+    ========================================= */
+    const inputData = document.getElementById('data');
+    if (inputData) {
+        const oggi = new Date().toISOString().split('T')[0];
+        inputData.setAttribute('min', oggi);
+    }
+
+    // Quando l'utente seleziona una sede, carica i giorni pieni
+    if (selectLuogo && inputData) {
+        selectLuogo.addEventListener('change', function() {
+            const sedeId = this.value;
+            
+            if (!sedeId) {
+                // Reset se nessuna sede selezionata
+                inputData.removeAttribute('disabled');
+                return;
+            }
+            
+            // Fetch giorni pieni per questa sede
+            fetch(`/php/get_giorni_pieni.php?sede_id=${sedeId}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.error) {
+                        console.error('Errore:', data.error);
+                        return;
+                    }
+                    
+                    // Salva i giorni pieni in un attributo data
+                    inputData.setAttribute('data-giorni-pieni', JSON.stringify(data.giorni_pieni));
+                    
+                    // Reset del valore se il giorno selezionato è pieno
+                    const valoreAttuale = inputData.value;
+                    if (valoreAttuale && data.giorni_pieni.includes(valoreAttuale)) {
+                        inputData.value = '';
+                        alert('Il giorno selezionato è completo. Scegli un\'altra data.');
+                    }
+                })
+                .catch(error => console.error('Errore caricamento giorni pieni:', error));
+        });
+
+        // Validazione quando l'utente seleziona una data
+        inputData.addEventListener('change', function() {
+            const giorniPieniStr = this.getAttribute('data-giorni-pieni');
+            if (!giorniPieniStr) return;
+            
+            const giorniPieni = JSON.parse(giorniPieniStr);
+            const dataSelezionata = this.value;
+            
+            if (giorniPieni.includes(dataSelezionata)) {
+                alert('Questo giorno è già completo. Scegli un\'altra data.');
+                this.value = '';
             }
         });
     }

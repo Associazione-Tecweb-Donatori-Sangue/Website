@@ -39,12 +39,78 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        // --- C. Controllo Doppie Prenotazioni ---
+        // --- C. NUOVO: Controllo intervallo minimo tra donazioni ---
+        // Recupera sesso e ultima prenotazione dell'utente
+        $stmtUtente = $pdo->prepare(
+            "SELECT d.sesso 
+             FROM donatori d 
+             WHERE d.user_id = ?"
+        );
+        $stmtUtente->execute([$user_id]);
+        $donatore = $stmtUtente->fetch(PDO::FETCH_ASSOC);
+
+        if (!$donatore) {
+            $_SESSION['messaggio_flash'] = "Errore: Profilo donatore non trovato. Completa la registrazione.";
+            header("Location: pages/dona_ora.php");
+            exit();
+        }
+        
+        $sesso = $donatore['sesso'];
+        
+        // Determina l'intervallo minimo in base al sesso
+        $mesiIntervallo = ($sesso === 'Maschio') ? 3 : 6;
+        
+        // Recupera l'ultima prenotazione
+        $stmtUltima = $pdo->prepare(
+            "SELECT MAX(data_prenotazione) as ultima_data 
+             FROM lista_prenotazioni 
+             WHERE user_id = ?"
+        );
+        $stmtUltima->execute([$user_id]);
+        $risultato = $stmtUltima->fetch(PDO::FETCH_ASSOC);
+
+        if ($risultato['ultima_data']) {
+            $ultimaData = new DateTime($risultato['ultima_data']);
+            $dataPrenotazione = new DateTime($data);
+            
+            // Calcola la data minima consentita
+            $dataMinima = clone $ultimaData;
+            $dataMinima->modify("+{$mesiIntervallo} months");
+            
+            // Verifica se la nuova data rispetta l'intervallo
+            if ($dataPrenotazione < $dataMinima) {
+                $dataFormattata = $dataMinima->format('d/m/Y');
+                $_SESSION['messaggio_flash'] = "ATTENZIONE! Devi attendere {$mesiIntervallo} mesi dall'ultima donazione, potrai prenotare dal {$dataFormattata} in poi.";
+                header("Location: pages/dona_ora.php");
+                exit();
+            }
+        }
+
+        // --- D. Controllo Doppie Prenotazioni ---
         // Evita che l'utente prenoti due volte lo stesso giorno
         $stmtCheck = $pdo->prepare("SELECT id FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione = ?");
         $stmtCheck->execute([$user_id, $data]);
         if ($stmtCheck->rowCount() > 0) {
             $_SESSION['messaggio_flash'] = "Hai già una prenotazione per questa data!";
+            header("Location: pages/dona_ora.php");
+            exit();
+        }
+
+        // --- E. Controllo disponibilità fascia oraria ---
+        // Verifica quante prenotazioni ci sono già per quella sede, data e ora
+        $stmtDisponibilita = $pdo->prepare(
+            "SELECT COUNT(*) as totale 
+             FROM lista_prenotazioni 
+             WHERE sede_id = ? 
+             AND data_prenotazione = ? 
+             AND ora_prenotazione = ?"
+        );
+        $stmtDisponibilita->execute([$sede_id, $data, $ora]);
+        $risultato = $stmtDisponibilita->fetch(PDO::FETCH_ASSOC);
+        
+        // Se ci sono già 2 prenotazioni, la fascia è piena
+        if ($risultato['totale'] >= 2) {
+            $_SESSION['messaggio_flash'] = "Spiacenti, la fascia oraria selezionata è già completa. Scegli un altro orario.";
             header("Location: pages/dona_ora.php");
             exit();
         }

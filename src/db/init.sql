@@ -23,10 +23,7 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
---
 -- Struttura della tabella `donatori`
---
-
 CREATE TABLE `donatori` (
   `user_id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
@@ -42,19 +39,13 @@ CREATE TABLE `donatori` (
   `peso` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
 -- Dump dei dati per la tabella `donatori`
---
-
 INSERT INTO `donatori` (`user_id`, `nome`, `cognome`, `data_nascita`, `luogo_nascita`, `codice_fiscale`, `indirizzo`, `telefono`, `email`, `gruppo_sanguigno`, `sesso`, `peso`) VALUES
 (1, 'Mario', 'Rossi', '1990-05-15', 'Milano', 'RSSMRA90E15F205X', 'Via Roma 1, Milano', '+39 1234567890', 'user@user.com', 'A+', 'Maschio', 82.5);
 
 -- --------------------------------------------------------
 
---
 -- Struttura della tabella `lista_prenotazioni`
---
-
 CREATE TABLE `lista_prenotazioni` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
@@ -64,23 +55,16 @@ CREATE TABLE `lista_prenotazioni` (
   `tipo_donazione` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
 -- Dump dei dati per la tabella `lista_prenotazioni`
---
-
 INSERT INTO `lista_prenotazioni` (`id`, `user_id`, `sede_id`, `data_prenotazione`, `ora_prenotazione`, `tipo_donazione`) VALUES
 (1, 1, 1, '2026-07-15', '10:00', 'Sangue intero'),
 (2, 1, 3, '2026-07-20', '14:30', 'Plasma'),
 (3, 1, 5, '2026-08-01', '09:00', 'Piastrine'),
 (4, 1, 7, '2025-09-30', '10:45', 'Sangue intero');
 
-
 -- --------------------------------------------------------
 
---
 -- Struttura della tabella `sedi`
---
-
 CREATE TABLE `sedi` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL,
@@ -91,10 +75,7 @@ CREATE TABLE `sedi` (
   `telefono` varchar(20) DEFAULT '+39 0123456789'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
 -- Dump dei dati per la tabella `sedi`
---
-
 INSERT INTO `sedi` (`id`, `nome`, `immagine`, `indirizzo`, `descrizione`, `link_maps`, `telefono`) VALUES
 (1, 'ATDS Piovego', 'images/sede_piovego.jpg', 'Viale Giuseppe Colombo, 1, 35131 Padova PD', 'Piccola struttura nel quartiere Piovego, facilmente raggiungibile, con personale qualificato e orari flessibili per le donazioni.', 'https://maps.app.goo.gl/vEC15q9E76uzmeAt6', '+39 0123456789'),
 (2, 'ATDS Lum250', 'images/sede_lum250.jpg', 'Via Luigi Luzzatti, 8, 35121 Padova PD', 'Piccolo punto donazioni vicino allAula LuM250, comodo soprattutto per studenti e personale universitario.', 'https://maps.app.goo.gl/fH1NsTRULSp1PnAG6', '+39 0123456789'),
@@ -107,10 +88,7 @@ INSERT INTO `sedi` (`id`, `nome`, `immagine`, `indirizzo`, `descrizione`, `link_
 
 -- --------------------------------------------------------
 
---
 -- Struttura della tabella `utenti`
---
-
 CREATE TABLE `utenti` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
@@ -119,10 +97,7 @@ CREATE TABLE `utenti` (
   `foto_profilo` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
 
---
 -- Dump dei dati per la tabella `utenti`
---
-
 INSERT INTO `utenti` (`id`, `username`, `password`, `ruolo`, `foto_profilo`) VALUES
 (1, 'user', '$2y$10$5oYlh4Kof9s1YqQy6pl2cOksZIcfK6Gfd9OOK.cDFfjwfbVK7IfcO', 'user', 'profile_1_696b6c61663ef.jpg'),
 (2, 'admin', '$2y$10$OyRC0xNC8fy8o5tMJbldquZ/1GwdVazcuEdukp51VJiBxMsL.chwi', 'admin', 'profile_2_696b724c9062a.jpg'),
