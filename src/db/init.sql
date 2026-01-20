@@ -34,7 +34,7 @@ CREATE TABLE `donatori` (
   `indirizzo` varchar(255) NOT NULL,
   `telefono` varchar(20) NOT NULL,
   `email` varchar(100) NOT NULL,
-  `gruppo_sanguigno` varchar(5) NOT NULL,
+  `gruppo_sanguigno` varchar(12) NOT NULL,
   `sesso` varchar(20) NOT NULL,
   `peso` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_uca1400_ai_ci;
