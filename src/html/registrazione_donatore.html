@@ -75,32 +75,33 @@
                     </div>
                 </fieldset>
 
-                <fieldset>
+                <fieldset class="form">
                     <legend>Informazioni Sanitarie</legend>
+
                     <div class="select_std">
                         <label for="gruppo_sanguigno">Gruppo Sanguigno:</label>
                         <select name="gruppo_sanguigno" id="gruppo_sanguigno" required>
-                            <option value="">Seleziona...</option>
-                            <option value="A+">A+</option>
-                            <option value="A-">A-</option>
-                            <option value="B+">B+</option>
-                            <option value="B-">B-</option>
-                            <option value="AB+">AB+</option>
-                            <option value="AB-">AB-</option>
-                            <option value="O+">O+</option>
-                            <option value="O-">O-</option>
-                            <option value="Sconosciuto">Sconosciuto</option>
+                        <option value="">Seleziona...</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                        <option value="Sconosciuto">Sconosciuto</option>
                         </select>
                     </div>
-                    
-                    <div class="radio_std" role="group" aria-labelledby="label-sesso">
-                        <span class="label_radio" id="label-sesso">Sesso:</span>
-                        
-                        <label for="sesso_maschio">Maschio</label>
-                        <input type="radio" id="sesso_maschio" name="sesso" value="Maschio" required>
-                        
-                        <label for="sesso_femmina">Femmina</label>
-                        <input type="radio" id="sesso_femmina" name="sesso" value="Femmina">
+
+                    <div class="group_label">Sesso:</div>
+                    <div class="radio_std">
+                        <label for="maschio">Maschio</label>
+                        <input type="radio" id="maschio" name="sesso" value="maschio">
+                    </div>
+                    <div class="radio_std">
+                        <label for="femmina">Femmina</label>
+                        <input type="radio" id="femmina" name="sesso" value="femmina">
                     </div>
 
                     <div class="input_std">
