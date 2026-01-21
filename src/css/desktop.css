@@ -1574,7 +1574,6 @@ small, .form_std small {
     max-width: 85%;
     width: 100%;
     box-sizing: border-box;
-    transition: all 0.3s ease;
 }
 
 
@@ -1655,19 +1654,6 @@ small, .form_std small {
     margin-right: 0;
     margin-left: 1rem;
 }
-
-
-.faq dt:hover,
-.faq dt:hover + dd {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 188, 212, 0.15);
-}
-
-.faq dd:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 188, 212, 0.15);
-}
-
 
 .faq dd p { margin: 0 0 1rem 0; }
 .faq dd p:last-child { margin-bottom: 0; }
