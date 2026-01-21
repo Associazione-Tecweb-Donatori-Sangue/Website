@@ -117,7 +117,7 @@ header{
   gap: 0.8em; 
 }
 
-/* Stile comune a tutti i link (bottoni) */
+
 #menu ul li a, 
 #card_intro a, 
 #card_sedi a, 
@@ -135,7 +135,6 @@ header{
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Hover comune a tutti i link (bottoni) */
 #menu a:hover,
 #card_intro a:hover,
 #card_sedi a:hover,
@@ -303,7 +302,6 @@ main{
   height: 100%;
 }
 
-/* Stile comune per tutte le card */
 #card_intro,
 #card_unisciti,
 #card_sceglierci,
@@ -917,6 +915,9 @@ footer {
   padding: 1.5em;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .sede.hidden {
@@ -953,7 +954,9 @@ footer {
   color: #4f5abb;
   text-decoration: none;
   font-weight: 600;
+  font-size: 16px;
   transition: color 0.3s ease;
+  margin-top: auto;
 }
 
 .sede a:hover {
@@ -961,7 +964,7 @@ footer {
   text-decoration: underline;
 }
 
-/*TUTTI I FORM!! */
+/* TUTTI I FORM */
 form, .form_std, #prenotaForm {
   max-width: 380px;
   margin: 1% auto;
