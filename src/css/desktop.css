@@ -512,6 +512,32 @@ main{
 }
 
 
+.contatto-item a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1em;
+    transition: opacity 0.3s ease;
+}
+
+
+.contatto-item a:hover {
+    opacity: 0.7;
+    text-decoration: underline; 
+}
+
+.contatto-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    justify-content: flex-end;
+}
+
+.contatto-item p, 
+.contatto-item a {
+    margin: 0;
+    line-height: 1.2;
+}
+
 footer {
   background: linear-gradient(135deg, var(--footer-primary-color) 0%, var(--footer-secondary-color) 100%);
   color: var(--card-title-color);
