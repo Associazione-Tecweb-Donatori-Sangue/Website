@@ -1,7 +1,7 @@
 HTML
 - sistemare pagine 404.html e 500.html --> GN
-- aggiungere collegamenti link a telefono e email nel footer --> DG
 - controllare che i bottoni siano nella forma corretta  --> 🔴
+- sistemare headings --> 🔴
 
 CSS
 - fare print.css --> MDP
@@ -27,8 +27,6 @@ DB
 GENERALI
 - sistemare tutti i commenti --> DG
 - implementare pop-up di conferma quando si schiaccia su elimina profilo (sei sicuro di voler...) --> GG
-- accorciare "chi siamo" e trasformarlo in FAQ --> DG
-
 
 
 EXTRA - da fare solo se avanza tempo
