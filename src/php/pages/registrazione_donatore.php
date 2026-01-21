@@ -122,12 +122,12 @@ $dati = [
     'peso' => ''
 ];
 // Variabili per il corpo della pagina
-$titoloPagina = "Registrazione Donatore";
+$titoloPagina = "Registrazione donatore";
 $sottotitoloPagina = "Diventa un eroe, entra nella nostra rete di donatori";
 $testoSubmit = "Invia Registrazione";
 
 // Variabili per il SEO (Head)
-$metaTitle = "ATDS - Registrazione Donatore";
+$metaTitle = "Registrazione donatore - ATDS";
 $metaDescription = "Pagina per registrarsi come nuovo donatore presso l'Associazione Tecweb Donatori Sangue";
 $metaKeywords = "registrazione, donatore, sangue, volontariato, ATDS";
 

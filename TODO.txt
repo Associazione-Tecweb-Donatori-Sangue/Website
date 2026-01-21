@@ -6,14 +6,13 @@ CSS
 - fare print.css --> MDP
 - fare mobile.css
     - il fatto che ci sia una fascia vuota a destra del main probabilmente è causato dal footer
-- sistemare sfondo header --> GG
 - sistemare css about_us --> DG
 - Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente) --> 🔴
 - Sistemare i colori (tanti non sono in contrasto) --IMPORTANTEEEEEE--> DG
 - sistemare i pochi stili inline --> 🔴
 - modificare stili nei blocchi html presenti nei file .php --> 🔴
-- sistemare tabelle prenotazioni --> GN (prenotazioni verosimili ogni tot mesi in base al sesso)
-- gestire bene lo stretch della navabar --> 🔴
+- sistemare CSS tabelle prenotazioni --> GN (prenotazioni verosimili ogni tot mesi in base al sesso)
+- sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni
 
 PHP
 - collegare i modifica prenotazione --> 🔴
@@ -22,6 +21,7 @@ PHP
 - nascondere l'intestazione della tabella nelle dashboard qualora risultino vuote --> 🔴
 -collegare gli modifica prenotazione 
 - modifica prenotazione in pagina_admin deve rimandare al form di prenotazione della donazione con il form compilato
+- sistemare/cancellare messaggi flash
 
 DB
 - sistemare salvataggio "tipo di donazione" (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola) --> GN
