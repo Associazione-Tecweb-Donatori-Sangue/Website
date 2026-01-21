@@ -1,5 +1,4 @@
 HTML
-- sistemare pagine 404.html e 500.html --> GN
 - controllare che i bottoni siano nella forma corretta  --> 🔴
 - sistemare headings --> 🔴
 
@@ -10,23 +9,20 @@ CSS
 - sistemare css about_us --> DG
 - Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente) --> 🔴
 - Sistemare i colori (tanti non sono in contrasto) --> DG
-- sistemare i pochi tanti inline --> 🔴
-- modificare stili nei blocchi html presenti nei file .php --> 🔴
-- sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni
+- sistemare i pochi tanti inline --> GN
+- modificare stili nei blocchi html presenti nei file .php --> GN
+- sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
 
 PHP
-- mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra --> 🔴
 - quando ci sono errori nel form di registrazione non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito --> GG
 - re inserire bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
-- sistemare/cancellare messaggi flash  --> 🔴
+- sistemare/cancellare messaggi flash  --> GN
 - togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare --> GG
-
-DB
-- sistemare salvataggio "tipo di donazione" (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola) --> GN
 
 GENERALI
 - sistemare tutti i commenti --> DG
 - implementare pop-up di conferma quando si schiaccia su elimina profilo (sei sicuro di voler...) --> GG
+
 
 
 EXTRA - da fare solo se avanza tempo

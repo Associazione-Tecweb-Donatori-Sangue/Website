@@ -16,6 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $data = $_POST['data'];
     $ora = pulisciInput($_POST['ora']);
     $tipo = pulisciInput($_POST['donazione']);
+    $tipo = ucfirst(strtolower($tipo));
     $user_id = $_SESSION['user_id'];
 
     // --- VALIDAZIONI ---
