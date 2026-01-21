@@ -23,7 +23,7 @@ try {
         $percorsoFisico = "../../images/profili/" . $nomeFile;
         
         if (file_exists($percorsoFisico)) {
-            $fotoPath = $percorsoFisico;
+            $fotoPath = $percorsoFisico . "?v=" . time();
             $isDefaultClass = ""; // C'è una foto valida: togliamo is-default per mostrare il tasto
         }
     }

@@ -103,15 +103,31 @@ $paginaHTML = str_replace('[sezioneDonatore]', $htmlDonatore, $paginaHTML);
 $sezioneFuture = "";
 try {
     $stmt = $pdo->prepare("
-        SELECT p.id, p.data_prenotazione, p.ora_prenotazione, p.tipo_donazione , s.nome as nome_sede 
+        (SELECT p.id, p.data_prenotazione, p.ora_prenotazione, p.tipo_donazione, 
+                s.nome as nome_sede, 'futura' as stato
         FROM lista_prenotazioni p 
         JOIN sedi s ON p.sede_id = s.id 
         WHERE p.user_id = ? AND p.data_prenotazione >= CURDATE()
-        ORDER BY p.data_prenotazione ASC, p.ora_prenotazione ASC
+        ORDER BY p.data_prenotazione ASC, p.ora_prenotazione ASC)
+        
+        UNION ALL
+        
+        (SELECT p.id, p.data_prenotazione, p.ora_prenotazione, p.tipo_donazione, 
+                s.nome as nome_sede, 'passata' as stato
+        FROM lista_prenotazioni p 
+        JOIN sedi s ON p.sede_id = s.id 
+        WHERE p.user_id = ? AND p.data_prenotazione < CURDATE()
+        ORDER BY p.data_prenotazione DESC, p.ora_prenotazione DESC
+        LIMIT 5)
     ");
-    $stmt->execute([$_SESSION['user_id']]);
-    $future = $stmt->fetchAll();
+    $stmt->execute([$_SESSION['user_id'], $_SESSION['user_id']]);
+    $prenotazioni = $stmt->fetchAll();
 
+    // Poi separa i risultati nel codice PHP
+    $future = array_filter($prenotazioni, fn($p) => $p['stato'] === 'futura');
+    $passate = array_filter($prenotazioni, fn($p) => $p['stato'] === 'passata');
+
+    // Tabella future
     if (count($future) > 0) { // ci sono prenotazioni future
         $righeTabella = "";
         foreach ($future as $p) {
@@ -123,9 +139,9 @@ try {
                 <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
                 <td>' . htmlspecialchars($p['nome_sede']) . '</td>
                 <td>
-                    <form action="/php/cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
+                    <form action="/php/actions/cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
                         <input type="hidden" name="id_prenotazione" value="' . $p['id'] . '">
-                        <button type="submit" class="link_azione" style="cursor: pointer; background: none; border: none; text-decoration: underline; color: #d9534f; padding: 0;">Annulla</button>
+                        <button type="submit" class="button" style="background-color: #d9534f; border-color: #d9534f; color: white; padding: 5px 10px; font-size: 0.9em;">Annulla</button>
                     </form>
                 </td>
             </tr>';
@@ -150,24 +166,8 @@ try {
     } else { // nessuna prenotazione futura
         $sezioneFuture = '<p class="testo_std" style="text-align:center; padding: 10px;">Nessuna prenotazione in programma.</p>';
     }
-} catch (PDOException $e) {
-    $sezioneFuture = '<p class="errore" style="text-align:center;">Errore caricamento dati.</p>';
-}
 
-// 2. QUERY PASSATE (Ultime 5)
-$sezionePassate = "";
-try {
-    $stmt = $pdo->prepare("
-        SELECT p.id, p.data_prenotazione, p.ora_prenotazione, p.tipo_donazione , s.nome as nome_sede 
-        FROM lista_prenotazioni p 
-        JOIN sedi s ON p.sede_id = s.id 
-        WHERE p.user_id = ? AND p.data_prenotazione < CURDATE()
-        ORDER BY p.data_prenotazione DESC, p.ora_prenotazione DESC
-        LIMIT 5
-    ");
-    $stmt->execute([$_SESSION['user_id']]);
-    $passate = $stmt->fetchAll();
-
+    // Tabella passate
     if (count($passate) > 0) { // ci sono prenotazioni passate
         $righeTabella = "";
         foreach ($passate as $p) {
@@ -201,9 +201,8 @@ try {
         $sezionePassate = '<p class="testo_std" style="text-align:center; padding: 10px;">Nessuna donazione precedente.</p>';
     }
 } catch (PDOException $e) {
-    $sezionePassate = '<p class="errore" style="text-align:center;">Errore caricamento dati.</p>';
+    $sezioneFuture = '<p class="errore" style="text-align:center;">Errore caricamento dati.</p>';
 }
-
 
 // --- COSTRUZIONE HTML FINALE DELLE SEZIONI ---
 $nuovoContenutoTabelle = '

@@ -14,9 +14,10 @@ $options = [
 
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
-    $GLOBALS['pdo'] = $pdo; // AGGIUNGI QUESTA RIGA
+    $GLOBALS['pdo'] = $pdo;
 } catch (\PDOException $e) {
-    die("Errore di connessione al database: " . $e->getMessage());
+    error_log("Errore DB: " . $e->getMessage());
+    die("Si è verificato un errore. Riprova più tardi.");
 }
 
 return $pdo; // AGGIUNGI QUESTA RIGA

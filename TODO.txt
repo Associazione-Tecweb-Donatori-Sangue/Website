@@ -12,7 +12,6 @@ CSS
 - Sistemare i colori (tanti non sono in contrasto) --IMPORTANTEEEEEE--> DG
 - sistemare i pochi stili inline --> 🔴
 - modificare stili nei blocchi html presenti nei file .php --> 🔴
-- sistemare CSS tabelle prenotazioni --> GN (prenotazioni verosimili ogni tot mesi in base al sesso)
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni
 
 PHP
@@ -23,8 +22,6 @@ PHP
 
 DB
 - sistemare salvataggio "tipo di donazione" (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola) --> GN
-- sistemare tabelle --> DG
-- pulire file init.sql --> DG
 
 GENERALI
 - sistemare tutti i commenti --> DG

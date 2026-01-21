@@ -60,12 +60,33 @@ function getMessaggioFlashHTML() {
 }
 
 /**
+ * Recupera la foto profilo dell'utente dal database
+ */
+function getFotoProfilo($pdo, $userId) {
+    static $stmt = null;
+    
+    if ($stmt === null) {
+        $stmt = $pdo->prepare("SELECT foto_profilo FROM utenti WHERE id = ?");
+    }
+    
+    $stmt->execute([$userId]);
+    return $stmt->fetch();
+}
+
+/**
  * Carica un template HTML dalla cartella corretta
  */
 function caricaTemplate($nomeFile) {
-    $path = __DIR__ . '/../html/' . $nomeFile; // __DIR__ è la cartella corrente di utility.php
+    static $cache = [];
+    
+    if (isset($cache[$nomeFile])) {
+        return $cache[$nomeFile];
+    }
+
+    $path = __DIR__ . '/../html/' . $nomeFile; 
     if (file_exists($path)) {
-        return file_get_contents($path);
+        $cache[$nomeFile] = file_get_contents($path);
+        return $cache[$nomeFile];
     }
     return "Errore: Template $nomeFile non trovato.";
 }

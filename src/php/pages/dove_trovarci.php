@@ -36,7 +36,7 @@ try {
         $cardsHTML .= '
         <div class="sede">
             <h3>' . $nomeSedeFormattato . '</h3>
-            <img src="' . $percorsoImmagine . '" alt="Sede ' . $nomeSede . '">
+            <img src="' . $percorsoImmagine . '" alt="Sede ' . $nomeSede . '" loading="lazy">
             <p>' . htmlspecialchars($sede['descrizione']) . '</p>
             <p> 
                 Indirizzo: ' . htmlspecialchars($sede['indirizzo']) . '

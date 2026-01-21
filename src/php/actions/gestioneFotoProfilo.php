@@ -1,11 +1,10 @@
 <?php
-// Avvia il buffer di output: cattura tutto quello che viene stampato da qui in poi
-ob_start();
-
 require_once "../utility.php";
 require_once "../db.php";
 
 requireLogin();
+
+header('Content-Type: application/json');
 
 $response = ['success' => false, 'message' => 'Errore sconosciuto'];
 
@@ -93,11 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// PULIZIA TOTALE: Cancella qualsiasi output (spazi, warning, errori HTML) generato prima di qui
-ob_clean();
-
-// Ora stampiamo SOLO il JSON pulito
-header('Content-Type: application/json');
 echo json_encode($response);
 exit();
 ?>

@@ -3,7 +3,8 @@ require_once '../utility.php';
 require_once '../db.php';
 
 // Verifica che l'utente sia admin
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['ruolo']) || $_SESSION['ruolo'] !== 'admin') {
+if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+    // Se non è admin, blocco tutto
     header('HTTP/1.1 403 Forbidden');
     exit('Accesso negato');
 }
@@ -44,12 +45,8 @@ try {
             echo '<td>' . $oraIt . '</td>';
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
             echo '<td class="celle_azioni">';
-            // Tasto Modifica (rimasto invariato, per ora solo grafico)
-            echo '<button type="button" class="btn_tabella btn_edit">Modifica</button>';
-            
-            // --- TASTO ELIMINA (Ora è un FORM funzionante) ---
-            // Nota l'action "../cancellaPrenotazione.php": risale di un livello perché siamo dentro "pages/" virtualmente
-            echo '<form action="../cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler eliminare questa prenotazione?\');">';
+            echo '<a href="modifica_prenotazione.php?id=' . $prenotazione['id'] . '" class="btn_tabella btn_edit" style="text-decoration:none; display:inline-block; text-align:center; color:white;">Modifica</a>';
+            echo '<form action="../actions/cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler eliminare questa prenotazione?\');">';
             echo '<input type="hidden" name="id_prenotazione" value="' . $prenotazione['id'] . '">';
             echo '<button type="submit" class="btn_tabella btn_delete" style="cursor: pointer;">Elimina</button>';
             echo '</form>';
