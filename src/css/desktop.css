@@ -47,7 +47,6 @@ body.error_background {
   background-color: #fbfefe;
 }
 
-
 .navigationHelper{
   position: absolute;
   top: 0;
@@ -72,6 +71,9 @@ body.error_background {
   outline: 3px solid #ff0;
 }
 
+/*---------------------*/
+/*SEZIONE HEADER E MENU*/
+/*---------------------*/
 
 .sticky-header{
   width: fit-content;
@@ -82,11 +84,6 @@ body.error_background {
   top: 0.5em;
   z-index: 1000;
   transition: transform 0.6s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.sticky-header.scrolled {
-  background-color: #749BA3;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .sticky-header.header-hidden{
@@ -120,6 +117,7 @@ header{
   gap: 0.8em; 
 }
 
+/* Stile comune a tutti i link (bottoni) */
 #menu ul li a, 
 #card_intro a, 
 #card_sedi a, 
@@ -137,7 +135,7 @@ header{
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
+/* Hover comune a tutti i link (bottoni) */
 #menu a:hover,
 #card_intro a:hover,
 #card_sedi a:hover,
@@ -204,7 +202,9 @@ header{
   transition: all 0.3s ease;
 }
 
-
+/*-----------------*/
+/*SEZIONE BREADCRUMB*/
+/*-----------------*/
 #breadcrumb{
   justify-content: center;
   display: flex;
@@ -226,7 +226,11 @@ header{
   font-weight: bold; 
 }
 
+/*-----------------*/
+/*SEZIONE MAIN*/
+/*-----------------*/
 
+/*index.html*/
 
 #landing_title{      
   height: calc(100vh - 11em);
@@ -299,7 +303,7 @@ main{
   height: 100%;
 }
 
-
+/* Stile comune per tutte le card */
 #card_intro,
 #card_unisciti,
 #card_sceglierci,
@@ -330,7 +334,6 @@ main{
   width: 44%;
   object-fit: cover;
 }
-
 
 #card_intro{
   margin-top: 2.5em;
@@ -365,7 +368,6 @@ main{
   margin-left: auto;
   border-radius: 0 1.4em 1.4em 0;
 }
-
 
 #card_unisciti{
   flex-direction: column;
@@ -428,7 +430,6 @@ main{
   transform: scale(1.05);
 }
 
-
 #card_sceglierci{
   flex-direction: row-reverse;
 }
@@ -469,7 +470,6 @@ main{
   margin-right: auto;
   border-radius: 1.4em 0 0 1.4em;
 }
-
 
 #card_sedi{
   justify-content: center;
@@ -516,14 +516,13 @@ main{
   color: var(--card-sedi-subtitle-color);
 }
 
-
+/* Footer */
 .contatto-item a {
     text-decoration: none;
     color: inherit;
     font-size: 1em;
     transition: opacity 0.3s ease;
 }
-
 
 .contatto-item a:hover {
     opacity: 0.7;
@@ -700,6 +699,7 @@ footer {
   font-weight: 500;
 }
 
+/* STILE COMUNE A TUTTE LE PAGINE TRANNE INDEX*/
 .main_std {
     background-color: white;
     padding: 40px;
@@ -745,6 +745,14 @@ footer {
   font-weight: 400;
 }
 
+/*-----------------*/
+/* DONA ORA */
+/*-----------------*/
+
+
+/*-----------------*/
+/* CHI SIAMO */
+/*-----------------*/
 
 .titolo_terziario {
   font-size: 2em;
@@ -852,7 +860,9 @@ footer {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-
+/*-----------------*/
+/*  DOVE TROVARCI  */
+/*-----------------*/
 .search-container {
   width: 90%;
   margin: 2em auto 1em;
@@ -951,8 +961,7 @@ footer {
   text-decoration: underline;
 }
 
-
-
+/*TUTTI I FORM!! */
 form, .form_std, #prenotaForm {
   max-width: 380px;
   margin: 1% auto;
@@ -1421,7 +1430,9 @@ small, .form_std small {
     font-weight: 700;
 }
 
-
+/*-----------------*/
+/* TASTO INDIETRO  */
+/*-----------------*/
 .back-button-container {
   margin-left: 2%;
   text-align: left;
