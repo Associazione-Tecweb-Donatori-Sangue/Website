@@ -1,6 +1,7 @@
 HTML
 - Fare pagine 404.html e 500.html --> GN
 - aggiungere collegamenti link a telefono e email nel footer --> DG
+- controllare che i bottoni siano nella forma corretta
 
 CSS
 - fare print.css --> MDP

@@ -84,6 +84,11 @@ body.error_background {
   transition: transform 0.6s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+.sticky-header.scrolled {
+  background-color: #749BA3;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
 .sticky-header.header-hidden{
   transform: translateY(-150%);
 }

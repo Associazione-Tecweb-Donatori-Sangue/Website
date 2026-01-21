@@ -1,6 +1,6 @@
 <?php
-session_start();
-require_once "db.php";
+require_once '../utility.php';
+require_once '../db.php';
 
 // 1. Controllo sicurezza: se non è loggato, via al login
 if (!isset($_SESSION['user_id'])) {

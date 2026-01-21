@@ -1,6 +1,6 @@
 <?php
-require_once "utility.php";
-require_once "db.php";
+require_once '../utility.php';
+require_once '../db.php';
 
 // 1. Sicurezza: Utente deve essere loggato
 requireLogin();

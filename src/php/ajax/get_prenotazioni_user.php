@@ -1,6 +1,6 @@
 <?php
-require_once 'utility.php';
-require_once 'db.php';
+require_once '../utility.php';
+require_once '../db.php';
 
 // Verifica che l'utente sia loggato
 if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {

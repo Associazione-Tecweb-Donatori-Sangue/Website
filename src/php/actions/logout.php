@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once '../utility.php';
 
 // 1. Cancella tutte le variabili di sessione
 $_SESSION = array();
@@ -8,6 +8,6 @@ $_SESSION = array();
 session_destroy();
 
 // 3. Reindirizza l'utente alla pagina di login (o alla home)
-header("Location: pages/login.php");
+header("Location: ../pages/login.php");
 exit();
 ?>
