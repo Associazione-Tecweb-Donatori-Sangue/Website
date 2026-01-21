@@ -37,7 +37,6 @@ GENERALI
 EXTRA
 - il file picker è accessibile?
 - aggiungere foto ai fondatori 
-- aggiungere "prenota qui" sotto le card delle sedi in "dove trovarci" --> 🔴
 - accorciare "chi siamo" e trasformarlo in FAQ --> DG
 - Modalità scura
 - quando ci sono errori nel form di registrazione (le password non coincidono) è meglio non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito

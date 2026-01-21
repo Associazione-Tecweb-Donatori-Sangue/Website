@@ -1,7 +1,5 @@
 <?php
 
-
-
 function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     
     // Includiamo db.php e catturiamo il return
@@ -32,7 +30,7 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
         
         if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
             $linkDestinazione = "/php/pages/profilo_admin.php";
-            $altText = "Profilo Admin";
+            $altText = "Profilo admin";
         }
 
         // Recupero foto profilo dal database

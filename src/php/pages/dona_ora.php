@@ -120,9 +120,13 @@ if (!isset($_SESSION['user_id'])) {
                 $stmt = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
                 $sedi = $stmt->fetchAll();
 
+                // Controllo se c'è una sede preselezionata via GET
+                $sedePreselezionata = isset($_GET['sede_id']) ? $_GET['sede_id'] : '';
+
                 $optionsSedi = "";
                 foreach ($sedi as $sede) {
-                    $optionsSedi .= '<option value="' . $sede['id'] . '">' . htmlspecialchars($sede['nome']) . '</option>';
+                    $selected = ($sede['id'] == $sedePreselezionata) ? 'selected' : '';
+                    $optionsSedi .= '<option value="' . $sede['id'] . '" ' . $selected . '>' . htmlspecialchars($sede['nome']) . '</option>';
                 }
 
                 // Sostituisco il segnaposto nel form
