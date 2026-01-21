@@ -19,20 +19,22 @@ PHP
 - quando ci sono errori nel form di registrazione non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito --> 🔴
 - re inserire bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato
 - sistemare/cancellare messaggi flash
+- togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare
 
 DB
 - sistemare salvataggio "tipo di donazione" (dati inseriti da init hanno inizale maiuscola, prenotazione inserita da form ha iniziare minuscola) --> GN
 
 GENERALI
 - sistemare tutti i commenti --> DG
-- implementare pop-up di conferma in logout ed elimina profilo (sei sicuro di voler...) --> 🔴
-- inserire un widget per visualizzare quanto manca a poter prenotare un'altra prenotazione ? 
-- mettere una disponibilità di posti da poter prenotare in una determinata ora di un determinato giorno per ogni sede (esempio in sede Piovego il giorno 16/02 alle ore 8:00 ci sono 5 posti disponibili) e se non ci sono più posti non mostrare quell'orario nella lista degli orari ?
+- implementare pop-up di conferma quando si schiaccia su elimina profilo (sei sicuro di voler...) --> 🔴
+- accorciare "chi siamo" e trasformarlo in FAQ --> DG
 
-EXTRA
+
+
+EXTRA - da fare solo se avanza tempo
 - il file picker è accessibile?
 - aggiungere foto ai fondatori 
-- accorciare "chi siamo" e trasformarlo in FAQ --> DG
 - Modalità scura
 - quando ci sono errori nel form di registrazione (le password non coincidono) è meglio non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito
-
+- inserire un widget per visualizzare quanto manca a poter prenotare un'altra prenotazione 
+- mettere una disponibilità di posti da poter prenotare in una determinata ora di un determinato giorno per ogni sede (esempio in sede Piovego il giorno 16/02 alle ore 8:00 ci sono 5 posti disponibili) e se non ci sono più posti non mostrare quell'orario nella lista degli orari 
