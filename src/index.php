@@ -1,6 +1,5 @@
 <?php
 require_once "php/utility.php";
-session_start();
 
 // 1. Carico il template HTML
 $paginaHTML = file_get_contents('html/index.html');

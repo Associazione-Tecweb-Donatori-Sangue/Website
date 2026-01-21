@@ -1,13 +1,9 @@
 <?php
 require_once "utility.php";
 require_once "db.php";
-session_start();
 
 // 1. Sicurezza: Utente deve essere loggato
-if (!isset($_SESSION['user_id'])) {
-    header("Location: pages/login.php");
-    exit();
-}
+requireLogin();
 
 // 2. Controllo se ricevo i dati via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prenotazione'])) {

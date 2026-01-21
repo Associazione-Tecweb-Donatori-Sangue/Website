@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once 'utility.php';
 require_once 'db.php';
 
 // Verifica che l'utente sia loggato

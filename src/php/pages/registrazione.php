@@ -2,10 +2,8 @@
 require_once "../utility.php";
 require_once "../db.php";
 
-session_start();
-
 // Template HTML
-$paginaHTML = file_get_contents('../../html/registrazione.html');
+$paginaHTML = caricaTemplate('registrazione.html');
 
 // Variabile per la gestione degli errori e messaggi
 $messaggio = "";

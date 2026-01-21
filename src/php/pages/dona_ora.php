@@ -1,7 +1,6 @@
 <?php
 require_once "../utility.php";
 require_once "../db.php";
-session_start();
 
 // --- 1. GESTIONE MESSAGGI FLASH (Nuovo Blocco) ---
 $msgHTML = "";
@@ -21,7 +20,7 @@ if (isset($_SESSION['messaggio_flash'])) {
     unset($_SESSION['messaggio_flash']);
 }
 
-$paginaHTML = file_get_contents('../../html/dona_ora.html');
+$paginaHTML = caricaTemplate('dona_ora.html');
 
 // --- 2. INIEZIONE MESSAGGIO NELLA PAGINA ---
 // Lo inserisco subito dopo l'apertura del tag <main>

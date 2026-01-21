@@ -2,9 +2,7 @@
 require_once "../utility.php";
 require_once "../db.php";
 
-session_start();
-
-$paginaHTML = file_get_contents('../../html/dove_trovarci.html');
+$paginaHTML = caricaTemplate('dove_trovarci.html');
 
 try {
     $stmt = $pdo->query("SELECT * FROM sedi ORDER BY nome ASC");

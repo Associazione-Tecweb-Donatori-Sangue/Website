@@ -1,7 +1,6 @@
 <?php
 require_once "../utility.php";
 require_once "../db.php";
-session_start();
 
 // 1. Sicurezza: solo utenti loggati
 if (!isset($_SESSION['user_id'])) {
@@ -87,7 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Visualizzazione (Questo codice viene eseguito SOLO se c'è un errore e non avviene il redirect)
-$template = file_get_contents('../../html/modifica_account.html');
+$template = caricaTemplate('modifica_account.html');
 $template = str_replace('[valore_username]', htmlspecialchars($_SESSION['username']), $template);
 $template = str_replace('[MESSAGGI]', $messaggio, $template);
 
@@ -95,7 +94,7 @@ $template = str_replace('[MESSAGGI]', $messaggio, $template);
 $backLink = "profilo.php";
 $template = str_replace('href="profilo.php"', 'href="'.$backLink.'"', $template);
 
-$breadcrumb = '<p><a href="/index.php">Home</a> / <a href="'.$backLink.'">Profilo</a> / <span>Gestione Account</span></p>';
+$breadcrumb = '<p><a href="/index.php">Home</a> / <a href="'.$backLink.'">Profilo</a> / <span>Gestione utente</span></p>';
 
 echo costruisciPagina($template, $breadcrumb, "modifica_account.php");
 ?>

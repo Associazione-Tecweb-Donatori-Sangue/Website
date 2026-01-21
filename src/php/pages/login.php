@@ -2,8 +2,6 @@
 require_once "../utility.php";
 require_once "../db.php";
 
-session_start();
-
 // Se arrivo con un parametro GET 'redirect' (es. da dona_ora), me lo segno
 if (isset($_GET['redirect'])) {
     $_SESSION['redirect_post_login'] = $_GET['redirect'];
@@ -13,7 +11,7 @@ elseif ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     unset($_SESSION['redirect_post_login']);
 }
 
-$paginaHTML = file_get_contents('../../html/login.html');
+$paginaHTML = caricaTemplate('login.html');
 
 // Variabile per eventuali messaggi di errore
 $messaggioErrore = "";

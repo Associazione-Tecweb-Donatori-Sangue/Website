@@ -2,8 +2,6 @@
 require_once "../utility.php";
 require_once "../db.php";
 
-session_start();
-
 // Sicurezza
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
@@ -90,7 +88,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // 2. PREPARAZIONE DELLA PAGINA (Visualizzazione)
-$template = file_get_contents('../../html/registrazione_donatore.html');
+$template = caricaTemplate('registrazione_donatore.html');
 
 if (isset($_SESSION['messaggio_flash'])) {
     $colore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f8d7da' : '#d4edda';
@@ -141,12 +139,12 @@ if ($userDB) {
     $dati = $userDB;
 
     // Aggiorno testi pagina
-    $titoloPagina = "Modifica Dati Donatore";
+    $titoloPagina = "Modifica dati donatore";
     $sottotitoloPagina = "Modifica le tue informazioni di donatore";
-    $testoSubmit = "Salva Modifiche";
+    $testoSubmit = "Salva modifiche";
     
     // Aggiorno testi SEO
-    $metaTitle = "ATDS - Modifica Profilo Donatore";
+    $metaTitle = "Modifica profilo donatore - ATDS";
     $metaDescription = "Pagina per modificare i dati del profilo donatore ATDS";
     $metaKeywords = "modifica, profilo, donatore, aggiornamento, dati, ATDS";
 }

@@ -55,11 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         }
         
-        $sesso = $donatore['sesso'];
-        
-        // Determina l'intervallo minimo in base al sesso
-        $mesiIntervallo = ($sesso === 'Maschio') ? 3 : 6;
-        
         // Recupera l'ultima prenotazione
         $stmtUltima = $pdo->prepare(
             "SELECT MAX(data_prenotazione) as ultima_data 
@@ -74,13 +69,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $dataPrenotazione = new DateTime($data);
             
             // Calcola la data minima consentita
-            $dataMinima = clone $ultimaData;
-            $dataMinima->modify("+{$mesiIntervallo} months");
-            
+            $dataMinima = getDataProssimaDonazione($donatore['sesso'], $risultato['ultima_data']);
+            $dataPrenotazione = new DateTime($data);
+
             // Verifica se la nuova data rispetta l'intervallo
             if ($dataPrenotazione < $dataMinima) {
                 $dataFormattata = $dataMinima->format('d/m/Y');
-                $_SESSION['messaggio_flash'] = "ATTENZIONE! Devi attendere {$mesiIntervallo} mesi dall'ultima donazione, potrai prenotare dal {$dataFormattata} in poi.";
+                $mesi = ($donatore['sesso'] === 'Maschio') ? 3 : 6;
+                $_SESSION['messaggio_flash'] = "ATTENZIONE! Devi attendere {$mesi} mesi. Prossima data disponibile: {$dataFormattata}";
                 header("Location: pages/dona_ora.php");
                 exit();
             }

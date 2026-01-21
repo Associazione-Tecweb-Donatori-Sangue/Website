@@ -2,20 +2,17 @@
 require_once "../utility.php";
 require_once "../db.php";
 
-session_start();
+// 1. Controllo sicurezza: solo utenti loggati
+requireLogin();
 
-if (!isset($_SESSION['user_id'])) {
-    header("Location: login.php");
-    exit();
-}
-
-// se l'utente è ADMIN, viene reindirizzato al profilo admin
+// Se è ADMIN, reindirizzo al profilo admin
 if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
     header("Location: profilo_admin.php");
     exit();
 }
 
-$paginaHTML = file_get_contents('../../html/profilo.html');
+// 2. Carico il template HTML
+$paginaHTML = caricaTemplate('profilo.html');
 
 // --- LOGICA GESTIONE FOTO PROFILO ---
 $fotoPath = "../../images/profilo.jpg"; 
@@ -227,29 +224,9 @@ $nomeUtente = '<h1>' . htmlspecialchars(ucfirst($_SESSION['username'])) . '</h1>
 $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 
 // --- GESTIONE MESSAGGIO FLASH (Spostato all'inizio del Main) ---
-if (isset($_SESSION['messaggio_flash'])) {
-    $colore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f8d7da' : '#d4edda';
-    $testoColore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#721c24' : '#155724';
-    $bordo = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f5c6cb' : '#c3e6cb';
-
-    $msgHTML = '<div style="background-color: '.$colore.'; color: '.$testoColore.'; border: 1px solid '.$bordo.'; padding: 15px; margin: 20px auto; width: 90%; max-width: 800px; border-radius: 5px; text-align: center;">
-                    ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
-                </div>';
-    
-    // Cerco il tag <main ...> e ci incollo subito dopo il messaggio
-    // Nota: Assicurati che nel tuo file html/profilo.html il tag sia scritto così:
-    $tagMain = '<main id="content" class="main_std">';
-    
-    // Se non dovesse trovarlo, prova a cercare solo "<main>" o verifica il tuo HTML
-    if (strpos($paginaHTML, $tagMain) !== false) {
-        $paginaHTML = str_replace($tagMain, $tagMain . $msgHTML, $paginaHTML);
-    } else {
-        // Fallback: se il tag è scritto diversamente, lo metto all'inizio del contenuto grezzo
-        // (utile se magari hai classi diverse nel main)
-        $paginaHTML = preg_replace('/<main[^>]*>/', '$0' . $msgHTML, $paginaHTML, 1);
-    }
-    
-    unset($_SESSION['messaggio_flash']);
+$msgHTML = getMessaggioFlashHTML();
+if (!empty($msgHTML)) {
+    $paginaHTML = str_replace('<main id="content" class="main_std">', '<main id="content" class="main_std">' . $msgHTML, $paginaHTML);
 }
 
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo</span></p>';

@@ -1,5 +1,79 @@
 <?php
 
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+/**
+ * Pulisce l'input utente per sicurezza
+ */
+function pulisciInput($data) {
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+/**
+ * Verifica se l'utente è loggato. Se no, reindirizza.
+ */
+function requireLogin($redirect = '../pages/login.php') {
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: " . $redirect);
+        exit();
+    }
+}
+
+/**
+ * Verifica se l'utente è Admin. Se no, reindirizza al profilo o login.
+ */
+function requireAdmin() {
+    requireLogin(); // Deve essere prima loggato
+    if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
+        header("Location: ../pages/profilo.php");
+        exit();
+    }
+}
+
+/**
+ * Genera l'HTML per il messaggio flash se presente in sessione
+ */
+function getMessaggioFlashHTML() {
+    if (isset($_SESSION['messaggio_flash'])) {
+        $msg = $_SESSION['messaggio_flash'];
+        
+        // Logica colori
+        $isError = (strpos($msg, 'Errore') !== false || strpos($msg, 'già') !== false || strpos($msg, 'Attenzione') !== false);
+        
+        $colore = $isError ? '#f8d7da' : '#d4edda';
+        $testo = $isError ? '#721c24' : '#155724';
+        $bordo = $isError ? '#f5c6cb' : '#c3e6cb';
+
+        $html = '<div style="background-color: '.$colore.'; color: '.$testo.'; border: 1px solid '.$bordo.'; padding: 15px; margin: 20px auto; width: 90%; max-width: 800px; border-radius: 5px; text-align: center;">
+                    ' . htmlspecialchars($msg) . '
+                 </div>';
+        
+        unset($_SESSION['messaggio_flash']); // Rimuovi dopo aver generato l'HTML
+        return $html;
+    }
+    return '';
+}
+
+/**
+ * Carica un template HTML dalla cartella corretta
+ */
+function caricaTemplate($nomeFile) {
+    $path = __DIR__ . '/../html/' . $nomeFile; // __DIR__ è la cartella corrente di utility.php
+    if (file_exists($path)) {
+        return file_get_contents($path);
+    }
+    return "Errore: Template $nomeFile non trovato.";
+}
+
+
+/**
+ * Costruisce la pagina finale unendo header, footer e contenuto
+ */
 function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     
     // Includiamo db.php e catturiamo il return
@@ -93,10 +167,16 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     return $paginaFinale;
 }
 
-function pulisciInput($value){
-    $value = trim($value);
-    $value = strip_tags($value);
-    $value = htmlentities($value);
-    return $value;
+/**
+ * Calcola la data minima per la prossima donazione in base al sesso.
+ * @param string $sesso 'Maschio' o 'Femmina'
+ * @param string $ultimaData Data ultima donazione (Y-m-d)
+ * @return DateTime Data minima calcolata
+ */
+function getDataProssimaDonazione($sesso, $ultimaData) {
+    $mesiIntervallo = ($sesso === 'Maschio') ? 3 : 6;
+    $dataMinima = new DateTime($ultimaData);
+    $dataMinima->modify("+{$mesiIntervallo} months");
+    return $dataMinima;
 }
 ?>
