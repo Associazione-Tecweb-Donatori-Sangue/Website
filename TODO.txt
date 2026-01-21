@@ -15,11 +15,8 @@ CSS
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni
 
 PHP
-- collegare i modifica prenotazione --> 🔴
 - mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra --> 🔴
 - quando ci sono errori nel form di registrazione non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito --> 🔴
-- nascondere l'intestazione della tabella nelle dashboard qualora risultino vuote --> 🔴
--collegare gli modifica prenotazione 
 - modifica prenotazione in pagina_admin deve rimandare al form di prenotazione della donazione con il form compilato
 - sistemare/cancellare messaggi flash
 

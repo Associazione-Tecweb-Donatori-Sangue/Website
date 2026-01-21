@@ -19,7 +19,7 @@ $paginaHTML = file_get_contents('../../html/profilo.html');
 
 // --- LOGICA GESTIONE FOTO PROFILO ---
 $fotoPath = "../../images/profilo.jpg"; 
-$isDefaultClass = "is-default"; // Assumiamo sia default all'inizio
+$isDefaultClass = "is-default";
 
 try {
     $stmt = $pdo->prepare("SELECT foto_profilo FROM utenti WHERE id = ?");
@@ -103,7 +103,7 @@ $paginaHTML = str_replace('[sezioneDonatore]', $htmlDonatore, $paginaHTML);
 
 // --- SEZIONE TABELLE PRENOTAZIONI PASSATE E FUTURE ---
 // 1. QUERY FUTURE
-$htmlFuture = "";
+$sezioneFuture = "";
 try {
     $stmt = $pdo->prepare("
         SELECT p.id, p.data_prenotazione, p.ora_prenotazione, p.tipo_donazione , s.nome as nome_sede 
@@ -115,11 +115,12 @@ try {
     $stmt->execute([$_SESSION['user_id']]);
     $future = $stmt->fetchAll();
 
-    if (count($future) > 0) {
+    if (count($future) > 0) { // ci sono prenotazioni future
+        $righeTabella = "";
         foreach ($future as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
-            $htmlFuture .= '<tr>
+            $righeTabella .= '<tr>
                 <td>' . $dataIt . '</td>
                 <td>' . $oraIt . '</td>
                 <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
@@ -132,15 +133,32 @@ try {
                 </td>
             </tr>';
         }
-    } else {
-        $htmlFuture = '<tr><td colspan="4" style="text-align:center;">Nessuna prenotazione in programma.</td></tr>';
+        // Avvolgo le righe nella struttura tabellare
+        $sezioneFuture = '
+        <div class="contenitore_tabella">
+            <table class="tabella_dati">
+                <thead>
+                    <tr>
+                        <th scope="col">Data</th>
+                        <th scope="col">Ora</th>
+                        <th scope="col">Tipo Donazione</th>
+                        <th scope="col">Sede</th>
+                        <th scope="col">Azioni</th>
+                    </tr>
+                </thead>
+                <tbody>' . $righeTabella . '</tbody>
+            </table>
+        </div>';
+
+    } else { // nessuna prenotazione futura
+        $sezioneFuture = '<p class="testo_std" style="text-align:center; padding: 10px;">Nessuna prenotazione in programma.</p>';
     }
 } catch (PDOException $e) {
-    $htmlFuture = '<tr><td colspan="4" class="errore">Errore caricamento.</td></tr>';
+    $sezioneFuture = '<p class="errore" style="text-align:center;">Errore caricamento dati.</p>';
 }
 
 // 2. QUERY PASSATE (Ultime 5)
-$htmlPassate = "";
+$sezionePassate = "";
 try {
     $stmt = $pdo->prepare("
         SELECT p.id, p.data_prenotazione, p.ora_prenotazione, p.tipo_donazione , s.nome as nome_sede 
@@ -153,11 +171,12 @@ try {
     $stmt->execute([$_SESSION['user_id']]);
     $passate = $stmt->fetchAll();
 
-    if (count($passate) > 0) {
+    if (count($passate) > 0) { // ci sono prenotazioni passate
+        $righeTabella = "";
         foreach ($passate as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
-            $htmlPassate .= '<tr>
+            $righeTabella .= '<tr>
                 <td>' . $dataIt . '</td>
                 <td>' . $oraIt . '</td>
                 <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
@@ -165,34 +184,8 @@ try {
                 <td><span style="color: grey;">Completata</span></td>
             </tr>';
         }
-    } else {
-        $htmlPassate = '<tr><td colspan="4" style="text-align:center;">Nessuna donazione precedente.</td></tr>';
-    }
-} catch (PDOException $e) {
-    $htmlPassate = '<tr><td colspan="4" class="errore">Errore caricamento.</td></tr>';
-}
-
-
-// --- COSTRUZIONE HTML E SOSTITUZIONE PLACEHOLDER ---
-$nuovoContenutoTabelle = '
-    <section>
-        <h3 class="titolo_terziario">Prenotazioni Future</h3>
-        <div class="contenitore_tabella">
-            <table class="tabella_dati">
-                <thead>
-                    <tr>
-                        <th scope="col">Data</th>
-                        <th scope="col">Ora</th>
-                        <th scope="col">Tipo Donazione</th>
-                        <th scope="col">Sede</th>
-                        <th scope="col">Azioni</th>
-                    </tr>
-                </thead>
-                <tbody>' . $htmlFuture . '</tbody>
-            </table>
-        </div>
-
-        <h3 class="titolo_terziario" style="margin-top: 40px;">Storico Donazioni (Ultime 5)</h3>
+        // Avvolgo nella tabella
+        $sezionePassate = '
         <div class="contenitore_tabella">
             <table class="tabella_dati" style="opacity: 0.8;">
                 <thead>
@@ -204,9 +197,25 @@ $nuovoContenutoTabelle = '
                         <th scope="col">Stato</th>
                     </tr>
                 </thead>
-                <tbody>' . $htmlPassate . '</tbody>
+                <tbody>' . $righeTabella . '</tbody>
             </table>
-        </div>
+        </div>';
+    } else { // nessuna donazione passata
+        $sezionePassate = '<p class="testo_std" style="text-align:center; padding: 10px;">Nessuna donazione precedente.</p>';
+    }
+} catch (PDOException $e) {
+    $sezionePassate = '<p class="errore" style="text-align:center;">Errore caricamento dati.</p>';
+}
+
+
+// --- COSTRUZIONE HTML FINALE DELLE SEZIONI ---
+$nuovoContenutoTabelle = '
+    <section>
+        <h3 class="titolo_terziario">Prenotazioni Future</h3>
+        ' . $sezioneFuture . '
+
+        <h3 class="titolo_terziario" style="margin-top: 40px;">Storico Donazioni (Ultime 5)</h3>
+        ' . $sezionePassate . '
     </section>
 ';
 
