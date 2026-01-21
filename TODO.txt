@@ -1,5 +1,5 @@
 HTML
-- Fare pagine 404.html e 500.html --> GN
+- sistemare pagine 404.html e 500.html --> GN
 - aggiungere collegamenti link a telefono e email nel footer --> DG
 - controllare che i bottoni siano nella forma corretta
 
@@ -17,7 +17,7 @@ CSS
 PHP
 - mettere un controllo che un utente non possa prenotare una prenotazione prima che passino i mesi standard tra una donaziona e un'altra --> 🔴
 - quando ci sono errori nel form di registrazione non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito --> 🔴
-- modifica prenotazione in pagina_admin deve rimandare al form di prenotazione della donazione con il form compilato
+- re inserire bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato
 - sistemare/cancellare messaggi flash
 
 DB

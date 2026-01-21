@@ -4,7 +4,7 @@ require_once '../db.php';
 
 // 1. Controllo sicurezza: se non è loggato, via al login
 if (!isset($_SESSION['user_id'])) {
-    header("Location: pages/login.php");
+    header("Location: ../pages/login.php");
     exit();
 }
 
@@ -33,6 +33,6 @@ session_unset();
 session_destroy();
 
 // 5. Reindirizzo alla pagina di login
-header("Location: pages/login.php");
+header("Location: ../pages/login.php");
 exit();
 ?>
