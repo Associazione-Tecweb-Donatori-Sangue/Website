@@ -5,12 +5,11 @@ HTML
 
 CSS
 - fare print.css --> MDP
-- fare mobile.css  --> 🔴
-    - il fatto che ci sia una fascia vuota a destra del main probabilmente è causato dal footer
+- finire mobile.css  --> GG
 - sistemare css about_us --> DG
 - Sistemare i colori (tanti non sono in contrasto) --> DG
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
-- sistemare bottone seleziona sede in pagina_admin --> 🔴
+- sistemare css bottone seleziona sede in pagina_admin --> 🔴
 - sistemare/cancellare messaggi flash  --> GN
 
 PHP
