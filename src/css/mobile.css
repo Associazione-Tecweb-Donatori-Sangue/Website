@@ -3,6 +3,10 @@
     transition: none !important;
 }
 
+body {
+    background-position: 9% center;
+}
+
 /* ------------------- */
 /*  MENU AD HAMBURGER  */
 /* ------------------- */
@@ -131,6 +135,15 @@
     top: 5px;
 }
 
+/* Drop button più largo per touch */
+.drop {
+    width: 10%;
+}
+
+#landing-title {
+    height: calc(100vh - 10.8em);
+}
+
 /* Adattamento Titoli Grandi */
 #landing-title h1 {
     font-size: 3.5em; /* Ridotto per mobile */
@@ -140,8 +153,431 @@
 }
 
 #landing-title h2 {
-    width: 90%;
-    margin-left: 5%;
-    text-align: center;
+    width: 70%;
+    margin-left: 20%;
+    text-align: right;
     font-size: 1.4em;
 }
+
+/* Ottimizzazione per landscape su mobile */
+@media screen and (orientation: landscape) {
+    
+    #landing-title {
+        width: 58%;
+        height: fit-content;
+        background-color: var(--primary-bg-color);
+        border-radius: 2.8em;
+        margin: auto;
+        margin-top: 1em;
+        margin-bottom: 4.2em;
+        box-shadow: 0 4px 15px rgba(8, 38, 54, 0.1);
+    }
+
+    #landing-title h1 {
+        font-size: 2.5em;
+        margin-bottom: 0.5em;
+    }
+    
+    #landing-title h2 {
+        font-size: 1.1em;
+        text-align: center;
+        margin: 0 auto;
+        margin-bottom: 1.4em;
+        width: 100%;
+    }
+}
+
+/* ------------------- */
+/*  HOMEPAGE - CARDS   */
+/* ------------------- */
+
+/* Card Intro - Stack verticale */
+#card-intro {
+    flex-direction: column;
+    height: auto;
+    padding: 2em 1.5em;
+}
+
+#card-intro div {
+    width: 100%;
+    margin-left: 0;
+    padding-right: 0;
+    gap: 1.5em;
+}
+
+#card-intro h2 {
+    text-align: center;
+    font-size: 2em;
+}
+
+#card-intro p {
+    font-size: 1.1em;
+    text-align: center;
+}
+
+#card-intro a {
+    margin: 0 auto;
+}
+
+#card-intro img {
+    width: 100%;
+    height: 250px;
+    margin-left: 0;
+    margin-top: 1.5em;
+    border-radius: 0 0 1.4em 1.4em;
+    object-fit: cover;
+}
+
+/* Card Join - Requisiti a griglia 2x2 */
+#card-join {
+    height: auto;
+    padding-bottom: 0.4em;
+}
+
+#card-join-title {
+    height: auto;
+    padding: 1em 1.5em 0.5em;
+    margin-bottom: 0.5em;
+}
+
+#card-join-title h2 {
+    font-size: 1.8em;
+}
+
+#card-join-title p {
+    font-size: 1.1em;
+}
+
+#card-join ul {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+    width: 90%;
+    height: auto;
+    gap: 1em;
+    margin-top: 0.5em;
+}
+
+#card-join li {
+    width: calc(50% - 0.5em);
+    height: auto;
+    min-height: 220px;
+}
+
+#card-join img {
+    height: auto;
+    min-height: 160px;
+}
+
+#card-join li p {
+    font-size: 1.05em;
+    padding: 0.8em 0.5em;
+}
+
+/* Card Why Us - Stack verticale */
+#card-why-us {
+    flex-direction: column;
+    height: auto;
+    padding: 2em 1.5em;
+}
+
+#div-why-us {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 0;
+}
+
+#div-why-us h2 {
+    text-align: center;
+    font-size: 2em;
+}
+
+#div-why-us h3 {
+    font-size: 1.4em;
+}
+
+#div-why-us p {
+    font-size: 1.1em;
+}
+
+#card-why-us img {
+    width: 100%;
+    height: 250px;
+    margin-right: 0;
+    margin-top: 1em;
+    border-radius: 0 0 1.4em 1.4em;
+    object-fit: cover;
+}
+
+/* Card Locations */
+#card-locations {
+    height: auto;
+    min-height: 300px;
+    padding: 2em 1em;
+}
+
+#card-locations div {
+    width: 90%;
+    padding: 1.5em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#card-locations h2 {
+    font-size: 1.6em;
+}
+
+#card-locations p {
+    font-size: 1em;
+    margin-bottom: 1.5em;
+}
+
+/* ------------------- */
+/*  FOOTER RESPONSIVE  */
+/* ------------------- */
+footer{
+    padding-top: 1em;
+}
+
+.footer-buttons {
+    flex-direction: column;
+    gap: 1em;
+    padding: 0;
+    margin-bottom: 0.5em;
+}
+
+.footer-buttons a {
+    width: auto;
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.8em;
+}
+
+.footer-container {
+    flex-direction: column;
+    padding: 0 0.5em;
+}
+
+.left-footer,
+.right-footer {
+    width: 100%;
+    align-items: center;
+    margin: 0.5em 0;
+}
+
+.right-footer .title-item {
+    display: none;
+}
+
+.right-footer .times-item {
+    align-items: center;
+    margin-top: 0;
+}
+
+.vertical-divider {
+    display: none;
+}
+
+.contact-info {
+    align-items: center;
+    gap: 0.8em;
+    margin-bottom: 0;
+    margin-top: 1em;
+}
+
+.contact-item {
+    justify-content: center;
+}
+
+.footer-social {
+    margin-top: 0;
+}
+
+/* ------------------- */
+/*  BREADCRUMB         */
+/* ------------------- */
+
+#breadcrumb {
+    width: 90%;
+    padding: 0.3em 0.8em;
+}
+
+#breadcrumb p {
+    font-size: 0.9em;
+}
+
+/* ------------------- */
+/*  FORM RESPONSIVE    */
+/* ------------------- */
+
+form, .form-standard, #prenotaForm {
+    max-width: 100%;
+    margin: 1em;
+    border-radius: 15px;
+}
+
+fieldset.form, .form-standard fieldset, #prenotaForm fieldset {
+    margin: 10px;
+}
+
+fieldset.form legend, .form-standard legend, #prenotaForm legend {
+    font-size: 16px;
+    padding: 15px;
+}
+
+fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div {
+    margin: 0 15px 15px 15px;
+}
+
+.search-container input {
+    width: 95%;
+    padding: 0.6em 1em;
+}
+
+/* ------------------- */
+/*  TABELLE RESPONSIVE */
+/* ------------------- */
+
+.data-table {
+    font-size: 0.85em;
+}
+
+.data-table th,
+.data-table td {
+    padding: 0.8em 0.5em;
+    font-size: 0.9em;
+}
+
+/* Tabelle come card su schermi piccoli */
+@media screen and (max-width: 600px) {
+    .table-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .data-table {
+        min-width: 600px;
+    }
+}
+
+.select-locations-admin select {
+    max-width: 100%;
+    font-size: 0.95em;
+}
+
+/* ------------------- */
+/*  PROFILO RESPONSIVE */
+/* ------------------- */
+
+.profile-header {
+    flex-direction: column;
+    gap: 2em;
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.button-container {
+    float: none;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.dashboard-container {
+    width: 95%;
+    padding: 0 1em;
+}
+
+.data-list dt {
+    width: 140px;
+    font-size: 0.8em;
+}
+
+.data-list dd {
+    font-size: 1em;
+}
+
+/* ------------------- */
+/*  ABOUT US / FAQ     */
+/* ------------------- */
+
+.text-standard {
+    width: 95%;
+    padding: 1.5em;
+}
+
+.text-standard p,
+.text-standard li,
+.text-standard dd {
+    font-size: 1em;
+}
+
+.tertiary-title {
+    font-size: 1.6em;
+    padding-left: 0.8em;
+}
+
+#founders {
+    width: 95%;
+    padding: 1.5em;
+}
+
+#founders h4 {
+    font-size: 1.6em;
+}
+
+#founders ul {
+    grid-template-columns: 1fr;
+}
+
+/* FAQ già responsive da desktop.css media query */
+
+/* Carosello già responsive da desktop.css media query */
+
+/* ------------------- */
+/*  PAGINE ERRORE      */
+/* ------------------- */
+
+/* Già gestite da desktop.css @media (max-width: 768px) */
+
+/* ------------------- */
+/*  TITOLI STANDARD    */
+/* ------------------- */
+
+#title-standard h1 {
+    font-size: 3em;
+}
+
+#title-standard h2 {
+    font-size: 1.3em;
+}
+
+.main-standard {
+    padding: 1.5em;
+    margin-top: 2%;
+}
+
+/* ------------------- */
+/*  UTILITY MOBILE     */
+/* ------------------- */
+
+/* Nascondi logo quando il menu è aperto per più spazio */
+#burger-input:checked ~ #logo {
+    opacity: 0.3;
+}
+
+/* Migliora leggibilità dei bottoni */
+.button-standard button,
+.button-standard input[type="submit"] {
+    font-size: 15px;
+    padding: 14px;
+}
+
+/* Disclaimer in dove trovarci */
+#disclaimer {
+    margin: 4rem auto 2rem;
+    padding: 1rem 1.5rem;
+    font-size: 0.8rem;
+}
+
+
+

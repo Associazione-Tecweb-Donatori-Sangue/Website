@@ -39,7 +39,7 @@ html, body{
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: 16% center;
+  background-position: 14% center;
 }
 
 body.error-background {
@@ -77,8 +77,9 @@ body.error-background {
 
 .sticky-header{
   width: fit-content;
+  max-width: 98%;
   margin: 0 auto;
-  padding: 0 1.1em;
+  padding: 0 0.8em;
   border-radius: 1.6em 1.6em 3em 3em;
   position: sticky;
   top: 0.5em;
@@ -114,7 +115,7 @@ header{
   display: flex; 
   align-items: center; 
   justify-content: center;
-  gap: 0.8em; 
+  gap: 0.6em; 
 }
 
 
@@ -127,7 +128,7 @@ header{
   background-color: var(--link-button-color); 
   color: var(--link-txt-color);
   border-radius: 1.3em;
-  padding: 1.2em;
+  padding: 1.1em 1.2em;
   font-weight: bold;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -274,6 +275,7 @@ header{
   justify-content: center;
   align-items: center;
   width: 6%;
+  min-width: 60px;
   height: 3.1em;
   background-color: var(--primary-bg-color);
   margin: -3px auto 0;
@@ -636,6 +638,7 @@ footer {
 .title-item p {
   font-size: 1.2em;
   color: var(--footer-text-color);
+  text-align: left;
 }
 
 .times-item h3 {
