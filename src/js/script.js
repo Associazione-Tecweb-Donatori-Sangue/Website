@@ -4,7 +4,7 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Menu mobile
-    const hamburger = document.querySelector('.hamburger-menu');
+    const hamburger = document.querySelector('.burger-menu');
     const navMenu = document.querySelector('.nav-menu');
 
     if (hamburger && navMenu) {
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', function () {
             const searchTerm = this.value.toLowerCase();
-            const sedi = document.querySelectorAll('.sede');
+            const sedi = document.querySelectorAll('.location');
             let visibileCount = 0;
 
             sedi.forEach(sede => {
@@ -88,12 +88,12 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
             return response.text();
         })
         .then(html => {
-            const tbody = document.querySelector('.tabella_dati tbody');
+            const tbody = document.querySelector('.data-table tbody');
             if (tbody) tbody.innerHTML = html;
         })
         .catch(error => {
             console.error('Errore Admin:', error);
-            const tbody = document.querySelector('.tabella_dati tbody');
+            const tbody = document.querySelector('.data-table tbody');
             if (tbody) tbody.innerHTML = '<tr><td colspan="5" class="table-cell-centered">Errore nel caricamento dei dati</td></tr>';
         });
 }

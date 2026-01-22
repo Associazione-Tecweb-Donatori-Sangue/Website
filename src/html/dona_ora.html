@@ -21,20 +21,20 @@
         <script src="../../js/script.js"></script>
     </head>
 
-    <body class="page_background">
+    <body class="page-background">
 
         [HEADER]
         
-        <div id="title_std">
+        <div id="title-standard">
             <h1>Dona ora</h1>
             <h2>Prenota la tua donazione di sangue</h2>
         </div>
         
-        <main id="content" class="main_std">
+        <main id="content" class="main-standard">
             <form id="prenotaForm" action="../actions/prenota.php" method="post">
                 <fieldset class="form">
                     <legend>Luogo</legend>
-                    <div class="select_std">
+                    <div class="input-standard">
                         <label for="luogo">Scegli il luogo</label>
                         <select name="luogo" id="luogo" required>
                             <option value="">Seleziona una sede...</option>
@@ -45,11 +45,11 @@
 
                 <fieldset class="form">
                     <legend>Data e Ora</legend>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="data">Data</label>
                         <input name="data" id="data" type="date" required>
                     </div>
-                    <div class="select_std">
+                    <div class="input-standard">
                         <label for="ora">Ora</label>
                         <select name="ora" id="ora" required>
                             <option value="07:30">07:30</option>
@@ -75,21 +75,21 @@
 
                 <fieldset class="form">
                     <legend>Cosa vuoi donare</legend>
-                    <div class="radio_std">
+                    <div class="radio-standard">
                         <label for="sangue-intero">Sangue intero</label>
                         <input type="radio" id="sangue-intero" name="donazione" value="sangue-intero" required>
                     </div>
-                    <div class="radio_std">
+                    <div class="radio-standard">
                         <label for="piastrine">Piastrine (piastrinoaferesi)</label>
                         <input type="radio" id="piastrine" name="donazione" value="piastrine">
                     </div>
-                    <div class="radio_std">
+                    <div class="radio-standard">
                         <label for="plasma">Plasma (plasmaferesi)</label>
                         <input type="radio" id="plasma" name="donazione" value="plasma">
                     </div>
                 </fieldset>
 
-                <div class="button_std"><button type="submit">Prenota</button></div>
+                <div class="button-standard"><button type="submit">Prenota</button></div>
             </form>            
         </main>
 

@@ -24,13 +24,13 @@ $paginaHTML = caricaTemplate('dona_ora.html');
 
 // --- 2. INIEZIONE MESSAGGIO NELLA PAGINA ---
 // Lo inserisco subito dopo l'apertura del tag <main>
-$paginaHTML = str_replace('<main id="content" class="main_std">', '<main id="content" class="main_std">' . $msgHTML, $paginaHTML);
+$paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 
 // 1. Controllo se l'utente è loggato, se si mostro la pagina, altrimenti mostro tasti di login/registrazione
 if (!isset($_SESSION['user_id'])) {
     // UTENTE NON LOGGATO
     $messaggioAvviso = '
-    <div class="testo_std testo-centered">
+    <div class="text-standard testo-centered">
         <h3 class="section-title">Accesso Richiesto</h3>
         <p>Per prenotare una donazione è necessario accedere alla propria area riservata.</p>
         <p>Il sangue è una cosa seria, e anche la sicurezza dei tuoi dati!</p>
@@ -38,7 +38,7 @@ if (!isset($_SESSION['user_id'])) {
         <div class="action-container">
             
             <form action="login.php" method="get" class="form-inline-button">
-                <div class="button_std button_std-no-margin">
+                <div class="button-standard button-standard-no-margin">
                     <input type="hidden" name="redirect" value="dona_ora.php">
                     <button type="submit" class="button-full-width">Accedi</button>
                 </div>
@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
             <p class="text-separator">oppure</p>
 
             <form action="registrazione.php" method="get" class="form-inline-button">
-                <div class="button_std button_std-no-margin">
+                <div class="button-standard button-standard-no-margin">
                     <button type="submit" class="button-full-width">Registrati</button>
                 </div>
             </form>
@@ -63,7 +63,7 @@ if (!isset($_SESSION['user_id'])) {
     // UTENTE LOGGATO, controllo se è ADMIN
     if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
         $messaggioNonDonatoreoAdmin = '
-        <div class="testo_std testo-centered">
+        <div class="text-standard testo-centered">
             <h3 class="section-title">Profilo Admin</h3>
             <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
             <p>Per poter prenotare una donazione, devi utilizzare un account utente normale.</p>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['user_id'])) {
             
             <div class="action-container-single">
                 <form action="profilo.php" method="get" class="form-inline-button-wide">
-                    <div class="button_std button_std-no-margin">
+                    <div class="button-standard button-standard-no-margin">
                         <button type="submit" class="button-full-width">Torna al Profilo</button>
                     </div>
                 </form>
@@ -92,7 +92,7 @@ if (!isset($_SESSION['user_id'])) {
                 
                 // --- LIVELLO 2: UTENTE LOGGATO MA NON DONATORE ---
                 $messaggioNonDonatoreoAdmin = '
-                <div class="testo_std testo-centered">
+                <div class="text-standard testo-centered">
                     <h3 class="section-title">Profilo Donatore Incompleto</h3>
                     <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
                     <p>Per poter prenotare una donazione, abbiamo bisogno di raccogliere alcuni dati sanitari obbligatori.</p>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['user_id'])) {
                     
                     <div class="action-container-single">
                         <form action="registrazione_donatore.php" method="get" class="form-inline-button-wide">
-                            <div class="button_std button_std-no-margin">
+                            <div class="button-standard button-standard-no-margin">
                                 <button type="submit" class="button-full-width">Diventa Donatore</button>
                             </div>
                         </form>

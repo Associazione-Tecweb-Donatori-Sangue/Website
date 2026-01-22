@@ -21,39 +21,39 @@
         <script src="../../js/script.js"></script>
     </head>
 
-    <body class="page_background">
+    <body class="page-background">
         [HEADER]
         
-        <div id="title_std">
+        <div id="title-standard">
             <h1>[titoloPagina]</h1>
             <h2>[sottotitoloPagina]</h2>
         </div>
 
-        <main id="content" class="main_std">
+        <main id="content" class="main-standard">
             <div class="back-button-container">
                 <a href="profilo.php" class="back-button">&larr; Indietro</a>
             </div>
 
-            <form action="registrazione_donatore.php" method="POST" class="form_std">
+            <form action="registrazione_donatore.php" method="POST" class="form-standard">
                 <fieldset>
                     <legend>Dati Personali</legend>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="nome">Nome:</label>
                         <input name="nome" id="nome" type="text" required value="[valore_nome]">
                     </div>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="cognome">Cognome:</label>
                         <input name="cognome" id="cognome" type="text" required value="[valore_cognome]">
                     </div>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="data_nascita">Data di Nascita:</label>
                         <input name="data_nascita" id="data_nascita" type="date" required value="[valore_data_nascita]">
                     </div>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="luogo_nascita">Luogo di Nascita:</label>
                         <input name="luogo_nascita" id="luogo_nascita" type="text" required value="[valore_luogo_nascita]">
                     </div>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="codice_fiscale">Codice Fiscale:</label>
                         <input name="codice_fiscale" id="codice_fiscale" type="text" required minlength="16" maxlength="16" pattern="^[a-zA-Z0-9]{16}$" title="Inserisci il Codice Fiscale di 16 caratteri" value="[valore_codice_fiscale]">
                     </div>
@@ -61,15 +61,15 @@
 
                 <fieldset>
                     <legend>Contatti e Residenza</legend>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="residenza">Indirizzo di Residenza Completo:</label>
                         <input name="residenza" id="residenza" type="text" required value="[valore_residenza]">
                     </div>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="telefono">Numero di Telefono:</label>
                         <input name="telefono" id="telefono" type="tel" required pattern="^(\+39)?\s?\d{3}[\s-]?\d{3}[\s-]?\d{4}$" title="Esempio: 333 1234567" value="[valore_telefono]">
                     </div>
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="email">Email:</label>
                         <input name="email" id="email" type="email" required value="[valore_email]">
                     </div>
@@ -78,7 +78,7 @@
                 <fieldset class="form">
                     <legend>Informazioni Sanitarie</legend>
 
-                    <div class="select_std">
+                    <div class="input-standard">
                         <label for="gruppo_sanguigno">Gruppo Sanguigno:</label>
                         <select name="gruppo_sanguigno" id="gruppo_sanguigno" required>
                         <option value="">Seleziona...</option>
@@ -95,22 +95,22 @@
                     </div>
 
                     <div class="group_label">Sesso:</div>
-                    <div class="radio_std">
+                    <div class="radio-standard">
                         <label for="maschio">Maschio</label>
                         <input type="radio" id="maschio" name="sesso" value="maschio">
                     </div>
-                    <div class="radio_std">
+                    <div class="radio-standard">
                         <label for="femmina">Femmina</label>
                         <input type="radio" id="femmina" name="sesso" value="femmina">
                     </div>
 
-                    <div class="input_std">
+                    <div class="input-standard">
                         <label for="peso_corporeo_in_kg">Peso Corporeo in <abbr title="chilogrammi">Kg</abbr>:</label>
                         <input name="peso_corporeo_in_kg" id="peso_corporeo_in_kg" type="number" min="0" step="0.1" required value="[valore_peso]">
                     </div>
                 </fieldset>
             
-                <div class="button_std">
+                <div class="button-standard">
                     <button type="submit">[testoSubmit]</button>
                 </div>
             </form>

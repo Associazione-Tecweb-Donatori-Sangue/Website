@@ -49,14 +49,14 @@ try {
     $datiDonatore = $stmt->fetch();
 
     if (!$datiDonatore) {
-        $htmlDonatore = '<div class="button_std"><a href="/php/pages/registrazione_donatore.php" class="button">Completa la registrazione come donatore</a></div>';
+        $htmlDonatore = '<div class="button-standard"><a href="/php/pages/registrazione_donatore.php" class="button">Completa la registrazione come donatore</a></div>';
     } else {
         $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
 
         $htmlDonatore = '
         <section class="dati_donatore_box">
-            <h3 class="titolo-dashboard">Il tuo profilo Donatore</h3>
-            <dl class="lista_dati">
+            <h3 class="dashboard-title">Il tuo profilo Donatore</h3>
+            <dl class="data-list">
                 <dt>Nome e Cognome:</dt>
                 <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
                 
@@ -87,7 +87,7 @@ try {
                 <dt>Peso:</dt>
                 <dd>' . htmlspecialchars($datiDonatore['peso']) . ' Kg</dd>
             </dl>
-            <div class="button_std button-margin-top"><a href="/php/pages/registrazione_donatore.php" class="button">Modifica i tuoi dati</a></div>
+            <div class="button-standard button-margin-top"><a href="/php/pages/registrazione_donatore.php" class="button">Modifica i tuoi dati</a></div>
         </section>';
         
         $_SESSION['dati_donatore'] = $datiDonatore;
@@ -148,8 +148,8 @@ try {
         }
         // Avvolgo le righe nella struttura tabellare
         $sezioneFuture = '
-        <div class="contenitore_tabella">
-            <table class="tabella_dati">
+        <div class="table-container">
+            <table class="data-table">
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -164,7 +164,7 @@ try {
         </div>';
 
     } else { // nessuna prenotazione futura
-        $sezioneFuture = '<p class="testo_std testo-centered-message">Nessuna prenotazione in programma.</p>';
+        $sezioneFuture = '<p class="text-standard testo-centered-message">Nessuna prenotazione in programma.</p>';
     }
 
     // Tabella passate
@@ -183,8 +183,8 @@ try {
         }
         // Avvolgo nella tabella
         $sezionePassate = '
-        <div class="contenitore_tabella">
-            <table class="tabella_dati tabella-opacity">
+        <div class="table-container">
+            <table class="data-table tabella-opacity">
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -198,7 +198,7 @@ try {
             </table>
         </div>';
     } else { // nessuna donazione passata
-        $sezionePassate = '<p class="testo_std testo-centered-message">Nessuna donazione precedente.</p>';
+        $sezionePassate = '<p class="text-standard testo-centered-message">Nessuna donazione precedente.</p>';
     }
 } catch (PDOException $e) {
     $sezioneFuture = '<p class="errore testo-centered-message">Errore caricamento dati.</p>';
@@ -207,10 +207,10 @@ try {
 // --- COSTRUZIONE HTML FINALE DELLE SEZIONI ---
 $nuovoContenutoTabelle = '
     <section>
-        <h3 class="titolo_terziario">Prenotazioni Future</h3>
+        <h3 class="tertiary-title">Prenotazioni Future</h3>
         ' . $sezioneFuture . '
 
-        <h3 class="titolo_terziario titolo-margin-top">Storico Donazioni (Ultime 5)</h3>
+        <h3 class="tertiary-title titolo-margin-top">Storico Donazioni (Ultime 5)</h3>
         ' . $sezionePassate . '
     </section>
 ';
@@ -225,7 +225,7 @@ $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 // --- GESTIONE MESSAGGIO FLASH (Spostato all'inizio del Main) ---
 $msgHTML = getMessaggioFlashHTML();
 if (!empty($msgHTML)) {
-    $paginaHTML = str_replace('<main id="content" class="main_std">', '<main id="content" class="main_std">' . $msgHTML, $paginaHTML);
+    $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 }
 
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo</span></p>';

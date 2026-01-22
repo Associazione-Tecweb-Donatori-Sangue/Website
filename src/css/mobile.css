@@ -7,7 +7,7 @@
 /*  MENU AD HAMBURGER  */
 /* ------------------- */
 
-.burgerMenu{
+.burger-menu{
     display: flex; /* mostra l'hamburger su mobile */
     margin-left: 2em;
     z-index: 1001; /* Sopra il menu a tendina */
@@ -21,15 +21,15 @@
 }
 
 /* Animazione hamburger, diventa una X */
-#burgerInput:checked ~ .burgerMenu span:nth-child(1){
+#burger-input:checked ~ .burger-menu span:nth-child(1){
     transform: rotate(45deg) translate(6px, 5px);
 }
 
-#burgerInput:checked ~ .burgerMenu span:nth-child(2){
+#burger-input:checked ~ .burger-menu span:nth-child(2){
     opacity: 0;
 }
 
-#burgerInput:checked ~ .burgerMenu span:nth-child(3){
+#burger-input:checked ~ .burger-menu span:nth-child(3){
     transform: rotate(-45deg) translate(6px, -5px);
 }
 
@@ -65,7 +65,7 @@
 }
 
 /* Lo stato APERTO (quando il checkbox è checked) */
-#burgerInput:checked ~ ul {
+#burger-input:checked ~ ul {
     opacity: 1;
     visibility: visible;
     transform: translateY(0); /* Torna in posizione naturale */
@@ -115,7 +115,7 @@
 /* --------------- */
 
 @media screen and (max-width: 650px) {
-  .sedi_container {
+  .locations-container {
     grid-template-columns: 1fr;
     width: 95%;
   }
@@ -132,14 +132,14 @@
 }
 
 /* Adattamento Titoli Grandi */
-#landing_title h1 {
+#landing-title h1 {
     font-size: 3.5em; /* Ridotto per mobile */
     width: 80%;
     margin-left: 10%;
     text-align: center;
 }
 
-#landing_title h2 {
+#landing-title h2 {
     width: 90%;
     margin-left: 5%;
     text-align: center;

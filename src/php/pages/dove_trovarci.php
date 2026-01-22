@@ -34,7 +34,7 @@ try {
 
         // D. Costruzione della CARD
         $cardsHTML .= '
-        <div class="sede">
+        <div class="location">
             <h3>' . $nomeSedeFormattato . '</h3>
             <img src="' . $percorsoImmagine . '" alt="Sede ' . $nomeSede . '" loading="lazy">
             <p>' . htmlspecialchars($sede['descrizione']) . '</p>
@@ -49,7 +49,7 @@ try {
 
     // Se non ci sono sedi, mostro un messaggio
     if (empty($cardsHTML)) {
-        $cardsHTML = '<p class="testo_std">Nessuna sede trovata nel database.</p>';
+        $cardsHTML = '<p class="text-standard">Nessuna sede trovata nel database.</p>';
     }
 
     // 2. Sostituisco il segnaposto

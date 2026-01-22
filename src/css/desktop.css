@@ -18,8 +18,8 @@
   --card-title-color: #082636;
   --card-subtitle-color: #000000;
 
-  --card-sedi-bg-color: #d9e6ef;
-  --card-sedi-subtitle-color: #2c5f7a;
+  --card-locations-bg-color: #d9e6ef;
+  --card-locations-subtitle-color: #2c5f7a;
 
   --footer-primary-color: #4d7d8a;
   --footer-secondary-color: #b4d2d4;
@@ -42,19 +42,19 @@ html, body{
   background-position: 16% center;
 }
 
-body.error_background {
+body.error-background {
   background-image: none !important;
   background-color: #fbfefe;
 }
 
-.navigationHelper{
+.navigation-helper{
   position: absolute;
   top: 0;
   left: 0;
   z-index: 9999;
 }
 
-.navHelper{
+.nav-helper{
   display: inline-block;
   padding: 1em;
   background-color: var(--link-active-bg-color2);
@@ -65,7 +65,7 @@ body.error_background {
   left: -9999px;
 }
 
-.navHelper:focus{
+.nav-helper:focus{
   position: static;
   left: auto;
   outline: 3px solid #ff0;
@@ -119,8 +119,8 @@ header{
 
 
 #menu ul li a, 
-#card_intro a, 
-#card_sedi a, 
+#card-intro a, 
+#card-locations a, 
 .footer-buttons a {
   display: inline-block;
   text-decoration: none;
@@ -136,8 +136,8 @@ header{
 }
 
 #menu a:hover,
-#card_intro a:hover,
-#card_sedi a:hover,
+#card-intro a:hover,
+#card-locations a:hover,
 .footer-buttons a:hover {
   background: linear-gradient(135deg, var(--link-active-bg-color2) 0%, var(--link-active-bg-color1) 100%);
   color: var(--link-active-txt-color);
@@ -182,11 +182,11 @@ header{
   display: block;
 }
 
-#burgerInput{
+#burger-input{
   display: none;
 }
 
-.burgerMenu{
+.burger-menu{
   display: none;
   flex-direction: column;
   cursor: pointer;
@@ -194,7 +194,7 @@ header{
   padding: 0.8em;
 }
 
-.burgerMenu span{
+.burger-menu span{
   width: 30px;
   height: 3px;
   background-color: #000000;
@@ -231,21 +231,23 @@ header{
 
 /*index.html*/
 
-#landing_title{      
+#landing-title{      
   height: calc(100vh - 11em);
   display: flex;
   flex-direction: column;
   padding-top: 4%;
 }
 
-#landing_title h1, 
-#landing_title h2 {
+#landing-title h1, 
+#landing-title h2,
+#title-standard h1,
+#title-standard h2 {
   color: var(--title-color);
   font-family: 'Playfair Display', Georgia, serif;
   letter-spacing: 0.04em;
 }
 
-#landing_title h1{
+#landing-title h1{
   width: 40%;
   font-size: 5em;
   font-weight: 900;
@@ -253,11 +255,11 @@ header{
   margin-left: 38%;
 }
 
-#landing_title h1 abbr{
+#landing-title h1 abbr{
   text-decoration: none;
 }
 
-#landing_title h2{
+#landing-title h2{
   width: 50%;
   text-align: right;
   font-size: 1.7em;
@@ -302,10 +304,10 @@ main{
   height: 100%;
 }
 
-#card_intro,
-#card_unisciti,
-#card_sceglierci,
-#card_sedi {
+#card-intro,
+#card-join,
+#card-why-us,
+#card-locations {
   display: flex;
   width: 90%;
   height: 28em;
@@ -314,30 +316,30 @@ main{
   border-radius: 1.4em;
 }
 
-#card_intro,
-#card_unisciti,
-#card_sceglierci{
+#card-intro,
+#card-join,
+#card-why-us{
   background-color: var(--card-bg-color);
 }
 
-.card_main_title{
+.card-main-title{
   font-size: 2.4em;
   line-height: 1.3em;
   color: var(--card-title-color);
 }
 
-#card_intro img,
-#card_sceglierci img{
+#card-intro img,
+#card-why-us img{
   height: 100%;
   width: 44%;
   object-fit: cover;
 }
 
-#card_intro{
+#card-intro{
   margin-top: 2.5em;
 }
 
-#card_intro div{
+#card-intro div{
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -346,49 +348,49 @@ main{
   padding-right: 2%;
 }
 
-#card_intro h2{
+#card-intro h2{
   width: 100%;
   text-align: left;
 }
 
-#card_intro p{
+#card-intro p{
   font-size: 1.3em;
   line-height: 1.5em;
   color: var(--card-subtitle-color);
 }
 
-#card_intro a{
+#card-intro a{
   margin: 0 auto 0 0;
   border: 2px solid #000000;
 }
 
-#card_intro img{
+#card-intro img{
   margin-left: auto;
   border-radius: 0 1.4em 1.4em 0;
 }
 
-#card_unisciti{
+#card-join{
   flex-direction: column;
 }
 
-#card_unisciti_title{
+#card-join-title{
   margin: 0 auto 1em;
   padding-top: 1em;
   height: 22%;
 }
 
-#card_unisciti_title h2{
+#card-join-title h2{
   margin: auto;
   text-align: center;
 }
 
-#card_unisciti_title p{
+#card-join-title p{
   font-size: 1.4em;
   line-height: 1.5em;
   margin-top: 0.2em;
 } 
 
-#card_unisciti ul{
+#card-join ul{
   list-style-type: none;
   display: flex;
   flex-direction: row;
@@ -400,7 +402,7 @@ main{
   padding-bottom: 1.2em;
 }
 
-#card_unisciti li{
+#card-join li{
   display: flex;
   flex-direction: column;
   justify-items: stretch;
@@ -411,28 +413,28 @@ main{
   transition: all 0.4s ease;
 }
 
-#card_unisciti li p{
+#card-join li p{
   margin-top: 0.2em;
   text-align: center;
 }
 
-#card_unisciti img{
+#card-join img{
   border-radius: 1em 1em 0 0;
   height: 88%;
   width: 100%;
   object-fit: cover;
 }
 
-#card_unisciti li:hover{
+#card-join li:hover{
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
   transform: scale(1.05);
 }
 
-#card_sceglierci{
+#card-why-us{
   flex-direction: row-reverse;
 }
 
-#div_sceglierci{
+#div-why-us{
   width: 49%;
   display: flex;
   flex-direction: column;
@@ -440,43 +442,43 @@ main{
   margin-right: 3%;
 }
 
-#div_sceglierci h2{
+#div-why-us h2{
   text-align: left;
 }
 
-#div_sceglierci ul{
+#div-why-us ul{
   list-style: none;
   margin-top: 0;
 }
 
-#div_sceglierci li{
+#div-why-us li{
   margin-top: 1%;
 }
 
-#div_sceglierci h3{
+#div-why-us h3{
   font-size: 1.6em;
   line-height: 1.5em;
   text-align: left;
 }
 
-#div_sceglierci p{
+#div-why-us p{
   font-size: 1.2em;
   line-height: 1.5em;
 }
 
-#card_sceglierci img{
+#card-why-us img{
   margin-right: auto;
   border-radius: 1.4em 0 0 1.4em;
 }
 
-#card_sedi{
+#card-locations{
   justify-content: center;
   align-items: center;
   position: relative;
   overflow: hidden;
 }
 
-#card_sedi::before{
+#card-locations::before{
   content: '';
   position: absolute;
   width: 100%;
@@ -490,54 +492,31 @@ main{
   border-radius: 1.4em;
 }
 
-#card_sedi div{
+#card-locations div{
   width: 54%;
   height: fit-content;
   padding: 2em 2em 2.5em;
-  background-color: var(--card-sedi-bg-color);
+  background-color: var(--card-locations-bg-color);
   text-align: center;
   border-radius: 1.4em;
   position: relative;
   z-index: 1;
 }
 
-#card_sedi h2{
+#card-locations h2{
   font-size: 2em;
   line-height: 1.5em;
   margin-bottom: 0.2em;
 }
 
-#card_sedi p{
+#card-locations p{
   margin-bottom: 2em;
   font-size: 1.2em;
   line-height: 1.5em;
-  color: var(--card-sedi-subtitle-color);
+  color: var(--card-locations-subtitle-color);
 }
 
 /* Footer */
-.contatto-item a {
-    color: inherit;
-    font-size: 1em;
-    transition: opacity 0.3s ease;
-}
-
-.contatto-item a:hover {
-    opacity: 0.7;
-    text-decoration: underline; 
-}
-
-.contatto-item {
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-    justify-content: flex-end;
-}
-
-.contatto-item p, 
-.contatto-item a {
-    margin: 0;
-    line-height: 1.2;
-}
 
 footer {
   background: linear-gradient(135deg, var(--footer-primary-color) 0%, var(--footer-secondary-color) 100%);
@@ -604,20 +583,35 @@ footer {
   margin: 2em 0;
 }
 
-.contatto-item {
+.contact-item {
   display: flex;
   align-items: center;
   gap: 0.5em;
+  justify-content: flex-end;
 }
 
-.contatto-item .icon {
+.contact-item a {
+  color: inherit;
+  font-size: 1em;
+  transition: opacity 0.3s ease;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.contact-item a:hover {
+  opacity: 0.7;
+  text-decoration: underline; 
+}
+
+.contact-item .icon {
   width: 2em;
   height: 2em;
 }
 
-.contatto-item p {
+.contact-item p {
   margin: 0;
   font-size: 1em;
+  line-height: 1.2;
 }
 
 .title-item, .times-item{
@@ -697,10 +691,11 @@ footer {
 }
 
 /* STILE COMUNE A TUTTE LE PAGINE TRANNE INDEX*/
-.main_std {
+.main-standard {
     background-color: white;
-    padding: 40px;
+    padding: 2em;
     border-radius: 15px;
+    margin-top: 4%;
 }
 
 .dashboard-container {
@@ -709,35 +704,23 @@ footer {
     width: 100%;
 }
 
-.page_background{
+.page-background{
   background-image: url(../../images/back.jpg);
 }
 
-.main_std{
-  margin-top: 4%;
-  padding: 2em;
-}
-
-#title_std{
+#title-standard{
   margin-top: 2%;
   text-align: center;
 }
 
-#title_std h1, 
-#title_std h2{
-  color: var(--title-color);
-  font-family: 'Playfair Display', Georgia, serif;
-  letter-spacing: 0.04em;
-}
-
-#title_std h1{
+#title-standard h1{
   line-height: 1em;
   font-size: 5em;
   font-weight: 900;
   margin-bottom: 0.4em;
 }
 
-#title_std h2{
+#title-standard h2{
   font-size: 1.7em;
   font-weight: 400;
 }
@@ -751,7 +734,7 @@ footer {
 /* CHI SIAMO */
 /*-----------------*/
 
-.titolo_terziario {
+.tertiary-title {
   font-size: 2em;
   font-weight: 600;
   color: #082636;
@@ -760,7 +743,7 @@ footer {
   border-left: 5px solid #4f5abb;
 }
 
-.testo_std {
+.text-standard {
   background-color: #ffffff;
   width: 80%;
   margin: 2em auto;
@@ -770,30 +753,30 @@ footer {
   line-height: 1.8em;
 }
 
-.testo_std p {
+.text-standard p {
   font-size: 1.2em;
   color: #2c5f7a;
   margin-bottom: 1.2em;
 }
 
-.testo_std ul {
+.text-standard ul {
   list-style-position: inside;
   margin-left: 1.5em;
   margin-top: 1em;
 }
 
-.testo_std li {
+.text-standard li {
   font-size: 1.2em;
   color: #2c5f7a;
   margin-bottom: 0.8em;
   padding-left: 0.5em;
 }
 
-.testo_std dl {
+.text-standard dl {
   margin-top: 2em;
 }
 
-.testo_std dt {
+.text-standard dt {
   font-size: 1.4em;
   font-weight: 700;
   color: #082636;
@@ -801,7 +784,7 @@ footer {
   margin-bottom: 0.5em;
 }
 
-.testo_std dd {
+.text-standard dd {
   font-size: 1.2em;
   color: #2c5f7a;
   margin-left: 2em;
@@ -809,7 +792,7 @@ footer {
   line-height: 1.8em;
 }
 
-#fondatori {
+#founders {
   background: linear-gradient(135deg, #a0c7cf 0%, #d9e6ef 100%);
   width: 80%;
   margin: 3em auto;
@@ -819,20 +802,20 @@ footer {
   text-align: center;
 }
 
-#fondatori h4 {
+#founders h4 {
   font-size: 2em;
   font-weight: 700;
   color: #082636;
   margin-bottom: 1em;
 }
 
-#fondatori p {
+#founders p {
   font-size: 1.2em;
   color: #2c5f7a;
   margin-bottom: 1.5em;
 }
 
-#fondatori ul {
+#founders ul {
   list-style: none;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -841,7 +824,7 @@ footer {
   margin: 0 auto;
 }
 
-#fondatori li {
+#founders li {
   background-color: #ffffff;
   padding: 1.2em;
   border-radius: 0.8em;
@@ -852,7 +835,7 @@ footer {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-#fondatori li:hover {
+#founders li:hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
@@ -890,7 +873,7 @@ footer {
   box-shadow: 0 0 0 4px rgba(22, 29, 93, 0.15);
 }
 
-.sedi_container{
+.locations-container{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2em;
@@ -899,16 +882,16 @@ footer {
 }
 
 @media screen and (max-width: 1000px) {
-  .sedi_container {
+  .locations-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.sedi_container abbr{
+.locations-container abbr{
   text-decoration: none;
 }
 
-.sede {
+.location {
   background-color: #ffffff;
   border-radius: 1.2em;
   padding: 1.5em;
@@ -919,22 +902,22 @@ footer {
 
 }
 
-.sede.hidden {
+.location.hidden {
   display: none;
 }
 
-.sede:hover {
+.location:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.sede h3 {
+.location h3 {
   color: #082636;
   font-size: 1.5em;
   margin-bottom: 1em;
 }
 
-.sede img {
+.location img {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -942,14 +925,14 @@ footer {
   margin-bottom: 1em;
 }
 
-.sede p {
+.location p {
   font-size: 1em;
   line-height: 1.5em;
   margin-bottom: 0.8em;
   color: #2c5f7a;
 }
 
-.sede a {
+.location a {
   color: #4f5abb;
   text-decoration: none;
   font-weight: 600;
@@ -958,22 +941,22 @@ footer {
   margin-top: auto;
 }
 
-.sede a:hover {
+.location a:hover {
   color: #3d4799;
   text-decoration: underline;
 }
 
 /* TUTTI I FORM */
-form, .form_std, #prenotaForm {
+form, .form-standard, #prenotaForm {
   max-width: 380px;
   margin: 1% auto;
-  background: var(--card-sedi-bg-color);
+  background: var(--card-locations-bg-color);
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(172, 210, 230, 0.4);
   overflow: hidden;
 }
 
-fieldset.form, .form_std fieldset, #prenotaForm fieldset {
+fieldset.form, .form-standard fieldset, #prenotaForm fieldset {
   border: none;
   margin: 15px;
   padding: 0 0 10px 0;
@@ -983,7 +966,7 @@ fieldset.form, .form_std fieldset, #prenotaForm fieldset {
   overflow: hidden;
 }
 
-fieldset.form legend, .form_std legend, #prenotaForm legend {
+fieldset.form legend, .form-standard legend, #prenotaForm legend {
   width: 100%;
   padding: 18px;
   margin: 0 0 15px 0;
@@ -998,11 +981,11 @@ fieldset.form legend, .form_std legend, #prenotaForm legend {
   border: none;
 }
 
-fieldset.form > div, .form_std fieldset > div, #prenotaForm fieldset > div {
+fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div {
   margin: 0 25px 15px 25px;
 }
 
-.input_std label, label {
+.input-standard label, label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
@@ -1011,7 +994,7 @@ fieldset.form > div, .form_std fieldset > div, #prenotaForm fieldset > div {
 }
 
 
-.input_std input, 
+.input-standard input, 
 textarea, 
 #prenotaForm input,
 select {
@@ -1038,8 +1021,8 @@ select {
 }
 
 #prenotaForm input:focus, 
-.input_std input:focus, 
-.form_std select:focus,
+.input-standard input:focus, 
+.form-standard select:focus,
 select:focus,
 input[type="date"]:focus {
   outline: none;
@@ -1048,14 +1031,14 @@ input[type="date"]:focus {
   box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
 }
 
-.select_sedi {
+.select-locations {
     width: 100%;
     max-width: 300px;
     margin: 10px 0; 
     display: block;
 }
 
-.select_sedi select {
+.select-locations select {
     width: 100%;
     padding: 10px 14px;
     border: 2px solid #acd2e6;
@@ -1067,14 +1050,14 @@ input[type="date"]:focus {
     cursor: pointer;
 }
 
-.select_sedi select:focus {
+.select-locations select:focus {
     outline: none;
     border-color: #4f5abb;
     background: white;
     box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
 }
 
-small, .form_std small {
+small, .form-standard small {
   display: block;
   margin-top: 5px;
   color: #2C5F7A;
@@ -1082,7 +1065,7 @@ small, .form_std small {
   line-height: 1.4;
 }
 
-.radio_std {
+.radio-standard {
   display: grid;
   grid-template-columns: auto 20px;
   column-gap: 10px; 
@@ -1096,17 +1079,17 @@ small, .form_std small {
   transition: all 0.3s ease;
 }
 
-.radio_std:hover {
+.radio-standard:hover {
   background: #e8f4f8;
 }
 
-.radio_std label {
+.radio-standard label {
   font-weight: 500;
   cursor: pointer;
   margin: 0;
 }
 
-.radio_std input[type="radio"] {
+.radio-standard input[type="radio"] {
   width: 18px;
   height: 18px;
   accent-color: #4f5abb;
@@ -1114,16 +1097,16 @@ small, .form_std small {
   justify-self: end;
 }
 
-.radio_std:has(input[type="radio"]:checked) {
+.radio-standard:has(input[type="radio"]:checked) {
   border-color: #4f5abb;
 }
 
-.button_std {
+.button-standard {
   padding: 0;
   margin: 0;
 }
 
-.button_std .button {
+.button-standard .button {
   display: inline-block;
   padding: 8px 18px;          
   margin-top: 10px;           
@@ -1136,8 +1119,8 @@ small, .form_std small {
   cursor: pointer;
 }
 
-.button_std button, 
-.button_std input[type="submit"]{
+.button-standard button, 
+.button-standard input[type="submit"]{
   width: calc(100% - 30px);
   padding: 16px;
   margin: 20px 15px 15px 15px;
@@ -1156,15 +1139,15 @@ small, .form_std small {
   box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
 }
 
-.button_std button:hover, .button_std .button:hover,
-.button_std input[type="submit"]:hover {
+.button-standard button:hover, .button-standard .button:hover,
+.button-standard input[type="submit"]:hover {
   background-color: #4f5abb;
   color: #ffffff;
   box-shadow: 0 6px 20px rgba(79, 90, 187, 0.4);
 }
 
-.button_std button:active, 
-.button_std input[type="submit"]:active {
+.button-standard button:active, 
+.button-standard input[type="submit"]:active {
   background-color: #3d4799;
   color: #ffffff;
   transform: scale(0.98);
@@ -1311,51 +1294,61 @@ small, .form_std small {
    MESSAGGI FLASH E ERRORI
 ========================================= */
 
-/* Messaggio flash di successo (verde) */
-.msg-success {
+/* Classe base per messaggi */
+.msg-base,
+.msg-success,
+.msg-error,
+.msg-flash {
+  padding: 15px;
+  margin: 20px auto;
+  border-radius: 5px;
+  text-align: center;
+}
+
+/* Messaggio di successo (verde) */
+.msg-success,
+.msg-success-text {
   background-color: #d4edda;
   color: #155724;
   border: 1px solid #c3e6cb;
-  padding: 15px;
-  margin: 20px auto;
   width: 90%;
   max-width: 800px;
-  border-radius: 5px;
-  text-align: center;
 }
 
-/* Messaggio flash di errore (rosso) */
-.msg-error {
+.msg-success-text {
+  font-weight: bold;
+}
+
+/* Messaggi di errore (rosso) */
+.msg-error,
+.msg-error-inline,
+.msg-error-text {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
-  padding: 15px;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 800px;
-  border-radius: 5px;
-  text-align: center;
 }
 
-/* Versione compatta per messaggi inline */
+.msg-error {
+  width: 90%;
+  max-width: 800px;
+}
+
 .msg-error-inline {
-  background-color: #f8d7da;
-  color: #721c24;
   padding: 10px;
-  border-radius: 5px;
   margin-bottom: 20px;
   max-width: 800px;
   margin-left: auto;
 }
 
+.msg-error-text,
+.msg-error-simple {
+  color: #721c24;
+}
+
 /* Messaggio flash generico */
 .msg-flash {
-  padding: 15px;
-  margin: 20px auto;
   width: 100%;
   max-width: 600px;
-  border-radius: 5px;
-  text-align: center;
 }
 
 /* =========================================
@@ -1373,40 +1366,41 @@ small, .form_std small {
 }
 
 /* Container per azioni (pulsanti login/registrazione) */
-.action-container {
-  margin-top: 2em;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Container per singolo pulsante centrato */
+.action-container,
 .action-container-single {
   margin-top: 2em;
   display: flex;
+  align-items: center;
+}
+
+.action-container {
+  flex-direction: column;
+  gap: 10px;
+}
+
+.action-container-single {
   justify-content: center;
 }
 
 /* Form inline senza bordi per pulsanti */
-.form-inline-button {
-  box-shadow: none;
-  background: transparent;
-  margin: 0;
-  width: 100%;
-  max-width: 300px;
-}
-
+.form-inline-button,
 .form-inline-button-wide {
   box-shadow: none;
   background: transparent;
   margin: 0;
   width: 100%;
+}
+
+.form-inline-button {
+  max-width: 300px;
+}
+
+.form-inline-button-wide {
   max-width: 350px;
 }
 
 /* Button_std senza margine */
-.button_std-no-margin {
+.button-standard-no-margin {
   margin: 0;
 }
 
@@ -1500,24 +1494,6 @@ small, .form_std small {
    MESSAGGI DI ERRORE E SUCCESSO SPECIFICI
 ========================================= */
 
-/* Messaggio di errore rosso */
-.msg-error-text {
-  color: red;
-  text-align: center;
-}
-
-/* Messaggio di errore rosso semplice */
-.msg-error-simple {
-  color: red;
-}
-
-/* Messaggio di successo verde */
-.msg-success-text {
-  color: green;
-  text-align: center;
-  font-weight: bold;
-}
-
 .button-container {
   margin-top: 30px;   
   right: 50px;
@@ -1609,7 +1585,7 @@ small, .form_std small {
 }
 
 
-.titolo-dashboard {
+.dashboard-title {
     font-family: 'Jost', sans-serif;
     font-size: 1.4rem;
     color: #1a3a5a;
@@ -1621,13 +1597,13 @@ small, .form_std small {
     width: fit-content;
 }
 
-.lista_dati {
+.data-list {
     margin: 0;
     padding: 0;
     list-style: none;
 }
 
-.lista_dati div {
+.data-list div {
     padding: 12px 0;
     border-bottom: 1px solid #f0f4f8;
     display: flex;
@@ -1636,12 +1612,12 @@ small, .form_std small {
 }
 
 
-.lista_dati div:last-child {
+.data-list div:last-child {
     border-bottom: none;
 }
 
 
-.lista_dati dt {
+.data-list dt {
     width: 180px;
     font-size: 0.85rem;
     color: #7f8c8d;
@@ -1651,7 +1627,7 @@ small, .form_std small {
 }
 
 
-.lista_dati dd {
+.data-list dd {
     margin: 0;
     font-size: 1.1rem;
     color: #2c3e50;
@@ -1659,7 +1635,7 @@ small, .form_std small {
 }
 
 
-.lista_dati dd.evidenziato {
+.data-list dd.evidenziato {
     color: #d90429;
     font-weight: 700;
 }
@@ -1694,7 +1670,7 @@ small, .form_std small {
 }
 
 
-.error_page {
+.error-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -1702,7 +1678,7 @@ small, .form_std small {
   padding: 2em;
 }
 
-.error_container {
+.error-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1712,12 +1688,12 @@ small, .form_std small {
   flex-direction: row
 }
 
-.error_content {
+.error-content {
   flex: 1;
   text-align: center;
 }
 
-.error_code {
+.error-code {
   font-size: 8em;
   font-weight: bold;
   color: #749BA3;
@@ -1725,21 +1701,21 @@ small, .form_std small {
   line-height: 1;
 }
 
-.error_message {
+.error-message {
   font-size: 2.5em;
   margin: 0.8em 0;
   color: #333;
   line-height: 1.4;
 }
 
-.error_description {
+.error-description {
   font-size: 1.2em;
   color: #3b3b3b;
   margin: 2em 0;
   line-height: 1.8;
 }
 
-.error_actions {
+.error-actions {
   display: flex;
   gap: 1.5em;
   flex-wrap: wrap;
@@ -1761,13 +1737,13 @@ small, .form_std small {
   box-shadow: 0 4px 10px rgba(172, 210, 230, 0.3);
 }
 
-.error_actions a:hover {
+.error-actions a:hover {
   background: linear-gradient(135deg, var(--link-active-bg-color2) 0%, var(--link-active-bg-color1) 100%);
   color: var(--link-active-txt-color);
   box-shadow: 0 6px 15px rgba(23, 80, 111, 0.4);
 }
 
-.error_image {
+.error-image {
   flex: 1;
   max-width: 400px;
   height: auto;
@@ -1778,51 +1754,51 @@ small, .form_std small {
 ========================================= */
 
 @media screen and (max-width: 768px) {
-  body.error_background {
+  body.error-background {
       background-image: none !important;
   }
   
-  .error_container {
+  .error-container {
       flex-direction: column !important;
       gap: 2em;
       padding: 1em;
   }
 
-  .error_content {
+  .error-content {
       order: 1; 
       max-width: 100%;
   }
 
-  .error_image {
+  .error-image {
       order: 2; 
       max-width: 280px;
       margin: 0 auto;
   }
 
-  .error_code {
+  .error-code {
       font-size: 5em;
   }
 
-  .error_message {
+  .error-message {
       font-size: 1.8em;
   }
 
-  .error_description {
+  .error-description {
       font-size: 1em;
       margin: 1.5em 0;
   }
 
-  .error_suggestion {
+  .error-suggestion {
       font-size: 0.9em;
   }
 
-  .error_actions {
+  .error-actions {
       flex-direction: column;
       gap: 1em;
       width: 100%;
   }
 
-  .error_actions a {
+  .error-actions a {
       width: 100%;
       text-align: center;
       padding: 1em;
@@ -1831,19 +1807,7 @@ small, .form_std small {
 
 /* DOMANDE E RISPOSTE IN ABOUT US */
 
-.faq_atds {
-    margin: 3rem auto;
-    max-width: 900px;
-    padding: 0 1rem;
-}
-
-.faq {
-    display: flex;
-    flex-direction: column;
-}
-
-
-.faq_atds {
+.faq-atds {
     margin: 3rem auto;
     max-width: 900px;
     padding: 0 1rem;
@@ -2035,14 +1999,14 @@ small, .form_std small {
    TABELLA PRENOTAZIONI ADMIN (Migliorata)
 ========================================= */
 
-.profilo-admin .titolo_terziario {
+.profile-admin .tertiary-title {
   font-size: 1.8em;
   color: #082636;
   margin: 2em 0 1em 0;
   padding-bottom: 0.5em;
 }
 
-.profilo-admin label[for="sede-donazioni"] {
+.profile-admin label[for="sede-donazioni"] {
   display: block;
   font-size: 1.1em;
   font-weight: 600;
@@ -2050,11 +2014,11 @@ small, .form_std small {
   margin: 1.5em 0 0.5em 0;
 }
 
-.select_sedi {
+.select-locations-admin {
   margin-bottom: 2em;
 }
 
-.select_sedi select {
+.select-locations-admin select {
   justify-content: center;
   width: 100%;
   max-width: 400px;
@@ -2068,19 +2032,19 @@ small, .form_std small {
   transition: all 0.3s ease;
 }
 
-.contenitore_tabella {
+.table-container {
   margin: 2em 0;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.tabella_dati {
+.data-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   background-color: #ffffff;
 }
 
-.tabella_dati caption {
+.data-table caption {
   font-size: 1.3em;
   font-weight: 700;
   color: #082636;
@@ -2088,11 +2052,11 @@ small, .form_std small {
   padding: 1em;
 }
 
-.tabella_dati thead {
+.data-table thead {
   background: linear-gradient(135deg, #749BA3 0%, #a0c7cf 100%);
 }
 
-.tabella_dati th {
+.data-table th {
   padding: 1.2em 1em;
   text-align: left;
   font-weight: 700;
@@ -2102,31 +2066,31 @@ small, .form_std small {
   letter-spacing: 0.05em;
 }
 
-.tabella_dati th:first-child {
+.data-table th:first-child {
   border-radius: 0.8em 0 0 0;
 }
 
-.tabella_dati th:last-child {
+.data-table th:last-child {
   border-radius: 0 0.8em 0 0;
   text-align: center;
 }
 
-.tabella_dati tbody tr {
+.data-table tbody tr {
   background-color: #ffffff;
   transition: all 0.3s ease;
 }
 
-.tabella_dati tbody tr:nth-child(even) {
+.data-table tbody tr:nth-child(even) {
   background-color: #f9fcfe;
 }
 
-.tabella_dati tbody tr:hover {
+.data-table tbody tr:hover {
   background-color: #e8f4f8;
   transform: scale(1.005);
   box-shadow: 0 2px 8px rgba(116, 155, 163, 0.2);
 }
 
-.tabella_dati td {
+.data-table td {
   padding: 1.2em 1em;
   font-size: 1em;
   color: #2c5f7a;
@@ -2134,26 +2098,26 @@ small, .form_std small {
   vertical-align: middle;
 }
 
-.tabella_dati tbody tr:last-child td {
+.data-table tbody tr:last-child td {
   border-bottom: none;
 }
 
-.tabella_dati tbody tr:last-child td:first-child {
+.data-table tbody tr:last-child td:first-child {
   border-radius: 0 0 0 0.8em;
 }
 
-.tabella_dati tbody tr:last-child td:last-child {
+.data-table tbody tr:last-child td:last-child {
   border-radius: 0 0 0.8em 0;
 }
 
 /* Colonna Azioni - Centrata */
-.tabella_dati td:last-child {
+.data-table td:last-child {
   text-align: center;
 }
 
 /* Bottone Elimina */
-.tabella_dati button,
-.tabella_dati .btn-elimina {
+.data-table button,
+.data-table .btn-elimina {
   display: inline-block;
   padding: 0.7em 1.5em;
   background-color: #e58d8d;
@@ -2170,54 +2134,54 @@ small, .form_std small {
   letter-spacing: 0.05em;
 }
 
-.tabella_dati button:hover,
-.tabella_dati .btn-elimina:hover {
+.data-table button:hover,
+.data-table .btn-elimina:hover {
   background-color: #c24242;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(194, 66, 66, 0.4);
   transform: translateY(-2px);
 }
 
-.tabella_dati button:active,
-.tabella_dati .btn-elimina:active {
+.data-table button:active,
+.data-table .btn-elimina:active {
   transform: translateY(0);
 }
 
 /* Responsive */
 @media screen and (max-width: 1200px) {
-  .tabella_dati {
+  .data-table {
     font-size: 0.9em;
   }
   
-  .tabella_dati th,
-  .tabella_dati td {
+  .data-table th,
+  .data-table td {
     padding: 1em 0.8em;
   }
 }
 
 @media screen and (max-width: 768px) {
-  .select_sedi select {
+  .select-locations select {
     max-width: 100%;
   }
   
   /* Layout a card su mobile */
-  .contenitore_tabella {
+  .table-container {
     box-shadow: none;
   }
   
-  .tabella_dati thead {
+  .data-table thead {
     display: none;
   }
   
-  .tabella_dati,
-  .tabella_dati tbody,
-  .tabella_dati tr,
-  .tabella_dati td {
+  .data-table,
+  .data-table tbody,
+  .data-table tr,
+  .data-table td {
     display: block;
     width: 100%;
   }
   
-  .tabella_dati tr {
+  .data-table tr {
     margin-bottom: 1.5em;
     border-radius: 0.8em;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -2225,7 +2189,7 @@ small, .form_std small {
     background-color: #ffffff;
   }
   
-  .tabella_dati td {
+  .data-table td {
     text-align: left !important;
     padding: 0.8em 0;
     border: none;
@@ -2233,7 +2197,7 @@ small, .form_std small {
     padding-left: 45%;
   }
   
-  .tabella_dati td::before {
+  .data-table td::before {
     content: attr(data-label);
     position: absolute;
     left: 0;
@@ -2245,8 +2209,8 @@ small, .form_std small {
     font-size: 0.85em;
   }
   
-  .tabella_dati button,
-  .tabella_dati .btn-elimina {
+  .data-table button,
+  .data-table .btn-elimina {
     width: 100%;
     margin-top: 0.5em;
   }

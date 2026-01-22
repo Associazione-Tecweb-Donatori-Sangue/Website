@@ -20,25 +20,25 @@
     
     <script src="../../js/script.js"></script>
 </head>
-<body class="page_background">
+<body class="page-background">
     [HEADER]
 
-    <div id="title_std">
+    <div id="title-standard">
         <h1>Gestione utente</h1>
         <h2>Modifica le tue credenziali di accesso</h2>
     </div>
 
-    <main id="content" class="main_std">
+    <main id="content" class="main-standard">
         <div class="back-button-container">
             <a href="profilo.php" class="back-button">&larr; Torna al profilo</a>
         </div>
 
         [MESSAGGI]
 
-        <form action="modifica_account.php" method="POST" class="form_std">
+        <form action="modifica_account.php" method="POST" class="form-standard">
             <fieldset>
                 <legend>Modifica username</legend>
-                <div class="input_std">
+                <div class="input-standard">
                     <label for="username">Username:</label>
                     <input type="text" name="username" id="username" value="[valore_username]" required>
                 </div>
@@ -46,12 +46,12 @@
 
             <fieldset>
                 <legend>Modifica Password</legend>
-                <div class="input_std">
+                <div class="input-standard">
                     <label for="new_password">Nuova password:</label>
                     <input type="password" name="new_password" id="new_password">
                 </div>
                 
-                <div class="input_std">
+                <div class="input-standard">
                     <label for="confirm_password">Conferma nuova password:</label>
                     <input type="password" name="confirm_password" id="confirm_password">
                 </div>
@@ -59,13 +59,13 @@
 
             <fieldset>
                 <legend>Conferma Modifiche</legend>
-                <div class="input_std">
+                <div class="input-standard">
                     <label for="old_password">Password attuale (obbligatoria):</label>
                     <input type="password" name="old_password" id="old_password" required>
                 </div>
             </fieldset>
 
-            <div class="button_std">
+            <div class="button-standard">
                 <button type="submit">Salva Modifiche</button>
             </div>
         </form>

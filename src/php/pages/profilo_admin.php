@@ -43,7 +43,7 @@ $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 $msgHTML = getMessaggioFlashHTML();
 // Inserimento nel main (come facevi prima)
 if (!empty($msgHTML)) {
-    $paginaHTML = str_replace('<main id="content" class="main_std">', '<main id="content" class="main_std">' . $msgHTML, $paginaHTML);
+    $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 }
 
 // 3. Gestione breadcrumb

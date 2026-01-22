@@ -8,10 +8,7 @@ CSS
 - fare mobile.css  --> 🔴
     - il fatto che ci sia una fascia vuota a destra del main probabilmente è causato dal footer
 - sistemare css about_us --> DG
-- Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente) --> 🔴
 - Sistemare i colori (tanti non sono in contrasto) --> DG
-- sistemare i pochi tanti inline --> GG
-- modificare stili nei blocchi html presenti nei file .php --> GN
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
 - sistemare bottone seleziona sede in pagina_admin
 
