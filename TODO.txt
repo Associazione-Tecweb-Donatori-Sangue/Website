@@ -18,11 +18,13 @@ PHP
 - re inserire bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
 - sistemare/cancellare messaggi flash  --> GN
 - togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare --> GG
+- tasto "torna alla home" di pagina 404 non funziona --> 🔴
+- titoli pagine 404 e 500 da mettere dal particolare al generale --> 🔴
 
 GENERALI
 - sistemare tutti i commenti --> DG
 - implementare pop-up di conferma quando si schiaccia su elimina profilo (sei sicuro di voler...) --> GG
-
+- discutere layout pagine di errore --> 🔴
 
 
 EXTRA - da fare solo se avanza tempo
