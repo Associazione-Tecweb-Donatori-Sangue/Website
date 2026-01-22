@@ -45,18 +45,18 @@ try {
             echo '<td>' . $oraIt . '</td>';
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
             echo '<td class="celle_azioni">';
-            echo '<a href="modifica_prenotazione.php?id=' . $prenotazione['id'] . '" class="btn_tabella btn_edit" style="text-decoration:none; display:inline-block; text-align:center; color:white;">Modifica</a>';
-            echo '<form action="../actions/cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler eliminare questa prenotazione?\');">';
+            echo '<a href="modifica_prenotazione.php?id=' . $prenotazione['id'] . '" class="btn_tabella btn_edit btn-table-link">Modifica</a>';
+            echo '<form action="../actions/cancellaPrenotazione.php" method="POST" class="form-inline-table" onsubmit="return confirm(\'Sei sicuro di voler eliminare questa prenotazione?\');">';
             echo '<input type="hidden" name="id_prenotazione" value="' . $prenotazione['id'] . '">';
-            echo '<button type="submit" class="btn_tabella btn_delete" style="cursor: pointer;">Elimina</button>';
+            echo '<button type="submit" class="btn_tabella btn_delete btn-cursor-pointer">Elimina</button>';
             echo '</form>';
             echo '</td>';
             echo '</tr>';
         }
     } else {
-        echo '<tr><td colspan="5" style="text-align: center;">Nessuna prenotazione futura trovata</td></tr>';
+        echo '<tr><td colspan="5" class="table-cell-centered">Nessuna prenotazione futura trovata</td></tr>';
     }
     
 } catch (PDOException $e) {
-    echo '<tr><td colspan="5" style="text-align: center;">Errore: ' . htmlspecialchars($e->getMessage()) . '</td></tr>';}
+    echo '<tr><td colspan="5" class="table-cell-centered">Errore: ' . htmlspecialchars($e->getMessage()) . '</td></tr>';}
 ?>

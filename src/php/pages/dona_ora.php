@@ -7,13 +7,13 @@ $msgHTML = "";
 if (isset($_SESSION['messaggio_flash'])) {
     // Determino il colore in base al messaggio (verde per successo, rosso/giallo per errori)
     // Se il messaggio contiene "Errore" o "già", uso uno stile diverso, altrimenti verde successo.
-    $style = "background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb;"; // Verde default
+    $classe = 'msg-flash msg-success'; // Verde default
     
     if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false || strpos($_SESSION['messaggio_flash'], 'già') !== false) {
-        $style = "background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb;"; // Rosso errore
+        $classe = 'msg-flash msg-error'; // Rosso errore
     }
 
-    $msgHTML = '<div style="' . $style . ' padding: 15px; margin: 20px auto; width: 100%; max-width: 600px; border-radius: 5px; text-align: center;">
+    $msgHTML = '<div class="' . $classe . '">
                     ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
                 </div>';
     
@@ -30,25 +30,25 @@ $paginaHTML = str_replace('<main id="content" class="main_std">', '<main id="con
 if (!isset($_SESSION['user_id'])) {
     // UTENTE NON LOGGATO
     $messaggioAvviso = '
-    <div class="testo_std" style="text-align: center;">
-        <h3 style="margin-bottom: 1em;">Accesso Richiesto</h3>
+    <div class="testo_std testo-centered">
+        <h3 class="section-title">Accesso Richiesto</h3>
         <p>Per prenotare una donazione è necessario accedere alla propria area riservata.</p>
         <p>Il sangue è una cosa seria, e anche la sicurezza dei tuoi dati!</p>
         
-        <div style="margin-top: 2em; display: flex; flex-direction: column; align-items: center; gap: 10px;">
+        <div class="action-container">
             
-            <form action="login.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:300px;">
-                <div class="button_std" style="margin:0;">
+            <form action="login.php" method="get" class="form-inline-button">
+                <div class="button_std button_std-no-margin">
                     <input type="hidden" name="redirect" value="dona_ora.php">
-                    <button type="submit" style="margin:0; width:100%;">Accedi</button>
+                    <button type="submit" class="button-full-width">Accedi</button>
                 </div>
             </form>
 
-            <p style="margin: 0.5em 0;">oppure</p>
+            <p class="text-separator">oppure</p>
 
-            <form action="registrazione.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:300px;">
-                <div class="button_std" style="margin:0;">
-                    <button type="submit" style="margin:0; width:100%;">Registrati</button>
+            <form action="registrazione.php" method="get" class="form-inline-button">
+                <div class="button_std button_std-no-margin">
+                    <button type="submit" class="button-full-width">Registrati</button>
                 </div>
             </form>
         </div>
@@ -63,16 +63,16 @@ if (!isset($_SESSION['user_id'])) {
     // UTENTE LOGGATO, controllo se è ADMIN
     if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
         $messaggioNonDonatoreoAdmin = '
-        <div class="testo_std" style="text-align: center;">
-            <h3 style="margin-bottom: 1em;">Profilo Admin</h3>
+        <div class="testo_std testo-centered">
+            <h3 class="section-title">Profilo Admin</h3>
             <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
             <p>Per poter prenotare una donazione, devi utilizzare un account utente normale.</p>
             <p>Gli account amministratori non possono effettuare donazioni.</p>
             
-            <div style="margin-top: 2em; display: flex; justify-content: center;">
-                <form action="profilo.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:350px;">
-                    <div class="button_std" style="margin:0;">
-                        <button type="submit" style="margin:0; width:100%;">Torna al Profilo</button>
+            <div class="action-container-single">
+                <form action="profilo.php" method="get" class="form-inline-button-wide">
+                    <div class="button_std button_std-no-margin">
+                        <button type="submit" class="button-full-width">Torna al Profilo</button>
                     </div>
                 </form>
             </div>
@@ -92,16 +92,16 @@ if (!isset($_SESSION['user_id'])) {
                 
                 // --- LIVELLO 2: UTENTE LOGGATO MA NON DONATORE ---
                 $messaggioNonDonatoreoAdmin = '
-                <div class="testo_std" style="text-align: center;">
-                    <h3 style="margin-bottom: 1em;">Profilo Donatore Incompleto</h3>
+                <div class="testo_std testo-centered">
+                    <h3 class="section-title">Profilo Donatore Incompleto</h3>
                     <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>!</p>
                     <p>Per poter prenotare una donazione, abbiamo bisogno di raccogliere alcuni dati sanitari obbligatori.</p>
                     <p>La procedura richiede pochi minuti.</p>
                     
-                    <div style="margin-top: 2em; display: flex; justify-content: center;">
-                        <form action="registrazione_donatore.php" method="get" style="box-shadow:none; background:transparent; margin:0; width:100%; max-width:350px;">
-                            <div class="button_std" style="margin:0;">
-                                <button type="submit" style="margin:0; width:100%;">Diventa Donatore</button>
+                    <div class="action-container-single">
+                        <form action="registrazione_donatore.php" method="get" class="form-inline-button-wide">
+                            <div class="button_std button_std-no-margin">
+                                <button type="submit" class="button-full-width">Diventa Donatore</button>
                             </div>
                         </form>
                     </div>

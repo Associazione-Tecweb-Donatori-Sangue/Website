@@ -1,6 +1,7 @@
 HTML
 - controllare che i bottoni siano nella forma corretta  --> 🔴
 - sistemare headings --> 🔴
+- titoli pagine 404 e 500 da mettere dal particolare al generale --> 🔴
 
 CSS
 - fare print.css --> MDP
@@ -9,17 +10,18 @@ CSS
 - sistemare css about_us --> DG
 - Verificare tutti i CLASS e ID (verificare che ci sia class quando serve effettivamente) --> 🔴
 - Sistemare i colori (tanti non sono in contrasto) --> DG
-- sistemare i pochi tanti inline --> GN
+- sistemare i pochi tanti inline --> GG
 - modificare stili nei blocchi html presenti nei file .php --> GN
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
+- sistemare bottone seleziona sede in pagina_admin
 
 PHP
 - quando ci sono errori nel form di registrazione non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito --> GG
-- re inserire bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
+- bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
 - sistemare/cancellare messaggi flash  --> GN
 - togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare --> GG
 - tasto "torna alla home" di pagina 404 non funziona --> 🔴
-- titoli pagine 404 e 500 da mettere dal particolare al generale --> 🔴
+- quando un donatore schiaccia su "modifica dati" il campo sesso non è precompilato --> GG
 
 GENERALI
 - sistemare tutti i commenti --> DG

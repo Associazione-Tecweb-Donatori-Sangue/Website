@@ -67,7 +67,7 @@ try {
                 <dd>' . htmlspecialchars($datiDonatore['luogo_nascita']) . '</dd>
                 
                 <dt>Codice Fiscale:</dt>
-                <dd style="text-transform: uppercase;">' . htmlspecialchars($datiDonatore['codice_fiscale']) . '</dd>
+                <dd class="text-uppercase">' . htmlspecialchars($datiDonatore['codice_fiscale']) . '</dd>
                 
                 <dt>Residenza:</dt>
                 <dd>' . htmlspecialchars($datiDonatore['indirizzo']) . '</dd>
@@ -87,7 +87,7 @@ try {
                 <dt>Peso:</dt>
                 <dd>' . htmlspecialchars($datiDonatore['peso']) . ' Kg</dd>
             </dl>
-            <div class="button_std" style="margin-top: 20px;"><a href="/php/pages/registrazione_donatore.php" class="button">Modifica i tuoi dati</a></div>
+            <div class="button_std button-margin-top"><a href="/php/pages/registrazione_donatore.php" class="button">Modifica i tuoi dati</a></div>
         </section>';
         
         $_SESSION['dati_donatore'] = $datiDonatore;
@@ -139,9 +139,9 @@ try {
                 <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
                 <td>' . htmlspecialchars($p['nome_sede']) . '</td>
                 <td>
-                    <form action="/php/actions/cancellaPrenotazione.php" method="POST" style="margin:0;" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
+                    <form action="/php/actions/cancellaPrenotazione.php" method="POST" class="form-inline-table" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
                         <input type="hidden" name="id_prenotazione" value="' . $p['id'] . '">
-                        <button type="submit" class="button" style="background-color: #d9534f; border-color: #d9534f; color: white; padding: 5px 10px; font-size: 0.9em;">Annulla</button>
+                        <button type="submit" class="button btn-cancel-booking">Annulla</button>
                     </form>
                 </td>
             </tr>';
@@ -164,7 +164,7 @@ try {
         </div>';
 
     } else { // nessuna prenotazione futura
-        $sezioneFuture = '<p class="testo_std" style="text-align:center; padding: 10px;">Nessuna prenotazione in programma.</p>';
+        $sezioneFuture = '<p class="testo_std testo-centered-message">Nessuna prenotazione in programma.</p>';
     }
 
     // Tabella passate
@@ -178,13 +178,13 @@ try {
                 <td>' . $oraIt . '</td>
                 <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
                 <td>' . htmlspecialchars($p['nome_sede']) . '</td>
-                <td><span style="color: grey;">Completata</span></td>
+                <td><span class="status-completed">Completata</span></td>
             </tr>';
         }
         // Avvolgo nella tabella
         $sezionePassate = '
         <div class="contenitore_tabella">
-            <table class="tabella_dati" style="opacity: 0.8;">
+            <table class="tabella_dati tabella-opacity">
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -198,10 +198,10 @@ try {
             </table>
         </div>';
     } else { // nessuna donazione passata
-        $sezionePassate = '<p class="testo_std" style="text-align:center; padding: 10px;">Nessuna donazione precedente.</p>';
+        $sezionePassate = '<p class="testo_std testo-centered-message">Nessuna donazione precedente.</p>';
     }
 } catch (PDOException $e) {
-    $sezioneFuture = '<p class="errore" style="text-align:center;">Errore caricamento dati.</p>';
+    $sezioneFuture = '<p class="errore testo-centered-message">Errore caricamento dati.</p>';
 }
 
 // --- COSTRUZIONE HTML FINALE DELLE SEZIONI ---
@@ -210,7 +210,7 @@ $nuovoContenutoTabelle = '
         <h3 class="titolo_terziario">Prenotazioni Future</h3>
         ' . $sezioneFuture . '
 
-        <h3 class="titolo_terziario" style="margin-top: 40px;">Storico Donazioni (Ultime 5)</h3>
+        <h3 class="titolo_terziario titolo-margin-top">Storico Donazioni (Ultime 5)</h3>
         ' . $sezionePassate . '
     </section>
 ';

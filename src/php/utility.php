@@ -45,11 +45,9 @@ function getMessaggioFlashHTML() {
         // Logica colori
         $isError = (strpos($msg, 'Errore') !== false || strpos($msg, 'già') !== false || strpos($msg, 'Attenzione') !== false);
         
-        $colore = $isError ? '#f8d7da' : '#d4edda';
-        $testo = $isError ? '#721c24' : '#155724';
-        $bordo = $isError ? '#f5c6cb' : '#c3e6cb';
+        $classe = $isError ? 'msg-error' : 'msg-success';
 
-        $html = '<div style="background-color: '.$colore.'; color: '.$testo.'; border: 1px solid '.$bordo.'; padding: 15px; margin: 20px auto; width: 90%; max-width: 800px; border-radius: 5px; text-align: center;">
+        $html = '<div class="' . $classe . '">
                     ' . htmlspecialchars($msg) . '
                  </div>';
         

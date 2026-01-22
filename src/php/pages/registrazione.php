@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm  = $_POST['password_confirm'];
 
     if ($password !== $confirm) {
-        $messaggio = "<p class='errore' style='color:red; text-align:center;'>Le password non coincidono.</p>";
+        $messaggio = "<p class='errore msg-error-text'>Le password non coincidono.</p>";
     } else {
         try {
             // 1. Controllo se l'utente esiste già
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$username]);
             
             if ($stmt->rowCount() > 0) {
-                $messaggio = "<p class='errore' style='color:red; text-align:center;'>Username già esistente!</p>";
+                $messaggio = "<p class='errore msg-error-text'>Username già esistente!</p>";
             } else {
                 // 2. Inserimento con HASH della password
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -42,11 +42,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: profilo.php");
                     exit;
                 } else {
-                    $messaggio = "<p class='errore' style='color:red;'>Errore nel database.</p>";
+                    $messaggio = "<p class='errore msg-error-simple'>Errore nel database.</p>";
                 }
             }
         } catch (PDOException $e) {
-            $messaggio = "<p class='errore' style='color:red;'>Errore tecnico: " . $e->getMessage() . "</p>";
+            $messaggio = "<p class='errore msg-error-simple'>Errore tecnico: " . $e->getMessage() . "</p>";
         }
     }
 }

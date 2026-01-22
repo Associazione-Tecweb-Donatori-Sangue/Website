@@ -42,7 +42,13 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (noResultsMessage) {
-                noResultsMessage.style.display = visibileCount === 0 ? 'block' : 'none';
+                if (visibileCount === 0) {
+                    noResultsMessage.classList.remove('no-results-message');
+                    noResultsMessage.classList.add('no-results-message-visible');
+                } else {
+                    noResultsMessage.classList.remove('no-results-message-visible');
+                    noResultsMessage.classList.add('no-results-message');
+                }
             }
         });
     }
@@ -88,7 +94,7 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
         .catch(error => {
             console.error('Errore Admin:', error);
             const tbody = document.querySelector('.tabella_dati tbody');
-            if (tbody) tbody.innerHTML = '<tr><td colspan="5" style="text-align: center;">Errore nel caricamento dei dati</td></tr>';
+            if (tbody) tbody.innerHTML = '<tr><td colspan="5" class="table-cell-centered">Errore nel caricamento dei dati</td></tr>';
         });
 }
 

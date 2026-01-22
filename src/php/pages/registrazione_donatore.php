@@ -91,11 +91,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $template = caricaTemplate('registrazione_donatore.html');
 
 if (isset($_SESSION['messaggio_flash'])) {
-    $colore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f8d7da' : '#d4edda';
-    $testoColore = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#721c24' : '#155724';
-    $bordo = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? '#f5c6cb' : '#c3e6cb';
+    $classe = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? 'msg-error' : 'msg-success';
 
-    $msgHTML = '<div style="background-color: '.$colore.'; color: '.$testoColore.'; border: 1px solid '.$bordo.'; max-width: 800px; padding: 15px; margin: 20px auto; border-radius: 5px; text-align: center;">
+    $msgHTML = '<div class="' . $classe . '">
                     ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
                 </div>';
     

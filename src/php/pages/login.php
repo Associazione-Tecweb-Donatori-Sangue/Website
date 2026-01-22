@@ -18,7 +18,7 @@ $messaggioErrore = "";
 
 if (isset($_SESSION['messaggio_flash'])) {
     
-    $messaggioErrore = "<p style='color:green; text-align:center; font-weight:bold;'>" . $_SESSION['messaggio_flash'] . "</p>";
+    $messaggioErrore = "<p class='msg-success-text'>" . $_SESSION['messaggio_flash'] . "</p>";
     
     // Importante: cancelliamo il messaggio subito dopo averlo salvato nella variabile
     // così se ricarichi la pagina sparisce
@@ -62,10 +62,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: profilo.php");
             exit();
         } else {
-            $messaggioErrore = "<p class='errore' style='color: red; text-align: center;'>Username o password errati.</p>";
+            $messaggioErrore = "<p class='errore msg-error-text'>Username o password errati.</p>";
         }
     } catch (PDOException $e) {
-        $messaggioErrore = "<p class='errore' style='color: red;'>Errore DB: " . $e->getMessage() . "</p>";
+        $messaggioErrore = "<p class='errore msg-error-simple'>Errore DB: " . $e->getMessage() . "</p>";
     }
 }
 
