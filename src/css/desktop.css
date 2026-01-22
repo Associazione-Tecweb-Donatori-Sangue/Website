@@ -192,6 +192,8 @@ header{
   cursor: pointer;
   gap: 5px;
   padding: 0.8em;
+  background: none;
+  border: none;
 }
 
 .burger-menu span{
@@ -361,7 +363,6 @@ main{
 
 #card-intro a{
   margin: 0 auto 0 0;
-  border: 2px solid #000000;
 }
 
 #card-intro img{

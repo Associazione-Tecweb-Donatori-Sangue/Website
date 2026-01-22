@@ -6,7 +6,7 @@
         
         <nav id="menu" aria-label="Menu principale">
 
-            <input type="checkbox" id="burger-input" aria-label="Apri/Chiudi menu">
+            <input type="checkbox" id="burger-input" aria-label="Apri menu" aria-expanded="false" aria-controls="menu">
 
             <img src="/images/logo.jpg" alt="ATDS - Associazione Tecweb Donatori Sangue" id="logo">
             <ul>
@@ -18,9 +18,9 @@
             [linkProfilo]
 
             <label class="burger-menu" for="burger-input">    
-                <span></span>
-                <span></span>
-                <span></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
             </label>
         </nav>           
     </header>     

@@ -3,20 +3,17 @@
 ========================================= */
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Menu mobile
-    const hamburger = document.querySelector('.burger-menu');
-    const navMenu = document.querySelector('.nav-menu');
-
-    if (hamburger && navMenu) {
-        hamburger.addEventListener('click', () => {
-            hamburger.classList.toggle('active');
-            navMenu.classList.toggle('active');
+    // 1. Menu mobile - Accessibilità hamburger menu
+    const burgerInput = document.getElementById('burger-input');
+    
+    if (burgerInput) {
+        burgerInput.addEventListener('change', function() {
+            const isChecked = this.checked;
+            
+            // Aggiorna ARIA per accessibilità
+            this.setAttribute('aria-expanded', isChecked);
+            this.setAttribute('aria-label', isChecked ? 'Chiudi menu' : 'Apri menu');
         });
-
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-        }));
     }
 
     // 2. Ricerca sedi
