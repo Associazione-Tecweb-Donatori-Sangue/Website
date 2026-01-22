@@ -105,7 +105,7 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
 document.addEventListener('DOMContentLoaded', function() {
     
     // --- GESTIONE LOGICA PAGINE ---
-    const isAdminPage = document.body.classList.contains('profilo-admin');
+    const isAdminPage = document.body.classList.contains('profile-admin');
     const selectSede = document.getElementById('sede-donazioni');
 
     // 1. Caricamento Iniziale (SOLO ADMIN)
