@@ -10,12 +10,12 @@ CSS
 - sistemare css about_us --> DG
 - Sistemare i colori (tanti non sono in contrasto) --> DG
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
-- sistemare bottone seleziona sede in pagina_admin
+- sistemare bottone seleziona sede in pagina_admin --> 🔴
+- sistemare/cancellare messaggi flash  --> GN
 
 PHP
 - quando ci sono errori nel form di registrazione non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito --> GG
 - bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
-- sistemare/cancellare messaggi flash  --> GN
 - togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare --> GG
 - tasto "torna alla home" di pagina 404 non funziona --> 🔴
 - quando un donatore schiaccia su "modifica dati" il campo sesso non è precompilato --> GG

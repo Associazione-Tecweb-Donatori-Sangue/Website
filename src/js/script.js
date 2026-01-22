@@ -16,37 +16,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 2. Ricerca sedi
+    // 2. Ricerca sedi con debouncing
     const searchInput = document.getElementById('searchInput');
     const noResultsMessage = document.getElementById('noResults');
+    let searchTimeout;
 
     if (searchInput) {
         searchInput.addEventListener('input', function () {
-            const searchTerm = this.value.toLowerCase();
-            const sedi = document.querySelectorAll('.location');
-            let visibileCount = 0;
+            clearTimeout(searchTimeout);
+            
+            searchTimeout = setTimeout(() => {
+                const searchTerm = this.value.toLowerCase();
+                const sedi = document.querySelectorAll('.location');
+                let visibileCount = 0;
 
-            sedi.forEach(sede => {
-                const nome = sede.querySelector('h3')?.textContent.toLowerCase() || '';
-                const indirizzo = sede.querySelector('p:nth-of-type(2)')?.textContent.toLowerCase() || '';
+                sedi.forEach(sede => {
+                    const nome = sede.querySelector('h3')?.textContent.toLowerCase() || '';
+                    const indirizzo = sede.querySelector('p')?.textContent.toLowerCase() || '';
 
-                if (nome.includes(searchTerm) || indirizzo.includes(searchTerm)) {
-                    sede.classList.remove('hidden');
-                    visibileCount++;
-                } else {
-                    sede.classList.add('hidden');
+                    if (nome.includes(searchTerm) || indirizzo.includes(searchTerm)) {
+                        sede.classList.remove('hidden');
+                        visibileCount++;
+                    } else {
+                        sede.classList.add('hidden');
+                    }
+                });
+
+                if (noResultsMessage) {
+                    noResultsMessage.classList.toggle('no-results-message-visible', visibileCount === 0);
+                    noResultsMessage.classList.toggle('no-results-message', visibileCount > 0);
                 }
-            });
-
-            if (noResultsMessage) {
-                if (visibileCount === 0) {
-                    noResultsMessage.classList.remove('no-results-message');
-                    noResultsMessage.classList.add('no-results-message-visible');
-                } else {
-                    noResultsMessage.classList.remove('no-results-message-visible');
-                    noResultsMessage.classList.add('no-results-message');
-                }
-            }
+            }, 300); // Debounce di 300ms
         });
     }
 
@@ -70,58 +70,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-});
-
-/* =========================================
-   GESTIONE PRENOTAZIONI (SOLO ADMIN)
-========================================= */
-// Nota: L'utente carica i dati direttamente tramite PHP in profilo.php
-// L'Admin invece usa AJAX per poter filtrare le sedi dinamicamente.
-
-function caricaPrenotazioniAdmin(sede = 'tutte') {
-    fetch(`../ajax/get_prenotazioni_admin.php?sede=${sede}`) 
-        .then(response => {
-            if (!response.ok) throw new Error('Errore nel caricamento');
-            return response.text();
-        })
-        .then(html => {
-            const tbody = document.querySelector('.data-table tbody');
-            if (tbody) tbody.innerHTML = html;
-        })
-        .catch(error => {
-            console.error('Errore Admin:', error);
-            const tbody = document.querySelector('.data-table tbody');
-            if (tbody) tbody.innerHTML = '<tr><td colspan="5" class="table-cell-centered">Errore nel caricamento dei dati</td></tr>';
-        });
-}
-
-
-/* =========================================
-   INIZIALIZZAZIONE PAGINE & FOTO PROFILO
-========================================= */
-document.addEventListener('DOMContentLoaded', function() {
-    
-    // --- GESTIONE LOGICA PAGINE ---
+    // 4. GESTIONE PAGINE ADMIN
     const isAdminPage = document.body.classList.contains('profile-admin');
     const selectSede = document.getElementById('sede-donazioni');
 
-    // 1. Caricamento Iniziale (SOLO ADMIN)
     if (isAdminPage) {
         caricaPrenotazioniAdmin();
-    } 
-    // SE È USER: Non facciamo nulla. PHP ha già stampato le tabelle corrette.
-
-    // 2. Event Listener Filtro Sede (SOLO ADMIN)
-    if (selectSede && isAdminPage) {
-        selectSede.addEventListener('change', function() {
-            caricaPrenotazioniAdmin(this.value);
-        });
+        
+        if (selectSede) {
+            selectSede.addEventListener('change', function() {
+                caricaPrenotazioniAdmin(this.value);
+            });
+        }
     }
 
-    // --- GESTIONE FOTO PROFILO (UPLOAD & REMOVE) ---
+    // 5. GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileImg = document.getElementById('profile-img');
     const removeBtn = document.getElementById('remove-photo-btn');
+
+    // Funzione helper per mostrare messaggi
+    const showMessage = (message, isError = false) => {
+        console.log(isError ? 'Errore:' : 'Successo:', message);
+        // Potresti aggiungere qui un sistema di notifiche toast
+    };
 
     // Funzione helper per gestire la risposta JSON
     const handleResponse = (response) => {
@@ -129,14 +101,13 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 return JSON.parse(text);
             } catch (e) {
-                console.error("ERRORE CRITICO: Il server non ha restituito un JSON valido.", text);
-                alert("Errore tecnico. Controlla la console per i dettagli.");
+                console.error("Errore parsing JSON:", text);
                 throw new Error("Risposta server non valida");
             }
         });
     };
 
-    // UPLOAD
+    // UPLOAD foto profilo
     if (photoUpload && profileImg) {
         profileImg.addEventListener('click', () => photoUpload.click());
 
@@ -153,17 +124,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(handleResponse)
                 .then(data => {
                     if (data.success) {
-                        setTimeout(() => { window.location.reload(); }, 100);
+                        setTimeout(() => window.location.reload(), 100);
                     } else {
-                        alert('Errore dal server: ' + data.message);
+                        showMessage(data.message || 'Errore durante upload', true);
                     }
                 })
-                .catch(error => console.error('Errore Fetch:', error));
+                .catch(error => {
+                    console.error('Errore upload:', error);
+                    showMessage('Errore di connessione', true);
+                });
             }
         });
     }
 
-    // RIMOZIONE
+    // RIMOZIONE foto profilo
     if (removeBtn) {
         const handleRemoval = (e) => {
             e.stopPropagation(); 
@@ -179,18 +153,49 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(handleResponse)
             .then(data => {
                 if (data.success) {
-                    setTimeout(() => { window.location.reload(); }, 100);
+                    setTimeout(() => window.location.reload(), 100);
                 } else {
-                    alert('Errore dal server: ' + data.message);
+                    showMessage(data.message || 'Errore durante rimozione', true);
                 }
             })
-            .catch(error => console.error('Errore Fetch:', error));
+            .catch(error => {
+                console.error('Errore rimozione:', error);
+                showMessage('Errore di connessione', true);
+            });
         };
 
         removeBtn.addEventListener('click', handleRemoval);
-        removeBtn.addEventListener('keydown', (e) => { if(e.key==='Enter') handleRemoval(e); });
+        removeBtn.addEventListener('keydown', (e) => { 
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                handleRemoval(e);
+            }
+        });
     }
+
 });
+
+/* =========================================
+   GESTIONE PRENOTAZIONI ADMIN (AJAX)
+========================================= */
+function caricaPrenotazioniAdmin(sede = 'tutte') {
+    fetch(`../ajax/get_prenotazioni_admin.php?sede=${sede}`) 
+        .then(response => {
+            if (!response.ok) throw new Error('Errore nel caricamento');
+            return response.text();
+        })
+        .then(html => {
+            const tbody = document.querySelector('.data-table tbody');
+            if (tbody) tbody.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Errore caricamento prenotazioni:', error);
+            const tbody = document.querySelector('.data-table tbody');
+            if (tbody) {
+                tbody.innerHTML = '<tr><td colspan="5" class="table-cell-centered">Errore nel caricamento dei dati</td></tr>';
+            }
+        });
+}
 
 /* =========================================
    PREVENZIONE ANIMAZIONI AL RESIZE
