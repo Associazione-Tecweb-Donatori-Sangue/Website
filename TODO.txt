@@ -13,7 +13,8 @@ CSS
 - sistemare/cancellare messaggi flash  --> GN
 
 PHP
-- quando ci sono errori nel form di registrazione non svuotare tutto il form, ma solo le pw e lasciare almeno lo username inserito --> GG
+- se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> 🔴
+- se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> 🔴
 - bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
 - togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare --> GG
 - tasto "torna alla home" di pagina 404 non funziona --> 🔴

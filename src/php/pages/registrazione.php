@@ -7,6 +7,7 @@ $paginaHTML = caricaTemplate('registrazione.html');
 
 // Variabile per la gestione degli errori e messaggi
 $messaggio = "";
+$usernamePreservato = "";
 
 // 3. Gestione del Form di Registrazione (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -14,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = pulisciInput($_POST['username']);
     $password = $_POST['password'];
     $confirm  = $_POST['password_confirm'];
+    $usernamePreservato = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
 
     if ($password !== $confirm) {
         $messaggio = "<p class='errore msg-error-text'>Le password non coincidono.</p>";
@@ -54,6 +56,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // 4. Inserisco eventuali messaggi di errore prima del form
 // Cerco il tag <form ...> e gli appendo prima il messaggio
 $paginaHTML = str_replace('<form', $messaggio . '<form', $paginaHTML);
+
+// Se c'è un errore, preservo l'username nel campo del form
+if (!empty($usernamePreservato)) {
+    $paginaHTML = str_replace(
+        'name="username" id="username"',
+        'name="username" id="username" value="' . $usernamePreservato . '"',
+        $paginaHTML
+    );
+}
 
 // 3. Definisco il Breadcrumb
 $breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span>Registrazione</span></p>';
