@@ -37,18 +37,18 @@ if (!isset($_SESSION['user_id'])) {
         
         <div class="action-container">
             
-            <form action="login.php" method="get" class="form-inline-button">
-                <div class="button-standard button-standard-no-margin">
+            <form action="login.php" method="get" class="form-inline">
+                <div class="btn-wrapper">
                     <input type="hidden" name="redirect" value="dona_ora.php">
-                    <button type="submit" class="button-full-width">Accedi</button>
+                    <button type="submit" class="btn">Accedi</button>
                 </div>
             </form>
 
             <p class="text-separator">oppure</p>
 
-            <form action="registrazione.php" method="get" class="form-inline-button">
-                <div class="button-standard button-standard-no-margin">
-                    <button type="submit" class="button-full-width">Registrati</button>
+            <form action="registrazione.php" method="get" class="form-inline">
+                <div class="btn-wrapper">
+                    <button type="submit" class="btn">Registrati</button>
                 </div>
             </form>
         </div>
@@ -70,9 +70,9 @@ if (!isset($_SESSION['user_id'])) {
             <p>Gli account amministratori non possono effettuare donazioni.</p>
             
             <div class="action-container-single">
-                <form action="profilo.php" method="get" class="form-inline-button-wide">
-                    <div class="button-standard button-standard-no-margin">
-                        <button type="submit" class="button-full-width">Torna al Profilo</button>
+                <form action="profilo.php" method="get" class="form-inline wide">
+                    <div class="btn-wrapper">
+                        <button type="submit" class="btn">Torna al Profilo</button>
                     </div>
                 </form>
             </div>
@@ -99,8 +99,8 @@ if (!isset($_SESSION['user_id'])) {
                     <p>La procedura richiede pochi minuti.</p>
                     
                     <div class="action-container-single">
-                        <form action="registrazione_donatore.php" method="get" class="form-inline-button-wide">
-                            <div class="button-standard button-standard-no-margin">
+                        <form action="registrazione_donatore.php" method="get" class="form-inline wide">
+                            <div class="btn-wrapper">
                                 <button type="submit" class="button-full-width">Diventa Donatore</button>
                             </div>
                         </form>

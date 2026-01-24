@@ -114,10 +114,10 @@ $paginaHTML = str_replace('value="' . $tipoDonazione . '"', 'value="' . $tipoDon
 
 // Cambio il testo del bottone e aggiungo campi hidden
 $paginaHTML = str_replace(
-    '<button type="submit">Prenota</button>', 
+    '<button type="submit" class="btn btn-full">Prenota</button>', 
     '<input type="hidden" name="id_prenotazione" value="' . $prenotazioneCorrente['id'] . '">
     <input type="hidden" name="user_id" value="' . $prenotazioneCorrente['user_id'] . '">
-    <button type="submit">Salva modifiche</button>', 
+    <button type="submit" class="btn btn-full">Salva modifiche</button>', 
     $paginaHTML
 );
 

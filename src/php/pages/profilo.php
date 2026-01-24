@@ -49,7 +49,7 @@ try {
     $datiDonatore = $stmt->fetch();
 
     if (!$datiDonatore) {
-        $htmlDonatore = '<div class="button-standard"><a href="/php/pages/registrazione_donatore.php" class="button">Completa la registrazione come donatore</a></div>';
+        $htmlDonatore = '<div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn btn-link">Completa la registrazione come donatore</a></div>';
     } else {
         $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
 
@@ -87,7 +87,7 @@ try {
                 <dt>Peso:</dt>
                 <dd>' . htmlspecialchars($datiDonatore['peso']) . ' Kg</dd>
             </dl>
-            <div class="button-standard button-margin-top"><a href="/php/pages/registrazione_donatore.php" class="button">Modifica i tuoi dati</a></div>
+            <div class="btn-wrapper" style="margin-top: 1rem;"><a href="/php/pages/registrazione_donatore.php" class="btn btn-link">Modifica i tuoi dati</a></div>
         </section>';
         
         $_SESSION['dati_donatore'] = $datiDonatore;

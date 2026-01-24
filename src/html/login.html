@@ -32,10 +32,10 @@
         <main id="content" class="main-standard">
             [messaggioErrore]
 
-            <form action="login.php" method="post" class="form-standard">
+            <form action="login.php" method="post">
                 <fieldset>  
                     <legend>Dati di Accesso</legend>
-                    <div class="input-standard">
+                    <div>
                         <label for="username"><span lang="en">Username</span>:</label>
                         <input 
                             type="text" 
@@ -48,7 +48,7 @@
                             aria-describedby="info-user"> 
                         <small id="info-user" class="suggerimento"> Es: ombretta</small>
                     </div>
-                    <div class="input-standard">
+                    <div>
                         <label for="password"><span lang="en">Password</span>:</label>
                         <input 
                             type="password" 
@@ -61,9 +61,7 @@
                             aria-describedby="info-pass"> 
                         <small id="info-pass" class="suggerimento"> Es: Password1!</small>
                     </div>
-                    <div class="button-standard">
-                        <input type="submit" value="Accedi">
-                    </div>
+                    <input type="submit" value="Accedi" class="btn btn-full">
                 </fieldset>
             </form>
 

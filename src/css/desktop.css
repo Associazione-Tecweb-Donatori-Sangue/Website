@@ -951,7 +951,7 @@ footer {
 }
 
 /* TUTTI I FORM */
-form, .form-standard, #prenotaForm {
+form {
   max-width: 380px;
   margin: 1% auto;
   background: var(--card-locations-bg-color);
@@ -960,7 +960,7 @@ form, .form-standard, #prenotaForm {
   overflow: hidden;
 }
 
-fieldset.form, .form-standard fieldset, #prenotaForm fieldset {
+form fieldset {
   border: none;
   margin: 15px;
   padding: 0 0 10px 0;
@@ -970,7 +970,7 @@ fieldset.form, .form-standard fieldset, #prenotaForm fieldset {
   overflow: hidden;
 }
 
-fieldset.form legend, .form-standard legend, #prenotaForm legend {
+form legend {
   width: 100%;
   padding: 18px;
   margin: 0 0 15px 0;
@@ -985,11 +985,11 @@ fieldset.form legend, .form-standard legend, #prenotaForm legend {
   border: none;
 }
 
-fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div {
+form fieldset > div {
   margin: 0 25px 15px 25px;
 }
 
-.input-standard label, label {
+label {
   display: block;
   margin-bottom: 8px;
   font-weight: 600;
@@ -997,10 +997,8 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
   font-size: 14px;
 }
 
-
-.input-standard input, 
+input, 
 textarea, 
-#prenotaForm input,
 select {
   width: 100%;
   padding: 10px 14px;
@@ -1024,11 +1022,9 @@ select {
   cursor: pointer;
 }
 
-#prenotaForm input:focus, 
-.input-standard input:focus, 
-.form-standard select:focus,
+input:focus,
 select:focus,
-input[type="date"]:focus {
+textarea:focus {
   outline: none;
   border-color: #4f5abb;
   background-color: white; 
@@ -1044,24 +1040,9 @@ input[type="date"]:focus {
 
 .select-locations select {
     width: 100%;
-    padding: 10px 14px;
-    border: 2px solid #acd2e6;
-    border-radius: 0.8em;
-    font-size: 14px;
-    background: #f9fcfe;
-    transition: all 0.3s ease;
-    box-sizing: border-box;
-    cursor: pointer;
 }
 
-.select-locations select:focus {
-    outline: none;
-    border-color: #4f5abb;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
-}
-
-small, .form-standard small {
+small {
   display: block;
   margin-top: 5px;
   color: #2C5F7A;
@@ -1105,33 +1086,12 @@ small, .form-standard small {
   border-color: #4f5abb;
 }
 
-.button-standard {
-  padding: 0;
-  margin: 0;
-}
-
-.button-standard .button {
+/* Pulsanti standard */
+.btn {
   display: inline-block;
-  padding: 8px 18px;          
-  margin-top: 10px;           
-  background-color: #a7cce7;  
-  color: #000000;             
-  text-decoration: none;      
-  font-size: 14px;            
-  font-weight: 600;
-  border-radius: 0.8em;          
-  cursor: pointer;
-}
-
-.button-standard button, 
-.button-standard input[type="submit"]{
-  width: calc(100% - 30px);
   padding: 16px;
-  margin: 20px 15px 15px 15px;
-  
   background: #acd2e6;
   color: #1a1a1a;
-  
   border: none;
   border-radius: 0.8em;
   font-size: 16px;
@@ -1141,20 +1101,36 @@ small, .form-standard small {
   cursor: pointer;
   transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
+  text-decoration: none;
+  text-align: center;
 }
 
-.button-standard button:hover, .button-standard .button:hover,
-.button-standard input[type="submit"]:hover {
+.btn:hover {
   background-color: #4f5abb;
   color: #ffffff;
   box-shadow: 0 6px 20px rgba(79, 90, 187, 0.4);
 }
 
-.button-standard button:active, 
-.button-standard input[type="submit"]:active {
+.btn:active {
   background-color: #3d4799;
   color: #ffffff;
   transform: scale(0.98);
+}
+
+/* Pulsante a larghezza piena per form */
+.btn-full {
+  width: calc(100% - 30px);
+  margin: 20px 15px 15px 15px;
+}
+
+/* Link che sembra bottone piccolo (per profilo) */
+.btn-link {
+  padding: 8px 18px;
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #a7cce7;
+  text-transform: none;
 }
 
 .profile-header {
@@ -1324,27 +1300,15 @@ small, .form-standard small {
 }
 
 /* Messaggi di errore (rosso) */
-.msg-error,
-.msg-error-inline,
-.msg-error-text {
+.msg-error {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
-}
-
-.msg-error {
-  width: 90%;
-  max-width: 800px;
-}
-
-.msg-error-inline {
   padding: 10px;
   margin-bottom: 20px;
   max-width: 800px;
-  margin-left: auto;
 }
 
-.msg-error-text,
 .msg-error-simple {
   color: #721c24;
 }
@@ -1387,31 +1351,26 @@ small, .form-standard small {
 }
 
 /* Form inline senza bordi per pulsanti */
-.form-inline-button,
-.form-inline-button-wide {
+.form-inline {
   box-shadow: none;
   background: transparent;
   margin: 0;
-  width: 100%;
-}
-
-.form-inline-button {
   max-width: 300px;
 }
 
-.form-inline-button-wide {
+.form-inline.wide {
   max-width: 350px;
 }
 
-/* Button_std senza margine */
-.button-standard-no-margin {
+/* Pulsante senza margine */
+.btn-no-margin {
   margin: 0;
 }
 
-/* Pulsante a tutta larghezza senza margine */
-.button-full-width {
+/* Wrapper contenitore pulsante */
+.btn-wrapper {
+  padding: 0;
   margin: 0;
-  width: 100%;
 }
 
 /* Separatore testuale (es. "oppure") */
@@ -1509,29 +1468,22 @@ small, .form-standard small {
   max-width: 200px;
 }
 
-.btn-custom {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
-  box-sizing: border-box;
-  width: 100%;
-  min-width: unset; 
-  margin: 0; 
-  padding: 10px 15px; 
-  border-radius: 0.8em;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
 .btn-logout {
+    display: inline-block;
+    padding: 10px 15px;
     background-color: #acd2e6;
     color: #000000;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 0.8em;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-
 
 .btn-logout:hover {
     background-color: #4f5abb;
@@ -1539,8 +1491,20 @@ small, .form-standard small {
 }
 
 .btn-delete {
+    display: inline-block;
+    padding: 10px 15px;
     background-color: #e58d8d;
     color: #000000;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    border-radius: 0.8em;
+    font-size: 14px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .btn-delete:hover {
@@ -1757,58 +1721,6 @@ small, .form-standard small {
    PAGINE ERRORE RESPONSIVE
 ========================================= */
 
-@media screen and (max-width: 768px) {
-  body.error-background {
-      background-image: none !important;
-  }
-  
-  .error-container {
-      flex-direction: column !important;
-      gap: 2em;
-      padding: 1em;
-  }
-
-  .error-content {
-      order: 1; 
-      max-width: 100%;
-  }
-
-  .error-image {
-      order: 2; 
-      max-width: 280px;
-      margin: 0 auto;
-  }
-
-  .error-code {
-      font-size: 5em;
-  }
-
-  .error-message {
-      font-size: 1.8em;
-  }
-
-  .error-description {
-      font-size: 1em;
-      margin: 1.5em 0;
-  }
-
-  .error-suggestion {
-      font-size: 0.9em;
-  }
-
-  .error-actions {
-      flex-direction: column;
-      gap: 1em;
-      width: 100%;
-  }
-
-  .error-actions a {
-      width: 100%;
-      text-align: center;
-      padding: 1em;
-  }
-}
-
 /* DOMANDE E RISPOSTE IN ABOUT US */
 
 .faq-atds {
@@ -1823,13 +1735,11 @@ small, .form-standard small {
     margin: 2rem 0 0 0;
 }
 
-
 .faq dt, .faq dd {
     max-width: 85%;
     width: 100%;
     box-sizing: border-box;
 }
-
 
 .faq dt {
     font-weight: 700;
@@ -1865,7 +1775,6 @@ small, .form-standard small {
     box-shadow: 0 2px 8px rgba(39, 206, 228, 0.3);
 }
 
-
 .faq dd {
     padding: 1.5rem 1.75rem 1.5rem 1.75rem;
     line-height: 1.7;
@@ -1879,7 +1788,6 @@ small, .form-standard small {
     z-index: 1;
 }
 
-
 .faq dt:nth-of-type(odd), 
 .faq dt:nth-of-type(odd) + dd {
     align-self: flex-start;
@@ -1887,7 +1795,6 @@ small, .form-standard small {
     margin-right: auto;
     border-left: 5px solid #749BA3;
 }
-
 
 .faq dt:nth-of-type(even), 
 .faq dt:nth-of-type(even) + dd {
@@ -1897,7 +1804,6 @@ small, .form-standard small {
     border-right: 5px solid #749BA3;
     border-left: none;
 }
-
 
 .faq dt:nth-of-type(even) {
     flex-direction: row-reverse;
@@ -1925,26 +1831,6 @@ small, .form-standard small {
 
 .faq dd li::marker { color: #00bcd4; }
 
-
-@media (max-width: 768px) {
-    .faq dt, .faq dd {
-        max-width: 100%;
-        border-right: none !important;
-        border-left: 5px solid #749BA3 !important;
-    }
-    
-    .faq dt {
-        font-size: 1.15rem;
-        flex-direction: row !important;
-        text-align: left !important;
-    }
-    
-    .faq dt::before {
-        margin-left: 0 !important;
-        margin-right: 0.75rem !important;
-    }
-}
-
 /* CAROSELLO DI FOTO IN ABOUT US */
 
 .carousel {
@@ -1960,11 +1846,9 @@ small, .form-standard small {
     animation: scroll 40s linear infinite;
 }
 
-
 .carousel:hover .carousel-track {
     animation-play-state: paused;
 }
-
 
 .carousel img {
     width: 400px;
@@ -1975,7 +1859,6 @@ small, .form-standard small {
     flex-shrink: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .carousel img:hover,
 .carousel img:focus {
@@ -1989,13 +1872,6 @@ small, .form-standard small {
     }
     100% {
         transform: translateX(-50%);
-    }
-}
-
-@media (max-width: 768px) {
-    .carousel img {
-        width: 250px;
-        height: 180px;
     }
 }
 
@@ -2120,8 +1996,7 @@ small, .form-standard small {
 }
 
 /* Bottone Elimina */
-.data-table button,
-.data-table .btn-elimina {
+.data-table button {
   display: inline-block;
   padding: 0.7em 1.5em;
   background-color: #e58d8d;
@@ -2138,16 +2013,14 @@ small, .form-standard small {
   letter-spacing: 0.05em;
 }
 
-.data-table button:hover,
-.data-table .btn-elimina:hover {
+.data-table button:hover {
   background-color: #c24242;
   color: #ffffff;
   box-shadow: 0 4px 12px rgba(194, 66, 66, 0.4);
   transform: translateY(-2px);
 }
 
-.data-table button:active,
-.data-table .btn-elimina:active {
+.data-table button:active {
   transform: translateY(0);
 }
 
@@ -2160,63 +2033,6 @@ small, .form-standard small {
   .data-table th,
   .data-table td {
     padding: 1em 0.8em;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .select-locations select {
-    max-width: 100%;
-  }
-  
-  /* Layout a card su mobile */
-  .table-container {
-    box-shadow: none;
-  }
-  
-  .data-table thead {
-    display: none;
-  }
-  
-  .data-table,
-  .data-table tbody,
-  .data-table tr,
-  .data-table td {
-    display: block;
-    width: 100%;
-  }
-  
-  .data-table tr {
-    margin-bottom: 1.5em;
-    border-radius: 0.8em;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    padding: 1em;
-    background-color: #ffffff;
-  }
-  
-  .data-table td {
-    text-align: left !important;
-    padding: 0.8em 0;
-    border: none;
-    position: relative;
-    padding-left: 45%;
-  }
-  
-  .data-table td::before {
-    content: attr(data-label);
-    position: absolute;
-    left: 0;
-    width: 40%;
-    padding-right: 1em;
-    font-weight: 700;
-    color: #082636;
-    text-transform: uppercase;
-    font-size: 0.85em;
-  }
-  
-  .data-table button,
-  .data-table .btn-elimina {
-    width: 100%;
-    margin-top: 0.5em;
   }
 }
 
@@ -2271,41 +2087,7 @@ dialog::backdrop {
 }
 
 .dialog-buttons button {
-  display: inline-block;
-  text-decoration: none;
-  text-align: center;
   width: 100%;
-  margin: 0; 
-  padding: 10px 15px; 
-  border-radius: 0.8em;
-  font-size: 14px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
+  margin: 0;
   flex: 1;
-}
-
-.dialog-buttons .btn-delete {
-  background-color: #e58d8d;
-  color: #000000;
-}
-
-.dialog-buttons .btn-delete:hover,
-.dialog-buttons .btn-delete:focus {
-  background-color: #c24242;
-  color: white;
-}
-
-.dialog-buttons .btn-logout {
-  background-color: #acd2e6;
-  color: #000000;
-}
-
-.dialog-buttons .btn-logout:hover,
-.dialog-buttons .btn-logout:focus {
-  background-color: #4f5abb;
-  color: white;
 }

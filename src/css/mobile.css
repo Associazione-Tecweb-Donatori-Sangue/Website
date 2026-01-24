@@ -597,5 +597,140 @@ dialog {
   width: 100%;
 }
 
+/* ========================================
+   PAGINE ERRORE - MOBILE
+======================================== */
+body.error-background {
+    background-image: none !important;
+}
 
+.error-container {
+    flex-direction: column !important;
+    gap: 2em;
+    padding: 1em;
+}
 
+.error-content {
+    order: 1; 
+    max-width: 100%;
+}
+
+.error-image {
+    order: 2; 
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.error-code {
+    font-size: 5em;
+}
+
+.error-message {
+    font-size: 1.8em;
+}
+
+.error-description {
+    font-size: 1em;
+    margin: 1.5em 0;
+}
+
+.error-suggestion {
+    font-size: 0.9em;
+}
+
+.error-actions {
+    flex-direction: column;
+    gap: 1em;
+    width: 100%;
+}
+
+.error-actions a {
+    width: 100%;
+    text-align: center;
+    padding: 1em;
+}
+
+/* ========================================
+   FAQ - MOBILE
+======================================== */
+.faq dt, .faq dd {
+    max-width: 100%;
+    border-right: none !important;
+    border-left: 5px solid #749BA3 !important;
+}
+
+.faq dt {
+    font-size: 1.15rem;
+    flex-direction: row !important;
+    text-align: left !important;
+}
+
+.faq dt::before {
+    margin-left: 0 !important;
+    margin-right: 0.75rem !important;
+}
+
+/* ========================================
+   CAROUSEL - MOBILE
+======================================== */
+.carousel img {
+    width: 250px;
+    height: 180px;
+}
+
+/* ========================================
+   TABELLA ADMIN - MOBILE
+======================================== */
+.select-locations select {
+  max-width: 100%;
+}
+
+/* Layout a card su mobile */
+.table-container {
+  box-shadow: none;
+}
+
+.data-table thead {
+  display: none;
+}
+
+.data-table,
+.data-table tbody,
+.data-table tr,
+.data-table td {
+  display: block;
+  width: 100%;
+}
+
+.data-table tr {
+  margin-bottom: 1.5em;
+  border-radius: 0.8em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  background-color: #ffffff;
+}
+
+.data-table td {
+  text-align: left !important;
+  padding: 0.8em 0;
+  border: none;
+  position: relative;
+  padding-left: 45%;
+}
+
+.data-table td::before {
+  content: attr(data-label);
+  position: absolute;
+  left: 0;
+  width: 40%;
+  padding-right: 1em;
+  font-weight: 700;
+  color: #082636;
+  text-transform: uppercase;
+  font-size: 0.85em;
+}
+
+.data-table button {
+  width: 100%;
+  margin-top: 0.5em;
+}

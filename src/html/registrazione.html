@@ -30,26 +30,24 @@
         </div>
 
         <main id="content" class="main-standard">
-            <form action="registrazione.php" method="post" class="form-standard">
+            <form action="registrazione.php" method="post">
                 <fieldset>  
                     <legend>Dati di Accesso</legend>  
-                    <div class="input-standard"> 
+                    <div> 
                         <label for="username"><span lang="en">Username</span>:</label>
                         <input type="text" name="username" id="username" minlength="4" maxlength="50" required autocomplete="username" aria-describedby="info-user"> 
                         <small id="info-user" class="suggerimento"> Es: ombretta (minimo 4 caratteri)</small>
                     </div>
-                    <div class="input-standard">
+                    <div>
                         <label for="password"><span lang="en">Password</span>:</label>
                         <input type="password" name="password" id="password" minlength="4" maxlength="50" required autocomplete="new-password" aria-describedby="info-pass"> 
                         <small id="info-pass" class="suggerimento">Es: Password1! (minimo 4 caratteri)</small>
                     </div>
-                    <div class="input-standard">
+                    <div>
                         <label for="password_confirm">Conferma <span lang="en">Password</span>:</label>
                         <input type="password" name="password_confirm" id="password_confirm" minlength="4" maxlength="50" required>
                     </div>
-                    <div class="button-standard">
-                        <input type="submit" value="Registrati">
-                    </div>
+                    <input type="submit" value="Registrati" class="btn btn-full">
                 </fieldset>
             </form>
 
