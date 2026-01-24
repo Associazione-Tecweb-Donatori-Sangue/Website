@@ -1,7 +1,7 @@
 HTML
 - controllare che i bottoni siano nella forma corretta  --> 🔴
 - sistemare headings --> 🔴
-- titoli pagine 404 e 500 da mettere dal particolare al generale --> 🔴
+- titoli pagine 404 e 500 da mettere dal particolare al generale --> GN
 
 CSS
 - fare print.css --> MDP
@@ -10,15 +10,15 @@ CSS
 - Sistemare i colori (tanti non sono in contrasto) --> DG
 - sistemare i colori usando var quando ci sono colori in comune --> GG
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
-- sistemare css bottone seleziona sede in pagina_admin --> 🔴
+- sistemare css bottone seleziona sede in pagina_admin --> GN
 - sistemare css bottone "dona qui" in cards dove_trovarci --> GG
 - sistemare tasto "diventa donatore" in dona_ora --> GG
 
 PHP
-- se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> 🔴
-- se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> 🔴
-- tasto "torna alla home" di pagina 404 non funziona --> 🔴
-- logica dei mesi di attesa tra una prenotazione e l'altra da sistemare (attualmente se ho una prenotazione a Gennaio 2026 e una a Dicembre 2026, se provo ad anticipare la seconda non me lo fa fare e mi dice che la prima data disponibile è a Marzo 2027) --> 🔴
+- se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN
+- se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> GN
+- tasto "torna alla home" di pagina 404 non funziona --> GN
+- logica dei mesi di attesa tra una prenotazione e l'altra da sistemare (attualmente se ho una prenotazione a Gennaio 2026 e una a Dicembre 2026, se provo ad anticipare la seconda non me lo fa fare e mi dice che la prima data disponibile è a Marzo 2027) --> GN
 - sistemare ricerca per indirizzo in dove_trovarci --> GG
 - sistemare pop up di conferma annullamento prenotazione in profilo --> GG
 - sistemare messaggi di errore --> GG
