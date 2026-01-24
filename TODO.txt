@@ -16,11 +16,11 @@ PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> 🔴
 - se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> 🔴
 - bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
-- togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare --> GG
 - tasto "torna alla home" di pagina 404 non funziona --> 🔴
 
 GENERALI
 - sistemare tutti i commenti --> DG
+- sono accessibili le tabelle in user ? --> 🔴
 - implementare pop-up di conferma quando si schiaccia su elimina profilo (sei sicuro di voler...) --> GG
 - discutere layout pagine di errore --> 🔴
 

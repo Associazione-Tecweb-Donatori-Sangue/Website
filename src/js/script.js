@@ -185,14 +185,14 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
             return response.text();
         })
         .then(html => {
-            const tbody = document.querySelector('.data-table tbody');
-            if (tbody) tbody.innerHTML = html;
+            const wrapper = document.getElementById('prenotazioni-wrapper');
+            if (wrapper) wrapper.innerHTML = html;
         })
         .catch(error => {
             console.error('Errore caricamento prenotazioni:', error);
-            const tbody = document.querySelector('.data-table tbody');
-            if (tbody) {
-                tbody.innerHTML = '<tr><td colspan="5" class="table-cell-centered">Errore nel caricamento dei dati</td></tr>';
+            const wrapper = document.getElementById('prenotazioni-wrapper');
+            if (wrapper) {
+                wrapper.innerHTML = '<p class="text-standard testo-centered-message">Errore nel caricamento dei dati.</p>';
             }
         });
 }

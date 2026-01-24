@@ -35,6 +35,18 @@ try {
     $prenotazioni = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     if (count($prenotazioni) > 0) {
+        echo '<div class="table-container">';
+        echo '<table class="data-table" aria-describedby="tabella-donazioni-desc">';
+        echo '<caption>Tabella delle donazioni prenotate</caption>';
+        echo '<thead><tr>';
+        echo '<th scope="col">Nome Donatore</th>';
+        echo '<th scope="col">Data</th>';
+        echo '<th scope="col">Ora</th>';
+        echo '<th scope="col">Sede</th>';
+        echo '<th scope="col">Azioni</th>';
+        echo '</tr></thead>';
+        echo '<tbody>';
+        
         foreach ($prenotazioni as $prenotazione) {
             $dataIt = date("d/m/Y", strtotime($prenotazione['data_prenotazione']));
             $oraIt = substr($prenotazione['ora_prenotazione'], 0, 5);
@@ -53,10 +65,15 @@ try {
             echo '</td>';
             echo '</tr>';
         }
+        
+        echo '</tbody>';
+        echo '</table>';
+        echo '</div>';
     } else {
-        echo '<tr><td colspan="5" class="table-cell-centered">Nessuna prenotazione futura trovata</td></tr>';
+        echo '<p class="text-standard testo-centered-message">Nessuna prenotazione in programma.</p>';
     }
     
 } catch (PDOException $e) {
-    echo '<tr><td colspan="5" class="table-cell-centered">Errore: ' . htmlspecialchars($e->getMessage()) . '</td></tr>';}
+    echo '<p class="text-standard testo-centered-message">Errore nel caricamento dei dati.</p>';
+}
 ?>
