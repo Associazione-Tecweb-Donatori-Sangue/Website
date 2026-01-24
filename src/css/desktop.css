@@ -2219,3 +2219,93 @@ small, .form-standard small {
     margin-top: 0.5em;
   }
 }
+
+/* ========================================
+   DIALOG MODALE ACCESSIBILE
+======================================== */
+dialog {
+  border: none;
+  border-radius: 0.5em;
+  padding: 0;
+  box-shadow: 0 0.5em 2em rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+  width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.dialog-content {
+  padding: 2em;
+}
+
+.dialog-content h2 {
+  font-family: "Playfair Display", Georgia, serif;
+  color: #082636;
+  margin-bottom: 1em;
+  font-size: 1.5em;
+}
+
+.dialog-content p {
+  margin-bottom: 1.5em;
+  line-height: 1.6;
+  color: #333;
+}
+
+.dialog-buttons {
+  display: flex;
+  gap: 1em;
+  justify-content: center;
+  flex-wrap: nowrap;
+}
+
+.dialog-buttons .dialog-form {
+  flex: 1;
+  margin: 0;
+}
+
+.dialog-buttons button {
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  width: 100%;
+  margin: 0; 
+  padding: 10px 15px; 
+  border-radius: 0.8em;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  flex: 1;
+}
+
+.dialog-buttons .btn-delete {
+  background-color: #e58d8d;
+  color: #000000;
+}
+
+.dialog-buttons .btn-delete:hover,
+.dialog-buttons .btn-delete:focus {
+  background-color: #c24242;
+  color: white;
+}
+
+.dialog-buttons .btn-logout {
+  background-color: #acd2e6;
+  color: #000000;
+}
+
+.dialog-buttons .btn-logout:hover,
+.dialog-buttons .btn-logout:focus {
+  background-color: #4f5abb;
+  color: white;
+}

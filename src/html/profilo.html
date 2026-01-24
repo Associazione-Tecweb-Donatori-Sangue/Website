@@ -41,7 +41,7 @@
                     <div class="button-container">
                         <a href="../actions/logout.php" class="btn-custom btn-logout"><span lang="en">Logout</span></a>
                         <a href="modifica_account.php" class="btn-custom btn-logout">Modifica Utente</span></a>
-                        <a href="../actions/cancellaProfilo.php" class="btn-custom btn-delete">Elimina Profilo</a>
+                        <button type="button" id="btn-elimina-profilo" class="btn-custom btn-delete">Elimina Profilo</button>
                     </div>
                 </div>
                 
@@ -54,6 +54,21 @@
                 [tabellePrenotazioni]
             </div>
         </main>
+        
+        <!-- Dialog per conferma eliminazione profilo -->
+        <dialog id="dialog-elimina-profilo" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
+            <div class="dialog-content">
+                <h2 id="dialog-title">Conferma eliminazione</h2>
+                <p id="dialog-desc">Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile e comporterà la perdita di tutti i tuoi dati.</p>
+                <div class="dialog-buttons">
+                    <form action="../actions/cancellaProfilo.php" method="POST" class="dialog-form">
+                        <button type="submit" class="btn-delete">Elimina definitivamente</button>
+                    </form>
+                    <button type="button" id="btn-annulla-elimina" class="btn-logout">Annulla</button>
+                </div>
+            </div>
+        </dialog>
+
         [FOOTER]
     </body>
 </html>

@@ -83,7 +83,32 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+    // 6. GESTIONE DIALOG ELIMINA PROFILO
+    const btnEliminaProfilo = document.getElementById('btn-elimina-profilo');
+    const dialogEliminaProfilo = document.getElementById('dialog-elimina-profilo');
+    const btnAnnullaElimina = document.getElementById('btn-annulla-elimina');
 
+    if (btnEliminaProfilo && dialogEliminaProfilo) {
+        // Apri dialog
+        btnEliminaProfilo.addEventListener('click', () => {
+            dialogEliminaProfilo.showModal();
+        });
+
+        // Chiudi dialog con bottone Annulla
+        if (btnAnnullaElimina) {
+            btnAnnullaElimina.addEventListener('click', () => {
+                dialogEliminaProfilo.close();
+            });
+        }
+
+        // Chiudi dialog premendo ESC (già gestito dal browser con showModal)
+        // Chiudi dialog cliccando fuori (backdrop)
+        dialogEliminaProfilo.addEventListener('click', (e) => {
+            if (e.target === dialogEliminaProfilo) {
+                dialogEliminaProfilo.close();
+            }
+        });
+    }
     // 5. GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileImg = document.getElementById('profile-img');

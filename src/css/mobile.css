@@ -579,5 +579,23 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
     font-size: 0.8rem;
 }
 
+/* ========================================
+   DIALOG MODALE - MOBILE
+======================================== */
+dialog {
+  width: 95%;
+  max-width: 95%;
+}
+
+.dialog-buttons {
+  flex-direction: column;
+}
+
+.dialog-buttons .dialog-form,
+.dialog-buttons > button {
+  flex: none;
+  width: 100%;
+}
+
 
 
