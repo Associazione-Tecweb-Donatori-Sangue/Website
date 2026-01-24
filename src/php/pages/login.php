@@ -17,8 +17,14 @@ $paginaHTML = caricaTemplate('login.html');
 $messaggioErrore = "";
 
 if (isset($_SESSION['messaggio_flash'])) {
+    // Determino il colore in base al contenuto del messaggio
+    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) {
+        $classe = 'msg-error'; // Rosso errore
+    } else {
+        $classe = 'msg-success'; // Verde successo
+    }
     
-    $messaggioErrore = "<p class='msg-success-text'>" . $_SESSION['messaggio_flash'] . "</p>";
+    $messaggioErrore = "<div class='" . $classe . "'>" . htmlspecialchars($_SESSION['messaggio_flash']) . "</div>";
     
     // Importante: cancelliamo il messaggio subito dopo averlo salvato nella variabile
     // così se ricarichi la pagina sparisce
@@ -62,10 +68,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: profilo.php");
             exit();
         } else {
-            $messaggioErrore = "<p class='errore msg-error-text'>Username o password errati.</p>";
+            $messaggioErrore = "<div class='msg-error'>Errore: Credenziali non corrette.</div>";
         }
     } catch (PDOException $e) {
-        $messaggioErrore = "<p class='errore msg-error-simple'>Errore DB: " . $e->getMessage() . "</p>";
+        $messaggioErrore = "<div class='msg-error'>Errore DB: " . $e->getMessage() . "</div>";
     }
 }
 

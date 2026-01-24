@@ -35,7 +35,7 @@ $msgHTML = "";
 if (isset($_SESSION['messaggio_flash'])) {
     $classe = 'msg-flash msg-success';
     
-    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false || strpos($_SESSION['messaggio_flash'], 'già') !== false) {
+    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) {
         $classe = 'msg-flash msg-error';
     }
 

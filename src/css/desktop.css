@@ -1299,24 +1299,35 @@ small {
   font-weight: bold;
 }
 
+/* Messaggi inline dentro i form */
+fieldset .msg-success,
+form .msg-success {
+  width: 90%;
+  margin: 0.2em auto;
+  margin-bottom: 0.6em;
+}
+
 /* Messaggi di errore (rosso) */
 .msg-error {
   background-color: #f8d7da;
   color: #721c24;
   border: 1px solid #f5c6cb;
-  padding: 10px;
-  margin-bottom: 20px;
-  max-width: 800px;
+  padding: 0.4em;
+  border-radius: 0.6em;
+  font-weight: 500;
 }
 
-.msg-error-simple {
-  color: #721c24;
+/* Messaggi inline dentro i form */
+fieldset .msg-error,
+form .msg-error {
+  width: 90%;
+  margin: 0.2em auto;
+  margin-bottom: 0.6em;
 }
 
 /* Messaggio flash generico */
 .msg-flash {
-  width: 100%;
-  max-width: 600px;
+  width: 90%;
 }
 
 /* =========================================

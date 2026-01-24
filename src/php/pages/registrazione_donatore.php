@@ -90,18 +90,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // 2. PREPARAZIONE DELLA PAGINA (Visualizzazione)
 $template = caricaTemplate('registrazione_donatore.html');
 
+$messaggioErrore = ""; // Inizializzo vuoto
 if (isset($_SESSION['messaggio_flash'])) {
     $classe = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? 'msg-error' : 'msg-success';
 
-    $msgHTML = '<div class="' . $classe . '">
+    $messaggioErrore = '<div class="' . $classe . '">
                     ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
                 </div>';
     
-    // Inserisco il messaggio prima del form
-    $template = str_replace('<form', $msgHTML . '<form', $template);
-    
     unset($_SESSION['messaggio_flash']);
 }
+
+// Sostituisco il placeholder del messaggio
+$template = str_replace('[messaggioErrore]', $messaggioErrore, $template);
 
 // Inizializzo variabili vuote (caso "Nuova Registrazione")
 $dati = [

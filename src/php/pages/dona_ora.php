@@ -5,11 +5,10 @@ require_once "../db.php";
 // --- 1. GESTIONE MESSAGGI FLASH (Nuovo Blocco) ---
 $msgHTML = "";
 if (isset($_SESSION['messaggio_flash'])) {
-    // Determino il colore in base al messaggio (verde per successo, rosso/giallo per errori)
-    // Se il messaggio contiene "Errore" o "già", uso uno stile diverso, altrimenti verde successo.
+    // Determino il colore in base al messaggio (verde per successo, rosso per errori)
     $classe = 'msg-flash msg-success'; // Verde default
     
-    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false || strpos($_SESSION['messaggio_flash'], 'già') !== false) {
+    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) {
         $classe = 'msg-flash msg-error'; // Rosso errore
     }
 
@@ -119,8 +118,19 @@ if (!isset($_SESSION['user_id'])) {
                 $stmt = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
                 $sedi = $stmt->fetchAll();
 
-                // Controllo se c'è una sede preselezionata via GET
-                $sedePreselezionata = isset($_GET['sede_id']) ? $_GET['sede_id'] : '';
+                // Controllo se c'è una sede preselezionata via GET o da form preservato
+                $sedePreselezionata = '';
+                $oraPreselezionata = '';
+                $tipoPreselezionato = '';
+                
+                if (isset($_SESSION['form_preservato'])) {
+                    $sedePreselezionata = $_SESSION['form_preservato']['sede_id'];
+                    $oraPreselezionata = $_SESSION['form_preservato']['ora'];
+                    $tipoPreselezionato = $_SESSION['form_preservato']['tipo'];
+                    unset($_SESSION['form_preservato']);
+                } elseif (isset($_GET['sede_id'])) {
+                    $sedePreselezionata = $_GET['sede_id'];
+                }
 
                 $optionsSedi = "";
                 foreach ($sedi as $sede) {
@@ -130,6 +140,24 @@ if (!isset($_SESSION['user_id'])) {
 
                 // Sostituisco il segnaposto nel form
                 $paginaHTML = str_replace('[listaNomiSedi]', $optionsSedi, $paginaHTML);
+                
+                // Pre-seleziono l'ora se disponibile
+                if (!empty($oraPreselezionata)) {
+                    $paginaHTML = str_replace(
+                        'value="' . $oraPreselezionata . '">',
+                        'value="' . $oraPreselezionata . '" selected>',
+                        $paginaHTML
+                    );
+                }
+                
+                // Pre-seleziono il tipo di donazione (radio button) se disponibile
+                if (!empty($tipoPreselezionato)) {
+                    $paginaHTML = str_replace(
+                        'name="donazione" value="' . $tipoPreselezionato . '"',
+                        'name="donazione" value="' . $tipoPreselezionato . '" checked',
+                        $paginaHTML
+                    );
+                }
             }
 
         } catch (PDOException $e) {

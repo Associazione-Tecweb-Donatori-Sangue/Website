@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usernamePreservato = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
 
     if ($password !== $confirm) {
-        $messaggio = "<p class='errore msg-error-text'>Le password non coincidono.</p>";
+        $messaggio = "<div class='msg-error'>Errore: Le password non coincidono.</div>";
     } else {
         try {
             // 1. Controllo se l'utente esiste già
@@ -26,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->execute([$username]);
             
             if ($stmt->rowCount() > 0) {
-                $messaggio = "<p class='errore msg-error-text'>Username già esistente!</p>";
+                $messaggio = "<div class='msg-error'>Errore: Username già esistente!</div>";
             } else {
                 // 2. Inserimento con HASH della password
                 $hash = password_hash($password, PASSWORD_DEFAULT);
@@ -44,18 +44,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: profilo.php");
                     exit;
                 } else {
-                    $messaggio = "<p class='errore msg-error-simple'>Errore nel database.</p>";
+                    $messaggio = "<div class='msg-error'>Errore nel database.</div>";
                 }
             }
         } catch (PDOException $e) {
-            $messaggio = "<p class='errore msg-error-simple'>Errore tecnico: " . $e->getMessage() . "</p>";
+            $messaggio = "<div class='msg-error'>Errore tecnico: " . $e->getMessage() . "</div>";
         }
     }
 }
 
-// 4. Inserisco eventuali messaggi di errore prima del form
-// Cerco il tag <form ...> e gli appendo prima il messaggio
-$paginaHTML = str_replace('<form', $messaggio . '<form', $paginaHTML);
+// 4. Sostituisco il placeholder del messaggio nel template
+$paginaHTML = str_replace('[messaggioErrore]', $messaggio, $paginaHTML);
 
 // Se c'è un errore, preservo l'username nel campo del form
 if (!empty($usernamePreservato)) {

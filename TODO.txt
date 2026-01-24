@@ -11,7 +11,6 @@ CSS
 - sistemare i colori usando var quando ci sono colori in comune
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
 - sistemare css bottone seleziona sede in pagina_admin --> 🔴
-- sistemare/cancellare messaggi flash  --> GG
 
 PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> 🔴

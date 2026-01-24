@@ -15,8 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sede_id = pulisciInput($_POST['luogo']);
     $data = $_POST['data'];
     $ora = pulisciInput($_POST['ora']);
-    $tipo = pulisciInput($_POST['donazione']);
-    $tipo = ucfirst(strtolower($tipo));
+    $tipo = pulisciInput($_POST['donazione']); // Il valore arriva già con la maiuscola dal form
     
     // Se l'admin sta modificando, user_id viene dal form, altrimenti dalla sessione
     $user_id = isset($_POST['user_id']) ? intval($_POST['user_id']) : $_SESSION['user_id'];
@@ -84,7 +83,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($dataPrenotazione < $dataMinima) {
                 $dataFormattata = $dataMinima->format('d/m/Y');
                 $mesi = ($donatore['sesso'] === 'Maschio') ? 3 : 6;
-                $_SESSION['messaggio_flash'] = "ATTENZIONE! Devi attendere {$mesi} mesi. Prossima data disponibile: {$dataFormattata}";
+                $_SESSION['messaggio_flash'] = "Errore: Devi attendere {$mesi} mesi per poter donare di nuovo. Prossima data disponibile: {$dataFormattata}";
+                
+                // Preservo i dati del form tranne la data
+                $_SESSION['form_preservato'] = [
+                    'sede_id' => $sede_id,
+                    'ora' => $ora,
+                    'tipo' => $tipo
+                ];
+                
                 header("Location: " . $redirectErrore);
                 exit();
             }
@@ -101,7 +108,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
         
         if ($stmtCheck->rowCount() > 0) {
-            $_SESSION['messaggio_flash'] = "Hai già una prenotazione per questa data!";
+            $_SESSION['messaggio_flash'] = "Errore: Hai già una prenotazione per questa data!";
             header("Location: " . $redirectErrore);
             exit();
         }
@@ -133,7 +140,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         
         // Se ci sono già 2 prenotazioni, la fascia è piena
         if ($risultato['totale'] >= 2) {
-            $_SESSION['messaggio_flash'] = "Spiacenti, la fascia oraria selezionata è già completa. Scegli un altro orario.";
+            $_SESSION['messaggio_flash'] = "Errore: La fascia oraria selezionata è già completa. Scegli un altro orario.";
             header("Location: " . $redirectErrore);
             exit();
         }
