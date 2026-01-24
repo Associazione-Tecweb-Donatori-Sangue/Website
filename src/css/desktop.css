@@ -191,15 +191,15 @@ header{
   display: none;
   flex-direction: column;
   cursor: pointer;
-  gap: 5px;
+  gap: 0.3em;
   padding: 0.8em;
   background: none;
   border: none;
 }
 
 .burger-menu span{
-  width: 30px;
-  height: 3px;
+  width: 1.9em;
+  height: 0.2em;
   background-color: #000000;
   transition: all 0.3s ease;
 }
@@ -278,7 +278,7 @@ header{
   min-width: 60px;
   height: 3.1em;
   background-color: var(--primary-bg-color);
-  margin: -3px auto 0;
+  margin: -0.2em auto 0;
   border-radius: 1.6em 1.6em 0 0;
   cursor: pointer;
 }
@@ -940,7 +940,7 @@ footer {
   color: #4f5abb;
   text-decoration: none;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1em;
   transition: color 0.3s ease;
   margin-top: auto;
 }
@@ -955,15 +955,15 @@ form {
   max-width: 380px;
   margin: 1% auto;
   background: var(--card-locations-bg-color);
-  border-radius: 20px;
+  border-radius: 1.2em;
   box-shadow: 0 10px 40px rgba(172, 210, 230, 0.4);
   overflow: hidden;
 }
 
 form fieldset {
   border: none;
-  margin: 15px;
-  padding: 0 0 10px 0;
+  margin: 0.9em;
+  padding: 0 0 0.6em 0;
   background: #ffffff;
   border-radius: 15px;
   box-shadow: 0 2px 10px rgba(172, 210, 230, 0.2);
@@ -972,10 +972,10 @@ form fieldset {
 
 form legend {
   width: 100%;
-  padding: 18px;
-  margin: 0 0 15px 0;
+  padding: 1.1em;
+  margin: 0 0 0.9em 0;
   background: #acd2e6;
-  font-size: 18px;
+  font-size: 1.1em;
   font-weight: 700;
   color: #1a1a1a;
   text-align: center;
@@ -986,25 +986,25 @@ form legend {
 }
 
 form fieldset > div {
-  margin: 0 25px 15px 25px;
+  margin: 0 1.5em 0.9em 1.5em;
 }
 
 label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 0.5em;
   font-weight: 600;
   color: #2c5f7a;
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 input, 
 textarea, 
 select {
   width: 100%;
-  padding: 10px 14px;
+  padding: 0.6em 0.9em;
   border: 2px solid #acd2e6;
   border-radius: 0.8em;
-  font-size: 14px;
+  font-size: 0.9em;
   background-color: #f9fcfe; 
   transition: all 0.3s ease;
   box-sizing: border-box;
@@ -1016,8 +1016,8 @@ select {
   -webkit-appearance: none;
   background-image: url('data:image/svg+xml;utf8,<svg fill="%234f5abb" height="20" width="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><polygon points="5,7 15,7 10,12"/></svg>');
   background-repeat: no-repeat;
-  background-position: right 12px center;
-  background-size: 16px;
+  background-position: right 0.75em center;
+  background-size: 1em;
   padding-right: 40px;
   cursor: pointer;
 }
@@ -1034,7 +1034,7 @@ textarea:focus {
 .select-locations {
     width: 100%;
     max-width: 300px;
-    margin: 10px 0; 
+    margin: 0.6em 0; 
     display: block;
 }
 
@@ -1044,22 +1044,22 @@ textarea:focus {
 
 small {
   display: block;
-  margin-top: 5px;
+  margin-top: 0.3em;
   color: #2C5F7A;
-  font-size: 12px;
+  font-size: 0.7em;
   line-height: 1.4;
 }
 
 .radio-standard {
   display: grid;
-  grid-template-columns: auto 20px;
-  column-gap: 10px; 
+  grid-template-columns: auto 1.2em;
+  column-gap: 0.6em; 
   align-items: center;
-  padding: 8px 14px;
+  padding: 0.5em 0.9em;
   background: #f9fcfe;
   border: 2px solid #acd2e6;
   border-radius: 0.8em;
-  margin-bottom: 16px;
+  margin-bottom: 1em;
   box-sizing: border-box;
   transition: all 0.3s ease;
 }
@@ -1075,8 +1075,8 @@ small {
 }
 
 .radio-standard input[type="radio"] {
-  width: 18px;
-  height: 18px;
+  width: 1.1em;
+  height: 1.1em;
   accent-color: #4f5abb;
   cursor: pointer;
   justify-self: end;
@@ -1089,15 +1089,15 @@ small {
 /* Pulsanti standard */
 .btn {
   display: inline-block;
-  padding: 16px;
+  padding: 1em;
   background: #acd2e6;
   color: #1a1a1a;
   border: none;
   border-radius: 0.8em;
-  font-size: 16px;
+  font-size: 1em;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 0.06em;
   cursor: pointer;
   transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
   box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
@@ -1119,14 +1119,14 @@ small {
 
 /* Pulsante a larghezza piena per form */
 .btn-full {
-  width: calc(100% - 30px);
-  margin: 20px 15px 15px 15px;
+  width: calc(100% - 1.875em);
+  margin: 1.2em 0.9em 0.9em 0.9em;
 }
 
 /* Link che sembra bottone piccolo (per profilo) */
 .btn-link {
-  padding: 8px 18px;
-  margin-top: 10px;
+  padding: 0.5em 1.1em;
+  margin-top: 0.6em;
   font-size: 14px;
   font-weight: 600;
   background-color: #a7cce7;
@@ -1137,9 +1137,9 @@ small {
   display: flex;
   justify-content: center; 
   align-items: flex-start;
-  margin-top: 50px;
-  margin-bottom: 80px;
-  gap: 120px; 
+  margin-top: 3.1em;
+  margin-bottom: 5em;
+  gap: 7.5em; 
   max-width: 600px; 
   margin-left: auto;
   margin-right: auto;
@@ -1150,8 +1150,8 @@ small {
   flex-shrink: 0;
   position: relative;
   cursor: pointer;
-  width: 130px;
-  height: 130px;
+  width: 8.1em;
+  height: 8.1em;
   
 }
 
@@ -1183,7 +1183,7 @@ small {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  font-size: 1.1em;
   font-weight: 600;
   text-align: center;
   opacity: 0;
@@ -1201,17 +1201,17 @@ small {
 
 .remove-photo {
     position: absolute;
-    top: -10px;
-    right: -10px;
-    width: 30px;
-    height: 30px;
+    top: -0.6em;
+    right: -0.6em;
+    width: 1.9em;
+    height: 1.9em;
     background-color: #ff4d4d;
     color: white;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 1.25em;
     cursor: pointer;
     border: 2px solid white;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
@@ -1279,8 +1279,8 @@ small {
 .msg-success,
 .msg-error,
 .msg-flash {
-  padding: 15px;
-  margin: 20px auto;
+  padding: 0.9em;
+  margin: 1.2em auto;
   border-radius: 5px;
   text-align: center;
 }
@@ -1292,7 +1292,7 @@ small {
   color: #155724;
   border: 1px solid #c3e6cb;
   width: 90%;
-  max-width: 800px;
+  max-width: 50em;
 }
 
 .msg-success-text {
@@ -1354,7 +1354,7 @@ form .msg-error {
 
 .action-container {
   flex-direction: column;
-  gap: 10px;
+  gap: 0.6em;
 }
 
 .action-container-single {
@@ -1400,7 +1400,7 @@ form .msg-error {
 
 /* Link/pulsante modifica dati donatore */
 .button-margin-top {
-  margin-top: 20px;
+  margin-top: 1.25em;
 }
 
 /* =========================================
@@ -1417,14 +1417,14 @@ form .msg-error {
   background-color: #d9534f;
   border-color: #d9534f;
   color: white;
-  padding: 5px 10px;
+  padding: 0.3em 0.6em;
   font-size: 0.9em;
 }
 
 /* Messaggio centrato in testo_std */
 .testo-centered-message {
   text-align: center;
-  padding: 10px;
+  padding: 0.6em;
 }
 
 /* Status completata */
@@ -1439,7 +1439,7 @@ form .msg-error {
 
 /* Titolo terziario con margine superiore */
 .titolo-margin-top {
-  margin-top: 40px;
+  margin-top: 2.5em;
 }
 
 /* =========================================
@@ -1469,11 +1469,11 @@ form .msg-error {
 ========================================= */
 
 .button-container {
-  margin-top: 30px;   
-  right: 50px;
+  margin-top: 1.9em;   
+  right: 3.1em;
   display: flex;
   flex-direction: column;
-  gap: 15px;              
+  gap: 0.9em;              
   float: right;           
   margin-left: 20px;      
   max-width: 200px;
@@ -1529,26 +1529,26 @@ form .msg-error {
 #disclaimer {
 
   max-width: 1000px; 
-  margin: 8rem auto 2rem;
-  padding: 1.5rem 2rem;
+  margin: 8em auto 2em;
+  padding: 1.5em 2em;
   background-color: #d9e6ef; 
   border-radius: 1.2em;
-  font-size: 0.85rem;
+  font-size: 0.85em;
   line-height: 1.5;
   color: #444;
   box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 #disclaimer-title {
-  font-size: 1.2rem;
+  font-size: 1.2em;
   font-weight: 700;
   color: #082636;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
   text-align: left; 
 }
 
 #disclaimer p {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.5em;
   max-width: 95%; 
 }
 
@@ -1566,7 +1566,7 @@ form .msg-error {
 
 .dashboard-title {
     font-family: 'Jost', sans-serif;
-    font-size: 1.4rem;
+    font-size: 1.4em;
     color: #1a3a5a;
     margin-bottom: 25px;
     font-weight: 700;
@@ -1583,7 +1583,7 @@ form .msg-error {
 }
 
 .data-list div {
-    padding: 12px 0;
+    padding: 0.75em 0;
     border-bottom: 1px solid #f0f4f8;
     display: flex;
     justify-content: flex-start;
@@ -1597,7 +1597,7 @@ form .msg-error {
 
 
 .data-list dt {
-    width: 180px;
+    width: 11.2em;
     font-size: 0.85rem;
     color: #7f8c8d;
     text-transform: uppercase;
@@ -1608,7 +1608,7 @@ form .msg-error {
 
 .data-list dd {
     margin: 0;
-    font-size: 1.1rem;
+    font-size: 1.1em;
     color: #2c3e50;
     font-weight: 500;
 }
@@ -1630,11 +1630,11 @@ form .msg-error {
 
 .back-button {
   display: inline-block;
-  padding: 10px 20px;
+  padding: 0.6em 1.2em;
   background-color: #a7cce7;
   color: #1a1a1a;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 0.9em;
   font-weight: 700;
   border-radius: 0.8em;
   transition: all 0.3s ease;
@@ -1735,15 +1735,15 @@ form .msg-error {
 /* DOMANDE E RISPOSTE IN ABOUT US */
 
 .faq-atds {
-    margin: 3rem auto;
+    margin: 3em auto;
     max-width: 900px;
-    padding: 0 1rem;
+    padding: 0 1em;
 }
 
 .faq {
     display: flex;
     flex-direction: column;
-    margin: 2rem 0 0 0;
+    margin: 2em 0 0 0;
 }
 
 .faq dt, .faq dd {
@@ -1754,14 +1754,14 @@ form .msg-error {
 
 .faq dt {
     font-weight: 700;
-    font-size: 1.45rem;
-    padding: 1.5rem 1.75rem 1rem 1.75rem;
+    font-size: 1.45em;
+    padding: 1.5em 1.75em 1em 1.75em;
     color: #006064;
     display: flex;
     align-items: center;
     line-height: 1.4;
     background: linear-gradient(135deg, #a0c7cf 0%, #ffffff 100%);
-    margin-top: 2.5rem;
+    margin-top: 2.5em;
     border-radius: 16px 16px 0 0;
     position: relative;
     z-index: 2;
@@ -1779,17 +1779,17 @@ form .msg-error {
     width: 36px;
     height: 36px;
     background: linear-gradient(135deg, #b3e7ee 0%, #feffff 100%);
-    margin-right: 1rem;
+    margin-right: 1em;
     border-radius: 50%;
     flex-shrink: 0;
-    font-size: 1.1rem;
+    font-size: 1.1em;
     box-shadow: 0 2px 8px rgba(39, 206, 228, 0.3);
 }
 
 .faq dd {
-    padding: 1.5rem 1.75rem 1.5rem 1.75rem;
+    padding: 1.5em 1.75em 1.5em 1.75em;
     line-height: 1.7;
-    font-size: 1.2rem;
+    font-size: 1.2em;
     color: #37474f;
     background: white;
     margin: 0;
@@ -1823,15 +1823,15 @@ form .msg-error {
 
 .faq dt:nth-of-type(even)::before {
     margin-right: 0;
-    margin-left: 1rem;
+    margin-left: 1em;
 }
 
-.faq dd p { margin: 0 0 1rem 0; }
+.faq dd p { margin: 0 0 1em 0; }
 .faq dd p:last-child { margin-bottom: 0; }
 
 .faq dd ul {
-    margin: 1rem 0 0 0;
-    padding-left: 1.5rem;
+    margin: 1em 0 0 0;
+    padding-left: 1.5em;
     list-style-type: disc;
 }
 
@@ -1847,7 +1847,7 @@ form .msg-error {
 .carousel {
     overflow: hidden;
     width: 100%;
-    margin: 3rem 0;
+    margin: 3em 0;
     position: relative;
 }
 
@@ -1865,7 +1865,7 @@ form .msg-error {
     width: 400px;
     height: 300px;
     object-fit: cover;
-    margin-right: 1rem;
+    margin-right: 1em;
     border-radius: 10px;
     flex-shrink: 0;
     transition: transform 0.3s ease, box-shadow 0.3s ease;

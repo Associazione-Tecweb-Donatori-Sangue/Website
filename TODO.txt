@@ -8,21 +8,26 @@ CSS
 - finire mobile.css  --> GG
 - sistemare css about_us --> DG
 - Sistemare i colori (tanti non sono in contrasto) --> DG
-- sistemare i colori usando var quando ci sono colori in comune
+- sistemare i colori usando var quando ci sono colori in comune --> GG
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
 - sistemare css bottone seleziona sede in pagina_admin --> 🔴
+- sistemare css bottone "dona qui" in cards dove_trovarci --> GG
 
 PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> 🔴
 - se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> 🔴
 - tasto "torna alla home" di pagina 404 non funziona --> 🔴
 - logica dei mesi di attesa tra una prenotazione e l'altra da sistemare (attualmente se ho una prenotazione a Gennaio 2026 e una a Dicembre 2026, se provo ad anticipare la seconda non me lo fa fare e mi dice che la prima data disponibile è a Marzo 2027) --> 🔴
+- sistemare ricerca per indirizzo in dove_trovarci --> GG
+- sistemare pop up di conferma annullamento prenotazione in profilo --> GG
+- sistemare messaggi di errore --> GG
 
 GENERALI
 - sistemare tutti i commenti --> DG
 - sono accessibili le tabelle in user ? --> 🔴
 - discutere layout pagine di errore --> 🔴
 - controllare le convenzioni interne --> (bottoni, link, ecc) 🔴
+- modifica foto profilo non è raggiungibile con il tab, è corretto? --> 🔴
 
 
 EXTRA - da fare solo se avanza tempo
