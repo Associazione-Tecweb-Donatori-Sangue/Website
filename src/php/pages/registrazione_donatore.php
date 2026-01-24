@@ -198,10 +198,7 @@ if ($dati['gruppo_sanguigno'] != "") {
     $template = str_replace($find, $replace, $template);
 }
 
-// Pulisco prima i segnaposti
-$template = str_replace('[checked_maschio]', '', $template);
-$template = str_replace('[checked_femmina]', '', $template);
-
+// Gestione radio button sesso
 if ($dati['sesso'] == 'Maschio') {
     $template = str_replace('value="Maschio"', 'value="Maschio" checked', $template);
 } elseif ($dati['sesso'] == 'Femmina') {

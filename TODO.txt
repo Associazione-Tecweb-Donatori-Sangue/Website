@@ -18,7 +18,6 @@ PHP
 - bottone modifica in profilo_admin e deve rimandare al form di prenotazione della donazione con il form compilato  --> GG
 - togliere l'intestazione della tabella anche in profilo_admin quando non ci sono prenotazioni da visualizzare --> GG
 - tasto "torna alla home" di pagina 404 non funziona --> 🔴
-- quando un donatore schiaccia su "modifica dati" il campo sesso non è precompilato --> GG
 
 GENERALI
 - sistemare tutti i commenti --> DG
