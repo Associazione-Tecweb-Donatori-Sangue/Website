@@ -12,6 +12,7 @@ CSS
 - sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
 - sistemare css bottone seleziona sede in pagina_admin --> 🔴
 - sistemare css bottone "dona qui" in cards dove_trovarci --> GG
+- sistemare tasto "diventa donatore" in dona_ora --> GG
 
 PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> 🔴
