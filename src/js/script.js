@@ -109,22 +109,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+
     // 5. GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileImg = document.getElementById('profile-img');
     const removeBtn = document.getElementById('remove-photo-btn');
+    const profileContainer = document.querySelector('.profile-picture');
+    const navImg = document.getElementById('imgProfilo');
 
-    // Funzione helper per mostrare messaggi
+
     const showMessage = (message, isError = false) => {
         console.log(isError ? 'Errore:' : 'Successo:', message);
-        // Potresti aggiungere qui un sistema di notifiche toast
+        if (isError) alert(message);
     };
 
-    // Funzione helper per gestire la risposta JSON
+
     const handleResponse = (response) => {
         return response.text().then(text => {
             try {
-                return JSON.parse(text);
+                return JSON.parse(text.trim());
             } catch (e) {
                 console.error("Errore parsing JSON:", text);
                 throw new Error("Risposta server non valida");
@@ -132,10 +136,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     };
 
-    // UPLOAD foto profilo
-    if (photoUpload && profileImg) {
-        profileImg.addEventListener('click', () => photoUpload.click());
+    const triggerUpload = () => {
+        if (photoUpload) photoUpload.click();
+    };
 
+    if (profileContainer && photoUpload) {    
+        profileContainer.addEventListener('click', (e) => {
+            if (e.target.closest('#remove-photo-btn')) return;
+            triggerUpload();
+        });
+
+        profileContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (document.activeElement === removeBtn) return;
+                
+                e.preventDefault();
+                triggerUpload();
+            }
+        });
+
+        /* --- GESTIONE UPLOAD FILE --- */
+        
         photoUpload.addEventListener('change', function() {
             if (this.files && this.files[0]) {
                 const formData = new FormData();
