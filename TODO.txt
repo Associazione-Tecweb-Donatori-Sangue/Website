@@ -28,7 +28,6 @@ GENERALI
 - sono accessibili le tabelle in user ? --> 🔴
 - discutere layout pagine di errore --> 🔴
 - controllare le convenzioni interne --> (bottoni, link, ecc) 🔴
-- modifica foto profilo non è raggiungibile con il tab, è corretto? --> 🔴
 
 
 EXTRA - da fare solo se avanza tempo
