@@ -1117,13 +1117,13 @@ small {
   transform: scale(0.98);
 }
 
-/* Pulsante a larghezza piena per form */
+
 .btn-full {
   width: calc(100% - 1.875em);
   margin: 1.2em 0.9em 0.9em 0.9em;
 }
 
-/* Link che sembra bottone piccolo (per profilo) */
+
 .btn-link {
   padding: 0.5em 1.1em;
   margin-top: 0.6em;
@@ -1136,7 +1136,7 @@ small {
 .profile-header {
   display: flex;
   justify-content: center; 
-  align-items: flex-start;
+  align-items: center;
   margin-top: 3.1em;
   margin-bottom: 5em;
   gap: 7.5em; 
@@ -1155,25 +1155,54 @@ small {
   
 }
 
+.profile-picture {
+  flex-shrink: 0;
+  position: relative;
+  cursor: pointer;
+  width: 8.1em;
+  height: 8.1em;
+}
+
 .profile-picture img {
   width: 130%;
   height: 130%;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid #acd2e6;
+  border: 2px solid #12425C;
   box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
   transition: opacity 0.3s ease;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .profile-picture.is-default #remove-photo-btn {
     display: none;
 }
 
+
+.profile-picture::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: calc(130% + 6px);
+  height: calc(130% + 6px);
+  border-radius: 50%;
+  border: 3px solid #12425C;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 2;
+}
+
 .profile-picture::after {
   content: 'Modifica Foto';
   position: absolute;
-  top: 65%;
-  left: 65%;
+  top: 50%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 130%;
   height: 130%;
@@ -1183,14 +1212,65 @@ small {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1em;
-  font-weight: 600;
+  font-size: 1.5em;
+  font-weight: normal;
   text-align: center;
   opacity: 0;
   transition: opacity 0.3s ease;
-  pointer-events: none; 
+  pointer-events: none;
+  z-index: 1;
+  white-space: nowrap;
 }
 
+
+.profile-picture:focus::before,
+.profile-picture:focus-visible::before {
+  opacity: 1;
+}
+
+
+.profile-picture:focus,
+.profile-picture:focus-visible {
+  outline: none;
+}
+
+.profile-picture:has(.remove-photo:focus)::before {
+  opacity: 0;
+}
+
+
+.profile-picture:hover::after {
+  opacity: 1;
+}
+
+.profile-picture:has(.remove-photo:hover)::after {
+  opacity: 0;
+}
+
+
+.profile-picture:focus::after,
+.profile-picture:focus-within::after {
+  opacity: 1;
+}
+
+
+.profile-picture:has(.remove-photo:focus)::after {
+  opacity: 0;
+}
+
+
+.profile-picture:hover img {
+  opacity: 0.8;
+}
+
+.profile-picture:has(.remove-photo:hover) img {
+  opacity: 1;
+}
+
+
+.profile-picture:focus img {
+  opacity: 0.8;
+}
 
 #imgProfilo.nav-profile-icon {
     height: 3.7em;
@@ -1219,10 +1299,32 @@ small {
     font-family: Arial, sans-serif;
 }
 
-
 .remove-photo:focus {
     outline: 3px solid #ff4d4d;
     outline-offset: 2px;
+}
+
+.remove-photo::after {
+    content: 'Rimuovi foto';
+    position: absolute;
+    top: 50%;
+    right: 2.5em;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.9);
+    color: white;
+    padding: 0.4em 0.7em;
+    border-radius: 4px;
+    font-size: 0.75em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 1001;
+}
+
+.remove-photo:hover::after,
+.remove-photo:focus::after {
+    opacity: 1;
 }
 
 .profile-picture:hover .remove-photo {
@@ -1231,28 +1333,26 @@ small {
 }
 
 .remove-photo:hover {
-    background-color: #d93636;
+    background-color: #ce2c2c;
     transform: scale(1.1);
-}
-
-.profile-picture:hover::after {
-  opacity: 1;
-}
-
-.profile-picture:hover img {
-  opacity: 0.8;
 }
 
 .profile-picture input[type="file"] {
   display: none;
 }
 
-/* Classe per elementi nascosti */
+
 .hidden-input {
   display: none;
 }
 
-/* Stile per messaggio nessun risultato */
+
+
+/* =========================================
+   MESSAGGI FLASH E ERRORI
+========================================= */
+
+
 .no-results-message {
   display: none;
   text-align: center;
@@ -1261,7 +1361,7 @@ small {
   background: transparent;
 }
 
-/* Messaggio nessun risultato visibile */
+
 .no-results-message-visible {
   display: block;
   text-align: center;
@@ -1269,10 +1369,6 @@ small {
   box-shadow: none;
   background: transparent;
 }
-
-/* =========================================
-   MESSAGGI FLASH E ERRORI
-========================================= */
 
 /* Classe base per messaggi */
 .msg-base,
@@ -1469,21 +1565,17 @@ form .msg-error {
 ========================================= */
 
 .button-container {
-  margin-top: 1.9em;   
-  right: 3.1em;
   display: flex;
   flex-direction: column;
   gap: 0.9em;              
-  float: right;           
-  margin-left: 20px;      
   max-width: 200px;
 }
 
 .btn-logout {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #acd2e6;
-    color: #000000;
+    background-color: #12425C;
+    color: #ffffff;
     text-decoration: none;
     text-align: center;
     border: none;
@@ -1497,14 +1589,14 @@ form .msg-error {
 }
 
 .btn-logout:hover {
-    background-color: #4f5abb;
+    background-color: #082e41;
     color: white;
 }
 
 .btn-delete {
     display: inline-block;
     padding: 10px 15px;
-    background-color: #e58d8d;
+    background-color: #da4343;
     color: #000000;
     text-decoration: none;
     text-align: center;
@@ -1522,6 +1614,7 @@ form .msg-error {
     background-color: #c24242;
     color: white;
 }
+
 
 
 /* DISCALIMER IN DOVE TROVARCI */
