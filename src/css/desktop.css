@@ -80,7 +80,7 @@ body.error-background {
   max-width: 98%;
   margin: 0 auto;
   padding: 0 0.8em;
-  border-radius: 1.6em 1.6em 3em 3em;
+  border-radius: 3em;
   position: sticky;
   top: 0.5em;
   z-index: 1000;
@@ -99,7 +99,7 @@ header{
 }
 
 .sticky-header.scrolled {
-  background-color: #749BA3;
+  background-color: #638a92;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
