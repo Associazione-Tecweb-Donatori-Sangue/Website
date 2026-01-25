@@ -1,6 +1,7 @@
 /* =========================================
    GESTIONE DOM (Menu, Ricerca, Header)
 ========================================= */
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Menu mobile - Accessibilità hamburger menu
@@ -10,7 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
         burgerInput.addEventListener('change', function() {
             const isChecked = this.checked;
             
-            // Aggiorna ARIA per accessibilità
             this.setAttribute('aria-expanded', isChecked);
             this.setAttribute('aria-label', isChecked ? 'Chiudi menu' : 'Apri menu');
         });
@@ -50,6 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    let isAutoScrolling = false; 
+
     // 3. Header sticky
     const header = document.querySelector('.sticky-header');
     let lastScrollTop = 0;
@@ -58,15 +60,56 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', function () {
             const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-            header.classList.toggle('scrolled', scrollTop > 50);
-
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                header.classList.add('header-hidden');
-            } else {
+            if (scrollTop < 50) {
                 header.classList.remove('header-hidden');
+                header.classList.remove('scrolled');
+                isAutoScrolling = false;
+                lastScrollTop = scrollTop;
+                return; 
+            }
+
+            header.classList.toggle('scrolled', scrollTop > 50);
+            if (!isAutoScrolling) {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    header.classList.add('header-hidden');
+                } else {
+                    header.classList.remove('header-hidden');
+                }
             }
 
             lastScrollTop = Math.max(scrollTop, 0);
+        });
+    }
+
+    // 3b. Gestione bottone "Torna all'inizio"
+    const backToTopBtn = document.querySelector('.footer-buttons a[href="#content"]');
+    
+    if (backToTopBtn) {
+        backToTopBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            isAutoScrolling = true;
+
+            if (header) {
+                header.classList.add('header-hidden');
+            }
+         
+            const contentElement = document.getElementById('content');
+            if (contentElement) {
+                contentElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            } else {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+            
+    
+            setTimeout(() => {
+                isAutoScrolling = false;
+            }, 1000);
         });
     }
 
@@ -83,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     }
+
     // 6. GESTIONE DIALOG ELIMINA PROFILO
     const btnEliminaProfilo = document.getElementById('btn-elimina-profilo');
     const dialogEliminaProfilo = document.getElementById('dialog-elimina-profilo');
@@ -110,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-
     // 5. GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileImg = document.getElementById('profile-img');
@@ -118,12 +161,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const profileContainer = document.querySelector('.profile-picture');
     const navImg = document.getElementById('imgProfilo');
 
-
     const showMessage = (message, isError = false) => {
         console.log(isError ? 'Errore:' : 'Successo:', message);
         if (isError) alert(message);
     };
-
 
     const handleResponse = (response) => {
         return response.text().then(text => {
@@ -183,47 +224,50 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // RIMOZIONE foto profilo
-    if (removeBtn) {
-        const handleRemoval = (e) => {
-            e.stopPropagation(); 
-            if (!confirm('Sei sicuro di voler rimuovere la foto profilo?')) return;
+        /* --- RIMOZIONE foto profilo ---*/
 
-            const formData = new FormData();
-            formData.append('azione', 'rimuovi');
+        if (removeBtn) {
+            const handleRemoval = (e) => {
+                e.stopPropagation(); 
+                if (!confirm('Sei sicuro di voler rimuovere la foto profilo?')) return;
 
-            fetch('../actions/gestioneFotoProfilo.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(handleResponse)
-            .then(data => {
-                if (data.success) {
-                    setTimeout(() => window.location.reload(), 100);
-                } else {
-                    showMessage(data.message || 'Errore durante rimozione', true);
+                const formData = new FormData();
+                formData.append('azione', 'rimuovi');
+
+                fetch('../actions/gestioneFotoProfilo.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(handleResponse)
+                .then(data => {
+                    if (data.success) {
+                        setTimeout(() => window.location.reload(), 100);
+                    } else {
+                        showMessage(data.message || 'Errore durante rimozione', true);
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore rimozione:', error);
+                    showMessage('Errore di connessione', true);
+                });
+            };
+
+            removeBtn.addEventListener('click', handleRemoval);
+            removeBtn.addEventListener('keydown', (e) => { 
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleRemoval(e);
                 }
-            })
-            .catch(error => {
-                console.error('Errore rimozione:', error);
-                showMessage('Errore di connessione', true);
             });
-        };
-
-        removeBtn.addEventListener('click', handleRemoval);
-        removeBtn.addEventListener('keydown', (e) => { 
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                handleRemoval(e);
-            }
-        });
     }
 
 });
 
+
 /* =========================================
    GESTIONE PRENOTAZIONI ADMIN (AJAX)
 ========================================= */
+
 function caricaPrenotazioniAdmin(sede = 'tutte') {
     fetch(`../ajax/get_prenotazioni_admin.php?sede=${sede}`) 
         .then(response => {
@@ -246,6 +290,7 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
 /* =========================================
    PREVENZIONE ANIMAZIONI AL RESIZE
 ========================================= */
+
 let resizeTimer;
 window.addEventListener("resize", () => {
   document.body.classList.add("resize-animation-stopper");
