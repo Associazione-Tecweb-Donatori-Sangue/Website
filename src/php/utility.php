@@ -51,7 +51,7 @@ function getMessaggioFlashHTML() {
                     ' . htmlspecialchars($msg) . '
                  </div>';
         
-        unset($_SESSION['messaggio_flash']); // Rimuovi dopo aver generato l'HTML
+        unset($_SESSION['messaggio_flash']);
         return $html;
     }
     return '';
@@ -108,7 +108,14 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     $header = file_get_contents($pathTemplates . 'header.html');
     $footer = file_get_contents($pathTemplates . 'footer.html');
 
-    // 2. GESTIONE link profilo
+    // 2. GESTIONE FAVICON
+    $favicon = '<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />';
+
+    // 3. GESTIONE link profilo
     $linkDestinazione = "/php/pages/login.php";
     $altText = "Accedi";
     $tagHTML = "a";
@@ -142,7 +149,7 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
         } 
     }
 
-    // Controlli per tag span (non cliccabile)
+   
     if ($paginaAttiva == "login.php" && !isset($_SESSION['username'])) {
         $tagHTML = "span";
     }
@@ -153,7 +160,7 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
         $tagHTML = "span";
     }
 
-    // Costruisco l'HTML del profilo
+   
     if ($tagHTML == "a") {
         $linkProfilo = '<a id="linkProfilo" href="'.$linkDestinazione.'"><img src="'.$fotoNavbar.'" alt="'.$altText.'" id="imgProfilo"></a>';
     } else {
@@ -161,13 +168,12 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
         $linkProfilo = '<span id="linkProfiloActive"><img src="'.$fotoNavbar.'" alt="'.$altText.'" id="imgProfilo"></span>';
     }
 
-    // Sostituisco il segnaposto DENTRO l'header
     $header = str_replace('[linkProfilo]', $linkProfilo, $header);
 
-    // 3. Gestione Breadcrumb
+    // 4. Gestione Breadcrumb
     $header = str_replace('[BREADCRUMB]', $breadcrumb, $header);
 
-    // 4. Gestione "currentLink" nel menu
+    // 5. Gestione "currentLink" nel menu
     if ($paginaAttiva != "") {
         $pathDaCercare = "/php/pages/" . $paginaAttiva;
         if ($paginaAttiva == "index.php") {
@@ -179,9 +185,10 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
         $header = str_replace($find, $replace, $header);
     }
 
-    // 5. Unisco tutto
+    // 6. Unisco tutto
     $paginaFinale = str_replace('[HEADER]', $header, $contentHTML);
     $paginaFinale = str_replace('[FOOTER]', $footer, $paginaFinale);
+    $paginaFinale = str_replace('[FAVICON]', $favicon, $paginaFinale);
 
     return $paginaFinale;
 }
