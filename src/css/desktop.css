@@ -1980,7 +1980,7 @@ form .msg-error {
 }
 
 /* =========================================
-   TABELLA PRENOTAZIONI ADMIN (Migliorata)
+   TABELLA PRENOTAZIONI ADMIN
 ========================================= */
 
 .profile-admin .tertiary-title {
@@ -2028,107 +2028,98 @@ form .msg-error {
   background-color: #ffffff;
 }
 
-.data-table caption {
-  font-size: 1.3em;
-  font-weight: 700;
-  color: #082636;
-  text-align: center;
-  padding: 1em;
-}
-
 .data-table thead {
   background: linear-gradient(135deg, #749BA3 0%, #a0c7cf 100%);
 }
 
 .data-table th {
   padding: 1.2em 1em;
-  text-align: left;
+  text-align: center;
   font-weight: 700;
   font-size: 0.95em;
-  color: #ffffff;
-  text-transform: uppercase;
+  color: #000000;
   letter-spacing: 0.05em;
-}
-
-.data-table th:first-child {
-  border-radius: 0.8em 0 0 0;
-}
-
-.data-table th:last-child {
-  border-radius: 0 0.8em 0 0;
-  text-align: center;
+  border-bottom: 1px solid #e0e7ec;
 }
 
 .data-table tbody tr {
   background-color: #ffffff;
-  transition: all 0.3s ease;
-}
-
-.data-table tbody tr:nth-child(even) {
-  background-color: #f9fcfe;
 }
 
 .data-table tbody tr:hover {
   background-color: #e8f4f8;
-  transform: scale(1.005);
   box-shadow: 0 2px 8px rgba(116, 155, 163, 0.2);
 }
 
 .data-table td {
   padding: 1.2em 1em;
   font-size: 1em;
+  text-align: center;
   color: #2c5f7a;
   border-bottom: 1px solid #e0e7ec;
   vertical-align: middle;
 }
 
-.data-table tbody tr:last-child td {
-  border-bottom: none;
+.data-table form {
+  background: transparent !important; /* Via lo sfondo grigio */
+  box-shadow: none !important;        /* Via l'ombra */
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  width: auto !important;
+  max-width: none !important;
+  height: auto !important;
+  display: inline-block !important;   /* Per stare affianco a Modifica */
+  overflow: visible !important;
 }
 
-.data-table tbody tr:last-child td:first-child {
-  border-radius: 0 0 0 0.8em;
-}
-
-.data-table tbody tr:last-child td:last-child {
-  border-radius: 0 0 0.8em 0;
-}
-
-/* Colonna Azioni - Centrata */
-.data-table td:last-child {
-  text-align: center;
-}
-
-/* Bottone Elimina */
+.data-table .btn_tabella,
+.data-table .btn_edit,
+.data-table .btn_delete,
 .data-table button {
-  display: inline-block;
-  padding: 0.7em 1.5em;
+  display: inline-flex !important; /* Usa flex per centrare il contenuto */
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 2.5em; /* Altezza fissa uguale per entrambi */
+  min-width: auto !important; /* Larghezza minima uguale */
+  width: auto !important;       /* Si adatta al testo */
+  padding: 0 1.2em !important;  /* Padding laterale comodo */
+  margin: 0 0.4em !important;   /* Spazio tra i bottoni (LI STACCA) */
+  font-size: 0.85em !important; /* Font size identico */
+  line-height: normal !important;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none !important;
+  border: none !important;
+  border-radius: 0.6em !important;
+  cursor: pointer;
+  box-shadow: none !important;
+  outline: none;
+}
+
+/* Bottone Modifica - Azzurro */
+.btn_edit {
+  background-color: #749BA3;
+  color: #ffffff;
+}
+
+.btn_edit:hover {
+  background-color: #17506f;
+}
+
+/* Bottone Elimina - Rosso */
+.btn_delete {
   background-color: #e58d8d;
   color: #000000;
-  text-decoration: none;
-  font-size: 0.9em;
-  font-weight: 700;
-  border-radius: 0.6em;
-  border: none;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(229, 141, 141, 0.3);
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
 }
 
-.data-table button:hover {
+.btn_delete:hover {
   background-color: #c24242;
   color: #ffffff;
-  box-shadow: 0 4px 12px rgba(194, 66, 66, 0.4);
-  transform: translateY(-2px);
 }
 
-.data-table button:active {
-  transform: translateY(0);
-}
-
-/* Responsive */
 @media screen and (max-width: 1200px) {
   .data-table {
     font-size: 0.9em;
