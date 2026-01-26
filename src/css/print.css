@@ -1,0 +1,888 @@
+
+  /*PRINT.CSS - Foglio di stile per la stampa*/
+
+  /*in index ci sono un paio di problemi con le ombre e fa schifo la scrittura, va sistemata*/
+  /*dona ora ok tranne delle ombre che vanno tolte*/
+  /*chi siamo ok tranne delle ombre che vanno tolte*/
+  /*dove trovarci quasi ok, ci sono delle ombre e andrebbe nascosto il mess "nessuna sede corrisponde alla tua ricerca"*/
+  /*user quasi ok, le tabelle non hanno lultima riga, mistero... e poi penso vada tolta la riga azzurra e la a+ deve essere nero *penso* */
+  /*admin ok ultima riga della tabella manca e va eliminato il cerchio azzurro*/
+
+
+@media print {
+
+  /*Iimpostazioni pagina default*/
+  @page {
+    size: A4 portrait;
+    margin: 20px 25px 20px 25px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: transparent;
+    background-image: none;
+    box-shadow: none;
+    text-shadow: none;
+    color: #000000
+  }
+
+  html, body {
+    width: 100%;
+    height: auto;
+    font-family: "Times New Roman", Georgia, serif;
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+    background: #fff;
+    text-align: left;
+  }
+
+  *, *::before, *::after {
+    text-align: left;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: "Times New Roman", Georgia, serif;
+    color: #000;
+    text-align: left;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 10px;
+  }
+
+  h1 { font-size: 24px; line-height: 30px; margin-top: 0; text-align: left; }
+  h2 { font-size: 22px; line-height: 28px; margin-top: 12px; }
+  h3 { font-size: 18px; line-height: 24px; margin-top: 10px; }
+  h4 { font-size: 15px; line-height: 21px; margin-top: 8px; }
+
+  p {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 6px;
+    text-align: left;
+    color: #000;
+    orphans: 3;
+    widows: 3;
+  }
+
+  ul, ol {
+    margin: 0 0 6px 25px;
+    padding: 0;
+  }
+
+  li {
+    font-size: 12px;
+    line-height: 18px;
+    margin-bottom: 6px;
+    color: #000;
+  }
+
+  abbr {
+    text-decoration: none;
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+    font-size: 10px;
+    font-style: italic;
+  }
+
+  /* Header di stampa */
+  #title-standard {
+    display: block;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #000;
+  }
+
+  #title-standard::before {
+    display: none;
+    content: none;
+  }
+
+  #title-standard h1 {
+    text-align: left;
+    margin: 0;
+    font-size: 24px;
+    line-height: 30px;
+    padding-left: 40px;
+    position: relative;
+  }
+
+  /* Logo */
+  #title-standard h1::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url("../images/logo.jpg") no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #title-standard h2 {
+    text-align: left;
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    padding-left: 40px;
+  }
+
+  /* Landing title*/
+  #landing-title {
+    height: auto;
+    padding: 20px 0;
+  }
+
+  #landing-title h1 {
+    text-align: left;
+    width: 100%;
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    line-height: 30px;
+    padding-left: 40px;
+    position: relative;
+  }
+
+  #landing-title h2 {
+    width: 100%;
+    text-align: left;
+    margin: 0;
+    font-size: 14px;
+    padding-left: 40px;
+  }
+
+  /* breadcrumb */
+  #breadcrumb {
+    display: block;
+    visibility: visible;
+    width: 100%;
+    padding: 8px 0;
+    margin: 0 0 15px 0;
+    border-bottom: 1px solid #000;
+    text-align: left;
+  }
+
+  #breadcrumb p {
+    font-size: 11px;
+    color: #000;
+    margin: 0;
+    text-align: left;
+  }
+
+  #breadcrumb span {
+    font-weight: bold;
+  }
+
+  /* indirizzi link */
+  a {
+    color: #000;
+    text-decoration: underline;
+    font-weight: normal;
+    background: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    display: inline;
+    text-transform: none;
+    letter-spacing: normal;
+    pointer-events: none;
+  }
+
+  /* Mostro URL assoluto dopo ogni link */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 10px;
+    font-style: italic;
+    color: #333;
+    word-break: break-all;
+  }
+
+  /* non mostro URL per link interni, ancore e breadcrumb */
+  a[href^="#"]::after,
+  a[href^="javascript"]::after,
+  #breadcrumb a::after {
+    content: "";
+  }
+
+  /* ELEMENTI DA NASCONDERE */
+  /* Header e navigazione */
+  .sticky-header,
+  header,
+  #menu,
+  #menu ul,
+  #menu li,
+  .burger-menu,
+  #burger-input,
+  .navigation-helper,
+  .nav-helper,
+  #linkProfilo,
+  #linkProfiloActive,
+  #imgProfilo,
+  #logo,
+  /* Footer*/
+  footer,
+  .footer-buttons,
+  .footer-social,
+  .footer-container,
+  .footer-copyright,
+  .left-footer,
+  .right-footer,
+  .vertical-divider,
+  /* Carosello e animazioni */
+  .carousel,
+  .carousel-track,
+  /* dialoghi*/
+  dialog,
+  /* altri elementi da nascoindere */
+  .drop,
+  .btn,
+  .btn-full,
+  .btn-link,
+  .btn-logout,
+  .btn-delete,
+  .search-container,
+  .back-button-container,
+  .back-button,
+  button,
+  input[type="submit"],
+  input[type="button"],
+  input[type="reset"] {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* login e form */
+  /* Form base per login e registrazione */
+  form,
+  #prenotaForm {
+    display: block;
+    visibility: visible;
+    max-width: 100%;
+    width: 100%;
+    margin: 20px 0;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  form fieldset,
+  #prenotaForm fieldset {
+    border: none;
+    margin: 10px 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  form legend,
+  #prenotaForm legend {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 5px 10px;
+    background: #fff;
+    border-radius: 0;
+  }
+
+  /* Campi input visibili nei form */
+  form input,
+  form select,
+  form textarea,
+  #prenotaForm input,
+  #prenotaForm select {
+    display: block;
+    visibility: visible;
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 6px;
+    border: none;
+    border-bottom: 1px solid #999;
+    border-radius: 0;
+    font-size: 12px;
+    line-height: 18px;
+    background: transparent;
+  }
+
+  form label,
+  #prenotaForm label {
+    display: block;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #000;
+  }
+
+  /* Radio buttons */
+  .radio-standard {
+    border: none;
+    padding: 5px 0;
+    background: transparent;
+  }
+
+  .radio-standard input[type="radio"] {
+    width: auto;
+    display: inline;
+    margin-right: 8px;
+  }
+
+  .radio-standard label {
+    display: inline;
+    font-weight: normal;
+  }
+
+  /* main content */
+  main, 
+  .main-standard {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 15px 0;
+    background: #fff;
+  }
+
+  .dashboard-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Card e sezioni*/
+  #card-intro,
+  #card-join,
+  #card-intro,
+  #card-join,
+  #card-why-us,
+  .text-standard,
+  .location {
+    text-align: left;
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  /* Card intro - layout verticale */
+  #card-intro {
+    flex-direction: column;
+  }
+  
+
+  #card-intro div {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  /* Card join */
+  #card-join {
+    flex-direction: column;
+    margin: 0;
+    box-shadow: none;
+  }
+
+  #card-join-title {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  #card-join-title h2 {
+    text-align: left;
+    margin: 0;
+  }
+
+  #card-join-title p {
+    text-align: left;
+  }
+
+  #card-join ul {
+    display: block;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 0 18px;
+    text-align: left;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  #card-join li {
+    display: list-item;
+    width: auto;
+    height: auto;
+    margin-bottom: 6px;
+    padding: 0;
+    background: transparent;
+    text-align: left;
+    flex-direction: row;
+    justify-items: auto;
+    border-radius: 0;
+  }
+
+  #card-join li p {
+    text-align: left;
+    margin: 0;
+  }
+
+  #card-join img {
+    display: none;
+  }
+
+  /* Card why us */
+  #div-why-us {
+    width: 100%;
+    margin: 0;
+  }
+
+  #div-why-us ul {
+    list-style: disc;
+    margin-left: 20px;
+  }
+
+  #div-why-us li {
+    margin-bottom: 6px;
+  }
+
+  #div-why-us h3 {
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  #div-why-us p {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  /* Rimuovi pseudo-elementi decorativi */
+  #card-locations::before {
+    display: none;
+    content: none;
+  }
+
+  #card-locations {
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  #card-locations div {
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: left;
+    border-radius: 0;
+  }
+
+  #card-locations h2 {
+    text-align: left;
+    margin: 0;
+  }
+
+  #card-locations div p {
+    color: #000000;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+    box-shadow: none;
+    text-align: left;
+    margin: 0;
+  }
+
+  .location {
+    box-shadow: none;
+    text-align: left;
+  }
+
+  #card-locations div{
+  width:  100%;
+  height: auto;
+  padding: 0;
+  background-color: transparent;
+  text-align: left;
+  border-radius: 0;
+  position: relative;
+  z-index: 1;
+}
+
+  /* Titoli nelle card */
+  .card-main-title {
+    margin-top: 20px;
+    font-size: 18px;
+    line-height: 24px;
+    color: #000;
+  }
+
+  .tertiary-title {
+    font-size: 16px;
+    line-height: 20px;
+    border: none;
+    border-left: none;
+    padding: 0;
+    padding-left: 0;
+    margin: 10px 0 6px 0;
+    color: #000;
+    background: transparent;
+  }
+
+  /* Testo standard */
+  .text-standard p,
+  .text-standard li,
+  .text-standard dd {
+    color: #000;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .text-standard dt {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+  }
+
+  /* Locations container */
+  .locations-container {
+    display: block;
+    width: 100%;
+  }
+
+  .location {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .location h3 {
+    font-size: 14px;
+    color: #000;
+  }
+
+  .location p {
+    color: #000;
+  }
+
+  /* Founders */
+  #founders {
+    background: transparent;
+  }
+
+  #founders h4 {
+    font-size: 16px;
+    color: #000;
+  }
+
+  #founders p {
+    color: #000;
+  }
+
+  #founders ul {
+    display: block;
+    list-style: disc;
+    margin-left: 25px;
+  }
+
+  #founders li {
+    display: list-item;
+    margin-bottom: 8px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #000;
+    font-size: 12px;
+  }
+
+  /* faq */
+
+  .faq-atds,
+  .faq {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+  }
+
+  .faq dt,
+  .faq dd {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    align-self: auto;
+  }
+  
+  .faq dt {
+    font-weight: 700;
+    font-size: 14px;
+    color: #000000;
+    align-items: center;
+    line-height: 21px;
+    background: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    border-radius: 0 0 0 0;
+    position: relative;
+    z-index: 2;
+  }
+
+  .faq dd {
+    line-height: 18px;
+    font-size: 12px;
+    color: #000000;
+    background: #ffffff;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+    position: relative;
+    align-items: left;
+    z-index: 1;
+  }
+
+  .faq dt:first-of-type {
+    margin-top: 10px;
+  }
+   
+  .faq dt::before {
+    display: none;
+    content: none;
+  }
+
+  .faq dt:nth-of-type(even) {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .faq dt:nth-of-type(even)::before {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .faq dt,
+  .faq dt:nth-of-type(odd),
+  .faq dt:nth-of-type(even),
+  .faq dt:nth-of-type(odd) + dd,
+  .faq dt:nth-of-type(even) + dd,
+  .faq dd,
+  .faq dd li {
+    border-left: none;
+    border-right: none;
+    background: transparent;
+    box-shadow: none;
+    color: #000;
+  }
+
+  .faq dd li::marker {
+    color: #000;
+  }
+
+  /* nascondo immagini e carosello */
+  img,
+  #card-intro img,
+  #card-why-us img,
+  #card-join img,
+  .location img,
+  .profile-picture,
+  .profile-picture img,
+  .profile-header {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* tabelle */
+  table,
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px 0;
+    page-break-inside: avoid;
+  }
+
+  .table-container {
+    overflow: visible;
+  }
+
+  th, td,
+  .data-table th,
+  .data-table td {
+    border: 1px solid #000;
+    padding: 8px;
+    font-size: 11px;
+    text-align: left;
+    color: #000;
+    background: transparent;
+  }
+
+  th,
+  .data-table th {
+    font-weight: bold;
+    background: #eee;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .data-table caption {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 10px;
+  }
+
+  /* Nascondere pulsanti nelle tabelle */
+  .data-table button,
+  .btn-cancel-booking,
+  .form-inline-table {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* gestione impaginazione */
+
+  .page-break {
+    display: block;
+    page-break-before: always;
+    break-before: page;
+  }
+
+  section,
+  article {
+    page-break-inside: avoid;
+  }
+
+  /* Evita elementi orfani/vedovi */
+  p, li, dd {
+    orphans: 3;
+    widows: 3;
+  }
+
+
+  #disclaimer {
+    border: none;
+    padding: 0;
+    margin: 20px 0;
+    font-size: 12px;
+    line-height: 18px;
+    background: transparent;
+  }
+
+  #disclaimer-title {
+    font-size: 14px;
+    font-weight: bold;
+    color: #000;
+  }
+
+  #disclaimer strong {
+    color: #000;
+  }
+
+  #disclaimer p {
+    font-size: 12px;
+    line-height: 18px;
+    color: #000;
+  }
+
+  /* profilo */
+  .dashboard-title {
+    font-size: 18px;
+    color: #000;
+    text-align: center;
+  }
+
+  .data-list {
+    width: 100%;
+  }
+
+  .data-list div {
+    border: none;
+    padding: 5px 0;
+    margin: 0;
+  }
+
+  .data-list dt {
+    font-size: 12px;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .data-list dd {
+    font-size: 12px;
+    color: #000;
+  }
+
+  /* Messaggi di stato */
+  .msg-base,
+  .msg-success,
+  .msg-error,
+  .msg-flash {
+    border: none;
+    padding: 5px 0;
+    background: transparent;
+    color: #000;
+    font-size: 12px;
+  }
+
+  /* Status prenotazioni */
+  .status-completed {
+    color: #000;
+    font-weight: bold;
+  }
+
+  /* pagine di errore */
+  .error-page,
+  .error-container,
+  .error-content {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background: transparent;
+  }
+
+  .error-code {
+    font-size: 48px;
+    color: #000;
+  }
+
+  .error-message,
+  .error-description {
+    font-size: 12px;
+    color: #000;
+  }
+
+  .error-actions,
+  .error-image {
+    display: none;
+    visibility: hidden;
+  }
+
+  /* resetto posizioni strane */
+  * {
+    position: static;
+    float: none;
+  }
+
+  /* Eccezione per titoli con logo */
+  #title-standard,
+  #landing-title {
+    position: relative;
+    display: block;
+  }
+}

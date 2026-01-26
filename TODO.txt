@@ -28,6 +28,7 @@ GENERALI
 - sono accessibili le tabelle in user ? --> 🔴
 - discutere layout pagine di errore --> 🔴
 - controllare le convenzioni interne --> (bottoni, link, ecc) 🔴
+- fare relazione -->
 
 
 EXTRA - da fare solo se avanza tempo
