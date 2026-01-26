@@ -22,6 +22,7 @@ PHP
 - sistemare ricerca per indirizzo in dove_trovarci --> GG
 - sistemare pop up di conferma annullamento prenotazione in profilo --> GG
 - sistemare messaggi di errore --> GG
+- il tipo di donazione non viene precompilato quando admin schiaccia su modifica di una prenotazione --> GG
 
 GENERALI
 - sistemare tutti i commenti --> DG
@@ -29,6 +30,8 @@ GENERALI
 - discutere layout pagine di errore --> 🔴
 - controllare le convenzioni interne --> (bottoni, link, ecc) 🔴
 - fare relazione -->
+- dovrebbe essere più visibile il focus quando ci si sposta con il tab --> 🔴
+- diminuire dimensioni immagini --> 🔴
 
 
 EXTRA - da fare solo se avanza tempo
