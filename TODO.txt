@@ -1,6 +1,17 @@
 HTML
-- controllare che i bottoni siano nella forma corretta  --> 🔴
-- sistemare headings --> 🔴
+- controllare che i bottoni siano nella forma corretta = 
+    {
+        FOOTER: {
+            - <a href="#content" aria-label="Torna all'inizio della pagina">Torna all'inizio</a> (non ne sono sicuro ma e' sus)
+        }
+        PROFILO: {
+            - <div class="remove-photo" id="remove-photo-btn" role="button" tabindex="0" aria-label="Rimuovi foto profilo">&times;</div>
+            - <div class="btn-wrapper" style="margin-top: 1rem;"><a href="/php/pages/registrazione_donatore.php" class="btn btn-link">Modifica i tuoi dati</a></div>
+        }
+        PROFILO_ADMIN: {
+            - <div class="remove-photo" id="remove-photo-btn" role="button" tabindex="0" title="Rimuovi foto profilo">&times;</div>
+        }
+    }
 - titoli pagine 404 e 500 da mettere dal particolare al generale --> GN
 
 CSS
@@ -25,11 +36,15 @@ PHP
 
 GENERALI
 - sistemare tutti i commenti --> DG
-- sono accessibili le tabelle in user ? --> 🔴
+- sono accessibili le tabelle in user ? no: {
+        - manca aria-describedby in user e admin
+        - non so se 'modifica' va bene per la tabella user (intendo se viene letta bene dallo screen reader)
+        - non so se 'modifica' e 'elimina' vanno bene per la tabella admin (intendo se viene letta bene dallo screen reader)
+    }
 - discutere layout pagine di errore --> 🔴
-- controllare le convenzioni interne --> (bottoni, link, ecc) 🔴
-- fare relazione -->
-
+- fare relazione --> tutti; cose da fare per relazione {
+        - definire le convenzioni interne (bottoni, link, ecc)
+    }
 
 EXTRA - da fare solo se avanza tempo
 - il file picker è accessibile?
