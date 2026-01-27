@@ -109,11 +109,11 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     $footer = file_get_contents($pathTemplates . 'footer.html');
 
     // 2. GESTIONE FAVICON
-    $favicon = '<link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />';
+    $favicon = '<link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/images/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="/images/favicons/site.webmanifest" />';
 
     // 3. GESTIONE link profilo
     $linkDestinazione = "/php/pages/login.php";
