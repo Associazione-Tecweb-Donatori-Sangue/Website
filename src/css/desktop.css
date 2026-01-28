@@ -1111,13 +1111,6 @@ small {
   box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
 }
 
-.btn:active {
-  background-color: #051d29;
-  color: #ffffff;
-  transform: scale(0.98);
-}
-
-
 .btn-full {
   width: calc(100% - 1.875em);
   margin: 1.2em 0.9em 0.9em 0.9em;
@@ -1537,12 +1530,12 @@ form .msg-error {
   color: #ffffff;
 }
 
-.btn_tabella:focus,
-.btn_edit:focus,
-.btn_delete:focus,
-.btn-cancel-booking:focus,
-.btn-table-link:focus,
-button:focus {
+.btn_tabella:focus-visible,
+.btn_edit:focus-visible,
+.btn_delete:focus-visible,
+.btn-cancel-booking:focus-visible,
+.btn-table-link:focus-visible,
+button:focus-visible {
   outline: 2px solid #000000;
   outline-offset: 2px;
 }
@@ -1750,23 +1743,28 @@ button:focus {
 .back-button {
   display: inline-block;
   padding: 0.6em 1.2em;
-  background-color: #a7cce7;
-  color: #1a1a1a;
+  background-color: #12425C;
+  color: #ffffff;
   text-decoration: none;
   font-size: 0.9em;
   font-weight: 700;
   border-radius: 0.8em;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(172, 210, 230, 0.3);
+  box-shadow: 0 4px 10px rgba(18, 66, 92, 0.3);
+  border: none;
 }
 
 .back-button:hover {
-  background-color: #4f5abb;
+  background-color: #082e41;
   color: #ffffff;
-  box-shadow: 0 6px 15px rgba(79, 90, 187, 0.4);
+  box-shadow: 0 6px 15px rgba(8, 46, 65, 0.4);
   transform: translateY(-2px);
 }
 
+.back-button:focus-visible {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
+}
 
 .error-page {
   min-height: 100vh;
