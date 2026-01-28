@@ -23,21 +23,19 @@ try {
     $stmt->execute([$_SESSION['user_id']]);
     $user = $stmt->fetch();
     
-    // Se il campo non è vuoto, verifichiamo il file
     if ($user && !empty($user['foto_profilo'])) {
         $nomeFile = $user['foto_profilo'];
         $percorsoFisico = "../../images/profili/" . $nomeFile;
         
         if (file_exists($percorsoFisico)) {
             $fotoPath = $percorsoFisico . "?v=" . time();
-            $isDefaultClass = ""; // C'è una foto valida: togliamo is-default per mostrare il tasto
+            $isDefaultClass = ""; 
         }
     }
 } catch (PDOException $e) {
-    // Errore DB: resta tutto default
+    // Errore DB: resta default
 }
 
-// Sostituzione dei placeholder
 $paginaHTML = str_replace('[FOTO_PROFILO]', htmlspecialchars($fotoPath), $paginaHTML);
 $paginaHTML = str_replace('[CLASS_DEFAULT]', $isDefaultClass, $paginaHTML);
 
@@ -99,8 +97,9 @@ try {
 $paginaHTML = str_replace('[sezioneDonatore]', $htmlDonatore, $paginaHTML);
 
 // --- SEZIONE TABELLE PRENOTAZIONI PASSATE E FUTURE ---
-// 1. QUERY FUTURE
 $sezioneFuture = "";
+$sezionePassate = "";
+
 try {
     $stmt = $pdo->prepare("
         (SELECT p.id, p.data_prenotazione, p.ora_prenotazione, p.tipo_donazione, 
@@ -123,12 +122,11 @@ try {
     $stmt->execute([$_SESSION['user_id'], $_SESSION['user_id']]);
     $prenotazioni = $stmt->fetchAll();
 
-    // Poi separa i risultati nel codice PHP
     $future = array_filter($prenotazioni, fn($p) => $p['stato'] === 'futura');
     $passate = array_filter($prenotazioni, fn($p) => $p['stato'] === 'passata');
 
     // Tabella future
-    if (count($future) > 0) { // ci sono prenotazioni future
+    if (count($future) > 0) {
         $righeTabella = "";
         foreach ($future as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
@@ -141,15 +139,14 @@ try {
                 <td>
                     <form action="/php/actions/cancellaPrenotazione.php" method="POST" class="form-inline-table" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
                         <input type="hidden" name="id_prenotazione" value="' . $p['id'] . '">
-                        <button type="submit" class="button btn-cancel-booking">Annulla</button>
+                        <button type="submit" class="btn_tabella btn_delete btn-cancel-booking">Annulla</button>
                     </form>
                 </td>
             </tr>';
         }
-        // Avvolgo le righe nella struttura tabellare
         $sezioneFuture = '
         <div class="table-container">
-            <table class="data-table">
+            <table class="data-table" aria-describedby="titolo-prenotazioni">
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -162,13 +159,12 @@ try {
                 <tbody>' . $righeTabella . '</tbody>
             </table>
         </div>';
-
-    } else { // nessuna prenotazione futura
+    } else {
         $sezioneFuture = '<p class="text-standard testo-centered-message">Nessuna prenotazione in programma.</p>';
     }
 
     // Tabella passate
-    if (count($passate) > 0) { // ci sono prenotazioni passate
+    if (count($passate) > 0) {
         $righeTabella = "";
         foreach ($passate as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
@@ -181,10 +177,9 @@ try {
                 <td><span class="status-completed">Completata</span></td>
             </tr>';
         }
-        // Avvolgo nella tabella
         $sezionePassate = '
         <div class="table-container">
-            <table class="data-table tabella-opacity">
+            <table class="data-table" aria-describedby="titolo-storico">
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -197,32 +192,29 @@ try {
                 <tbody>' . $righeTabella . '</tbody>
             </table>
         </div>';
-    } else { // nessuna donazione passata
+    } else {
         $sezionePassate = '<p class="text-standard testo-centered-message">Nessuna donazione precedente.</p>';
     }
 } catch (PDOException $e) {
     $sezioneFuture = '<p class="errore testo-centered-message">Errore caricamento dati.</p>';
 }
 
-// --- COSTRUZIONE HTML FINALE DELLE SEZIONI ---
+// --- COSTRUZIONE HTML FINALE CON ID PER ARIA-LABEL ---
 $nuovoContenutoTabelle = '
     <section>
-        <h3 class="tertiary-title">Prenotazioni Future</h3>
+        <h3 id="titolo-prenotazioni" class="tertiary-title">Prenotazioni Future</h3>
         ' . $sezioneFuture . '
 
-        <h3 class="tertiary-title titolo-margin-top">Storico Donazioni (Ultime 5)</h3>
+        <h3 id="titolo-storico" class="tertiary-title titolo-margin-top">Storico Donazioni (Ultime 5)</h3>
         ' . $sezionePassate . '
     </section>
 ';
 
-// ORA LA SOSTITUZIONE È SEMPLICE E PULITA:
 $paginaHTML = str_replace('[tabellePrenotazioni]', $nuovoContenutoTabelle, $paginaHTML);
-
 
 $nomeUtente = '<h1>' . htmlspecialchars(ucfirst($_SESSION['username'])) . '</h1>';
 $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 
-// --- GESTIONE MESSAGGIO FLASH (Spostato all'inizio del Main) ---
 $msgHTML = getMessaggioFlashHTML();
 if (!empty($msgHTML)) {
     $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
