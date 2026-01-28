@@ -43,7 +43,7 @@ html, body{
 }
 
 body.error-background {
-  background-image: none !important;
+  background-image: none;
   background-color: #fbfefe;
 }
 
@@ -1090,8 +1090,8 @@ small {
 .btn {
   display: inline-block;
   padding: 1em;
-  background: #acd2e6;
-  color: #1a1a1a;
+  background: #12425C;
+  color: #ffffff;
   border: none;
   border-radius: 0.8em;
   font-size: 1em;
@@ -1099,20 +1099,20 @@ small {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   cursor: pointer;
-  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-  box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease, transform 0.1s ease;
+  box-shadow: 0 4px 15px rgba(18, 66, 92, 0.3);
   text-decoration: none;
   text-align: center;
 }
 
 .btn:hover {
-  background-color: #4f5abb;
+  background-color: #082e41;
   color: #ffffff;
-  box-shadow: 0 6px 20px rgba(79, 90, 187, 0.4);
+  box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
 }
 
 .btn:active {
-  background-color: #3d4799;
+  background-color: #051d29;
   color: #ffffff;
   transform: scale(0.98);
 }
@@ -1129,8 +1129,20 @@ small {
   margin-top: 0.6em;
   font-size: 14px;
   font-weight: 600;
-  background-color: #a7cce7;
+  background-color: #12425C;
+  color: #ffffff;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 0.8em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
   text-transform: none;
+}
+
+.btn-link:hover {
+  background-color: #082e41;
+  color: #ffffff;
 }
 
 .profile-header {
@@ -1508,13 +1520,31 @@ form .msg-error {
   margin: 0;
 }
 
-/* Pulsante di annullamento prenotazione */
-.btn-cancel-booking {
-  background-color: #d9534f;
-  border-color: #d9534f;
-  color: white;
+/* Pulsante di annullamento prenotazione*/
+.data-table .btn-cancel-booking {
+  background-color: #DA4343;
+  color: #000000;
   padding: 0.3em 0.6em;
   font-size: 0.9em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: none;
+  display: inline-block;
+}
+
+.data-table .btn-cancel-booking:hover {
+  background-color: #c24242;
+  color: #ffffff;
+}
+
+.btn_tabella:focus,
+.btn_edit:focus,
+.btn_delete:focus,
+.btn-cancel-booking:focus,
+.btn-table-link:focus,
+button:focus {
+  outline: 2px solid #000000;
+  outline-offset: 2px;
 }
 
 /* Messaggio centrato in testo_std */
@@ -1525,12 +1555,8 @@ form .msg-error {
 
 /* Status completata */
 .status-completed {
-  color: grey;
-}
-
-/* Tabella con opacità ridotta (per storico) */
-.tabella-opacity {
-  opacity: 0.8;
+  color: rgb(7, 2, 24);
+  font-size: 14px;
 }
 
 /* Titolo terziario con margine superiore */
@@ -2055,65 +2081,72 @@ form .msg-error {
   padding: 1.2em 1em;
   font-size: 1em;
   text-align: center;
-  color: #2c5f7a;
+  color: #12425C;
   border-bottom: 1px solid #e0e7ec;
   vertical-align: middle;
 }
 
 .data-table form {
-  background: transparent !important; /* Via lo sfondo grigio */
-  box-shadow: none !important;        /* Via l'ombra */
-  border: none !important;
-  border-radius: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  width: auto !important;
-  max-width: none !important;
-  height: auto !important;
-  display: inline-block !important;   /* Per stare affianco a Modifica */
-  overflow: visible !important;
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  margin: 0;
+  width: auto;
+  max-width: none;
+  height: auto;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: visible;
 }
 
 .data-table .btn_tabella,
 .data-table .btn_edit,
 .data-table .btn_delete,
 .data-table button {
-  display: inline-flex !important; /* Usa flex per centrare il contenuto */
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  height: 2.5em; /* Altezza fissa uguale per entrambi */
-  min-width: auto !important; /* Larghezza minima uguale */
-  width: auto !important;       /* Si adatta al testo */
-  padding: 0 1.2em !important;  /* Padding laterale comodo */
-  margin: 0 0.4em !important;   /* Spazio tra i bottoni (LI STACCA) */
-  font-size: 0.85em !important; /* Font size identico */
-  line-height: normal !important;
+  height: 2.5em;
+  min-width: auto;
+  width: auto;
+  padding: 0 1.2em;
+  margin: 0 0.4em;
+  font-size: 0.85em;
+  line-height: normal;
   font-weight: 700;
   letter-spacing: 0.05em;
-  text-decoration: none !important;
-  border: none !important;
-  border-radius: 0.6em !important;
+  text-decoration: none;
+  border: none;
+  border-radius: 0.6em;
   cursor: pointer;
-  box-shadow: none !important;
-  outline: none;
-}
-
-/* Bottone Modifica - Azzurro */
-.btn_edit {
-  background-color: #749BA3;
+  box-shadow: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: #12425C;
   color: #ffffff;
 }
 
-.btn_edit:hover {
-  background-color: #17506f;
+.data-table .btn_tabella:hover,
+.data-table .btn_edit:hover,
+.data-table button:hover {
+  background-color: #082e41;
+  color: #ffffff;
 }
 
-/* Bottone Elimina - Rosso */
-.btn_delete {
-  background-color: #e58d8d;
+.data-table .btn_delete,
+.data-table .btn_cancel {
+  background-color: #DA4343;
   color: #000000;
 }
+
+.data-table .btn_delete:hover,
+.data-table .btn_cancel:hover {
+  background-color: #c24242;
+  color: #ffffff;
+}
+
 
 .btn_delete:hover {
   background-color: #c24242;
