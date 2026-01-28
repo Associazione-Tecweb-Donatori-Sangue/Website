@@ -1062,6 +1062,7 @@ small {
   margin-bottom: 1em;
   box-sizing: border-box;
   transition: all 0.3s ease;
+  outline: none;
 }
 
 .radio-standard:hover {
@@ -1080,7 +1081,15 @@ small {
   accent-color: #4f5abb;
   cursor: pointer;
   justify-self: end;
+  outline: none;
 }
+
+.radio-standard:has(input[type="radio"]:focus-visible) {
+  border-color: #4f5abb;
+  box-shadow: 0 0 0 3px rgba(18, 66, 92, 0.2);
+  background: #ffffff;
+}
+
 
 .radio-standard:has(input[type="radio"]:checked) {
   border-color: #4f5abb;
