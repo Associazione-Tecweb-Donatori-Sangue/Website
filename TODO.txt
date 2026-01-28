@@ -17,9 +17,7 @@ CSS
 - fare print.css --> MDP
 - finire mobile.css  --> GG
 - sistemare css about_us --> DG
-- Sistemare i colori (tanti non sono in contrasto) --> DG
 - sistemare i colori usando var quando ci sono colori in comune --> GG
-- sistemare CSS bottoni modifica ed elimina in tabelle prenotazioni e tabella in generale --> GN (da finire)
 - sistemare css bottone seleziona sede in pagina_admin --> GN
 - sistemare css bottone "dona qui" in cards dove_trovarci --> GG
 - sistemare tasto "diventa donatore" in dona_ora --> GG
@@ -35,11 +33,6 @@ PHP
 
 GENERALI
 - sistemare tutti i commenti --> DG
-- sono accessibili le tabelle in user ? no: {
-        - manca aria-describedby in user e admin
-        - non so se 'modifica' va bene per la tabella user (intendo se viene letta bene dallo screen reader)
-        - non so se 'modifica' e 'elimina' vanno bene per la tabella admin (intendo se viene letta bene dallo screen reader)
-    }
 - discutere layout pagine di errore --> 🔴
 - fare relazione --> tutti; cose da fare per relazione {
         - definire le convenzioni interne (bottoni, link, ecc)
