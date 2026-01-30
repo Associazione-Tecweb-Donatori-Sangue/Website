@@ -14,10 +14,6 @@ CSS
     - DONA ORA: accedi e registrati, torna al profilo
     - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
 
-- classe "input-standard" usata in registrazione_donatore.html e mai usata nel css
-- classe "group_label" usata in registrazione_donatore.html e mai usata nel css
-- classe "suggerimento" usata in login.html e registrazione.html e mai usata nel css
-
 
 PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN +
