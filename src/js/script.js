@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 sedi.forEach(sede => {
                     const nome = sede.querySelector('h3')?.textContent.toLowerCase() || '';
-                    const indirizzo = sede.querySelector('p')?.textContent.toLowerCase() || '';
+                    const indirizzo = sede.querySelectorAll('p')[1]?.textContent.toLowerCase() || '';
 
                     if (nome.includes(searchTerm) || indirizzo.includes(searchTerm)) {
                         sede.classList.remove('hidden');
