@@ -1,36 +1,42 @@
-HTML
-
+il simbolo + indica PRIORITÀ ASSOLUTA
 
 CSS
-- fare print.css --> MDP
-- finire mobile.css  --> GG
-- sistemare css about_us --> DG
-- sistemare i colori usando var quando ci sono colori in comune --> GG
-- sistemare css bottone seleziona sede in pagina_admin --> GN
-- sistemare css bottone "dona qui" in cards dove_trovarci --> GG
-- sistemare tasto "diventa donatore" in dona_ora --> GG
-- controllare colori nel css (usare var quando necessario) --> 🔴
+- fare print.css --> MDP +
+- finire mobile.css  --> GG +
+- sistemare css about_us --> DG 
+- sistemare i colori usando var quando ci sono colori in comune --> MDP +
+- sistemare css bottone "dona qui" in cards dove_trovarci --> GG +
+- sistemare tasto "diventa donatore" in dona_ora --> GG 
+- sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo --> GN
+- sistemare tasto salva modifiche quando si modifica un utente (sezione Gestione utente) --> GG +
+- controllare che non ci sia codice duplicato --> GN +
+- sistemare dati donatore in modifica prenotazione --> GN
+- distinguere link visitati e non visitati:
+    - INDEX: prenota una donazione, scopri le nostre sedi
+    - DONA ORA: accedi e registrati, torna al profilo
+    - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
 
 PHP
-- se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN
-- se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> GN
-- logica dei mesi di attesa tra una prenotazione e l'altra da sistemare (attualmente se ho una prenotazione a Gennaio 2026 e una a Dicembre 2026, se provo ad anticipare la seconda non me lo fa fare e mi dice che la prima data disponibile è a Marzo 2027) --> GN
-- sistemare ricerca per indirizzo in dove_trovarci --> GG
-- sistemare pop up di conferma annullamento prenotazione in profilo --> GG
-- sistemare messaggi di errore --> GG
-- il tipo di donazione non viene precompilato quando admin schiaccia su modifica di una prenotazione --> GG
+- se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN +
+- se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> GN +
+- logica dei mesi di attesa tra una prenotazione e l'altra da sistemare (attualmente se ho una prenotazione a Gennaio 2026 e una a Dicembre 2026, se provo ad anticipare la seconda non me lo fa fare e mi dice che la prima data disponibile è a Marzo 2027) --> GN +
+- sistemare ricerca per indirizzo in dove_trovarci --> GG 
+- sistemare pop up di conferma annullamento prenotazione in profilo --> GG +
+- sistemare messaggi di errore --> GG +
+- il tipo di donazione non viene precompilato quando admin schiaccia su modifica di una prenotazione --> GG +
 
 GENERALI
 - sistemare tutti i commenti --> DG
-- discutere layout pagine di errore --> 🔴
 - fare relazione --> tutti; cose da fare per relazione {
         - definire le convenzioni interne (bottoni, link, ecc)
     }
-- dovrebbe essere più visibile il focus quando ci si sposta con il tab --> 🔴
-- diminuire dimensioni immagini --> 🔴
+- diminuire dimensioni immagini --> MDP +
+- sistemare layout informazioni personali user in profilo --> 
 
 
 EXTRA - da fare solo se avanza tempo
+- dovrebbe essere più visibile il focus quando ci si sposta con il tab
+- fare in modo che le pagine di errore abbiano lo stesso stile del sito (heading e footer/sfondo)
 - il file picker è accessibile?
 - aggiungere foto ai fondatori 
 - Modalità scura
