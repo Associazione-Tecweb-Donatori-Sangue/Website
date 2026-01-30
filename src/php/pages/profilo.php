@@ -137,10 +137,7 @@ try {
                 <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
                 <td>' . htmlspecialchars($p['nome_sede']) . '</td>
                 <td>
-                    <form action="/php/actions/cancellaPrenotazione.php" method="POST" class="form-inline-table" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
-                        <input type="hidden" name="id_prenotazione" value="' . $p['id'] . '">
-                        <button type="submit" class="btn-table delete">Annulla</button>
-                    </form>
+                    <button type="button" class="btn-table delete btn-annulla-prenotazione" data-id-prenotazione="' . $p['id'] . '" data-data="' . $dataIt . '" data-ora="' . $oraIt . '">Annulla</button>
                 </td>
             </tr>';
         }

@@ -74,6 +74,21 @@
             </div>
         </dialog>
 
+        <!-- Dialog per conferma annullamento prenotazione -->
+        <dialog id="dialog-annulla-prenotazione" aria-labelledby="dialog-prenotazione-title" aria-describedby="dialog-prenotazione-desc">
+            <div class="dialog-content">
+                <h2 id="dialog-prenotazione-title">Conferma annullamento</h2>
+                <p id="dialog-prenotazione-desc">Sei sicuro di voler annullare la prenotazione del <strong id="prenotazione-data"></strong> alle ore <strong id="prenotazione-ora"></strong>?</p>
+                <div class="dialog-buttons">
+                    <form action="../actions/cancellaPrenotazione.php" method="POST" class="dialog-form" id="form-annulla-prenotazione">
+                        <input type="hidden" name="id_prenotazione" id="hidden-id-prenotazione" value="">
+                        <button type="submit" class="btn-delete">Annulla prenotazione</button>
+                    </form>
+                    <button type="button" id="btn-annulla-dialog-prenotazione" class="btn-std">Chiudi</button>
+                </div>
+            </div>
+        </dialog>
+
         [FOOTER]
     </body>
 </html>

@@ -5,7 +5,7 @@ CSS
 - finire mobile.css  --> GG +
 - sistemare css about_us --> DG 
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
-- sistemare tasto "diventa donatore" in dona_ora --> GG 
+- sistemare stile tasto "diventa donatore" in dona_ora --> GG 
 - sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo --> GN
 - controllare che non ci sia codice duplicato --> GN +
 - sistemare dati donatore in modifica prenotazione --> GN
@@ -19,8 +19,7 @@ PHP
 - se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> GN +
 - logica dei mesi di attesa tra una prenotazione e l'altra da sistemare 
     - (attualmente se ho una prenotazione a Gennaio 2026 e una a Dicembre 2026, se provo ad anticipare la seconda non me lo fa fare e mi dice che la prima data disponibile è a Marzo 2027) --> GN +
-    - quando un admin modifica una doanzione di un utente, non dovrebbe applicarsi la logica, altrimenti il sito non fa mai modificare prenotazioni all'admin
-- sistemare pop up di conferma annullamento prenotazione in profilo --> GG +
+    - quando un admin modifica una doanzione di un utente, non dovrebbe applicarsi la logica, altrimenti il sito non fa mai modificare prenotazioni all'admin --> 🔴
 - sistemare messaggi di errore --> GG +
 
 GENERALI

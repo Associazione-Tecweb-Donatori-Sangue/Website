@@ -154,6 +154,46 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 7. GESTIONE DIALOG ANNULLA PRENOTAZIONE
+    const dialogAnnullaPrenotazione = document.getElementById('dialog-annulla-prenotazione');
+    const btnAnnullaDialogPrenotazione = document.getElementById('btn-annulla-dialog-prenotazione');
+    const hiddenIdPrenotazione = document.getElementById('hidden-id-prenotazione');
+    const prenotazioneData = document.getElementById('prenotazione-data');
+    const prenotazioneOra = document.getElementById('prenotazione-ora');
+
+    if (dialogAnnullaPrenotazione) {
+        // Gestione click su tutti i bottoni "Annulla" della tabella
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-annulla-prenotazione')) {
+                const idPrenotazione = e.target.dataset.idPrenotazione;
+                const data = e.target.dataset.data;
+                const ora = e.target.dataset.ora;
+
+                // Popola il dialog con i dati
+                if (hiddenIdPrenotazione) hiddenIdPrenotazione.value = idPrenotazione;
+                if (prenotazioneData) prenotazioneData.textContent = data;
+                if (prenotazioneOra) prenotazioneOra.textContent = ora;
+
+                // Apri il dialog
+                dialogAnnullaPrenotazione.showModal();
+            }
+        });
+
+        // Chiudi dialog con bottone Chiudi
+        if (btnAnnullaDialogPrenotazione) {
+            btnAnnullaDialogPrenotazione.addEventListener('click', () => {
+                dialogAnnullaPrenotazione.close();
+            });
+        }
+
+        // Chiudi dialog cliccando fuori (backdrop)
+        dialogAnnullaPrenotazione.addEventListener('click', (e) => {
+            if (e.target === dialogAnnullaPrenotazione) {
+                dialogAnnullaPrenotazione.close();
+            }
+        });
+    }
+
     // 5. GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileImg = document.getElementById('profile-img');
