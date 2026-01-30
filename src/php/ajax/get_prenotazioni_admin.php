@@ -57,10 +57,7 @@ try {
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
             echo '<td class="celle_azioni">';
             echo '<a href="modifica_prenotazione.php?id_prenotazione=' . $prenotazione['id'] . '" class="btn-table">MODIFICA</a>';
-            echo '<form action="../actions/cancellaPrenotazione.php" method="POST" class="form-inline-table" onsubmit="return confirm(\'Sei sicuro di voler eliminare questa prenotazione?\');">';
-            echo '<input type="hidden" name="id_prenotazione" value="' . $prenotazione['id'] . '">';
-            echo '<button type="submit" class="btn-table delete">ELIMINA</button>';
-            echo '</form>';
+            echo '<button type="button" class="btn-table delete btn-elimina-prenotazione-admin" data-id-prenotazione="' . $prenotazione['id'] . '" data-username="' . htmlspecialchars($prenotazione['username']) . '" data-data="' . $dataIt . '" data-ora="' . $oraIt . '">ELIMINA</button>';
             echo '</td>';
             echo '</tr>';
         }

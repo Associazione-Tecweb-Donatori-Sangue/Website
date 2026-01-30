@@ -194,6 +194,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 8. GESTIONE DIALOG ELIMINA PRENOTAZIONE ADMIN
+    const dialogEliminaPrenotazioneAdmin = document.getElementById('dialog-elimina-prenotazione-admin');
+    const btnAnnullaEliminaAdmin = document.getElementById('btn-annulla-elimina-admin');
+    const hiddenIdPrenotazioneAdmin = document.getElementById('hidden-id-prenotazione-admin');
+    const eliminaUsername = document.getElementById('elimina-username');
+    const eliminaData = document.getElementById('elimina-data');
+    const eliminaOra = document.getElementById('elimina-ora');
+
+    if (dialogEliminaPrenotazioneAdmin) {
+        // Gestione click su tutti i bottoni "ELIMINA" della tabella admin
+        document.addEventListener('click', (e) => {
+            if (e.target.classList.contains('btn-elimina-prenotazione-admin')) {
+                const idPrenotazione = e.target.dataset.idPrenotazione;
+                const username = e.target.dataset.username;
+                const data = e.target.dataset.data;
+                const ora = e.target.dataset.ora;
+
+                // Popola il dialog con i dati
+                if (hiddenIdPrenotazioneAdmin) hiddenIdPrenotazioneAdmin.value = idPrenotazione;
+                if (eliminaUsername) eliminaUsername.textContent = username;
+                if (eliminaData) eliminaData.textContent = data;
+                if (eliminaOra) eliminaOra.textContent = ora;
+
+                // Apri il dialog
+                dialogEliminaPrenotazioneAdmin.showModal();
+            }
+        });
+
+        // Chiudi dialog con bottone Annulla
+        if (btnAnnullaEliminaAdmin) {
+            btnAnnullaEliminaAdmin.addEventListener('click', () => {
+                dialogEliminaPrenotazioneAdmin.close();
+            });
+        }
+
+        // Chiudi dialog cliccando fuori (backdrop)
+        dialogEliminaPrenotazioneAdmin.addEventListener('click', (e) => {
+            if (e.target === dialogEliminaPrenotazioneAdmin) {
+                dialogEliminaPrenotazioneAdmin.close();
+            }
+        });
+    }
+
     // 5. GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileImg = document.getElementById('profile-img');
