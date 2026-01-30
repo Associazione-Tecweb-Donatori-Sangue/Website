@@ -5,7 +5,6 @@ CSS
 - finire mobile.css  --> GG +
 - sistemare css about_us --> DG 
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
-- sistemare css bottone "dona qui" in cards dove_trovarci --> GG +
 - sistemare tasto "diventa donatore" in dona_ora --> GG 
 - sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo --> GN
 - sistemare tasto salva modifiche quando si modifica un utente (sezione Gestione utente) --> GG +
