@@ -109,7 +109,7 @@ $oraSelezionata = $prenotazioneCorrente['ora_prenotazione'];
 $paginaHTML = str_replace('value="' . $oraSelezionata . '"', 'value="' . $oraSelezionata . '" selected', $paginaHTML);
 
 // Precompilo tipo donazione
-$tipoDonazione = strtolower(str_replace(' ', '-', $prenotazioneCorrente['tipo_donazione']));
+$tipoDonazione = str_replace(' ', '-', $prenotazioneCorrente['tipo_donazione']);
 $paginaHTML = str_replace('value="' . $tipoDonazione . '"', 'value="' . $tipoDonazione . '" checked', $paginaHTML);
 
 // Cambio il testo del bottone e aggiungo campi hidden
