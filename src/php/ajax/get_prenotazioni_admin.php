@@ -55,7 +55,7 @@ try {
             echo '<td>' . $dataIt . '</td>';
             echo '<td>' . $oraIt . '</td>';
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
-            echo '<td class="celle_azioni">';
+            echo '<td>';
             echo '<a href="modifica_prenotazione.php?id_prenotazione=' . $prenotazione['id'] . '" class="btn-table">MODIFICA</a>';
             echo '<button type="button" class="btn-table delete btn-elimina-prenotazione-admin" data-id-prenotazione="' . $prenotazione['id'] . '" data-username="' . htmlspecialchars($prenotazione['username']) . '" data-data="' . $dataIt . '" data-ora="' . $oraIt . '">ELIMINA</button>';
             echo '</td>';

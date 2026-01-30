@@ -42,11 +42,6 @@ html, body{
   background-position: 14% center;
 }
 
-body.error-background {
-  background-image: none;
-  background-color: #fbfefe;
-}
-
 .navigation-helper{
   position: absolute;
   top: 0;
@@ -1297,13 +1292,6 @@ small {
   opacity: 0.8;
 }
 
-#imgProfilo.nav-profile-icon {
-    height: 3.7em;
-    width: 3.7em;
-    border-radius: 50%;
-    object-fit: cover;
-}
-
 .remove-photo {
     position: absolute;
     top: -0.6em;
@@ -1396,7 +1384,6 @@ small {
 }
 
 /* Classe base per messaggi */
-.msg-base,
 .msg-success,
 .msg-error,
 .msg-flash {
@@ -1451,19 +1438,9 @@ form .msg-error {
   width: 90%;
 }
 
-/* =========================================
-   SEZIONI SPECIALI (ACCESSO RICHIESTO, ETC)
+/* ==================================================
+   SEZIONI SPECIALI DONA ORA (ACCESSO RICHIESTO, ETC)
 ========================================= */
-
-/* Contenitore centrato per testo_std */
-.testo-centered {
-  text-align: center;
-}
-
-/* Titolo in sezione testo_std */
-.section-title {
-  margin-bottom: 1em;
-}
 
 /* Container per azioni (pulsanti login/registrazione) */
 .action-container,
@@ -1487,28 +1464,14 @@ form .msg-error {
   box-shadow: none;
   background: transparent;
   margin: 0;
-  max-width: 300px;
-}
-
-.form-inline.wide {
-  max-width: 350px;
-}
-
-/* Pulsante senza margine */
-.btn-no-margin {
-  margin: 0;
 }
 
 /* Wrapper contenitore pulsante */
 .btn-wrapper {
+  width: 100%;
   padding: 0;
   margin: 0;
   margin-top: 1em;
-}
-
-/* Separatore testuale (es. "oppure") */
-.text-separator {
-  margin: 0.5em 0;
 }
 
 /* =========================================
@@ -1520,19 +1483,9 @@ form .msg-error {
   text-transform: uppercase;
 }
 
-/* Link/pulsante modifica dati donatore */
-.button-margin-top {
-  margin-top: 1.25em;
-}
-
 /* =========================================
    TABELLE E PRENOTAZIONI  
 ========================================= */
-
-/* Form inline nella tabella */
-.form-inline-table {
-  margin: 0;
-}
 
 /* Focus per tutti i bottoni */
 .btn-std:focus-visible,
@@ -1540,12 +1493,6 @@ form .msg-error {
 button:focus-visible {
   outline: 2px solid #000000;
   outline-offset: 2px;
-}
-
-/* Messaggio centrato in testo_std */
-.testo-centered-message {
-  text-align: center;
-  padding: 0.6em;
 }
 
 /* Status completata */
@@ -1804,20 +1751,6 @@ button:focus-visible {
   flex-wrap: wrap;
   margin-top: 2.5em;
   justify-content: center;
-}
-
-.error_actions a {
-  display: inline-block;
-  padding: 1em 2em;
-  background-color: #749BA3;
-  color: var(--link-txt-color);
-  text-decoration: none;
-  border-radius: 1.3em;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(172, 210, 230, 0.3);
 }
 
 .error-actions a:hover {

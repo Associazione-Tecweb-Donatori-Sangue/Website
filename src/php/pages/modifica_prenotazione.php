@@ -63,7 +63,7 @@ try {
 
     if ($datiDonatore) {
         $htmlDonatore = '
-        <section class="dati_donatore_box">
+        <section>
             <h3 class="dashboard-title">Dati del Donatore</h3>
             <dl class="data-list">
                 <dt>Username:</dt>

@@ -6,13 +6,18 @@ CSS
 - sistemare css about_us --> DG 
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
 - sistemare stile tasto "diventa donatore" in dona_ora --> GG 
-- sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo --> GN
+- sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo/ annullamento prenotazione da user / eliminazione prenotazione da admin --> GN
 - controllare che non ci sia codice duplicato --> GN +
 - sistemare dati donatore in modifica prenotazione --> GN
 - distinguere link visitati e non visitati:
     - INDEX: prenota una donazione, scopri le nostre sedi
     - DONA ORA: accedi e registrati, torna al profilo
     - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
+
+- classe "input-standard" usata in registrazione_donatore.html e mai usata nel css
+- classe "group_label" usata in registrazione_donatore.html e mai usata nel css
+- classe "suggerimento" usata in login.html e registrazione.html e mai usata nel css
+
 
 PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN +
@@ -31,7 +36,7 @@ GENERALI
 - sistemare layout informazioni personali user in profilo --> 
 
 
-EXTRA - da fare solo se avanza tempo
+EXTRA - da fare solo se avanza tempo (o da inserire nella relazione come estensioni possibili future)
 - dovrebbe essere più visibile il focus quando ci si sposta con il tab
 - fare in modo che le pagine di errore abbiano lo stesso stile del sito (heading e footer/sfondo)
 - il file picker è accessibile?

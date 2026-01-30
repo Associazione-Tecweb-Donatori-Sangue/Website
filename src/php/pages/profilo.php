@@ -52,7 +52,7 @@ try {
         $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
 
         $htmlDonatore = '
-        <section class="dati_donatore_box">
+        <section>
             <h3 class="dashboard-title">Il tuo profilo Donatore</h3>
             <dl class="data-list">
                 <dt>Nome e Cognome:</dt>

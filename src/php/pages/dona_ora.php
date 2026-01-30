@@ -69,7 +69,7 @@ if (!isset($_SESSION['user_id'])) {
             <p>Gli account amministratori non possono effettuare donazioni.</p>
             
             <div class="action-container-single">
-                <form action="profilo.php" method="get" class="form-inline wide">
+                <form action="profilo.php" method="get" class="form-inline">
                     <div class="btn-wrapper">
                         <button type="submit" class="btn-std">Torna al Profilo</button>
                     </div>
@@ -98,7 +98,7 @@ if (!isset($_SESSION['user_id'])) {
                     <p>La procedura richiede pochi minuti.</p>
                     
                     <div class="action-container-single">
-                        <form action="registrazione_donatore.php" method="get" class="form-inline wide">
+                        <form action="registrazione_donatore.php" method="get" class="form-inline">
                             <div class="btn-wrapper">
                                 <button type="submit" class="btn-std">Diventa Donatore</button>
                             </div>
