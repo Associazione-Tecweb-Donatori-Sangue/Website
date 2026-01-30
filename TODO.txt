@@ -7,7 +7,6 @@ CSS
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
 - sistemare tasto "diventa donatore" in dona_ora --> GG 
 - sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo --> GN
-- sistemare tasto salva modifiche quando si modifica un utente (sezione Gestione utente) --> GG +
 - controllare che non ci sia codice duplicato --> GN +
 - sistemare dati donatore in modifica prenotazione --> GN
 - distinguere link visitati e non visitati:
