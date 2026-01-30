@@ -56,10 +56,10 @@ try {
             echo '<td>' . $oraIt . '</td>';
             echo '<td>' . htmlspecialchars($prenotazione['nome_sede']) . '</td>';
             echo '<td class="celle_azioni">';
-            echo '<a href="modifica_prenotazione.php?id_prenotazione=' . $prenotazione['id'] . '" class="btn_tabella btn_edit btn-table-link">MODIFICA</a>';
+            echo '<a href="modifica_prenotazione.php?id_prenotazione=' . $prenotazione['id'] . '" class="btn-table">MODIFICA</a>';
             echo '<form action="../actions/cancellaPrenotazione.php" method="POST" class="form-inline-table" onsubmit="return confirm(\'Sei sicuro di voler eliminare questa prenotazione?\');">';
             echo '<input type="hidden" name="id_prenotazione" value="' . $prenotazione['id'] . '">';
-            echo '<button type="submit" class="btn_tabella btn_delete btn-cursor-pointer">ELIMINA</button>';
+            echo '<button type="submit" class="btn-table delete">ELIMINA</button>';
             echo '</form>';
             echo '</td>';
             echo '</tr>';

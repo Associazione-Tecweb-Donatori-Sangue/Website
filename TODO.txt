@@ -1,17 +1,5 @@
 HTML
-- controllare che i bottoni siano nella forma corretta = 
-    {
-        FOOTER: {
-            - <a href="#content" aria-label="Torna all'inizio della pagina">Torna all'inizio</a> (non ne sono sicuro ma e' sus)
-        }
-        PROFILO: {
-            - <div class="remove-photo" id="remove-photo-btn" role="button" tabindex="0" aria-label="Rimuovi foto profilo">&times;</div>
-            - <div class="btn-wrapper" style="margin-top: 1rem;"><a href="/php/pages/registrazione_donatore.php" class="btn btn-link">Modifica i tuoi dati</a></div>
-        }
-        PROFILO_ADMIN: {
-            - <div class="remove-photo" id="remove-photo-btn" role="button" tabindex="0" title="Rimuovi foto profilo">&times;</div>
-        }
-    }
+
 
 CSS
 - fare print.css --> MDP
@@ -21,6 +9,7 @@ CSS
 - sistemare css bottone seleziona sede in pagina_admin --> GN
 - sistemare css bottone "dona qui" in cards dove_trovarci --> GG
 - sistemare tasto "diventa donatore" in dona_ora --> GG
+- controllare colori nel css (usare var quando necessario) --> 🔴
 
 PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN

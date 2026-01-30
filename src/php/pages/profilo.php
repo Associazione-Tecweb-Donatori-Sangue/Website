@@ -47,7 +47,7 @@ try {
     $datiDonatore = $stmt->fetch();
 
     if (!$datiDonatore) {
-        $htmlDonatore = '<div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn btn-link">Completa la registrazione come donatore</a></div>';
+        $htmlDonatore = '<div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std">Completa la registrazione come donatore</a></div>';
     } else {
         $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
 
@@ -85,7 +85,7 @@ try {
                 <dt>Peso:</dt>
                 <dd>' . htmlspecialchars($datiDonatore['peso']) . ' Kg</dd>
             </dl>
-            <div class="btn-wrapper" style="margin-top: 1rem;"><a href="/php/pages/registrazione_donatore.php" class="btn btn-link">Modifica i tuoi dati</a></div>
+            <div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std">Modifica i tuoi dati</a></div>
         </section>';
         
         $_SESSION['dati_donatore'] = $datiDonatore;
@@ -139,7 +139,7 @@ try {
                 <td>
                     <form action="/php/actions/cancellaPrenotazione.php" method="POST" class="form-inline-table" onsubmit="return confirm(\'Sei sicuro di voler annullare questa prenotazione?\');">
                         <input type="hidden" name="id_prenotazione" value="' . $p['id'] . '">
-                        <button type="submit" class="btn_tabella btn_delete btn-cancel-booking">Annulla</button>
+                        <button type="submit" class="btn-table delete">Annulla</button>
                     </form>
                 </td>
             </tr>';

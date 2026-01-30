@@ -39,7 +39,7 @@ if (!isset($_SESSION['user_id'])) {
             <form action="login.php" method="get" class="form-inline">
                 <div class="btn-wrapper">
                     <input type="hidden" name="redirect" value="dona_ora.php">
-                    <button type="submit" class="btn">Accedi</button>
+                    <button type="submit" class="btn-std">Accedi</button>
                 </div>
             </form>
 
@@ -47,7 +47,7 @@ if (!isset($_SESSION['user_id'])) {
 
             <form action="registrazione.php" method="get" class="form-inline">
                 <div class="btn-wrapper">
-                    <button type="submit" class="btn">Registrati</button>
+                    <button type="submit" class="btn-std">Registrati</button>
                 </div>
             </form>
         </div>
@@ -71,7 +71,7 @@ if (!isset($_SESSION['user_id'])) {
             <div class="action-container-single">
                 <form action="profilo.php" method="get" class="form-inline wide">
                     <div class="btn-wrapper">
-                        <button type="submit" class="btn">Torna al Profilo</button>
+                        <button type="submit" class="btn-std">Torna al Profilo</button>
                     </div>
                 </form>
             </div>
@@ -100,7 +100,7 @@ if (!isset($_SESSION['user_id'])) {
                     <div class="action-container-single">
                         <form action="registrazione_donatore.php" method="get" class="form-inline wide">
                             <div class="btn-wrapper">
-                                <button type="submit" class="button-full-width">Diventa Donatore</button>
+                                <button type="submit" class="btn-std">Diventa Donatore</button>
                             </div>
                         </form>
                     </div>

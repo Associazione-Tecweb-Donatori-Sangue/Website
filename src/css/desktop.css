@@ -1096,9 +1096,11 @@ small {
 }
 
 /* Pulsanti standard */
-.btn {
+.btn-submit {
   display: inline-block;
+  width: calc(100% - 1.875em);
   padding: 1em;
+  margin: 1.2em 0.9em 0.9em 0.9em;
   background: #12425C;
   color: #ffffff;
   border: none;
@@ -1114,15 +1116,10 @@ small {
   text-align: center;
 }
 
-.btn:hover {
+.btn-submit:hover {
   background-color: #082e41;
   color: #ffffff;
   box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
-}
-
-.btn-full {
-  width: calc(100% - 1.875em);
-  margin: 1.2em 0.9em 0.9em 0.9em;
 }
 
 
@@ -1159,14 +1156,12 @@ small {
   margin-right: auto;
 }
 
-
 .profile-picture {
   flex-shrink: 0;
   position: relative;
   cursor: pointer;
   width: 8.1em;
   height: 8.1em;
-  
 }
 
 .profile-picture {
@@ -1194,7 +1189,6 @@ small {
 .profile-picture.is-default #remove-photo-btn {
     display: none;
 }
-
 
 .profile-picture::before {
   content: '';
@@ -1492,6 +1486,7 @@ form .msg-error {
 .btn-wrapper {
   padding: 0;
   margin: 0;
+  margin-top: 1em;
 }
 
 /* Separatore testuale (es. "oppure") */
@@ -1517,33 +1512,14 @@ form .msg-error {
    TABELLE E PRENOTAZIONI  
 ========================================= */
 
-/* Form inline nella tabella (per pulsante annulla) */
+/* Form inline nella tabella */
 .form-inline-table {
   margin: 0;
 }
 
-/* Pulsante di annullamento prenotazione*/
-.data-table .btn-cancel-booking {
-  background-color: #DA4343;
-  color: #000000;
-  padding: 0.3em 0.6em;
-  font-size: 0.9em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  border: none;
-  display: inline-block;
-}
-
-.data-table .btn-cancel-booking:hover {
-  background-color: #c24242;
-  color: #ffffff;
-}
-
-.btn_tabella:focus-visible,
-.btn_edit:focus-visible,
-.btn_delete:focus-visible,
-.btn-cancel-booking:focus-visible,
-.btn-table-link:focus-visible,
+/* Focus per tutti i bottoni */
+.btn-std:focus-visible,
+.btn-delete:focus-visible,
 button:focus-visible {
   outline: 2px solid #000000;
   outline-offset: 2px;
@@ -1575,23 +1551,6 @@ button:focus-visible {
   text-align: center;
 }
 
-/* Link/pulsante senza decorazione per tabella */
-.btn-table-link {
-  text-decoration: none;
-  display: inline-block;
-  text-align: center;
-  color: white;
-}
-
-/* Pulsante con cursore pointer */
-.btn-cursor-pointer {
-  cursor: pointer;
-}
-
-/* =========================================
-   MESSAGGI DI ERRORE E SUCCESSO SPECIFICI
-========================================= */
-
 .button-container {
   display: flex;
   flex-direction: column;
@@ -1599,48 +1558,50 @@ button:focus-visible {
   max-width: 200px;
 }
 
-.btn-logout {
+.btn-std {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 1em;
     background-color: #12425C;
     color: #ffffff;
     text-decoration: none;
     text-align: center;
     border: none;
     border-radius: 0.8em;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.06em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
+    box-shadow: 0 4px 15px rgba(18, 66, 92, 0.3);
 }
 
-.btn-logout:hover {
+.btn-std:hover {
     background-color: #082e41;
-    color: white;
+    color: #ffffff;
+    box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
 }
 
 .btn-delete {
     display: inline-block;
-    padding: 10px 15px;
+    padding: 0.7em 1em;
     background-color: #da4343;
     color: #000000;
     text-decoration: none;
     text-align: center;
     border: none;
     border-radius: 0.8em;
-    font-size: 14px;
+    font-size: 1em;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.06em;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-delete:hover {
     background-color: #c24242;
-    color: white;
+    color: #ffffff;
 }
 
 
@@ -2108,10 +2069,8 @@ button:focus-visible {
   overflow: visible;
 }
 
-.data-table .btn_tabella,
-.data-table .btn_edit,
-.data-table .btn_delete,
-.data-table button {
+/* Stili compatti per bottoni in button-container e btn-wrapper */
+:is(.button-container, .btn-wrapper) :is(.btn-std, .btn-delete) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2131,31 +2090,45 @@ button:focus-visible {
   cursor: pointer;
   box-shadow: none;
   transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Bottoni nelle tabelle - stile compatto */
+.btn-table {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 2.5em;
+  min-width: auto;
+  width: auto;
+  padding: 0 1.2em;
+  margin: 0 0.4em;
+  font-size: 0.85em;
+  line-height: normal;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  border-radius: 0.6em;
+  cursor: pointer;
+  box-shadow: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
   background-color: #12425C;
   color: #ffffff;
 }
 
-.data-table .btn_tabella:hover,
-.data-table .btn_edit:hover,
-.data-table button:hover {
+.btn-table:hover {
   background-color: #082e41;
   color: #ffffff;
 }
 
-.data-table .btn_delete,
-.data-table .btn_cancel {
-  background-color: #DA4343;
+.btn-table.delete {
+  background-color: #da4343;
   color: #000000;
 }
 
-.data-table .btn_delete:hover,
-.data-table .btn_cancel:hover {
-  background-color: #c24242;
-  color: #ffffff;
-}
-
-
-.btn_delete:hover {
+.btn-table.delete:hover {
   background-color: #c24242;
   color: #ffffff;
 }

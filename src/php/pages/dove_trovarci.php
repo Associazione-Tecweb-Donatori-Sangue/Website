@@ -43,7 +43,7 @@ try {
                 <a href="' . htmlspecialchars($sede['link_maps']) . '" target="_blank">Visualizza su Google Maps</a>
             </p>
             <p>Telefono: <a href="tel:' . $telefonoLink . '" aria-label="Chiama ' . $telefonoVisualizzato . '">' . $telefonoVisualizzato . '</a></p>
-            <a href="../../php/pages/dona_ora.php?sede_id=' . $sede['id'] . '" class="btn_prenota">Dona qui</a>
+            <a href="../../php/pages/dona_ora.php?sede_id=' . $sede['id'] . '" class="btn-link">Dona qui</a>
         </div>';
     }
 
