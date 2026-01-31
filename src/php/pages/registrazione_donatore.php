@@ -59,10 +59,14 @@ function validaCodiceFiscale($cf) {
 
 function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     $cf = strtoupper(trim($cf));
+    $nome = strtoupper(trim($nome));
+    $cognome = strtoupper(trim($cognome));
     
-    // Controllo lunghezza PRIMA di chiamare validaCodiceFiscale
+    // ========================================
+    // CONTROLLO LUNGHEZZA (DEVE ESSERE IL PRIMO!)
+    // ========================================
     if (strlen($cf) != 16) {
-        return ['valido' => false, 'errore' => 'Il codice fiscale deve essere lungo esattamente 16 caratteri. Attualmente ne hai inseriti ' . strlen($cf) . '.'];
+        return ['valido' => false, 'errore' => 'il codice fiscale deve essere lungo esattamente 16 caratteri, attualmente ne hai inseriti ' . strlen($cf) . '.'];
     }
     
     // Controllo formato con regex
@@ -70,31 +74,82 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
         return ['valido' => false, 'errore' => 'Il formato del codice fiscale non è corretto. Deve contenere 6 lettere, 2 numeri, 1 lettera, 2 numeri, 1 lettera, 3 numeri e 1 lettera finale.'];
     }
     
-    // Controllo checksum (carattere di controllo)
-    if (!validaCodiceFiscale($cf)) {
-        return ['valido' => false, 'errore' => 'Il codice fiscale non è formalmente corretto (carattere di controllo non valido).'];
+    // Funzioni helper
+    function estraiConsonanti($stringa) {
+        return preg_replace('/[AEIOU]/i', '', $stringa);
     }
     
-    // Controllo anno
+    function estraiVocali($stringa) {
+        return preg_replace('/[^AEIOU]/i', '', $stringa);
+    }
+    
+    // ========================================
+    // 1. CONTROLLO COGNOME (posizioni 1-3)
+    // ========================================
+    $cognomeCF = substr($cf, 0, 3);
+    $consonantiCognome = estraiConsonanti($cognome);
+    $vocaliCognome = estraiVocali($cognome);
+    $cognomeAtteso = substr($consonantiCognome . $vocaliCognome . 'XXX', 0, 3);
+    
+    if ($cognomeCF !== $cognomeAtteso) {
+        return ['valido' => false, 'errore' => "le prime 3 lettere del codice fiscale (cognome) non corrispondono, hai inserito '$cognomeCF' (posizioni 1-3) ma dal cognome '$cognome' dovrebbero essere '$cognomeAtteso'."];
+    }
+    
+    // ========================================
+    // 2. CONTROLLO NOME (posizioni 4-6)
+    // ========================================
+    $nomeCF = substr($cf, 3, 3);
+    $consonantiNome = estraiConsonanti($nome);
+    $vocaliNome = estraiVocali($nome);
+    
+    if (strlen($consonantiNome) >= 4) {
+        $nomeAtteso = $consonantiNome[0] . $consonantiNome[2] . $consonantiNome[3];
+    } else {
+        $nomeAtteso = substr($consonantiNome . $vocaliNome . 'XXX', 0, 3);
+    }
+    
+    if ($nomeCF !== $nomeAtteso) {
+        return ['valido' => false, 'errore' => "i caratteri 4-6 del codice fiscale (nome) non corrispondono, hai inserito '$nomeCF' (posizioni 4-6) ma dal nome '$nome' dovrebbero essere '$nomeAtteso'."];
+    }
+    
+    // ========================================
+    // 3. CONTROLLO ANNO (posizioni 7-8)
+    // ========================================
     $annoCF = substr($cf, 6, 2);
     $annoNascita = date('y', strtotime($dataNascita));
     
     if ($annoCF != $annoNascita) {
-        return ['valido' => false, 'errore' => 'L\'anno di nascita non corrisponde al codice fiscale.'];
+        return ['valido' => false, 'errore' => "l'anno di nascita non corrisponde, il codice fiscale riporta '$annoCF' (posizioni 7-8) ma la tua data di nascita indica '$annoNascita'."];
     }
     
-    // Controllo mese
+    // ========================================
+    // 4. CONTROLLO MESE (posizione 9)
+    // ========================================
     $meseCF = substr($cf, 8, 1);
-    $mesiCF = ['A' => '01', 'B' => '02', 'C' => '03', 'D' => '04', 'E' => '05', 'H' => '06',
-                'L' => '07', 'M' => '08', 'P' => '09', 'R' => '10', 'S' => '11', 'T' => '12'];
+    $mesiCF = [
+        'A' => '01', 'B' => '02', 'C' => '03', 'D' => '04', 'E' => '05', 'H' => '06',
+        'L' => '07', 'M' => '08', 'P' => '09', 'R' => '10', 'S' => '11', 'T' => '12'
+    ];
     
     $meseNascita = date('m', strtotime($dataNascita));
+    $meseAtteso = array_search($meseNascita, $mesiCF);
     
     if (!isset($mesiCF[$meseCF]) || $mesiCF[$meseCF] != $meseNascita) {
-        return ['valido' => false, 'errore' => 'Il mese di nascita non corrisponde al codice fiscale.'];
+        $nomiMesi = [
+            '01' => 'gennaio', '02' => 'febbraio', '03' => 'marzo', '04' => 'aprile',
+            '05' => 'maggio', '06' => 'giugno', '07' => 'luglio', '08' => 'agosto',
+            '09' => 'settembre', '10' => 'ottobre', '11' => 'novembre', '12' => 'dicembre'
+        ];
+        
+        // Determina se usare "nato" o "nata"
+        $natoNata = ($sesso == 'Femmina') ? 'nata' : 'nato';
+        
+        return ['valido' => false, 'errore' => "il mese di nascita non corrisponde, hai inserito '$meseCF' (posizione 9) ma sei $natoNata a " . $nomiMesi[$meseNascita] . ", quindi dovrebbe essere '$meseAtteso'."];
     }
     
-    // Controllo giorno
+    // ========================================
+    // 5. CONTROLLO GIORNO (posizioni 10-11)
+    // ========================================
     $giornoCF = intval(substr($cf, 9, 2));
     $giornoNascita = intval(date('d', strtotime($dataNascita)));
     
@@ -105,7 +160,21 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     }
     
     if ($giornoCF != $giornoAtteso) {
-        return ['valido' => false, 'errore' => 'Il giorno di nascita o il sesso non corrispondono al codice fiscale.'];
+        $giornoAttesoStr = str_pad($giornoAtteso, 2, '0', STR_PAD_LEFT);
+        $giornoCFStr = str_pad($giornoCF, 2, '0', STR_PAD_LEFT);
+        
+        if ($sesso == 'Femmina') {
+            return ['valido' => false, 'errore' => "il giorno di nascita non corrisponde, hai inserito '$giornoCFStr' (posizioni 10-11) ma essendo donna e nata il giorno $giornoNascita, dovrebbe essere '$giornoAttesoStr' (giorno + 40)."];
+        } else {
+            return ['valido' => false, 'errore' => "il giorno di nascita non corrisponde, hai inserito '$giornoCFStr' (posizioni 10-11) ma essendo uomo e nato il giorno $giornoNascita, dovrebbe essere '$giornoAttesoStr'."];
+        }
+    }
+    
+    // ========================================
+    // 6. CONTROLLO CHECKSUM (SOLO ALLA FINE!)
+    // ========================================
+    if (!validaCodiceFiscale($cf)) {
+        return ['valido' => false, 'errore' => 'il carattere di controllo non è valido, tutti gli altri dati (nome, cognome, data) sono corretti ma probabilmente hai sbagliato a digitare l\'ultima lettera.'];
     }
     
     return ['valido' => true, 'errore' => ''];
@@ -217,9 +286,15 @@ $template = preg_replace(
     $template
 );
 
+$template = preg_replace(
+    '/(<input[^>]*name="codice_fiscale"[^>]*)((minlength|pattern|title)="[^"]*"\s*)+/', 
+    '$1', 
+    $template
+);
+
 $template = str_replace(
     'name="codice_fiscale"',
-    'name="codice_fiscale" autocomplete="nope"',
+    'name="codice_fiscale" maxlength="16" autocomplete="nope"',
     $template
 );
 
