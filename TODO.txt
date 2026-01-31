@@ -2,8 +2,7 @@ il simbolo + indica PRIORITÀ ASSOLUTA
 
 CSS
 - fare print.css --> MDP +
-- finire mobile.css  --> GG +
-- sistemare css about_us --> DG 
+- finire mobile.css  --> GG
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
 - sistemare stile tasto "diventa donatore" in dona_ora --> GG 
 - sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo/ annullamento prenotazione da user / eliminazione prenotazione da admin --> GN
