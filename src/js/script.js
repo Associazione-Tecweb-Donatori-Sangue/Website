@@ -320,84 +320,100 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 // 5. GESTIONE FOTO PROFILO
-    const photoUpload = document.getElementById('photo-upload');
-    const profileContainer = document.querySelector('.profile-picture');
-    const removeBtn = document.getElementById('remove-photo-btn');
+const photoUpload = document.getElementById('photo-upload');
+const profileContainer = document.querySelector('.profile-picture');
+const removeBtn = document.getElementById('remove-photo-btn');
 
-    if (profileContainer && photoUpload) {    
-        profileContainer.addEventListener('click', (e) => {
+const dialog = document.getElementById('deletePhotoDialog');
+const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+
+// Funzione per rimuovere la foto
+function deleteProfilePhoto() {
+    const formData = new FormData();
+    formData.append('azione', 'rimuovi');
+
+    fetch('../actions/gestioneFotoProfilo.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) window.location.reload();
+    });
+}
+
+// Upload foto
+if (profileContainer && photoUpload) {
+    profileContainer.addEventListener('click', (e) => {
+        if (!e.target.closest('#remove-photo-btn')) {
+            photoUpload.click();
+        }
+    });
+
+    profileContainer.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
             if (!e.target.closest('#remove-photo-btn')) {
                 photoUpload.click();
             }
-        });
+        }
+    });
 
-        // Gestione navigazione da tastiera
-        profileContainer.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                if (!e.target.closest('#remove-photo-btn')) {
-                    photoUpload.click();
-                }
-            }
-        });
+    photoUpload.addEventListener('change', function () {
+        if (this.files && this.files[0]) {
+            const formData = new FormData();
+            formData.append('foto_profilo', this.files[0]);
+            formData.append('azione', 'upload');
 
-        photoUpload.addEventListener('change', function() {
-            if (this.files && this.files[0]) {
-                const formData = new FormData();
-                formData.append('foto_profilo', this.files[0]);
-                formData.append('azione', 'upload');
+            fetch('../actions/gestioneFotoProfilo.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) window.location.reload();
+                else alert(data.message);
+            });
+        }
+    });
+}
 
-                fetch('../actions/gestioneFotoProfilo.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) window.location.reload();
-                    else alert(data.message);
-                });
-            }
-        });
-    }
+// Rimuovi foto con dialog personalizzato
+if (removeBtn && dialog) {
 
-    if (removeBtn) {
-        removeBtn.addEventListener('click', (e) => {
-            e.stopPropagation(); 
-            if (confirm('Sei sicuro di voler rimuovere la foto profilo?')) {
-                const formData = new FormData();
-                formData.append('azione', 'rimuovi');
-                fetch('../actions/gestioneFotoProfilo.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) window.location.reload();
-                });
-            }
-        });
+    const openDialog = (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dialog.showModal();
+    };
 
-        // Gestione navigazione da tastiera per il pulsante rimuovi
-        removeBtn.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                e.stopPropagation();
-                if (confirm('Sei sicuro di voler rimuovere la foto profilo?')) {
-                    const formData = new FormData();
-                    formData.append('azione', 'rimuovi');
-                    fetch('../actions/gestioneFotoProfilo.php', {
-                        method: 'POST',
-                        body: formData
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        if (data.success) window.location.reload();
-                    });
-                }
-            }
-        });
-    }
+    // Click su bottone Rimuovi
+    removeBtn.addEventListener('click', openDialog);
 
+    // Tastiera su bottone Rimuovi
+    removeBtn.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            openDialog(e);
+        }
+    });
+
+    // Bottone Annulla nel dialog
+    cancelDeleteBtn.addEventListener('click', () => {
+        dialog.close();
+        removeBtn.focus(); // ritorna il focus al bottone
+    });
+
+    // Bottone Conferma Rimuovi
+    confirmDeleteBtn.addEventListener('click', () => {
+        dialog.close();
+        deleteProfilePhoto();
+    });
+
+    dialog.addEventListener('close', () => {
+        removeBtn.focus();
+    });
+}
 });
 
 
