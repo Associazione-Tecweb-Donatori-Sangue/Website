@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $sede_id = pulisciInput($_POST['luogo']);
     $data = $_POST['data'];
     $ora = pulisciInput($_POST['ora']);
-    $tipo = pulisciInput($_POST['donazione']); // Il valore arriva già con la maiuscola dal form
+    $tipo = pulisciInput($_POST['donazione']);
     
     // Se l'admin sta modificando, user_id viene dal form, altrimenti dalla sessione
     $user_id = isset($_POST['user_id']) ? intval($_POST['user_id']) : $_SESSION['user_id'];
@@ -24,21 +24,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $modalitaModifica = isset($_POST['id_prenotazione']);
     $idPrenotazione = $modalitaModifica ? intval($_POST['id_prenotazione']) : null;
     
+    // Determino se chi opera è admin
+    $isAdminModifica = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
+    
     // Determino la pagina di redirect per gli errori
-    $isAdminModifica = isset($_POST['user_id']) && isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
-    $redirectErrore = $isAdminModifica ? "../pages/modifica_prenotazione.php?id_prenotazione=" . $idPrenotazione : "../pages/dona_ora.php";
+    $redirectErrore = ($modalitaModifica && $isAdminModifica) 
+        ? "../pages/modifica_prenotazione.php?id_prenotazione=" . $idPrenotazione 
+        : "../pages/dona_ora.php";
 
     // --- VALIDAZIONI ---
     $oggi = date("Y-m-d");
 
-    // A. Data nel passato?
+    // A. Data nel passato
     if ($data < $oggi) {
-        $_SESSION['messaggio_flash'] = "Errore: Non puoi prenotare in una data passata!";
+        if ($isAdminModifica) {
+            $_SESSION['messaggio_flash'] = "Errore: Non puoi spostare una prenotazione in una data passata!";
+        } else {
+            $_SESSION['messaggio_flash'] = "Errore: Non puoi prenotare in una data passata!";
+        }
         header("Location: " . $redirectErrore);
         exit();
     }
 
-    // B. Data mancante o Sede mancante?
+    // B. Campi obbligatori
     if (empty($data) || empty($sede_id) || empty($ora)) {
         $_SESSION['messaggio_flash'] = "Errore: Compila tutti i campi obbligatori.";
         header("Location: " . $redirectErrore);
@@ -46,143 +54,88 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        // --- C. NUOVO: Controllo intervallo minimo tra donazioni ---
-        // Recupera sesso e ultima prenotazione dell'utente
-        $stmtUtente = $pdo->prepare(
-            "SELECT d.sesso 
-             FROM donatori d 
-             WHERE d.user_id = ?"
-        );
+        // C. Controllo intervallo minimo
+        $stmtUtente = $pdo->prepare("SELECT sesso FROM donatori WHERE user_id = ?");
         $stmtUtente->execute([$user_id]);
         $donatore = $stmtUtente->fetch(PDO::FETCH_ASSOC);
+        $sogliaMesi = ($donatore['sesso'] === 'Maschio') ? 3 : 6;
 
-        if (!$donatore) {
-            $_SESSION['messaggio_flash'] = "Errore: Profilo donatore non trovato. Completa la registrazione.";
-            header("Location: " . $redirectErrore);
-            exit();
+        // 1. Cerchiamo la prenotazione precedente più vicina alla data scelta
+        $stmtPrec = $pdo->prepare("SELECT MAX(data_prenotazione) FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione < ? AND id != ?");
+        $stmtPrec->execute([$user_id, $data, $idPrenotazione ?? 0]);
+        $dataPrecedente = $stmtPrec->fetchColumn();
+
+        // 2. Cerchiamo la prenotazione successiva più vicina alla data scelta
+        $stmtSucc = $pdo->prepare("SELECT MIN(data_prenotazione) FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione > ? AND id != ?");
+        $stmtSucc->execute([$user_id, $data, $idPrenotazione ?? 0]);
+        $dataSuccessiva = $stmtSucc->fetchColumn();
+
+        $intervalloViolato = false;
+
+        // Controllo rispetto alla precedente
+        if ($dataPrecedente) {
+            $diffPrec = (new DateTime($data))->diff(new DateTime($dataPrecedente));
+            $mesiPrec = $diffPrec->m + ($diffPrec->y * 12);
+            if ($mesiPrec < $sogliaMesi) $intervalloViolato = true;
         }
-        
-        // Recupera l'ultima prenotazione
-        $stmtUltima = $pdo->prepare(
-            "SELECT MAX(data_prenotazione) as ultima_data 
-             FROM lista_prenotazioni 
-             WHERE user_id = ?"
-        );
-        $stmtUltima->execute([$user_id]);
-        $risultato = $stmtUltima->fetch(PDO::FETCH_ASSOC);
 
-        if ($risultato['ultima_data']) {
-            $ultimaData = new DateTime($risultato['ultima_data']);
-            $dataPrenotazione = new DateTime($data);
-            
-            // Calcola la data minima consentita
-            $dataMinima = getDataProssimaDonazione($donatore['sesso'], $risultato['ultima_data']);
-            $dataPrenotazione = new DateTime($data);
+        // Controllo rispetto alla successiva
+        if ($dataSuccessiva) {
+            $diffSucc = (new DateTime($dataSuccessiva))->diff(new DateTime($data));
+            $mesiSucc = $diffSucc->m + ($diffSucc->y * 12);
+            if ($mesiSucc < $sogliaMesi) $intervalloViolato = true;
+        }
 
-            // Verifica se la nuova data rispetta l'intervallo
-            if ($dataPrenotazione < $dataMinima) {
-                $dataFormattata = $dataMinima->format('d/m/Y');
-                $mesi = ($donatore['sesso'] === 'Maschio') ? 3 : 6;
-                $_SESSION['messaggio_flash'] = "Errore: Devi attendere {$mesi} mesi per poter donare di nuovo. Prossima data disponibile: {$dataFormattata}";
-                
-                // Preservo i dati del form tranne la data
-                $_SESSION['form_preservato'] = [
-                    'sede_id' => $sede_id,
-                    'ora' => $ora,
-                    'tipo' => $tipo
-                ];
-                
+        if ($intervalloViolato) {
+            if (!$isAdminModifica) {
+                $_SESSION['messaggio_flash'] = "Errore: La data scelta non rispetta l'intervallo di {$sogliaMesi} mesi rispetto alle altre prenotazioni che hai effettuato.";
                 header("Location: " . $redirectErrore);
                 exit();
             }
+
         }
 
-        // --- D. Controllo Doppie Prenotazioni ---
-        // Evita che l'utente prenoti due volte lo stesso giorno (esclusa la prenotazione corrente se in modifica)
-        if ($modalitaModifica) {
-            $stmtCheck = $pdo->prepare("SELECT id FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione = ? AND id != ?");
-            $stmtCheck->execute([$user_id, $data, $idPrenotazione]);
-        } else {
-            $stmtCheck = $pdo->prepare("SELECT id FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione = ?");
-            $stmtCheck->execute([$user_id, $data]);
-        }
+        // D. Controllo doppie prenotazioni
+        $stmtCheck = $pdo->prepare("SELECT id FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione = ? AND id != ?");
+        $stmtCheck->execute([$user_id, $data, $idPrenotazione ?? 0]);
         
         if ($stmtCheck->rowCount() > 0) {
-            $_SESSION['messaggio_flash'] = "Errore: Hai già una prenotazione per questa data!";
+            $_SESSION['messaggio_flash'] = "Errore: Esiste già una prenotazione per l'utente in questa data!";
             header("Location: " . $redirectErrore);
             exit();
         }
 
-        // --- E. Controllo disponibilità fascia oraria ---
-        // Verifica quante prenotazioni ci sono già per quella sede, data e ora (escludendo la prenotazione corrente se in modifica)
-        if ($modalitaModifica) {
-            $stmtDisponibilita = $pdo->prepare(
-                "SELECT COUNT(*) as totale 
-                 FROM lista_prenotazioni 
-                 WHERE sede_id = ? 
-                 AND data_prenotazione = ? 
-                 AND ora_prenotazione = ?
-                 AND id != ?"
-            );
-            $stmtDisponibilita->execute([$sede_id, $data, $ora, $idPrenotazione]);
-        } else {
-            $stmtDisponibilita = $pdo->prepare(
-                "SELECT COUNT(*) as totale 
-                 FROM lista_prenotazioni 
-                 WHERE sede_id = ? 
-                 AND data_prenotazione = ? 
-                 AND ora_prenotazione = ?"
-            );
-            $stmtDisponibilita->execute([$sede_id, $data, $ora]);
-        }
+        // E. Controllo disponibilità fascia oraria
+        $stmtDisp = $pdo->prepare(
+            "SELECT COUNT(*) FROM lista_prenotazioni 
+             WHERE sede_id = ? AND data_prenotazione = ? AND ora_prenotazione = ? AND id != ?"
+        );
+        $stmtDisp->execute([$sede_id, $data, $ora, $idPrenotazione ?? 0]);
         
-        $risultato = $stmtDisponibilita->fetch(PDO::FETCH_ASSOC);
-        
-        // Se ci sono già 2 prenotazioni, la fascia è piena
-        if ($risultato['totale'] >= 2) {
-            $_SESSION['messaggio_flash'] = "Errore: La fascia oraria selezionata è già completa. Scegli un altro orario.";
+        if ($stmtDisp->fetchColumn() >= 2) {
+            $_SESSION['messaggio_flash'] = "Errore: La fascia oraria selezionata è già completa.";
             header("Location: " . $redirectErrore);
             exit();
         }
 
-        // --- INSERIMENTO O AGGIORNAMENTO NEL DB ---
+        // Salva
         if ($modalitaModifica) {
-            // UPDATE
-            $sql = "UPDATE lista_prenotazioni 
-                    SET sede_id = ?, data_prenotazione = ?, ora_prenotazione = ?, tipo_donazione = ?
-                    WHERE id = ?";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$sede_id, $data, $ora, $tipo, $idPrenotazione]);
+            $sql = "UPDATE lista_prenotazioni SET sede_id = ?, data_prenotazione = ?, ora_prenotazione = ?, tipo_donazione = ? WHERE id = ?";
+            $pdo->prepare($sql)->execute([$sede_id, $data, $ora, $tipo, $idPrenotazione]);
             $_SESSION['messaggio_flash'] = "Prenotazione modificata con successo!";
-            
-            // Se è admin, torna al profilo admin
-            if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
-                header("Location: ../pages/profilo_admin.php");
-            } else {
-                header("Location: ../pages/dona_ora.php");
-            }
         } else {
-            // INSERT
-            $sql = "INSERT INTO lista_prenotazioni (user_id, sede_id, data_prenotazione, ora_prenotazione, tipo_donazione) 
-                    VALUES (?, ?, ?, ?, ?)";
-            $stmt = $pdo->prepare($sql);
-            $stmt->execute([$user_id, $sede_id, $data, $ora, $tipo]);
-            $_SESSION['messaggio_flash'] = "Prenotazione confermata con successo!";
-            header("Location: ../pages/dona_ora.php");
+            $sql = "INSERT INTO lista_prenotazioni (user_id, sede_id, data_prenotazione, ora_prenotazione, tipo_donazione) VALUES (?, ?, ?, ?, ?)";
+            $pdo->prepare($sql)->execute([$user_id, $sede_id, $data, $ora, $tipo]);
+            $_SESSION['messaggio_flash'] = "Prenotazione confermata!";
         }
 
+        // Redirect finale
+        header("Location: " . ($isAdminModifica ? "../pages/profilo_admin.php" : "../pages/dona_ora.php"));
         exit();
 
     } catch (PDOException $e) {
-        // Errore DB
-        $_SESSION['messaggio_flash'] = "Errore durante la prenotazione: " . $e->getMessage();
+        $_SESSION['messaggio_flash'] = "Errore DB: " . $e->getMessage();
         header("Location: " . $redirectErrore);
         exit();
     }
-
-} else {
-    // Se qualcuno prova ad aprire prenota.php direttamente senza passare dal form
-    header("Location: ../pages/dona_ora.php");
-    exit();
 }
-?>
