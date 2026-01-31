@@ -31,17 +31,16 @@
             <h2>Ti diamo il benvenuto nella tua area riservata</h2>
         </div> 
 
-        <main id="content" class="main-standard">
+         <main id="content" class="main-standard">
             <div class="dashboard-container">
-                <div class="profile-header">
-                     <div class="profile-picture [CLASS_DEFAULT]" 
-                        role="button" 
-                        tabindex="0" 
-                        aria-label="Foto profilo dell'utente, premere per modificare">
-                        <img src="[FOTO_PROFILO]" alt="Foto profilo utente" id="profile-img">                        
-                        <input type="file" id="photo-upload" name="foto_profilo" accept="image/*" style="display:none;" aria-hidden="true">
-                        <button type="button" class="remove-photo" id="remove-photo-btn" aria-label="Rimuovi foto profilo">&times;</button>
-                    </div>
+            <div class="profile-header">
+                <button type="button" class="profile-picture [CLASS_DEFAULT]" 
+                    aria-label="Modifica foto profilo dell'utente, premere per modificare"
+                    id="profile-picture-btn">
+                    <img src="[FOTO_PROFILO]" alt="Foto profilo utente" id="profile-img">                        
+                    <input type="file" id="photo-upload" name="foto_profilo" accept="image/*" aria-hidden="true">
+                    <span class="remove-photo" id="remove-photo-btn" role="button" tabindex="0" aria-label="Rimuovi foto profilo">&times;</span>
+                </button>
                 
                     <div class="button-container">
                         <a href="../actions/logout.php" class="btn-std btn-profile"><span lang="en">Logout</span></a>
