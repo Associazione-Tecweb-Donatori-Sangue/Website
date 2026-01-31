@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. GESTIONE FOTO PROFILO
+// 5. GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileContainer = document.querySelector('.profile-picture');
     const removeBtn = document.getElementById('remove-photo-btn');
@@ -308,6 +308,16 @@ document.addEventListener('DOMContentLoaded', () => {
         profileContainer.addEventListener('click', (e) => {
             if (!e.target.closest('#remove-photo-btn')) {
                 photoUpload.click();
+            }
+        });
+
+        // Gestione navigazione da tastiera
+        profileContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (!e.target.closest('#remove-photo-btn')) {
+                    photoUpload.click();
+                }
             }
         });
 
@@ -346,9 +356,30 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
         });
+
+        // Gestione navigazione da tastiera per il pulsante rimuovi
+        removeBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                e.stopPropagation();
+                if (confirm('Sei sicuro di voler rimuovere la foto profilo?')) {
+                    const formData = new FormData();
+                    formData.append('azione', 'rimuovi');
+                    fetch('../actions/gestioneFotoProfilo.php', {
+                        method: 'POST',
+                        body: formData
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) window.location.reload();
+                    });
+                }
+            }
+        });
     }
 
 });
+
 
 /* =========================================
    GESTIONE PRENOTAZIONI ADMIN (AJAX)
