@@ -1990,11 +1990,6 @@ button:focus-visible {
   background-color: #ffffff;
 }
 
-.data-table tbody tr:hover {
-  background-color: #e8f4f8;
-  box-shadow: 0 2px 8px rgba(116, 155, 163, 0.2);
-}
-
 .data-table td {
   padding: 1.2em 1em;
   font-size: 1em;
@@ -2017,6 +2012,10 @@ button:focus-visible {
   display: inline-block;
   vertical-align: middle;
   overflow: visible;
+}
+
+.data-table tbody tr:nth-child(even) {
+  background-color: #e8f4f8;
 }
 
 /* Stili compatti per bottoni in button-container e btn-wrapper */
