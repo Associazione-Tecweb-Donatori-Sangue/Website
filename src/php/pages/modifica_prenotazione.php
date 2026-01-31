@@ -34,26 +34,23 @@ try {
 $msgHTML = "";
 if (isset($_SESSION['messaggio_flash'])) {
     $classe = 'msg-flash msg-success';
-    
     if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) {
         $classe = 'msg-flash msg-error';
     }
-
-    $msgHTML = '<div class="' . $classe . '">
-                    ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
-                </div>';
-    
+    $msgHTML = '<div class="' . $classe . '">' . htmlspecialchars($_SESSION['messaggio_flash']) . '</div>';
     unset($_SESSION['messaggio_flash']);
 }
 
 $paginaHTML = caricaTemplate('dona_ora.html');
-
-// Iniezione messaggio
 $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 
-// --- RECUPERO DATI DONATORE ---
+// --- RECUPERO DATI DONATORE E LOGICA POPUP ---
 $htmlDonatore = "";
+$sessoDonatore = "Maschio"; 
+$dataConfrontoPopup = "";
+
 try {
+    // 1. Recupero dati anagrafici e sesso del donatore
     $stmt = $pdo->prepare("SELECT d.*, u.username 
                            FROM donatori d 
                            JOIN utenti u ON d.user_id = u.id 
@@ -62,72 +59,67 @@ try {
     $datiDonatore = $stmt->fetch();
 
     if ($datiDonatore) {
+        $sessoDonatore = $datiDonatore['sesso'];
         $htmlDonatore = '
         <section>
             <h3 class="dashboard-title">Dati del Donatore</h3>
             <dl class="data-list">
-                <dt>Username:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['username']) . '</dd>
-            
-                <dt>Nome e Cognome:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
-
-                <dt>Email:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
-                
-                <dt>Telefono:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
-
-                <dt>Gruppo Sanguigno:</dt>
-                <dd class="evidenziato">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</dd>
+                <dt>Username:</dt> <dd>' . htmlspecialchars($datiDonatore['username']) . '</dd>
+                <dt>Nome e Cognome:</dt> <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
+                <dt>Email:</dt> <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
+                <dt>Telefono:</dt> <dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
+                <dt>Gruppo Sanguigno:</dt> <dd class="evidenziato">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</dd>
             </dl>
         </section>';
     }
-} catch (PDOException $e) {
-    // Errore nel recupero dati donatore
-}
+
+    // 2. Cerchiamo la data più vicina (precedente o successiva) per il popup smart
+    $stmtVicini = $pdo->prepare("
+        SELECT data_prenotazione 
+        FROM lista_prenotazioni 
+        WHERE user_id = ? AND id != ? 
+        ORDER BY ABS(DATEDIFF(data_prenotazione, ?)) ASC 
+        LIMIT 1");
+    $stmtVicini->execute([
+        $prenotazioneCorrente['user_id'], 
+        $idPrenotazione, 
+        $prenotazioneCorrente['data_prenotazione']
+    ]);
+    $dataConfrontoPopup = $stmtVicini->fetchColumn() ?: '';
+
+} catch (PDOException $e) { /* silent fail */ }
+
+// --- CONFIGURAZIONE FORM ---
+// Iniettiamo data-is-admin="true" e la data di confronto per il JavaScript
+$formModificato = '<form id="prenotaForm" data-ultima="'.$dataConfrontoPopup.'" data-sesso="'.$sessoDonatore.'" data-is-admin="true"';
+$paginaHTML = str_replace('<form id="prenotaForm"', $htmlDonatore . $formModificato, $paginaHTML);
 
 // Carico le sedi
-$stmt = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
-$sedi = $stmt->fetchAll();
-
-$sedePreselezionata = $prenotazioneCorrente['sede_id'];
-
+$stmtSedi = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
 $optionsSedi = "";
-foreach ($sedi as $sede) {
-    $selected = ($sede['id'] == $sedePreselezionata) ? 'selected' : '';
+foreach ($stmtSedi->fetchAll() as $sede) {
+    $selected = ($sede['id'] == $prenotazioneCorrente['sede_id']) ? 'selected' : '';
     $optionsSedi .= '<option value="' . $sede['id'] . '" ' . $selected . '>' . htmlspecialchars($sede['nome']) . '</option>';
 }
-
 $paginaHTML = str_replace('[listaNomiSedi]', $optionsSedi, $paginaHTML);
 
-// Precompilo data
+// Precompilo data, ora e tipo
 $paginaHTML = str_replace('name="data" id="data"', 'name="data" id="data" value="' . htmlspecialchars($prenotazioneCorrente['data_prenotazione']) . '"', $paginaHTML);
-
-// Precompilo ora
-$oraSelezionata = $prenotazioneCorrente['ora_prenotazione'];
-$paginaHTML = str_replace('value="' . $oraSelezionata . '"', 'value="' . $oraSelezionata . '" selected', $paginaHTML);
-
-// Precompilo tipo donazione
+$paginaHTML = str_replace('value="' . $prenotazioneCorrente['ora_prenotazione'] . '"', 'value="' . $prenotazioneCorrente['ora_prenotazione'] . '" selected', $paginaHTML);
 $tipoDonazione = str_replace(' ', '-', $prenotazioneCorrente['tipo_donazione']);
 $paginaHTML = str_replace('value="' . $tipoDonazione . '"', 'value="' . $tipoDonazione . '" checked', $paginaHTML);
 
-// Cambio il testo del bottone e aggiungo campi hidden
+// Cambio bottone e aggiungo campi hidden per processare la modifica
 $paginaHTML = str_replace(
     '<button type="submit" class="btn-submit">Prenota</button>', 
     '<input type="hidden" name="id_prenotazione" value="' . $prenotazioneCorrente['id'] . '">
-    <input type="hidden" name="user_id" value="' . $prenotazioneCorrente['user_id'] . '">
-    <button type="submit" class="btn-submit">Salva modifiche</button>', 
+     <input type="hidden" name="user_id" value="' . $prenotazioneCorrente['user_id'] . '">
+     <button type="submit" class="btn-submit">Salva modifiche</button>', 
     $paginaHTML
 );
 
-// Cambio titoli della pagina
-$paginaHTML = str_replace('<h1>Dona ora</h1>', '<h1>Modifica Prenotazione</h1>', $paginaHTML);
-$paginaHTML = str_replace('<h2>Prenota la tua donazione di sangue</h2>', '<h2>Modifica i dati della prenotazione</h2>', $paginaHTML);
-
-// Inserisco i dati del donatore prima del form
-$paginaHTML = str_replace('<form id="prenotaForm"', $htmlDonatore . '<form id="prenotaForm"', $paginaHTML);
-
+// Aggiornamento titoli e Breadcrumb
+$paginaHTML = str_replace(['<h1>Dona ora</h1>', '<h2>Prenota la tua donazione di sangue</h2>'], ['<h1>Modifica Prenotazione</h1>', '<h2>Modifica i dati della prenotazione</h2>'], $paginaHTML);
 $breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <a href="profilo_admin.php">Profilo Admin</a> / <span>Modifica Prenotazione</span></p>';
 
 echo costruisciPagina($paginaHTML, $breadcrumb, 'modifica_prenotazione.php');
