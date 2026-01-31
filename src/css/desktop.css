@@ -2174,3 +2174,9 @@ dialog::backdrop {
   height: 1px;
   overflow: hidden;
 }
+
+/* Spazio in dashboard admin fra le due tabelle*/
+.spacer-admin {
+  margin: 2rem 0;
+  border-top: 1px solid #ccc;
+}
