@@ -94,7 +94,7 @@ header{
 }
 
 .sticky-header.scrolled {
-  background-color: #638a92;
+  background-color: #a2c5ce;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -454,6 +454,7 @@ main{
 }
 
 #div-why-us h3{
+  color: var(--card-title-color);
   font-size: 1.6em;
   line-height: 1.5em;
   text-align: left;
@@ -679,7 +680,7 @@ footer {
 .footer-copyright {
   margin-top: 1.6em;
   padding: 1em 0;
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 

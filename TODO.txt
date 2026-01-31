@@ -27,7 +27,6 @@ GENERALI
 - fare relazione --> tutti; cose da fare per relazione {
         - definire le convenzioni interne (bottoni, link, ecc)
     }
-- diminuire dimensioni immagini --> MDP +
 - sistemare layout informazioni personali user in profilo --> 
 
 
