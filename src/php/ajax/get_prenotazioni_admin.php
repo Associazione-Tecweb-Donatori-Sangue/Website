@@ -97,7 +97,7 @@ try {
     echo '<h3 id="titolo-future" class="tertiary-title">Prenotazioni in programma</h3>';
     echo generaTabellaAdmin($future, false, 'titolo-future');
 
-    echo '<div class="spacer-admin" aria-hidden="true" style="margin: 2rem 0; border-top: 1px solid #ccc;"></div>';
+     echo '<div class="spacer-admin" aria-hidden="true"></div>';
 
     echo '<h3 id="titolo-storico" class="tertiary-title">Storico donazioni passate (Tutti gli utenti)</h3>';
     echo generaTabellaAdmin($passate, true, 'titolo-storico');
