@@ -2165,3 +2165,12 @@ dialog::backdrop {
   align-items: center;
   justify-content: center;
 }
+
+/* Nasconde la ricerca di aria-live su dove_trovarci*/
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
