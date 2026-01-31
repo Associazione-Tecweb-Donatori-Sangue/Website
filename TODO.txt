@@ -1,8 +1,7 @@
 il simbolo + indica PRIORITÀ ASSOLUTA
 
 HTML
-- in profilo_admin e profilo c'è uno stile in linea: --> 🔴
-    - style="display:none;"
+
 - in get_prenotazioni_admin c'è uno stile in linea: --> 🔴
     - style="margin: 2rem 0; border-top: 1px solid #ccc;"
 
