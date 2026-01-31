@@ -13,7 +13,6 @@ try {
     $stmt = $pdo->prepare("DELETE FROM donatori WHERE user_id = ?");
     $stmt->execute([$_SESSION['user_id']]);
 } catch (PDOException $e) {
-    // Gestione errore (opzionale)
     echo "Errore nell'eliminazione del profilo donatore: " . $e->getMessage();
     exit();
 }
@@ -23,7 +22,6 @@ try {
     $stmt = $pdo->prepare("DELETE FROM utenti WHERE id = ?");
     $stmt->execute([$_SESSION['user_id']]);
 } catch (PDOException $e) {
-    // Gestione errore (opzionale)
     echo "Errore nell'eliminazione dell'account utente: " . $e->getMessage();
     exit();
 }

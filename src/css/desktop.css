@@ -1465,6 +1465,8 @@ form .msg-error {
   width: 100%;
   padding: 0;
   margin: 0;
+  display: flex;
+  justify-content: center;
 }
 
 /* =========================================
@@ -1562,8 +1564,6 @@ button:focus-visible {
 .btn-profile{
   padding: 0.7em 1em;
 }
-
-
 
 /* DISCALIMER IN DOVE TROVARCI */
 
@@ -1928,16 +1928,31 @@ button:focus-visible {
   padding-bottom: 0.5em;
 }
 
+.tertiary-title-centered {
+  font-size: 2em;
+  color: #082636;
+  margin: 2em auto 1em auto;
+  padding-bottom: 0.5em;
+  text-align: center;
+  border-left: none;
+  padding-left: 0;
+  width: 100%;
+}
+
 .profile-admin label[for="sede-donazioni"] {
   display: block;
   font-size: 1.1em;
   font-weight: 600;
   color: #000000;
   margin: 1.5em 0 0.5em 0;
+  text-align: center;
 }
 
 .select-locations-admin {
-  margin-bottom: 2em;
+  margin-bottom: 2.2em;
+  align-items: center;
+  display: flex;
+  justify-content: center;
 }
 
 .select-locations-admin select {
@@ -2106,6 +2121,17 @@ dialog::backdrop {
   color: #333;
 }
 
+.dialog-content form,
+.dialog-content .dialog-form {
+  background: transparent;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  max-width: none;
+}
+
 .dialog-buttons {
   display: flex;
   gap: 1em;
@@ -2118,8 +2144,17 @@ dialog::backdrop {
   margin: 0;
 }
 
-.dialog-buttons button {
+.dialog-buttons button,
+.dialog-buttons .btn-std,
+.dialog-buttons .btn-delete {
   width: 100%;
   margin: 0;
   flex: 1;
+  height: 3em;
+  padding: 0 1.5em;
+  font-size: 1em;
+  line-height: normal;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -9,7 +9,6 @@ HTML
 CSS
 - fare print.css --> MDP +
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
-- sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo/ annullamento prenotazione da user / eliminazione prenotazione da admin --> GN
 - controllare che non ci sia codice duplicato --> GN +
 - sistemare dati donatore in modifica prenotazione --> GN
 - distinguere link visitati e non visitati:
@@ -18,8 +17,6 @@ CSS
     - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
 
 PHP
-- se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN +
-- se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> GN +
 - sistemare messaggi di errore --> GG +
 
 GENERALI
