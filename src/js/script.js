@@ -19,14 +19,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Ricerca sedi con debouncing
     const searchInput = document.getElementById('searchInput');
     const noResultsMessage = document.getElementById('noResults');
+    const searchStatus = document.getElementById('searchStatus');
     let searchTimeout;
+
+    function announceToScreenReader(message) {
+        if (!searchStatus) return;
+        searchStatus.textContent = "";
+
+        setTimeout(() => {
+            searchStatus.textContent = message;
+        }, 50);
+    }
 
     if (searchInput) {
         searchInput.addEventListener('input', function () {
             clearTimeout(searchTimeout);
-            
+
             searchTimeout = setTimeout(() => {
-                const searchTerm = this.value.toLowerCase();
+                const searchTerm = this.value.toLowerCase().trim();
                 const sedi = document.querySelectorAll('.location');
                 let visibileCount = 0;
 
@@ -46,11 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     noResultsMessage.classList.toggle('no-results-message-visible', visibileCount === 0);
                     noResultsMessage.classList.toggle('no-results-message', visibileCount > 0);
                 }
+
+                // Screen reader
+                if (searchTerm === "") {
+                    announceToScreenReader("Ricerca azzerata. Mostrate tutte le sedi.");
+                } else if (visibileCount > 0) {
+                    announceToScreenReader("Trovate " + visibileCount + " sedi corrispondenti alla ricerca.");
+                } else {
+                    announceToScreenReader("Nessuna sede trovata per la ricerca inserita.");
+                }
+
             }, 300); // Debounce di 300ms
         });
     }
 
-    let isAutoScrolling = false; 
+        let isAutoScrolling = false; 
 
     // 3. Header sticky
     const header = document.querySelector('.sticky-header');
