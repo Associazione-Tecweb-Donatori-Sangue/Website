@@ -8,6 +8,109 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
+function validaCodiceFiscale($cf) {
+    $cf = strtoupper(trim($cf));
+    
+    if (strlen($cf) != 16) {
+        return false;
+    }
+    
+    if (!preg_match('/^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/', $cf)) {
+        return false;
+    }
+    
+    $valoriDispari = [
+        '0' => 1, '1' => 0, '2' => 5, '3' => 7, '4' => 9, '5' => 13,
+        '6' => 15, '7' => 17, '8' => 19, '9' => 21,
+        'A' => 1, 'B' => 0, 'C' => 5, 'D' => 7, 'E' => 9, 'F' => 13,
+        'G' => 15, 'H' => 17, 'I' => 19, 'J' => 21, 'K' => 2, 'L' => 4,
+        'M' => 18, 'N' => 20, 'O' => 11, 'P' => 3, 'Q' => 6, 'R' => 8,
+        'S' => 12, 'T' => 14, 'U' => 16, 'V' => 10, 'W' => 22, 'X' => 25,
+        'Y' => 24, 'Z' => 23
+    ];
+    
+    $valoriPari = [
+        '0' => 0, '1' => 1, '2' => 2, '3' => 3, '4' => 4, '5' => 5,
+        '6' => 6, '7' => 7, '8' => 8, '9' => 9,
+        'A' => 0, 'B' => 1, 'C' => 2, 'D' => 3, 'E' => 4, 'F' => 5,
+        'G' => 6, 'H' => 7, 'I' => 8, 'J' => 9, 'K' => 10, 'L' => 11,
+        'M' => 12, 'N' => 13, 'O' => 14, 'P' => 15, 'Q' => 16, 'R' => 17,
+        'S' => 18, 'T' => 19, 'U' => 20, 'V' => 21, 'W' => 22, 'X' => 23,
+        'Y' => 24, 'Z' => 25
+    ];
+    
+    $caratteriControllo = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $somma = 0;
+    
+    for ($i = 0; $i < 15; $i++) {
+        $char = $cf[$i];
+        if ($i % 2 == 0) {
+            $somma += $valoriDispari[$char];
+        } else {
+            $somma += $valoriPari[$char];
+        }
+    }
+    
+    $resto = $somma % 26;
+    $carattereAtteso = $caratteriControllo[$resto];
+    
+    return ($cf[15] === $carattereAtteso);
+}
+
+function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
+    $cf = strtoupper(trim($cf));
+    
+    // Controllo lunghezza PRIMA di chiamare validaCodiceFiscale
+    if (strlen($cf) != 16) {
+        return ['valido' => false, 'errore' => 'Il codice fiscale deve essere lungo esattamente 16 caratteri. Attualmente ne hai inseriti ' . strlen($cf) . '.'];
+    }
+    
+    // Controllo formato con regex
+    if (!preg_match('/^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/', $cf)) {
+        return ['valido' => false, 'errore' => 'Il formato del codice fiscale non è corretto. Deve contenere 6 lettere, 2 numeri, 1 lettera, 2 numeri, 1 lettera, 3 numeri e 1 lettera finale.'];
+    }
+    
+    // Controllo checksum (carattere di controllo)
+    if (!validaCodiceFiscale($cf)) {
+        return ['valido' => false, 'errore' => 'Il codice fiscale non è formalmente corretto (carattere di controllo non valido).'];
+    }
+    
+    // Controllo anno
+    $annoCF = substr($cf, 6, 2);
+    $annoNascita = date('y', strtotime($dataNascita));
+    
+    if ($annoCF != $annoNascita) {
+        return ['valido' => false, 'errore' => 'L\'anno di nascita non corrisponde al codice fiscale.'];
+    }
+    
+    // Controllo mese
+    $meseCF = substr($cf, 8, 1);
+    $mesiCF = ['A' => '01', 'B' => '02', 'C' => '03', 'D' => '04', 'E' => '05', 'H' => '06',
+                'L' => '07', 'M' => '08', 'P' => '09', 'R' => '10', 'S' => '11', 'T' => '12'];
+    
+    $meseNascita = date('m', strtotime($dataNascita));
+    
+    if (!isset($mesiCF[$meseCF]) || $mesiCF[$meseCF] != $meseNascita) {
+        return ['valido' => false, 'errore' => 'Il mese di nascita non corrisponde al codice fiscale.'];
+    }
+    
+    // Controllo giorno
+    $giornoCF = intval(substr($cf, 9, 2));
+    $giornoNascita = intval(date('d', strtotime($dataNascita)));
+    
+    if ($sesso == 'Femmina') {
+        $giornoAtteso = $giornoNascita + 40;
+    } else {
+        $giornoAtteso = $giornoNascita;
+    }
+    
+    if ($giornoCF != $giornoAtteso) {
+        return ['valido' => false, 'errore' => 'Il giorno di nascita o il sesso non corrispondono al codice fiscale.'];
+    }
+    
+    return ['valido' => true, 'errore' => ''];
+}
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 1. Controllo Età
@@ -27,6 +130,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($peso < 50) {
         $_SESSION['messaggio_flash'] = "Errore: Il peso minimo per donare è 50 Kg.";
         $_SESSION['dati_inseriti'] = $_POST; // <--- SALVO I DATI
+        header("Location: registrazione_donatore.php");
+        exit();
+    }
+
+    // 3. VALIDAZIONE CODICE FISCALE
+    $risultatoValidazione = validaCoerenzaCF(
+        $_POST['codice_fiscale'],
+        $_POST['nome'],
+        $_POST['cognome'],
+        $_POST['data_nascita'],
+        $_POST['sesso']
+    );
+    
+    if (!$risultatoValidazione['valido']) {
+        $_SESSION['messaggio_flash'] = "Errore: " . $risultatoValidazione['errore'];
+        $_SESSION['dati_inseriti'] = $_POST;
         header("Location: registrazione_donatore.php");
         exit();
     }
@@ -90,7 +209,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // 2. PREPARAZIONE DELLA PAGINA (Visualizzazione)
 $template = caricaTemplate('registrazione_donatore.html');
 
-$messaggioErrore = ""; // Inizializzo vuoto
+$template = str_replace('<form method="post"', '<form method="post" autocomplete="new-password"', $template);
+
+$template = preg_replace(
+    '/<input\s+(type="text"|type="email"|type="tel"|type="date"|type="number")/i',
+    '<input autocomplete="new-password" $1',
+    $template
+);
+
+$template = str_replace(
+    'name="codice_fiscale"',
+    'name="codice_fiscale" autocomplete="nope"',
+    $template
+);
+
+$template = str_replace(
+    'name="luogo_nascita"',
+    'name="luogo_nascita" autocomplete="nope" readonly onfocus="this.removeAttribute(\'readonly\');"',
+    $template
+);
+
+$messaggioErrore = ""; 
 if (isset($_SESSION['messaggio_flash'])) {
     $classe = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? 'msg-error' : 'msg-success';
 
