@@ -203,7 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const eliminaOra = document.getElementById('elimina-ora');
 
     if (dialogEliminaPrenotazioneAdmin) {
-        // Gestione click su tutti i bottoni "ELIMINA" della tabella admin
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('btn-elimina-prenotazione-admin')) {
                 const idPrenotazione = e.target.dataset.idPrenotazione;
@@ -211,25 +210,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 const data = e.target.dataset.data;
                 const ora = e.target.dataset.ora;
 
-                // Popola il dialog con i dati
                 if (hiddenIdPrenotazioneAdmin) hiddenIdPrenotazioneAdmin.value = idPrenotazione;
                 if (eliminaUsername) eliminaUsername.textContent = username;
                 if (eliminaData) eliminaData.textContent = data;
                 if (eliminaOra) eliminaOra.textContent = ora;
 
-                // Apri il dialog
                 dialogEliminaPrenotazioneAdmin.showModal();
             }
         });
 
-        // Chiudi dialog con bottone Annulla
         if (btnAnnullaEliminaAdmin) {
             btnAnnullaEliminaAdmin.addEventListener('click', () => {
                 dialogEliminaPrenotazioneAdmin.close();
             });
         }
 
-        // Chiudi dialog cliccando fuori (backdrop)
         dialogEliminaPrenotazioneAdmin.addEventListener('click', (e) => {
             if (e.target === dialogEliminaPrenotazioneAdmin) {
                 dialogEliminaPrenotazioneAdmin.close();
@@ -237,50 +232,85 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 5. GESTIONE FOTO PROFILO
-    const photoUpload = document.getElementById('photo-upload');
-    const profileImg = document.getElementById('profile-img');
-    const removeBtn = document.getElementById('remove-photo-btn');
-    const profileContainer = document.querySelector('.profile-picture');
-    const navImg = document.getElementById('imgProfilo');
+    // 9. GESTIONE VALIDAZIONE MESI E POPUP CONFERMA (ADMIN E USER)
+    const prenotaForm = document.getElementById('prenotaForm');
+    const dialogMesi = document.getElementById('dialog-conferma-mesi');
+    const descMesi = document.getElementById('dialog-mesi-desc');
+    const btnProcedi = document.getElementById('btn-procedi-mesi');
+    const btnAnnulla = document.getElementById('btn-annulla-mesi');
 
-    const showMessage = (message, isError = false) => {
-        console.log(isError ? 'Errore:' : 'Successo:', message);
-        if (isError) alert(message);
-    };
+    if (prenotaForm && dialogMesi) {
+        prenotaForm.addEventListener('submit', function(e) {
+            const ultimaDataStr = this.dataset.ultima;
+            const sesso = this.dataset.sesso || 'Maschio';
+            const isAdmin = this.dataset.isAdmin === 'true';
+            const inputData = document.getElementById('data');
 
-    const handleResponse = (response) => {
-        return response.text().then(text => {
-            try {
-                return JSON.parse(text.trim());
-            } catch (e) {
-                console.error("Errore parsing JSON:", text);
-                throw new Error("Risposta server non valida");
+            if (ultimaDataStr && inputData && inputData.value) {
+                const dataScelta = new Date(inputData.value);
+                const ultimaDonazione = new Date(ultimaDataStr);
+                
+                let diffMesi = (dataScelta.getFullYear() - ultimaDonazione.getFullYear()) * 12;
+                diffMesi += dataScelta.getMonth() - ultimaDonazione.getMonth();
+                
+                const soglia = (sesso === 'Femmina') ? 6 : 3;
+
+                // Se l'intervallo non è rispettato
+                if (diffMesi < soglia) {
+                    if (isAdmin) {
+                        // LOGICA ADMIN: Mostra il dialog se non ancora confermato
+                        if (!prenotaForm.dataset.confermaForzata) {
+                            e.preventDefault();
+                            const dataFormattata = ultimaDataStr.split('-').reverse().join('/');
+                            
+                            descMesi.innerHTML = `Il donatore ha già una prenotazione il <strong>${dataFormattata}</strong>. 
+                                                  Non ci sono i <strong>${soglia} mesi</strong> di distanza previsti per un profilo <strong>${sesso}</strong>. 
+                                                  <br><br>Vuoi forzare comunque il salvataggio?`;
+                            
+                            dialogMesi.showModal();
+                        }
+                   } else {
+   
+                        e.preventDefault();
+                        const dataFormattata = ultimaDataStr.split('-').reverse().join('/');
+                        descMesi.innerHTML = `Errore: non sono ancora passati i ${soglia} mesi richiesti dalla tua ultima donazione (${dataFormattata}). <br>Per favore, scegli una data successiva.`;
+                        if (btnProcedi) btnProcedi.style.display = 'none';
+                        if (btnAnnulla) btnAnnulla.textContent = 'HO CAPITO';
+                        dialogMesi.showModal();
+                    }
+                }
             }
         });
-    };
 
-    const triggerUpload = () => {
-        if (photoUpload) photoUpload.click();
-    };
+        // Listener per i bottoni
+        btnProcedi.addEventListener('click', () => {
+            prenotaForm.dataset.confermaForzata = "true";
+            dialogMesi.close();
+            prenotaForm.requestSubmit();
+        });
+
+        btnAnnulla.addEventListener('click', () => {
+            delete prenotaForm.dataset.confermaForzata;
+            dialogMesi.close();
+        });
+
+        dialogMesi.addEventListener('click', (e) => {
+            if (e.target === dialogMesi) dialogMesi.close();
+        });
+    }
+
+    // 5. GESTIONE FOTO PROFILO
+    const photoUpload = document.getElementById('photo-upload');
+    const profileContainer = document.querySelector('.profile-picture');
+    const removeBtn = document.getElementById('remove-photo-btn');
 
     if (profileContainer && photoUpload) {    
         profileContainer.addEventListener('click', (e) => {
-            if (e.target.closest('#remove-photo-btn')) return;
-            triggerUpload();
-        });
-
-        profileContainer.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-                if (document.activeElement === removeBtn) return;
-                
-                e.preventDefault();
-                triggerUpload();
+            if (!e.target.closest('#remove-photo-btn')) {
+                photoUpload.click();
             }
         });
 
-        /* --- GESTIONE UPLOAD FILE --- */
-        
         photoUpload.addEventListener('change', function() {
             if (this.files && this.files[0]) {
                 const formData = new FormData();
@@ -291,61 +321,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     method: 'POST',
                     body: formData
                 })
-                .then(handleResponse)
+                .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        setTimeout(() => window.location.reload(), 100);
-                    } else {
-                        showMessage(data.message || 'Errore durante upload', true);
-                    }
-                })
-                .catch(error => {
-                    console.error('Errore upload:', error);
-                    showMessage('Errore di connessione', true);
+                    if (data.success) window.location.reload();
+                    else alert(data.message);
                 });
             }
         });
     }
 
-        /* --- RIMOZIONE foto profilo ---*/
-
-        if (removeBtn) {
-            const handleRemoval = (e) => {
-                e.stopPropagation(); 
-                if (!confirm('Sei sicuro di voler rimuovere la foto profilo?')) return;
-
+    if (removeBtn) {
+        removeBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            if (confirm('Sei sicuro di voler rimuovere la foto profilo?')) {
                 const formData = new FormData();
                 formData.append('azione', 'rimuovi');
-
                 fetch('../actions/gestioneFotoProfilo.php', {
                     method: 'POST',
                     body: formData
                 })
-                .then(handleResponse)
+                .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        setTimeout(() => window.location.reload(), 100);
-                    } else {
-                        showMessage(data.message || 'Errore durante rimozione', true);
-                    }
-                })
-                .catch(error => {
-                    console.error('Errore rimozione:', error);
-                    showMessage('Errore di connessione', true);
+                    if (data.success) window.location.reload();
                 });
-            };
-
-            removeBtn.addEventListener('click', handleRemoval);
-            removeBtn.addEventListener('keydown', (e) => { 
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    handleRemoval(e);
-                }
-            });
+            }
+        });
     }
 
 });
-
 
 /* =========================================
    GESTIONE PRENOTAZIONI ADMIN (AJAX)
@@ -382,3 +385,4 @@ window.addEventListener("resize", () => {
     document.body.classList.remove("resize-animation-stopper");
   }, 400);
 });
+
