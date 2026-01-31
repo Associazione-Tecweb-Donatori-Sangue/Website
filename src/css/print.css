@@ -1,17 +1,14 @@
 
   /*PRINT.CSS - Foglio di stile per la stampa*/
 
-  /*in index ci sono un paio di problemi con le ombre e fa schifo la scrittura, va sistemata*/
-  /*dona ora ok tranne delle ombre che vanno tolte*/
-  /*chi siamo ok tranne delle ombre che vanno tolte*/
-  /*dove trovarci quasi ok, ci sono delle ombre e andrebbe nascosto il mess "nessuna sede corrisponde alla tua ricerca"*/
-  /*user quasi ok, le tabelle non hanno lultima riga, mistero... e poi penso vada tolta la riga azzurra e la a+ deve essere nero *penso* */
-  /*admin ok ultima riga della tabella manca e va eliminato il cerchio azzurro*/
+  /*in index sistemare why us*/
+  /*user e admin quasi ok, le tabelle non hanno lultima riga, mistero... va eliminato il cerchio azzurro in admin*/
+  /*pulire il codice*/
 
 
 @media print {
 
-  /*Iimpostazioni pagina default*/
+  /*Impostazioni pagina default*/
   @page {
     size: A4 portrait;
     margin: 20px 25px 20px 25px;
@@ -67,18 +64,6 @@
     widows: 3;
   }
 
-  ul, ol {
-    margin: 0 0 6px 25px;
-    padding: 0;
-  }
-
-  li {
-    font-size: 12px;
-    line-height: 18px;
-    margin-bottom: 6px;
-    color: #000;
-  }
-
   abbr {
     text-decoration: none;
   }
@@ -89,75 +74,7 @@
     font-style: italic;
   }
 
-  /* Header di stampa */
-  #title-standard {
-    display: block;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid #000;
-  }
-
-  #title-standard::before {
-    display: none;
-    content: none;
-  }
-
-  #title-standard h1 {
-    text-align: left;
-    margin: 0;
-    font-size: 24px;
-    line-height: 30px;
-    padding-left: 40px;
-    position: relative;
-  }
-
-  /* Logo */
-  #title-standard h1::before {
-    content: "";
-    display: inline-block;
-    width: 30px;
-    height: 30px;
-    background: url("../images/logo.jpg") no-repeat center center;
-    background-size: contain;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  #title-standard h2 {
-    text-align: left;
-    margin: 5px 0 0 0;
-    font-size: 14px;
-    padding-left: 40px;
-  }
-
-  /* Landing title*/
-  #landing-title {
-    height: auto;
-    padding: 20px 0;
-  }
-
-  #landing-title h1 {
-    text-align: left;
-    width: 100%;
-    margin: 0 0 10px 0;
-    font-size: 24px;
-    line-height: 30px;
-    padding-left: 40px;
-    position: relative;
-  }
-
-  #landing-title h2 {
-    width: 100%;
-    text-align: left;
-    margin: 0;
-    font-size: 14px;
-    padding-left: 40px;
-  }
-
+  /* Header di stampa e titoli*/
   /* breadcrumb */
   #breadcrumb {
     display: block;
@@ -166,6 +83,7 @@
     padding: 8px 0;
     margin: 0 0 15px 0;
     border-bottom: 1px solid #000;
+    border-radius: 0;
     text-align: left;
   }
 
@@ -180,10 +98,80 @@
     font-weight: bold;
   }
 
+  /* titoli*/
+  #landing-title {
+    height: auto;
+    width: 100%;
+    padding: 20px 0;
+    border-bottom: 2px solid #000;
+  }
+
+  #landing-title h1 {
+    text-align: left;
+    margin: 0 0 10px 0;
+    font-size: 24px;
+    line-height: 30px;
+    position: relative;
+    padding-left: 40px;
+  }
+
+  #landing-title h2 {
+    text-align: left;
+    margin: 0;
+    font-size: 14px;
+    padding-left: 40px;
+  }
+
+  #landing-title h1 abbr,
+  #title-standard h1 abbr {
+    white-space: nowrap;
+  }
+
+  #title-standard {
+    display: block;
+    text-align: left;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    margin: 0;
+    border-bottom: 2px solid #000;
+  }
+
+  #title-standard h1 {
+    font-size: 24px;
+    line-height: 30px;
+    position: relative;
+    padding-left: 40px;
+  }
+
+  #title-standard h2 {
+    font-size: 14px;
+  }
+
+  #title-standard::before {
+    display: none;
+    content: none;
+  }
+
+  /* Logo */
+  #title-standard h1::before,
+  #landing-title h1::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url("../images/logo.jpg") no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
   /* indirizzi link */
   a {
     color: #000;
-    text-decoration: underline;
     font-weight: normal;
     background: transparent;
     border: none;
@@ -196,16 +184,23 @@
     pointer-events: none;
   }
 
-  /* Mostro URL assoluto dopo ogni link */
+  .btn-std,
+  .btn-index {
+    color: #000;
+    padding: 8px, 0px, 10px, 0px;
+  }
+
+  /* link esterni */
   a[href]::after {
     content: " (" attr(href) ")";
-    font-size: 10px;
+    font-size: 8px;
     font-style: italic;
-    color: #333;
+    color: #666;
+
     word-break: break-all;
   }
 
-  /* non mostro URL per link interni, ancore e breadcrumb */
+  /* link interni */
   a[href^="#"]::after,
   a[href^="javascript"]::after,
   #breadcrumb a::after {
@@ -239,6 +234,9 @@
   /* Carosello e animazioni */
   .carousel,
   .carousel-track,
+  /*dove_trovarci, ricerca nulla*/
+  #noResults,
+  .no-results-message,
   /* dialoghi*/
   dialog,
   /* altri elementi da nascoindere */
@@ -267,7 +265,7 @@
     visibility: visible;
     max-width: 100%;
     width: 100%;
-    margin: 20px 0;
+    margin: 0;
     padding: 0;
     border: none;
     border-radius: 0;
@@ -277,20 +275,24 @@
 
   form fieldset,
   #prenotaForm fieldset {
+    text-align: left;
     border: none;
-    margin: 10px 0;
+    margin-bottom: 30px;
     padding: 0;
     background: transparent;
     border-radius: 0;
+    box-shadow: none;
   }
 
   form legend,
   #prenotaForm legend {
+    text-align: left;
     font-size: 14px;
     font-weight: bold;
-    padding: 5px 10px;
+    padding: 0;
     background: #fff;
     border-radius: 0;
+    box-shadow: none;
   }
 
   /* Campi input visibili nei form */
@@ -310,6 +312,7 @@
     font-size: 12px;
     line-height: 18px;
     background: transparent;
+    box-shadow: none;
   }
 
   form label,
@@ -319,6 +322,7 @@
     font-weight: bold;
     margin-bottom: 5px;
     color: #000;
+    box-shadow: none;
   }
 
   /* Radio buttons */
@@ -356,6 +360,7 @@
     padding: 0;
   }
 
+  /*index*/
   /* Card e sezioni*/
   #card-intro,
   #card-join,
@@ -373,14 +378,12 @@
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-    page-break-inside: avoid;
   }
 
   /* Card intro - layout verticale */
   #card-intro {
     flex-direction: column;
   }
-  
 
   #card-intro div {
     width: 100%;
@@ -403,7 +406,16 @@
     text-align: left;
   }
 
+  .card-main-title h2 {
+    color: #000;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
   #card-join-title h2 {
+    color: #000;
+    font-size: 14px;
+    line-height: 20px;
     text-align: left;
     margin: 0;
   }
@@ -417,7 +429,6 @@
     flex-direction: column;
     width: 100%;
     margin: 0;
-    padding: 0 0 0 18px;
     text-align: left;
     justify-content: flex-start;
     align-items: flex-start;
@@ -434,11 +445,15 @@
     flex-direction: row;
     justify-items: auto;
     border-radius: 0;
+    margin-left: 0;
   }
 
-  #card-join li p {
+  #card-join ul li p {
     text-align: left;
+    margin-left: 0;
     margin: 0;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   #card-join img {
@@ -449,34 +464,27 @@
   #div-why-us {
     width: 100%;
     margin: 0;
-  }
-
-  #div-why-us ul {
-    list-style: disc;
-    margin-left: 20px;
-  }
-
-  #div-why-us li {
-    margin-bottom: 6px;
+    margin-bottom: 0;
   }
 
   #div-why-us h3 {
+    color: #000;
     font-size: 14px;
     line-height: 20px;
+    page-break-after: avoid;
   }
 
-  #div-why-us p {
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-  /* Rimuovi pseudo-elementi decorativi */
+  /*card location*/
   #card-locations::before {
+    box-shadow: none;
     display: none;
     content: none;
   }
 
   #card-locations {
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
     justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
@@ -581,25 +589,38 @@
 
   /* Founders */
   #founders {
+    display: block;
+    margin: 0;
+    align-self: auto;
+    text-align: left;
     background: transparent;
+    box-shadow: none;
   }
 
-  #founders h4 {
+  #founders h3 {
+    margin: 0;
+    text-align: left;
     font-size: 16px;
     color: #000;
   }
 
   #founders p {
+    margin: 0;
+    text-align: left;
     color: #000;
+    margin-bottom: 10px;
   }
 
   #founders ul {
+    margin: 0;
+    text-align: left;
     display: block;
     list-style: disc;
-    margin-left: 25px;
   }
 
   #founders li {
+    margin: 0;
+    text-align: left;
     display: list-item;
     margin-bottom: 8px;
     padding: 0;
@@ -607,6 +628,7 @@
     background: transparent;
     color: #000;
     font-size: 12px;
+    box-shadow: none;
   }
 
   /* faq */
@@ -763,15 +785,15 @@
     break-before: page;
   }
 
-  section,
-  article {
-    page-break-inside: avoid;
+  /* Mantieni i titoli con il loro contenuto */
+  h1, h2, h3, h4 {
+    page-break-before: avoid;
   }
 
   /* Evita elementi orfani/vedovi */
   p, li, dd {
-    orphans: 3;
-    widows: 3;
+    orphans: 2;
+    widows: 2;
   }
 
 
@@ -782,6 +804,7 @@
     font-size: 12px;
     line-height: 18px;
     background: transparent;
+    box-shadow: none;
   }
 
   #disclaimer-title {
@@ -805,6 +828,7 @@
     font-size: 18px;
     color: #000;
     text-align: center;
+    border-bottom: none;
   }
 
   .data-list {
@@ -823,7 +847,8 @@
     color: #000;
   }
 
-  .data-list dd {
+  .data-list dd 
+  .evidenziato dd {
     font-size: 12px;
     color: #000;
   }
