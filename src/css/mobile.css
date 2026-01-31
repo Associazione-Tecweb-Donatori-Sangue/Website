@@ -1,6 +1,6 @@
 .resize-animation-stopper * {
-    animation: none !important;
-    transition: none !important;
+    animation: none;
+    transition: none;
 }
 
 body {
@@ -249,7 +249,7 @@ body {
 }
 
 #card-join ul {
-    flex-direction: row !important;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 90%;
     height: auto;
@@ -365,17 +365,14 @@ footer{
     margin: 0.5em 0;
 }
 
-.right-footer .title-item {
+.right-footer .title-item,
+.vertical-divider {
     display: none;
 }
 
 .right-footer .times-item {
     align-items: center;
     margin-top: 0;
-}
-
-.vertical-divider {
-    display: none;
 }
 
 .contact-info {
@@ -448,18 +445,6 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
     font-size: 0.9em;
 }
 
-/* Tabelle come card su schermi piccoli */
-@media screen and (max-width: 600px) {
-    .table-container {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .data-table {
-        min-width: 600px;
-    }
-}
-
 .select-locations-admin select {
     max-width: 100%;
     font-size: 0.95em;
@@ -500,7 +485,8 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
 /*  ABOUT US / FAQ     */
 /* ------------------- */
 
-.text-standard {
+.text-standard,
+#founders {
     width: 95%;
     padding: 1.5em;
 }
@@ -516,11 +502,6 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
     padding-left: 0.8em;
 }
 
-#founders {
-    width: 95%;
-    padding: 1.5em;
-}
-
 #founders h4 {
     font-size: 1.6em;
 }
@@ -529,27 +510,19 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
     grid-template-columns: 1fr;
 }
 
-/* FAQ già responsive da desktop.css media query */
-
-/* Carosello già responsive da desktop.css media query */
-
-/* ------------------- */
-/*  PAGINE ERRORE      */
-/* ------------------- */
-
-/* Già gestite da desktop.css @media (max-width: 768px) */
-
 /* ------------------- */
 /*  TITOLI STANDARD    */
 /* ------------------- */
 
 #title-standard h1 {
     font-size: 3em;
+    padding: 0 0.5em;
 }
 
 #title-standard h2 {
     font-size: 1.3em;
     margin-bottom: 0.8em;
+    padding: 0 1em;
 }
 
 .main-standard {
@@ -560,6 +533,19 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
 /* ------------------- */
 /*  UTILITY MOBILE     */
 /* ------------------- */
+
+/* Back button in modalità mobile - blocco normale invece di posizione assoluta */
+.back-button-container {
+    position: static;
+    margin: 1em;
+    text-align: left;
+    width: 100%;
+}
+
+.back-button {
+    display: block;
+    width: fit-content;
+}
 
 /* Nascondi logo quando il menu è aperto per più spazio */
 #burger-input:checked ~ #logo {
@@ -602,11 +588,11 @@ dialog {
    PAGINE ERRORE - MOBILE
 ======================================== */
 body.error-background {
-    background-image: none !important;
+    background-image: none;
 }
 
 .error-container {
-    flex-direction: column !important;
+    flex-direction: column;
     gap: 2em;
     padding: 1em;
 }
@@ -656,19 +642,19 @@ body.error-background {
 ======================================== */
 .faq dt, .faq dd {
     max-width: 100%;
-    border-right: none !important;
-    border-left: 5px solid #749BA3 !important;
+    border-right: none;
+    border-left: 5px solid #749BA3;
 }
 
 .faq dt {
     font-size: 1.15rem;
-    flex-direction: row !important;
-    text-align: left !important;
+    flex-direction: row;
+    text-align: left;
 }
 
 .faq dt::before {
-    margin-left: 0 !important;
-    margin-right: 0.75rem !important;
+    margin-left: 0;
+    margin-right: 0.75rem;
 }
 
 /* ========================================
@@ -698,42 +684,87 @@ body.error-background {
 .data-table,
 .data-table tbody,
 .data-table tr,
-.data-table td {
+.data-table td,
+.data-table th {
   display: block;
   width: 100%;
 }
 
 .data-table tr {
   margin-bottom: 1.5em;
-  border-radius: 0.8em;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  padding: 1em;
-  background-color: #ffffff;
+  border-radius: 1em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  padding: 1.5em;
+  background: linear-gradient(135deg, #ffffff 0%, #f8fbfc 100%);
+  border: 1px solid #e0e7ec;
 }
 
-.data-table td {
-  text-align: left !important;
-  padding: 0.8em 0;
+.data-table td,
+.data-table th {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: right;
+  padding: 0.9em 0;
   border: none;
+  border-bottom: 1px solid #f0f4f8;
   position: relative;
-  padding-left: 45%;
+  font-size: 1.05em;
+  flex-wrap: nowrap;
+  gap: 1em;
 }
 
-.data-table td::before {
+.data-table td:last-child,
+.data-table th:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.8em;
+}
+
+.data-table td::before,
+.data-table th::before {
   content: attr(data-label);
-  position: absolute;
-  left: 0;
-  width: 40%;
-  padding-right: 1em;
-  font-weight: 700;
-  color: #082636;
-  text-transform: uppercase;
-  font-size: 0.85em;
+  font-weight: 600;
+  color: #2c5f7a;
+  font-size: 1em;
+  text-transform: none;
+  text-align: left;
+  flex-shrink: 0;
 }
 
-.data-table button {
+.data-table th {
+  font-weight: 600;
+  color: #082636;
+  font-size: 1.1em;
+}
+
+.data-table td:has(.status-completed),
+.data-table th:has(.status-completed) {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1em;
+}
+
+.data-table .status-completed {
+  flex-shrink: 0;
+  white-space: nowrap;
+  font-size: 1em;
+}
+
+.data-table button,
+.data-table .btn-table {
   width: 100%;
-  margin-top: 0.5em;
+  margin: 0;
+  display: block;
+  padding: 1em;
+  font-size: 1em;
+}
+
+.data-table .btn-table + .btn-table {
+  margin-top: 0.8em;
 }
 
 

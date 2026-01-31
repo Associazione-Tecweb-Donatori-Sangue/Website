@@ -132,11 +132,11 @@ try {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
             $righeTabella .= '<tr>
-                <td>' . $dataIt . '</td>
-                <td>' . $oraIt . '</td>
-                <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
-                <td>' . htmlspecialchars($p['nome_sede']) . '</td>
-                <td>
+                <td data-label="Data">' . $dataIt . '</td>
+                <td data-label="Ora">' . $oraIt . '</td>
+                <td data-label="Tipo Donazione">' . htmlspecialchars($p['tipo_donazione']) . '</td>
+                <td data-label="Sede">' . htmlspecialchars($p['nome_sede']) . '</td>
+                <td data-label="Azioni">
                     <button type="button" class="btn-table delete btn-annulla-prenotazione" data-id-prenotazione="' . $p['id'] . '" data-data="' . $dataIt . '" data-ora="' . $oraIt . '">Annulla</button>
                 </td>
             </tr>';
@@ -167,11 +167,11 @@ try {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
             $righeTabella .= '<tr>
-                <td>' . $dataIt . '</td>
-                <td>' . $oraIt . '</td>
-                <td>' . htmlspecialchars($p['tipo_donazione']) . '</td>
-                <td>' . htmlspecialchars($p['nome_sede']) . '</td>
-                <td><span class="status-completed">Completata</span></td>
+                <td data-label="Data">' . $dataIt . '</td>
+                <td data-label="Ora">' . $oraIt . '</td>
+                <td data-label="Tipo Donazione">' . htmlspecialchars($p['tipo_donazione']) . '</td>
+                <td data-label="Sede">' . htmlspecialchars($p['nome_sede']) . '</td>
+                <td data-label="Stato"><span class="status-completed">Completata</span></td>
             </tr>';
         }
         $sezionePassate = '

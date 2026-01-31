@@ -67,11 +67,11 @@ try {
             $user = htmlspecialchars($p['username']);
 
             $html .= '<tr>';
-            $html .= '<th scope="row">' . $user . '</th>';
-            $html .= '<td>' . $dataIt . '</td>';
-            $html .= '<td>' . $oraIt . '</td>';
-            $html .= '<td>' . htmlspecialchars($p['nome_sede']) . '</td>';
-            $html .= '<td>';
+            $html .= '<th scope="row" data-label="Username">' . $user . '</th>';
+            $html .= '<td data-label="Data">' . $dataIt . '</td>';
+            $html .= '<td data-label="Ora">' . $oraIt . '</td>';
+            $html .= '<td data-label="Sede">' . htmlspecialchars($p['nome_sede']) . '</td>';
+            $html .= '<td data-label="Azioni">';
             
             if ($isStorico) {
                 $html .= '<span class="status-completed">Completata</span>';

@@ -8,7 +8,6 @@ HTML
 
 CSS
 - fare print.css --> MDP +
-- finire mobile.css  --> GG
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
 - sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo/ annullamento prenotazione da user / eliminazione prenotazione da admin --> GN
 - controllare che non ci sia codice duplicato --> GN +
@@ -18,12 +17,9 @@ CSS
     - DONA ORA: accedi e registrati, torna al profilo
     - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
 
-
 PHP
 - se si sbaglia Codice fiscale in registrazione_donatore non dice niente --> GN +
 - se si sbaglia peso in registrazione_donatore viene cancellata la selezione del sesso --> GN +
-- logica dei mesi di attesa tra una prenotazione e l'altra da sistemare 
-    - (attualmente se ho una prenotazione a Gennaio 2026 e una a Dicembre 2026, se provo ad anticipare la seconda non me lo fa fare e mi dice che la prima data disponibile è a Marzo 2027) --> GN +
 - sistemare messaggi di errore --> GG +
 
 GENERALI
@@ -31,7 +27,7 @@ GENERALI
 - fare relazione --> tutti; cose da fare per relazione {
         - definire le convenzioni interne (bottoni, link, ecc)
     }
-- sistemare layout informazioni personali user in profilo --> 
+- sistemare layout informazioni personali user in profilo --> 🔴
 
 
 EXTRA - da fare solo se avanza tempo (o da inserire nella relazione come estensioni possibili future)
