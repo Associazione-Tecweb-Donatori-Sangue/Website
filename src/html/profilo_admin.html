@@ -72,6 +72,19 @@
             </div>
         </main>
         
+        <!-- Dialog per conferma rimozione foto profilo -->
+        <dialog id="deletePhotoDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
+            <div class="dialog-content">
+                <h2 id="dialogTitle">Rimozione foto profilo</h2>
+                <p id="dialogDesc">Sei sicuro di voler rimuovere la tua foto profilo?</p>
+
+                <div class="dialog-buttons">
+                <button type="button" class="btn-delete" id="confirmDeleteBtn">Rimuovi</button>
+                <button type="button" class="btn-std" id="cancelDeleteBtn">Annulla</button>
+                </div>
+            </div>
+        </dialog>
+
         <!-- Dialog per conferma eliminazione prenotazione -->
         <dialog id="dialog-elimina-prenotazione-admin" aria-labelledby="dialog-elimina-title" aria-describedby="dialog-elimina-desc">
             <div class="dialog-content">
