@@ -46,7 +46,7 @@ try {
    
     function generaTabellaAdmin($dati, $isStorico = false, $idDescrizione = '') {
         if (count($dati) === 0) {
-            return '<p class="text-standard testo-centered-message">Nessuna prenotazione trovata.</p>';
+            return '<p class="text-standard">Nessuna prenotazione trovata.</p>';
         }
 
         $ariaAttribute = !empty($idDescrizione) ? ' aria-describedby="' . $idDescrizione . '"' : '';
@@ -103,6 +103,6 @@ try {
     echo generaTabellaAdmin($passate, true, 'titolo-storico');
 
 } catch (PDOException $e) {
-    echo '<p class="text-standard testo-centered-message">Errore nel caricamento dei dati.</p>';
+    echo '<p class="text-standard">Errore nel caricamento dei dati.</p>';
 }
 ?>

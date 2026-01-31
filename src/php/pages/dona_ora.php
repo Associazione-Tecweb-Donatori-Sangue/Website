@@ -22,7 +22,7 @@ $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id
 if (!isset($_SESSION['user_id'])) {
     // Utente non loggato -> Messaggio di login/registrazione
     $messaggioAvviso = '
-    <div class="text-standard testo-centered">
+    <div class="text-standard">
         <h3 class="section-title">Accesso Richiesto</h3>
         <p>Per prenotare una donazione è necessario accedere alla propria area riservata.</p>
         <div class="action-container">
@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
     // Utente loggato -> controllo se è admin
     if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
         $messaggioAdmin = '
-        <div class="text-standard testo-centered">
+        <div class="text-standard">
             <h3 class="section-title">Profilo Admin</h3>
             <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>! Gli account amministratori non possono effettuare donazioni.</p>
             <div class="action-container-single">
@@ -65,9 +65,9 @@ if (!isset($_SESSION['user_id'])) {
             if (!$datiDonatore) {
                 // Utente loggato ma non donatore -> Messaggio di completamento profilo donatore
                 $messaggioIncompleto = '
-                <div class="text-standard testo-centered">
-                    <h3 class="section-title">Profilo Donatore Incompleto</h3>
-                    <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>! Devi completare la registrazione dei dati sanitari.</p>
+                <div class="text-standard">
+                    <h3 class="section-title">Profilo donatore incompleto</h3>
+                    <p>Ciao <strong>' . htmlspecialchars($_SESSION['username']) . '</strong>! Devi completare la registrazione dei dati sanitari prima di poter prenotare una donazione.</p>
                     <div class="action-container-single">
                         <form action="registrazione_donatore.php" method="get" class="form-inline">
                             <div class="btn-wrapper"><button type="submit" class="btn-std">Diventa Donatore</button></div>
@@ -109,7 +109,7 @@ if (!isset($_SESSION['user_id'])) {
                 }
             }
         } catch (PDOException $e) {
-            $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', '<p class="errore">Errore caricamento dati.</p>', $paginaHTML);
+            $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', '<p class="text-standard">Errore caricamento dati.</p>', $paginaHTML);
         }
     }
 }

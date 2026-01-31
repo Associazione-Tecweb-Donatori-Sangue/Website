@@ -47,7 +47,7 @@ try {
     $datiDonatore = $stmt->fetch();
 
     if (!$datiDonatore) {
-        $htmlDonatore = '<div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std">Completa la registrazione come donatore</a></div>';
+        $htmlDonatore = '<div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std btn-profile">Completa la registrazione come donatore</a></div>';
     } else {
         $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
 
@@ -85,7 +85,7 @@ try {
                 <dt>Peso:</dt>
                 <dd>' . htmlspecialchars($datiDonatore['peso']) . ' Kg</dd>
             </dl>
-            <div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std">Modifica i tuoi dati</a></div>
+            <div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std btn-profile">Modifica i tuoi dati</a></div>
         </section>';
         
         $_SESSION['dati_donatore'] = $datiDonatore;
@@ -157,7 +157,7 @@ try {
             </table>
         </div>';
     } else {
-        $sezioneFuture = '<p class="text-standard testo-centered-message">Nessuna prenotazione in programma.</p>';
+        $sezioneFuture = '<p class="text-standard">Nessuna prenotazione in programma.</p>';
     }
 
     // Tabella passate
@@ -190,10 +190,10 @@ try {
             </table>
         </div>';
     } else {
-        $sezionePassate = '<p class="text-standard testo-centered-message">Nessuna donazione precedente.</p>';
+        $sezionePassate = '<p class="text-standard">Nessuna donazione precedente.</p>';
     }
 } catch (PDOException $e) {
-    $sezioneFuture = '<p class="errore testo-centered-message">Errore caricamento dati.</p>';
+    $sezioneFuture = '<p class="text-standard">Errore caricamento dati.</p>';
 }
 
 // --- COSTRUZIONE HTML FINALE CON ID PER ARIA-LABEL ---
