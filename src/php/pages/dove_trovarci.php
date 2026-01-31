@@ -57,7 +57,7 @@ try {
 
 } catch (PDOException $e) {
     // Gestione errore DB
-    $errore = '<p class="errore">Impossibile caricare le sedi al momento. Riprova più tardi.</p>';
+    $errore = '<p class="text-standard">Impossibile caricare le sedi al momento. Riprova più tardi.</p>';
     $paginaHTML = str_replace('[cardsSedi]', $errore, $paginaHTML);
 }
 

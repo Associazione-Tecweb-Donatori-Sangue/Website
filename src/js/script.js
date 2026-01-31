@@ -368,7 +368,7 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
             console.error('Errore caricamento prenotazioni:', error);
             const wrapper = document.getElementById('prenotazioni-wrapper');
             if (wrapper) {
-                wrapper.innerHTML = '<p class="text-standard testo-centered-message">Errore nel caricamento dei dati.</p>';
+                wrapper.innerHTML = '<p class="text-standard">Errore nel caricamento dei dati.</p>';
             }
         });
 }

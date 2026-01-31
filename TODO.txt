@@ -1,10 +1,15 @@
 il simbolo + indica PRIORITÀ ASSOLUTA
 
+HTML
+- in profilo_admin e profilo c'è uno stile in linea: --> 🔴
+    - style="display:none;"
+- in get_prenotazioni_admin c'è uno stile in linea: --> 🔴
+    - style="margin: 2rem 0; border-top: 1px solid #ccc;"
+
 CSS
 - fare print.css --> MDP +
 - finire mobile.css  --> GG
 - sistemare i colori usando var quando ci sono colori in comune --> MDP +
-- sistemare stile tasto "diventa donatore" in dona_ora --> GG 
 - sistemare colori con hover su tasti modifica della tabella prenotazioni e pop-up per confermare eliminazione profilo/ annullamento prenotazione da user / eliminazione prenotazione da admin --> GN
 - controllare che non ci sia codice duplicato --> GN +
 - sistemare dati donatore in modifica prenotazione --> GN

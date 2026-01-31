@@ -113,11 +113,8 @@ header{
   gap: 0.6em; 
 }
 
-
-#menu ul li a, 
-#card-intro a, 
-#card-locations a, 
-.footer-buttons a {
+#menu ul li a {
+#menu ul li a {
   display: inline-block;
   text-decoration: none;
   background-color: var(--link-button-color); 
@@ -131,10 +128,7 @@ header{
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-#menu a:hover,
-#card-intro a:hover,
-#card-locations a:hover,
-.footer-buttons a:hover {
+#menu a:hover{
   background: linear-gradient(135deg, var(--link-active-bg-color2) 0%, var(--link-active-bg-color1) 100%);
   color: var(--link-active-txt-color);
 }
@@ -746,15 +740,17 @@ footer {
   background-color: #ffffff;
   width: 80%;
   margin: 2em auto;
-  padding: 2.5em;
+  padding: 1em;
   border-radius: 1.4em;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
   line-height: 1.8em;
 }
 
 .text-standard p {
   font-size: 1.2em;
   color: #2c5f7a;
+  margin-top: 1.2em;
   margin-bottom: 1.2em;
 }
 
@@ -789,6 +785,10 @@ footer {
   margin-left: 2em;
   margin-bottom: 1em;
   line-height: 1.8em;
+}
+
+.text-standard .text-separator {
+  margin: 0;
 }
 
 #founders {
@@ -1110,7 +1110,7 @@ small {
 /* Pulsanti standard */
 .btn-submit {
   display: inline-block;
-  width: calc(100% - 1.875em);
+  width: calc(100% - 1.9em);
   padding: 1em;
   margin: 1.2em 0.9em 0.9em 0.9em;
   background: #12425C;
@@ -1354,18 +1354,13 @@ small {
   display: none;
 }
 
-
 .hidden-input {
   display: none;
 }
 
-
-
 /* =========================================
    MESSAGGI FLASH E ERRORI
 ========================================= */
-
-
 .no-results-message {
   display: none;
   text-align: center;
@@ -1445,7 +1440,6 @@ form .msg-error {
 /* Container per azioni (pulsanti login/registrazione) */
 .action-container,
 .action-container-single {
-  margin-top: 2em;
   display: flex;
   align-items: center;
 }
@@ -1464,6 +1458,7 @@ form .msg-error {
   box-shadow: none;
   background: transparent;
   margin: 0;
+  border-radius: 0;
 }
 
 /* Wrapper contenitore pulsante */
@@ -1471,7 +1466,6 @@ form .msg-error {
   width: 100%;
   padding: 0;
   margin: 0;
-  margin-top: 1em;
 }
 
 /* =========================================
@@ -1523,27 +1517,27 @@ button:focus-visible {
 }
 
 .btn-std {
-    display: inline-block;
-    padding: 1em;
-    background-color: #12425C;
-    color: #ffffff;
-    text-decoration: none;
-    text-align: center;
-    border: none;
-    border-radius: 0.8em;
-    font-size: 1em;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease, color 0.3s ease;
-    box-shadow: 0 4px 15px rgba(18, 66, 92, 0.3);
+  display: inline-block;
+  padding: 1em;
+  background-color: #12425C;
+  color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  border-radius: 0.8em;
+  font-size: 1em;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
 .btn-std:hover {
-    background-color: #082e41;
-    color: #ffffff;
-    box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
+  background-color: #082e41;
+  color: #ffffff;
+}
+
+.btn-index{
+  padding: 1.2em 4em;
 }
 
 .btn-delete {
@@ -1558,14 +1552,16 @@ button:focus-visible {
     font-size: 1em;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .btn-delete:hover {
     background-color: #c24242;
     color: #ffffff;
+}
+
+.btn-profile{
+  padding: 0.7em 1em;
 }
 
 
@@ -1692,7 +1688,6 @@ button:focus-visible {
   background-color: #082e41;
   color: #ffffff;
   box-shadow: 0 6px 15px rgba(8, 46, 65, 0.4);
-  transform: translateY(-2px);
 }
 
 .back-button:focus-visible {
@@ -2016,29 +2011,6 @@ button:focus-visible {
 
 .data-table tbody tr:nth-child(even) {
   background-color: #e8f4f8;
-}
-
-/* Stili compatti per bottoni in button-container e btn-wrapper */
-:is(.button-container, .btn-wrapper) :is(.btn-std, .btn-delete) {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  height: 2.5em;
-  min-width: auto;
-  width: auto;
-  padding: 0 1.2em;
-  margin: 0 0.4em;
-  font-size: 0.85em;
-  line-height: normal;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-decoration: none;
-  border: none;
-  border-radius: 0.6em;
-  cursor: pointer;
-  box-shadow: none;
-  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Bottoni nelle tabelle - stile compatto */
