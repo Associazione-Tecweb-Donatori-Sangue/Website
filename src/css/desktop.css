@@ -686,7 +686,6 @@ footer {
 .main-standard {
     background-color: white;
     padding: 2em;
-    border-radius: 15px;
     margin-top: 4%;
 }
 
@@ -1991,6 +1990,10 @@ button:focus-visible {
   color: #12425C;
   border-bottom: 1px solid #e0e7ec;
   vertical-align: middle;
+}
+
+.data-table td:last-child {
+  white-space: nowrap;
 }
 
 .data-table form {

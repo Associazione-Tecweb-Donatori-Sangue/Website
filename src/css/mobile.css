@@ -471,9 +471,9 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
 
 .profile-header {
     flex-direction: column;
-    gap: 2em;
-    margin-top: 30px;
-    margin-bottom: 40px;
+    gap: 3em;
+    margin-top: 1.5em;
+    margin-bottom: 2.5em;
 }
 
 .button-container {
@@ -549,6 +549,7 @@ fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div 
 
 #title-standard h2 {
     font-size: 1.3em;
+    margin-bottom: 0.8em;
 }
 
 .main-standard {
@@ -733,4 +734,13 @@ body.error-background {
 .data-table button {
   width: 100%;
   margin-top: 0.5em;
+}
+
+
+/* ========================================
+   BOTTONI
+======================================== */
+
+.btn-index {
+    padding: 0.9em 1.5em;
 }
