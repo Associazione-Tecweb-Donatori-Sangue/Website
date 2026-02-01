@@ -13,7 +13,6 @@ CSS
 
 PHP
 - problemi in dona_ora: --> GN
-    - se provo a prenotare una donazione nello stesso giorno di una già prenotata: mi esce il messaggio "Attenzione: Intervallo Ravvicinato Errore: non sono ancora passati i 3 mesi richiesti dalla tua ultima donazione" invece che "Esiste già una prenotazione"
     - come testare se un orario è già pieno?
 - problemi in profilo.php: --> DG
     - provo a caricare una immagine profilo più grande di 5MB e non mi dice niente, invece dovrebbe dirmi "File > 5MB → "File troppo grande (Max 5MB)"

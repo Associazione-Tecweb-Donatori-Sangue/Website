@@ -36,28 +36,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // Valida sede_id
     if (!validaInteroPositivo($sede_id)) {
-        $_SESSION['messaggio_flash'] = "Errore: Sede non valida.";
+        $_SESSION['messaggio_flash'] = "Errore: sede non valida.";
         header("Location: " . $redirectErrore);
         exit();
     }
     
     // Valida data
     if (!validaData($data)) {
-        $_SESSION['messaggio_flash'] = "Errore: Formato data non valido.";
+        $_SESSION['messaggio_flash'] = "Errore: formato data non valido.";
         header("Location: " . $redirectErrore);
         exit();
     }
     
     // Valida orario
     if (!validaOrario($ora)) {
-        $_SESSION['messaggio_flash'] = "Errore: Formato orario non valido.";
+        $_SESSION['messaggio_flash'] = "Errore: formato orario non valido.";
         header("Location: " . $redirectErrore);
         exit();
     }
     
     // Valida user_id
     if (!validaInteroPositivo($user_id)) {
-        $_SESSION['messaggio_flash'] = "Errore: Utente non valido.";
+        $_SESSION['messaggio_flash'] = "Errore: utente non valido.";
         header("Location: " . $redirectErrore);
         exit();
     }
@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtCheck->execute([$user_id, $data, $idPrenotazione ?? 0]);
         
         if ($stmtCheck->rowCount() > 0) {
-            $_SESSION['messaggio_flash'] = "Errore: esiste già una prenotazione per l'utente in questa data!";
+            $_SESSION['messaggio_flash'] = "Errore: esiste già una prenotazione nella stessa data selezionata!";
             header("Location: " . $redirectErrore);
             exit();
         }

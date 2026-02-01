@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     noResultsMessage.classList.toggle('no-results-message', visibileCount > 0);
                 }
 
-                // Screen reader
                 if (searchTerm === "") {
                     announceToScreenReader("Ricerca azzerata. Mostrate tutte le sedi.");
                 } else if (visibileCount > 0) {
@@ -66,11 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     announceToScreenReader("Nessuna sede trovata per la ricerca inserita.");
                 }
 
-            }, 300); // Debounce di 300ms
+            }, 300);
         });
     }
 
-        let isAutoScrolling = false; 
+    let isAutoScrolling = false; 
 
     // 3. Header sticky
     const header = document.querySelector('.sticky-header');
@@ -126,7 +125,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
             
-    
             setTimeout(() => {
                 isAutoScrolling = false;
             }, 1000);
@@ -153,20 +151,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnAnnullaElimina = document.getElementById('btn-annulla-elimina');
 
     if (btnEliminaProfilo && dialogEliminaProfilo) {
-        // Apri dialog
         btnEliminaProfilo.addEventListener('click', () => {
             dialogEliminaProfilo.showModal();
         });
 
-        // Chiudi dialog con bottone Annulla
         if (btnAnnullaElimina) {
             btnAnnullaElimina.addEventListener('click', () => {
                 dialogEliminaProfilo.close();
             });
         }
 
-        // Chiudi dialog premendo ESC (già gestito dal browser con showModal)
-        // Chiudi dialog cliccando fuori (backdrop)
         dialogEliminaProfilo.addEventListener('click', (e) => {
             if (e.target === dialogEliminaProfilo) {
                 dialogEliminaProfilo.close();
@@ -182,31 +176,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const prenotazioneOra = document.getElementById('prenotazione-ora');
 
     if (dialogAnnullaPrenotazione) {
-        // Gestione click su tutti i bottoni "Annulla" della tabella
         document.addEventListener('click', (e) => {
             if (e.target.classList.contains('btn-annulla-prenotazione')) {
                 const idPrenotazione = e.target.dataset.idPrenotazione;
                 const data = e.target.dataset.data;
                 const ora = e.target.dataset.ora;
 
-                // Popola il dialog con i dati
                 if (hiddenIdPrenotazione) hiddenIdPrenotazione.value = idPrenotazione;
                 if (prenotazioneData) prenotazioneData.textContent = data;
                 if (prenotazioneOra) prenotazioneOra.textContent = ora;
 
-                // Apri il dialog
                 dialogAnnullaPrenotazione.showModal();
             }
         });
 
-        // Chiudi dialog con bottone Chiudi
         if (btnAnnullaDialogPrenotazione) {
             btnAnnullaDialogPrenotazione.addEventListener('click', () => {
                 dialogAnnullaPrenotazione.close();
             });
         }
 
-        // Chiudi dialog cliccando fuori (backdrop)
         dialogAnnullaPrenotazione.addEventListener('click', (e) => {
             if (e.target === dialogAnnullaPrenotazione) {
                 dialogAnnullaPrenotazione.close();
@@ -252,92 +241,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 9. GESTIONE VALIDAZIONE MESI E POPUP CONFERMA (ADMIN E USER)
+    // 9 + 10. VALIDAZIONE UNIFICATA: Campi vuoti + Mesi + Dialog conferma
     const prenotaForm = document.getElementById('prenotaForm');
     const dialogMesi = document.getElementById('dialog-conferma-mesi');
     const descMesi = document.getElementById('dialog-mesi-desc');
     const btnProcedi = document.getElementById('btn-procedi-mesi');
     const btnAnnulla = document.getElementById('btn-annulla-mesi');
-
-    if (prenotaForm && dialogMesi) {
-        prenotaForm.addEventListener('submit', function(e) {
-            const ultimaDataStr = this.dataset.ultima;
-            const sesso = this.dataset.sesso || 'Maschio';
-            const isAdmin = this.dataset.isAdmin === 'true';
-            const inputData = document.getElementById('data');
-
-            if (ultimaDataStr && inputData && inputData.value) {
-                const dataScelta = new Date(inputData.value);
-                const oggi = new Date();
-                oggi.setHours(0, 0, 0, 0); // Azzera ore per confronto corretto
-                
-                // NUOVO: Se la data è nel passato, lascia che PHP gestisca l'errore
-                if (dataScelta < oggi) {
-                    return; // Non bloccare il submit, PHP mostrerà il messaggio corretto
-                }
-                
-                const ultimaDonazione = new Date(ultimaDataStr);
-                
-                let diffMesi = (dataScelta.getFullYear() - ultimaDonazione.getFullYear()) * 12;
-                diffMesi += dataScelta.getMonth() - ultimaDonazione.getMonth();
-                
-                const soglia = (sesso === 'Femmina') ? 6 : 3;
-
-                // Se l'intervallo non è rispettato
-                if (diffMesi < soglia) {
-                    if (isAdmin) {
-                        // LOGICA ADMIN: Mostra il dialog se non ancora confermato
-                        if (!prenotaForm.dataset.confermaForzata) {
-                            e.preventDefault();
-                            const dataFormattata = ultimaDataStr.split('-').reverse().join('/');
-                            
-                            descMesi.innerHTML = `Il donatore ha già una prenotazione il <strong>${dataFormattata}</strong>. 
-                                                  Non ci sono i <strong>${soglia} mesi</strong> di distanza previsti per un profilo <strong>${sesso}</strong>. 
-                                                  <br><br>Vuoi forzare comunque il salvataggio?`;
-                            
-                            dialogMesi.showModal();
-                        }
-                   } else {
-   
-                        e.preventDefault();
-                        const dataFormattata = ultimaDataStr.split('-').reverse().join('/');
-                        descMesi.innerHTML = `Errore: non sono ancora passati i ${soglia} mesi richiesti dalla tua ultima donazione (${dataFormattata}). <br>Per favore, scegli una data successiva.`;
-                        if (btnProcedi) btnProcedi.style.display = 'none';
-                        if (btnAnnulla) btnAnnulla.textContent = 'HO CAPITO';
-                        dialogMesi.showModal();
-                    }
-                }
-            }
-        });
-
-        // Listener per i bottoni
-        btnProcedi.addEventListener('click', () => {
-            prenotaForm.dataset.confermaForzata = "true";
-            dialogMesi.close();
-            prenotaForm.requestSubmit();
-        });
-
-        btnAnnulla.addEventListener('click', () => {
-            delete prenotaForm.dataset.confermaForzata;
-            dialogMesi.close();
-        });
-
-        dialogMesi.addEventListener('click', (e) => {
-            if (e.target === dialogMesi) dialogMesi.close();
-        });
-    }
-
-    // 10. VALIDAZIONE CAMPI OBBLIGATORI CON DIALOG
     const dialogCampiVuoti = document.getElementById('dialog-campi-vuoti');
     const btnChiudiVuoti = document.getElementById('btn-chiudi-vuoti');
-    
-    if (prenotaForm && dialogCampiVuoti) {
-        const campiObbligatori = prenotaForm.querySelectorAll('[required]');
+
+    if (prenotaForm) {
+        const nuovoForm = prenotaForm.cloneNode(true);
+        prenotaForm.parentNode.replaceChild(nuovoForm, prenotaForm);
         
-        prenotaForm.addEventListener('submit', function(e) {
-            // Salta la validazione se è una conferma forzata dall'admin
-            if (this.dataset.confermaForzata) return;
-            
+        nuovoForm.addEventListener('submit', function(e) {
+            if (this.dataset.confermaForzata) {
+                return;
+            }
+
+            const campiObbligatori = this.querySelectorAll('[required]');
             let campiVuoti = [];
             
             campiObbligatori.forEach(campo => {
@@ -346,205 +268,254 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
             
-            if (campiVuoti.length > 0) {
+            if (campiVuoti.length > 0 && dialogCampiVuoti) {
                 e.preventDefault();
                 e.stopImmediatePropagation();
-                
                 dialogCampiVuoti.showModal();
                 return false;
             }
-        });
-        
-        if (btnChiudiVuoti) {
-            btnChiudiVuoti.addEventListener('click', () => {
-                dialogCampiVuoti.close();
+
+            const ultimaDataStr = this.dataset.ultima; 
+            const sesso = this.dataset.sesso || 'Maschio';
+            const isAdmin = this.dataset.isAdmin === 'true';
+            const inputData = document.getElementById('data');
+
+            if (ultimaDataStr && inputData && inputData.value) {
+                if (inputData.value === ultimaDataStr) {
+                    return;
+                }
+            }
+
+            if (ultimaDataStr && inputData && inputData.value && dialogMesi) {
+                const dataScelta = new Date(inputData.value);
+                const oggi = new Date();
+                oggi.setHours(0, 0, 0, 0);
                 
-                // Focus sul primo campo vuoto
-                const primoVuoto = Array.from(campiObbligatori).find(c => !c.value || c.value.trim() === '');
-                if (primoVuoto) primoVuoto.focus();
+                if (dataScelta < oggi) {
+                    return;
+                }
+
+                const ultimaDonazione = new Date(ultimaDataStr);
+                dataScelta.setHours(0, 0, 0, 0);
+                ultimaDonazione.setHours(0, 0, 0, 0);
+
+                let diffMesi = (dataScelta.getFullYear() - ultimaDonazione.getFullYear()) * 12;
+                diffMesi += dataScelta.getMonth() - ultimaDonazione.getMonth();
+                
+                if (diffMesi < 0) {
+                    return;
+                }
+                
+                const soglia = (sesso === 'Femmina') ? 6 : 3;
+
+                if (diffMesi < soglia) {
+                    e.preventDefault();
+                    e.stopImmediatePropagation();
+                    
+                    const dataFormattata = ultimaDataStr.split('-').reverse().join('/');
+                    
+                    if (isAdmin) {
+                        descMesi.innerHTML = `Il donatore ha già una prenotazione il <strong>${dataFormattata}</strong>. 
+                                              Non ci sono i <strong>${soglia} mesi</strong> di distanza previsti per un profilo <strong>${sesso}</strong>. 
+                                              <br><br>Vuoi forzare comunque il salvataggio?`;
+                        if (btnProcedi) btnProcedi.style.display = '';
+                        if (btnAnnulla) btnAnnulla.textContent = 'Annulla';
+                    } else {
+                        descMesi.innerHTML = `Errore: non sono ancora passati i ${soglia} mesi richiesti dalla tua ultima donazione (${dataFormattata}). <br>Per favore, scegli una data successiva.`;
+                        if (btnProcedi) btnProcedi.style.display = 'none';
+                        if (btnAnnulla) btnAnnulla.textContent = 'HO CAPITO';
+                    }
+                    
+                    dialogMesi.showModal();
+                    return false;
+                }
+            }
+        });
+
+        if (btnProcedi && dialogMesi) {
+            btnProcedi.addEventListener('click', () => {
+                nuovoForm.dataset.confermaForzata = "true";
+                dialogMesi.close();
+                nuovoForm.requestSubmit();
             });
         }
-        
-        dialogCampiVuoti.addEventListener('click', (e) => {
-            if (e.target === dialogCampiVuoti) dialogCampiVuoti.close();
+
+        if (btnAnnulla && dialogMesi) {
+            btnAnnulla.addEventListener('click', () => {
+                delete nuovoForm.dataset.confermaForzata;
+                dialogMesi.close();
+            });
+        }
+
+        if (dialogMesi) {
+            dialogMesi.addEventListener('click', (e) => {
+                if (e.target === dialogMesi) dialogMesi.close();
+            });
+        }
+
+        if (btnChiudiVuoti && dialogCampiVuoti) {
+            btnChiudiVuoti.addEventListener('click', () => {
+                dialogCampiVuoti.close();
+                const primoVuoto = Array.from(nuovoForm.querySelectorAll('[required]')).find(c => !c.value || c.value.trim() === '');
+                if (primoVuoto) primoVuoto.focus();
+            });
+
+            dialogCampiVuoti.addEventListener('click', (e) => {
+                if (e.target === dialogCampiVuoti) dialogCampiVuoti.close();
+            });
+        }
+    }
+
+    // 5. GESTIONE FOTO PROFILO
+    const photoUpload = document.getElementById('photo-upload');
+    const profileContainer = document.querySelector('.profile-picture');
+    const removeBtn = document.getElementById('remove-photo-btn');
+    const deleteDialog = document.getElementById('deletePhotoDialog');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+    const invalidFormatDialog = document.getElementById('invalidFormatDialog');
+    const closeInvalidFormatBtn = document.getElementById('closeInvalidFormatBtn');
+    const uploadErrorDialog = document.getElementById('uploadErrorDialog');
+    const closeUploadErrorBtn = document.getElementById('closeUploadErrorBtn');
+
+    function deleteProfilePhoto() {
+        const formData = new FormData();
+        formData.append('azione', 'rimuovi');
+
+        fetch('../actions/gestioneFotoProfilo.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) window.location.reload();
         });
     }
 
-// 5. GESTIONE FOTO PROFILO
-const photoUpload = document.getElementById('photo-upload');
-const profileContainer = document.querySelector('.profile-picture');
-const removeBtn = document.getElementById('remove-photo-btn');
+    function showUploadError(message) {
+        if (!uploadErrorDialog) return;
 
-const deleteDialog = document.getElementById('deletePhotoDialog');
-const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
-const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
-
-// Funzione per rimuovere la foto
-function deleteProfilePhoto() {
-    const formData = new FormData();
-    formData.append('azione', 'rimuovi');
-
-    fetch('../actions/gestioneFotoProfilo.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) window.location.reload();
-    });
-}
-
-// ===== GESTIONE RIMOZIONE FOTO CON DIALOG =====
-if (removeBtn && deleteDialog && confirmDeleteBtn && cancelDeleteBtn) {
-    
-    const openDeleteDialog = (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        deleteDialog.showModal();
-    };
-
-    // Click sulla X
-    removeBtn.addEventListener('click', openDeleteDialog);
-
-    // Tastiera sulla X
-    removeBtn.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            openDeleteDialog(e);
+        const msgEl = document.getElementById('uploadErrorDesc');
+        if (msgEl) {
+            msgEl.textContent = message || "Si è verificato un errore durante il caricamento della foto.";
         }
-    });
 
-    // Bottone Annulla nel dialog
-    cancelDeleteBtn.addEventListener('click', () => {
-        deleteDialog.close();
-        removeBtn.focus();
-    });
+        uploadErrorDialog.showModal();
+    }
 
-    // Bottone Conferma Rimuovi nel dialog
-    confirmDeleteBtn.addEventListener('click', () => {
-        deleteDialog.close();
-        deleteProfilePhoto();
-    });
-
-    // Quando il dialog si chiude, ritorna il focus
-    deleteDialog.addEventListener('close', () => {
-        removeBtn.focus();
-    });
-}
-
-// ===== GESTIONE UPLOAD FOTO =====
-if (profileContainer && photoUpload) {
-    
-    // Click sul container per aprire file picker
-    profileContainer.addEventListener('click', (e) => {
-        // Se clicco sulla X, non aprire il file picker
-        if (e.target.id === 'remove-photo-btn' || e.target.closest('#remove-photo-btn')) {
-            return;
-        }
-        photoUpload.click();
-    });
-
-    // Tastiera sul container
-    profileContainer.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
+    if (removeBtn && deleteDialog && confirmDeleteBtn && cancelDeleteBtn) {
+        const openDeleteDialog = (e) => {
             e.preventDefault();
-            // Se il focus è sulla X, non aprire il file picker
+            e.stopPropagation();
+            deleteDialog.showModal();
+        };
+
+        removeBtn.addEventListener('click', openDeleteDialog);
+
+        removeBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                openDeleteDialog(e);
+            }
+        });
+
+        cancelDeleteBtn.addEventListener('click', () => {
+            deleteDialog.close();
+            removeBtn.focus();
+        });
+
+        confirmDeleteBtn.addEventListener('click', () => {
+            deleteDialog.close();
+            deleteProfilePhoto();
+        });
+
+        deleteDialog.addEventListener('close', () => {
+            removeBtn.focus();
+        });
+    }
+
+    if (profileContainer && photoUpload) {
+        profileContainer.addEventListener('click', (e) => {
             if (e.target.id === 'remove-photo-btn' || e.target.closest('#remove-photo-btn')) {
                 return;
             }
             photoUpload.click();
-        }
-    });
+        });
 
-    // Quando viene selezionato un file
-    photoUpload.addEventListener('change', function () {
-        if (this.files && this.files[0]) {
-            const file = this.files[0];
-            
-            // Validazione formato client-side
-            const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-            if (!validTypes.includes(file.type)) {
-                // Apri dialog formato non valido
-                const invalidDialog = document.getElementById('invalidFormatDialog');
-                if (invalidDialog) {
-                    invalidDialog.showModal();
+        profileContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                if (e.target.id === 'remove-photo-btn' || e.target.closest('#remove-photo-btn')) {
+                    return;
                 }
-                this.value = ''; // Reset input
-                return;
+                photoUpload.click();
             }
+        });
 
-            // Upload del file
-            const formData = new FormData();
-            formData.append('foto_profilo', file);
-            formData.append('azione', 'upload');
-
-            fetch('../actions/gestioneFotoProfilo.php', {
-                method: 'POST',
-                body: formData
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    window.location.reload();
-                } else {
-                    // Mostra errore generico
-                    showUploadError(data.message);
+        photoUpload.addEventListener('change', function () {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                if (!validTypes.includes(file.type)) {
+                    if (invalidFormatDialog) {
+                        invalidFormatDialog.showModal();
+                    }
+                    this.value = '';
+                    return;
                 }
-            })
-            .catch(error => {
-                console.error('Errore upload:', error);
-                showUploadError('Si è verificato un errore durante il caricamento.');
-            });
-        }
-    });
-}
 
-// ===== DIALOG FORMATO NON VALIDO =====
-const invalidFormatDialog = document.getElementById('invalidFormatDialog');
-const closeInvalidFormatBtn = document.getElementById('closeInvalidFormatBtn');
+                const formData = new FormData();
+                formData.append('foto_profilo', file);
+                formData.append('azione', 'upload');
 
-if (invalidFormatDialog && closeInvalidFormatBtn) {
-    closeInvalidFormatBtn.addEventListener('click', () => {
-        invalidFormatDialog.close();
-        if (photoUpload) {
-            photoUpload.value = '';
-            photoUpload.focus();
-        }
-    });
-
-    invalidFormatDialog.addEventListener('close', () => {
-        if (photoUpload) photoUpload.focus();
-    });
-}
-
-// ===== DIALOG ERRORE GENERICO UPLOAD =====
-const uploadErrorDialog = document.getElementById('uploadErrorDialog');
-const closeUploadErrorBtn = document.getElementById('closeUploadErrorBtn');
-
-if (uploadErrorDialog && closeUploadErrorBtn) {
-    closeUploadErrorBtn.addEventListener('click', () => {
-        uploadErrorDialog.close();
-        if (photoUpload) {
-            photoUpload.value = '';
-            photoUpload.focus();
-        }
-    });
-
-    uploadErrorDialog.addEventListener('close', () => {
-        if (photoUpload) photoUpload.focus();
-    });
-}
-
-// Funzione helper per aprire il dialog con messaggio personalizzato
-function showUploadError(message) {
-    if (!uploadErrorDialog) return;
-
-    const msgEl = document.getElementById('uploadErrorDesc');
-    if (msgEl) {
-        msgEl.textContent = message || "Si è verificato un errore durante il caricamento della foto.";
+                fetch('../actions/gestioneFotoProfilo.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+                        showUploadError(data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('Errore upload:', error);
+                    showUploadError('Si è verificato un errore durante il caricamento.');
+                });
+            }
+        });
     }
 
-    uploadErrorDialog.showModal();
-}
+    if (invalidFormatDialog && closeInvalidFormatBtn) {
+        closeInvalidFormatBtn.addEventListener('click', () => {
+            invalidFormatDialog.close();
+            if (photoUpload) {
+                photoUpload.value = '';
+                photoUpload.focus();
+            }
+        });
+
+        invalidFormatDialog.addEventListener('close', () => {
+            if (photoUpload) photoUpload.focus();
+        });
+    }
+
+    if (uploadErrorDialog && closeUploadErrorBtn) {
+        closeUploadErrorBtn.addEventListener('click', () => {
+            uploadErrorDialog.close();
+            if (photoUpload) {
+                photoUpload.value = '';
+                photoUpload.focus();
+            }
+        });
+
+        uploadErrorDialog.addEventListener('close', () => {
+            if (photoUpload) photoUpload.focus();
+        });
+    }
+
 });
 
 
