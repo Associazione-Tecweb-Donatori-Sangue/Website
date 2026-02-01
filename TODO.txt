@@ -9,9 +9,7 @@ CSS
     - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
 
 PHP
-- problemi in profilo.php: --> DG
-    - provo a caricare una immagine profilo più grande di 5MB e non mi dice niente, invece dovrebbe dirmi "File > 5MB → "File troppo grande (Max 5MB)"
-    - limitare il tipo di file da caricare già dalla finestra di sistema (solo JPG/PNG)
+-----------
 
 GENERALI
 - sistemare tutti i commenti --> DG
