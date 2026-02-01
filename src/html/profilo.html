@@ -38,7 +38,7 @@
                     aria-label="Modifica foto profilo dell'utente, premere per modificare"
                     id="profile-picture-btn">
                     <img src="[FOTO_PROFILO]" alt="Foto profilo utente" id="profile-img">                        
-                    <input type="file" id="photo-upload" name="foto_profilo" accept="image/*" aria-hidden="true">
+                    <input type="file" id="photo-upload" name="foto_profilo" accept="image/jpeg,image/png" aria-hidden="true">
                     <span class="remove-photo" id="remove-photo-btn" role="button" tabindex="0" aria-label="Rimuovi foto profilo">&times;</span>
                 </button>
                 
@@ -110,6 +110,30 @@
                         <button type="submit" class="btn-delete">Annulla prenotazione</button>
                     </form>
                     <button type="button" id="btn-annulla-dialog-prenotazione" class="btn-std">Chiudi</button>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Dialog per file troppo pesante -->
+        <dialog id="fileTooLargeDialog" role="alertdialog" aria-labelledby="fileTooLargeTitle" aria-describedby="fileTooLargeDesc">
+            <div class="dialog-content">
+                <h2 id="fileTooLargeTitle">File troppo grande</h2>
+                <p id="fileTooLargeDesc">Il file selezionato supera la dimensione massima consentita di 5MB.</p>
+
+                <div class="dialog-buttons">
+                    <button type="button" class="btn-std" id="closeFileTooLargeBtn">Chiudi</button>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Dialog generico per errori upload -->
+        <dialog id="uploadErrorDialog" role="alertdialog" aria-labelledby="uploadErrorTitle" aria-describedby="uploadErrorDesc">
+            <div class="dialog-content">
+                <h2 id="uploadErrorTitle">Errore caricamento</h2>
+                <p id="uploadErrorDesc">Si è verificato un errore durante il caricamento della foto.</p>
+
+                <div class="dialog-buttons">
+                    <button type="button" class="btn-std" id="closeUploadErrorBtn">Chiudi</button>
                 </div>
             </div>
         </dialog>
