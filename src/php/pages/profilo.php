@@ -164,10 +164,13 @@ try {
         foreach ($future as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
+            // Sostituisci il trattino con lo spazio per la visualizzazione
+            $tipoDonazione = str_replace('-', ' ', $p['tipo_donazione']);
+            
             $righeTabella .= '<tr>
                 <td data-label="Data">' . $dataIt . '</td>
                 <td data-label="Ora">' . $oraIt . '</td>
-                <td data-label="Tipo Donazione">' . htmlspecialchars($p['tipo_donazione']) . '</td>
+                <td data-label="Tipo Donazione">' . htmlspecialchars($tipoDonazione) . '</td>
                 <td data-label="Sede">' . htmlspecialchars($p['nome_sede']) . '</td>
                 <td data-label="Azioni">
                     <button type="button" class="btn-table delete btn-annulla-prenotazione" data-id-prenotazione="' . $p['id'] . '" data-data="' . $dataIt . '" data-ora="' . $oraIt . '">Annulla</button>
@@ -199,10 +202,13 @@ try {
         foreach ($passate as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
+            // Sostituisci il trattino con lo spazio per la visualizzazione
+            $tipoDonazione = str_replace('-', ' ', $p['tipo_donazione']);
+
             $righeTabella .= '<tr>
                 <td data-label="Data">' . $dataIt . '</td>
                 <td data-label="Ora">' . $oraIt . '</td>
-                <td data-label="Tipo Donazione">' . htmlspecialchars($p['tipo_donazione']) . '</td>
+                <td data-label="Tipo Donazione">' . htmlspecialchars($tipoDonazione) . '</td>
                 <td data-label="Sede">' . htmlspecialchars($p['nome_sede']) . '</td>
                 <td data-label="Stato"><span class="status-completed">Completata</span></td>
             </tr>';
