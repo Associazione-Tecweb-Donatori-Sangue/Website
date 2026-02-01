@@ -71,8 +71,12 @@ try {
                             <dd>' . htmlspecialchars($datiDonatore['username']) . '</dd>
                         </div>
                         <div>
-                            <dt>Nome e Cognome:</dt>
-                            <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
+                            <dt>Nome:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['nome']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Cognome:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
                         </div>
                         <div>
                             <dt>Email:</dt>

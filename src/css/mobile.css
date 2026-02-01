@@ -403,29 +403,6 @@ footer{
     font-size: 0.9em;
 }
 
-/* ------------------- */
-/*  FORM RESPONSIVE    */
-/* ------------------- */
-
-form, .form-standard, #prenotaForm {
-    max-width: 100%;
-    margin: 1em;
-    border-radius: 15px;
-}
-
-fieldset.form, .form-standard fieldset, #prenotaForm fieldset {
-    margin: 10px;
-}
-
-fieldset.form legend, .form-standard legend, #prenotaForm legend {
-    font-size: 16px;
-    padding: 15px;
-}
-
-fieldset.form > div, .form-standard fieldset > div, #prenotaForm fieldset > div {
-    margin: 0 15px 15px 15px;
-}
-
 .search-container input {
     width: 95%;
     padding: 0.6em 1em;
@@ -791,8 +768,14 @@ body.error-background {
 .admin-layout-container {
   grid-template-columns: 1fr;
   gap: 1.5em;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .donor-info-sidebar {
-  position: static;
+  width: auto;
+  max-width: 21em;
+  min-width: min-content;
 }
