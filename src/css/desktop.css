@@ -270,6 +270,8 @@ header{
 
 #landing-title h1 abbr{
   text-decoration: none;
+  border-bottom: none;
+  cursor: default;
 }
 
 #landing-title h2{
@@ -1863,6 +1865,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   gap: 4em;
+  width: 95%;
   max-width: 1000px;
   margin: 0 auto;
   flex-direction: row
@@ -1871,6 +1874,7 @@ button:focus-visible {
 .error-content {
   flex: 1;
   text-align: center;
+  width: 100%;
 }
 
 .error-code {
