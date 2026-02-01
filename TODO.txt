@@ -1,11 +1,9 @@
-il simbolo + indica PRIORITÀ ASSOLUTA
-
 HTML
 ------------
 
 CSS
 - fare print.css --> MDP +
-- sistemare i colori usando var quando ci sono colori in comune --> MDP +
+- sistemare i colori usando var quando ci sono colori in comune --> GG +
 - controllare che non ci sia codice duplicato --> GN +
 - sistemare dati donatore in modifica prenotazione --> GN
 - distinguere link visitati e non visitati:
@@ -15,7 +13,6 @@ CSS
 - sistemare stile tasti in 404 e 500
 
 PHP
-- sistemare messaggi di errore --> GG +
 - problemi in dona_ora: --> GN
     - se provo a prenotare una donazione nel passato: mi esce il messaggio "Attenzione: Intervallo Ravvicinato Errore: non sono ancora passati i 3 mesi richiesti dalla tua ultima donazione" invece che "Non puoi prenotare in una data passata"
     - se lascio la sede vuota non mi dice niente, invece che "Compila tutti i campi obbligatori"
@@ -40,4 +37,3 @@ EXTRA - da fare solo se avanza tempo (o da inserire nella relazione come estensi
 - aggiungere foto ai fondatori 
 - Modalità scura
 - inserire un widget per visualizzare quanto manca a poter prenotare un'altra prenotazione 
-- mettere una disponibilità di posti da poter prenotare in una determinata ora di un determinato giorno per ogni sede (esempio in sede Piovego il giorno 16/02 alle ore 8:00 ci sono 5 posti disponibili) e se non ci sono più posti non mostrare quell'orario nella lista degli orari 

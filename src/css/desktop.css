@@ -5,15 +5,20 @@
 }
 
 :root{
+  /* Colori di base */
   --primary-bg-color: #fbfefe;
   --title-color: #000000;
+  --white: #ffffff;
+  --black: #000000;
 
+  /* Colori link */
   --link-button-color: #ffffff;
   --link-txt-color: #000000;
   --link-active-bg-color1: #17506f;
   --link-active-bg-color2: #082636;
   --link-active-txt-color: #ffffff;
 
+  /* Colori card */
   --card-bg-color: #a0c7cf;
   --card-title-color: #082636;
   --card-subtitle-color: #000000;
@@ -21,9 +26,26 @@
   --card-locations-bg-color: #d9e6ef;
   --card-locations-subtitle-color: #2c5f7a;
 
+  /* Colori footer */
   --footer-primary-color: #4d7d8a;
   --footer-secondary-color: #b4d2d4;
   --footer-text-color: #08264C;
+
+  /* Colori pulsanti */
+  --btn-primary-bg: #12425C;
+  --btn-primary-hover: #082e41;
+  --btn-delete-bg: #da4343;
+  --btn-delete-hover: #c24242;
+
+  /* Colori form */
+  --form-accent-color: #acd2e6;
+  --form-focus-color: #4f5abb;
+  --form-input-bg: #f9fcfe;
+  --form-label-color: #2c5f7a;
+
+  /* Altri colori comuni */
+  --text-secondary: #2c5f7a;
+  --accent-blue: #749BA3;
 }
 
 html{
@@ -116,8 +138,8 @@ header{
 #menu ul li a {
   display: inline-block;
   text-decoration: none;
-  background-color: var(--link-button-color); 
-  color: var(--link-txt-color);
+  background-color: var(--white); 
+  color: var(--black);
   border-radius: 1.3em;
   padding: 1.1em 1.2em;
   font-weight: bold;
@@ -152,7 +174,7 @@ header{
 }
 
 #linkProfilo{
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 #linkProfiloActive {
@@ -188,7 +210,7 @@ header{
 .burger-menu span{
   width: 1.9em;
   height: 0.2em;
-  background-color: #000000;
+  background-color: var(--black);
   transition: all 0.3s ease;
 }
 
@@ -206,13 +228,13 @@ header{
 }
 
 #breadcrumb p{
-  color: #000000; 
+  color: var(--black); 
   font-size: 1.1em;
   margin: 0;
 }
 
 #breadcrumb span{   
-  color: #000000;
+  color: var(--black);
   font-weight: bold; 
 }
 
@@ -397,7 +419,7 @@ main{
   display: flex;
   flex-direction: column;
   justify-items: stretch;
-  background-color: #ffffff;
+  background-color: var(--white);
   border-radius: 1.2em;
   height: 100%;
   width: 20%;
@@ -729,14 +751,14 @@ footer {
 .tertiary-title {
   font-size: 2em;
   font-weight: 600;
-  color: #082636;
+  color: var(--card-title-color);
   margin: 2em 0 1em;
   padding-left: 1em;
-  border-left: 5px solid #4f5abb;
+  border-left: 5px solid var(--form-focus-color);
 }
 
 .text-standard {
-  background-color: #ffffff;
+  background-color: var(--white);
   width: 80%;
   margin: 2em auto;
   padding: 1em;
@@ -748,7 +770,7 @@ footer {
 
 .text-standard p {
   font-size: 1.2em;
-  color: #2c5f7a;
+  color: var(--text-secondary);
   margin-top: 1.2em;
   margin-bottom: 1.2em;
 }
@@ -761,7 +783,7 @@ footer {
 
 .text-standard li {
   font-size: 1.2em;
-  color: #2c5f7a;
+  color: var(--text-secondary);
   margin-bottom: 0.8em;
   padding-left: 0.5em;
 }
@@ -773,14 +795,14 @@ footer {
 .text-standard dt {
   font-size: 1.4em;
   font-weight: 700;
-  color: #082636;
+  color: var(--card-title-color);
   margin-top: 1.5em;
   margin-bottom: 0.5em;
 }
 
 .text-standard dd {
   font-size: 1.2em;
-  color: #2c5f7a;
+  color: var(--text-secondary);
   margin-left: 2em;
   margin-bottom: 1em;
   line-height: 1.8em;
@@ -803,13 +825,13 @@ footer {
 #founders h4 {
   font-size: 2em;
   font-weight: 700;
-  color: #082636;
+  color: var(--card-title-color);
   margin-bottom: 1em;
 }
 
 #founders p {
   font-size: 1.2em;
-  color: #2c5f7a;
+  color: var(--text-secondary);
   margin-bottom: 1.5em;
 }
 
@@ -823,12 +845,12 @@ footer {
 }
 
 #founders li {
-  background-color: #ffffff;
+  background-color: var(--white);
   padding: 1.2em;
   border-radius: 0.8em;
   font-size: 1.2em;
   font-weight: 600;
-  color: #082636;
+  color: var(--card-title-color);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -859,9 +881,9 @@ footer {
   width: 70%;
   padding: 0.8em 1.2em;
   font-size: 1em;
-  border: 2px solid #acd2e6;
+  border: 2px solid var(--form-accent-color);
   border-radius: 2em;
-  background-color: #ffffff;
+  background-color: var(--white);
   transition: all 0.3s ease;
 }
 
@@ -890,7 +912,7 @@ footer {
 }
 
 .location {
-  background-color: #ffffff;
+  background-color: var(--white);
   border-radius: 1.2em;
   padding: 1.5em;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -910,7 +932,7 @@ footer {
 }
 
 .location h3 {
-  color: #082636;
+  color: var(--card-title-color);
   font-size: 1.5em;
   margin-bottom: 1em;
 }
@@ -927,7 +949,7 @@ footer {
   font-size: 1em;
   line-height: 1.5em;
   margin-bottom: 0.8em;
-  color: #2c5f7a;
+  color: var(--text-secondary);
 }
 
 .location a {
@@ -946,8 +968,8 @@ footer {
 
 /* Override per i pulsanti .btn-link dentro .location */
 .location a.btn-link {
-  background-color: #12425C;
-  color: #ffffff;
+  background-color: var(--btn-primary-bg);
+  color: var(--white);
   text-decoration: none;
   padding: 0.5em 1.1em;
   margin-top: auto;
@@ -956,8 +978,8 @@ footer {
 }
 
 .location a.btn-link:hover {
-  background-color: #082e41;
-  color: #ffffff;
+  background-color: var(--btn-primary-hover);
+  color: var(--white);
   text-decoration: none;
 }
 
@@ -975,7 +997,7 @@ form fieldset {
   border: none;
   margin: 0.9em;
   padding: 0 0 0.6em 0;
-  background: #ffffff;
+  background: var(--white);
   border-radius: 15px;
   box-shadow: 0 2px 10px rgba(172, 210, 230, 0.2);
   overflow: hidden;
@@ -985,7 +1007,7 @@ form legend {
   width: 100%;
   padding: 1.1em;
   margin: 0 0 0.9em 0;
-  background: #acd2e6;
+  background: var(--form-accent-color);
   font-size: 1.1em;
   font-weight: 700;
   color: #1a1a1a;
@@ -1004,7 +1026,7 @@ label {
   display: block;
   margin-bottom: 0.5em;
   font-weight: 600;
-  color: #2c5f7a;
+  color: var(--form-label-color);
   font-size: 0.9em;
 }
 
@@ -1013,10 +1035,10 @@ textarea,
 select {
   width: 100%;
   padding: 0.6em 0.9em;
-  border: 2px solid #acd2e6;
+  border: 2px solid var(--form-accent-color);
   border-radius: 0.8em;
   font-size: 0.9em;
-  background-color: #f9fcfe; 
+  background-color: var(--form-input-bg); 
   transition: all 0.3s ease;
   box-sizing: border-box;
 }
@@ -1037,8 +1059,8 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-color: #4f5abb;
-  background-color: white; 
+  border-color: var(--form-focus-color);
+  background-color: var(--white); 
   box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
 }
 
@@ -1067,8 +1089,8 @@ small {
   column-gap: 0.6em; 
   align-items: center;
   padding: 0.5em 0.9em;
-  background: #f9fcfe;
-  border: 2px solid #acd2e6;
+  background: var(--form-input-bg);
+  border: 2px solid var(--form-accent-color);
   border-radius: 0.8em;
   margin-bottom: 1em;
   box-sizing: border-box;
@@ -1089,21 +1111,21 @@ small {
 .radio-standard input[type="radio"] {
   width: 1.1em;
   height: 1.1em;
-  accent-color: #4f5abb;
+  accent-color: var(--form-focus-color);
   cursor: pointer;
   justify-self: end;
   outline: none;
 }
 
 .radio-standard:has(input[type="radio"]:focus-visible) {
-  border-color: #4f5abb;
+  border-color: var(--form-focus-color);
   box-shadow: 0 0 0 3px rgba(18, 66, 92, 0.2);
-  background: #ffffff;
+  background: var(--white);
 }
 
 
 .radio-standard:has(input[type="radio"]:checked) {
-  border-color: #4f5abb;
+  border-color: var(--form-focus-color);
 }
 
 /* Pulsanti standard */
@@ -1112,8 +1134,8 @@ small {
   width: calc(100% - 1.9em);
   padding: 1em;
   margin: 1.2em 0.9em 0.9em 0.9em;
-  background: #12425C;
-  color: #ffffff;
+  background: var(--btn-primary-bg);
+  color: var(--white);
   border: none;
   border-radius: 0.8em;
   font-size: 1em;
@@ -1128,8 +1150,8 @@ small {
 }
 
 .btn-submit:hover {
-  background-color: #082e41;
-  color: #ffffff;
+  background-color: var(--btn-primary-hover);
+  color: var(--white);
   box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
 }
 
@@ -1139,7 +1161,7 @@ small {
   margin-top: 0.6em;
   font-size: 14px;
   font-weight: 600;
-  background-color: #12425C;
+  background-color: var(--btn-primary-bg);
   text-decoration: none;
   display: inline-block;
   border-radius: 0.8em;
@@ -1147,12 +1169,12 @@ small {
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: none;
-  color: #ffffff;
+  color: var(--white);
 }
 
 .btn-link:hover {
-  background-color: #082e41;
-  color: #ffffff;
+  background-color: var(--btn-primary-hover);
+  color: var(--white);
 }
 
 .profile-header {
@@ -1195,7 +1217,7 @@ small {
   height: 130%;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #12425C;
+  border: 2px solid var(--btn-primary-bg);
   box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
   transition: opacity 0.3s ease;
   position: absolute;
@@ -1217,7 +1239,7 @@ small {
   width: calc(130% + 6px);
   height: calc(130% + 6px);
   border-radius: 50%;
-  border: 3px solid #12425C;
+  border: 3px solid var(--btn-primary-bg);
   opacity: 0;
   transition: opacity 0.3s ease;
   pointer-events: none;
@@ -1527,8 +1549,8 @@ button:focus-visible {
 .btn-std {
   display: inline-block;
   padding: 1em;
-  background-color: #12425C;
-  color: #ffffff;
+  background-color: var(--btn-primary-bg);
+  color: var(--white);
   text-decoration: none;
   text-align: center;
   border: none;
@@ -1540,8 +1562,8 @@ button:focus-visible {
 }
 
 .btn-std:hover {
-  background-color: #082e41;
-  color: #ffffff;
+  background-color: var(--btn-primary-hover);
+  color: var(--white);
 }
 
 .btn-index{
@@ -1551,8 +1573,8 @@ button:focus-visible {
 .btn-delete {
     display: inline-block;
     padding: 0.7em 1em;
-    background-color: #da4343;
-    color: #000000;
+    background-color: var(--btn-delete-bg);
+    color: var(--black);
     text-decoration: none;
     text-align: center;
     border: none;
@@ -1564,8 +1586,8 @@ button:focus-visible {
 }
 
 .btn-delete:hover {
-    background-color: #c24242;
-    color: #ffffff;
+    background-color: var(--btn-delete-hover);
+    color: var(--white);
 }
 
 .btn-profile{
@@ -1590,7 +1612,7 @@ button:focus-visible {
 #disclaimer-title {
   font-size: 1.2em;
   font-weight: 700;
-  color: #082636;
+  color: var(--card-title-color);
   margin-bottom: 0.5em;
   text-align: left; 
 }
@@ -1679,8 +1701,8 @@ button:focus-visible {
 .back-button {
   display: inline-block;
   padding: 0.6em 1.2em;
-  background-color: #12425C;
-  color: #ffffff;
+  background-color: var(--btn-primary-bg);
+  color: var(--white);
   text-decoration: none;
   font-size: 0.9em;
   font-weight: 700;
@@ -1691,8 +1713,8 @@ button:focus-visible {
 }
 
 .back-button:hover {
-  background-color: #082e41;
-  color: #ffffff;
+  background-color: var(--btn-primary-hover);
+  color: var(--white);
   box-shadow: 0 6px 15px rgba(8, 46, 65, 0.4);
 }
 
@@ -1727,7 +1749,7 @@ button:focus-visible {
 .error-code {
   font-size: 8em;
   font-weight: bold;
-  color: #749BA3;
+  color: var(--accent-blue);
   margin: 0;
   line-height: 1;
 }
@@ -1829,7 +1851,7 @@ button:focus-visible {
     line-height: 1.7;
     font-size: 1.2em;
     color: #37474f;
-    background: white;
+    background: var(--white);
     margin: 0;
     border-radius: 0 0 16px 16px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
@@ -1842,7 +1864,7 @@ button:focus-visible {
     align-self: flex-start;
     margin-left: 0;
     margin-right: auto;
-    border-left: 5px solid #749BA3;
+    border-left: 5px solid var(--accent-blue);
 }
 
 .faq dt:nth-of-type(even), 
@@ -1850,7 +1872,7 @@ button:focus-visible {
     align-self: flex-end;
     margin-right: 0;
     margin-left: auto;
-    border-right: 5px solid #749BA3;
+    border-right: 5px solid var(--accent-blue);
     border-left: none;
 }
 
@@ -1930,14 +1952,14 @@ button:focus-visible {
 
 .profile-admin .tertiary-title {
   font-size: 1.8em;
-  color: #082636;
+  color: var(--card-title-color);
   margin: 2em 0 1em 0;
   padding-bottom: 0.5em;
 }
 
 .tertiary-title-centered {
   font-size: 2em;
-  color: #082636;
+  color: var(--card-title-color);
   margin: 2em auto 1em auto;
   padding-bottom: 0.5em;
   text-align: center;
@@ -1968,10 +1990,10 @@ button:focus-visible {
   max-width: 400px;
   padding: 0.8em 1em;
   font-size: 1em;
-  border: 2px solid #a0c7cf;
+  border: 2px solid var(--card-bg-color);
   border-radius: 0.6em;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--white);
+  color: var(--black);
   cursor: pointer;
   transition: all 0.3s ease;
 }
@@ -1985,11 +2007,11 @@ button:focus-visible {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 .data-table thead {
-  background: linear-gradient(135deg, #749BA3 0%, #a0c7cf 100%);
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--card-bg-color) 100%);
 }
 
 .data-table th {
@@ -1997,13 +2019,13 @@ button:focus-visible {
   text-align: center;
   font-weight: 700;
   font-size: 0.95em;
-  color: #000000;
+  color: var(--black);
   letter-spacing: 0.05em;
   border-bottom: 1px solid #e0e7ec;
 }
 
 .data-table tbody tr {
-  background-color: #ffffff;
+  background-color: var(--white);
 }
 
 .data-table td {
@@ -2060,23 +2082,23 @@ button:focus-visible {
   cursor: pointer;
   box-shadow: none;
   transition: background-color 0.3s ease, color 0.3s ease;
-  background-color: #12425C;
-  color: #ffffff;
+  background-color: var(--btn-primary-bg);
+  color: var(--white);
 }
 
 .btn-table:hover {
-  background-color: #082e41;
-  color: #ffffff;
+  background-color: var(--btn-primary-hover);
+  color: var(--white);
 }
 
 .btn-table.delete {
-  background-color: #da4343;
-  color: #000000;
+  background-color: var(--btn-delete-bg);
+  color: var(--black);
 }
 
 .btn-table.delete:hover {
-  background-color: #c24242;
-  color: #ffffff;
+  background-color: var(--btn-delete-hover);
+  color: var(--white);
 }
 
 @media screen and (max-width: 1200px) {
@@ -2117,7 +2139,7 @@ dialog::backdrop {
 
 .dialog-content h2 {
   font-family: "Playfair Display", Georgia, serif;
-  color: #082636;
+  color: var(--card-title-color);
   margin-bottom: 1em;
   font-size: 1.5em;
 }
