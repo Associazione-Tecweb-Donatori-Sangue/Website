@@ -119,7 +119,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     $annoNascita = date('y', strtotime($dataNascita));
     
     if ($annoCF != $annoNascita) {
-        return ['valido' => false, 'errore' => "l'anno di nascita non corrisponde, il codice fiscale riporta '$annoCF' (posizioni 7-8) ma la tua data di nascita indica '$annoNascita'."];
+        return ['valido' => false, 'errore' => "l'anno di nascita del codice fiscale non corrisponde, il codice fiscale riporta '$annoCF' (posizioni 7-8) ma la tua data di nascita indica '$annoNascita'."];
     }
     
     // ========================================
@@ -144,7 +144,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
         // Determina se usare "nato" o "nata"
         $natoNata = ($sesso == 'Femmina') ? 'nata' : 'nato';
         
-        return ['valido' => false, 'errore' => "il mese di nascita non corrisponde, hai inserito '$meseCF' (posizione 9) ma sei $natoNata a " . $nomiMesi[$meseNascita] . ", quindi dovrebbe essere '$meseAtteso'."];
+        return ['valido' => false, 'errore' => "il mese di nascita del codice fiscale non corrisponde, hai inserito '$meseCF' (posizione 9) ma sei $natoNata a " . $nomiMesi[$meseNascita] . ", quindi dovrebbe essere '$meseAtteso'."];
     }
     
     // ========================================
@@ -164,9 +164,9 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
         $giornoCFStr = str_pad($giornoCF, 2, '0', STR_PAD_LEFT);
         
         if ($sesso == 'Femmina') {
-            return ['valido' => false, 'errore' => "il giorno di nascita non corrisponde, hai inserito '$giornoCFStr' (posizioni 10-11) ma essendo donna e nata il giorno $giornoNascita, dovrebbe essere '$giornoAttesoStr' (giorno + 40)."];
+            return ['valido' => false, 'errore' => "il giorno di nascita del codice fiscale non corrisponde, hai inserito '$giornoCFStr' (posizioni 10-11) ma essendo donna e nata il giorno $giornoNascita, dovrebbe essere '$giornoAttesoStr' (giorno + 40)."];
         } else {
-            return ['valido' => false, 'errore' => "il giorno di nascita non corrisponde, hai inserito '$giornoCFStr' (posizioni 10-11) ma essendo uomo e nato il giorno $giornoNascita, dovrebbe essere '$giornoAttesoStr'."];
+            return ['valido' => false, 'errore' => "il giorno di nascita del codice fiscale non corrisponde, hai inserito '$giornoCFStr' (posizioni 10-11) ma essendo uomo e nato il giorno $giornoNascita, dovrebbe essere '$giornoAttesoStr'."];
         }
     }
     
@@ -174,7 +174,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     // 6. CONTROLLO CHECKSUM (SOLO ALLA FINE!)
     // ========================================
     if (!validaCodiceFiscale($cf)) {
-        return ['valido' => false, 'errore' => 'il carattere di controllo non è valido, tutti gli altri dati (nome, cognome, data) sono corretti ma probabilmente hai sbagliato a digitare l\'ultima lettera.'];
+        return ['valido' => false, 'errore' => 'il carattere di controllo del codice fiscale non è valido, tutti gli altri dati (nome, cognome, data) sono corretti ma probabilmente hai sbagliato a digitare l\'ultima lettera.'];
     }
     
     return ['valido' => true, 'errore' => ''];
