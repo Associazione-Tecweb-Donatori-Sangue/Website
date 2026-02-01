@@ -438,6 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
    
        errorDialog.showModal();
    }
+});
 
 /* =========================================
    GESTIONE PRENOTAZIONI ADMIN (AJAX)
