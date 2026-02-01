@@ -61,16 +61,35 @@ try {
     if ($datiDonatore) {
         $sessoDonatore = $datiDonatore['sesso'];
         $htmlDonatore = '
-        <section>
-            <h3 class="dashboard-title">Dati del Donatore</h3>
-            <dl class="data-list">
-                <dt>Username:</dt> <dd>' . htmlspecialchars($datiDonatore['username']) . '</dd>
-                <dt>Nome e Cognome:</dt> <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
-                <dt>Email:</dt> <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
-                <dt>Telefono:</dt> <dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
-                <dt>Gruppo Sanguigno:</dt> <dd class="evidenziato">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</dd>
-            </dl>
-        </section>';
+        <div class="admin-layout-container">
+            <aside class="donor-info-sidebar" role="complementary" aria-labelledby="titolo-dati-donatore">
+                <div class="profile-card">
+                    <h2 id="titolo-dati-donatore" class="profile-card-title">Dati del Donatore</h2>
+                    <dl class="data-list-compact">
+                        <div>
+                            <dt>Username:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['username']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Nome e Cognome:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Email:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Telefono:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Gruppo Sanguigno:</dt>
+                            <dd><span class="blood-type-badge" aria-label="Gruppo sanguigno ' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</span></dd>
+                        </div>
+                    </dl>
+                </div>
+            </aside>
+            <div class="form-container-admin">';
     }
 
     // 2. Cerchiamo la data più vicina (precedente o successiva) per il popup smart
@@ -114,7 +133,8 @@ $paginaHTML = str_replace(
     '<button type="submit" class="btn-submit">Prenota</button>', 
     '<input type="hidden" name="id_prenotazione" value="' . $prenotazioneCorrente['id'] . '">
      <input type="hidden" name="user_id" value="' . $prenotazioneCorrente['user_id'] . '">
-     <button type="submit" class="btn-submit">Salva modifiche</button>', 
+     <button type="submit" class="btn-submit">Salva modifiche</button>
+     </div></div>', 
     $paginaHTML
 );
 

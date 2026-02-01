@@ -783,3 +783,16 @@ body.error-background {
 .profile-cards-grid {
   grid-template-columns: 1fr;
 }
+
+/* ========================================
+   LAYOUT ADMIN MODIFICA PRENOTAZIONE
+======================================== */
+
+.admin-layout-container {
+  grid-template-columns: 1fr;
+  gap: 1.5em;
+}
+
+.donor-info-sidebar {
+  position: static;
+}

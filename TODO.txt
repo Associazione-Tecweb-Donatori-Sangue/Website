@@ -4,7 +4,6 @@ HTML
 CSS
 - fare print.css --> MDP +
 - controllare che non ci sia codice duplicato --> GN +
-- sistemare dati donatore in modifica prenotazione --> GN
 - distinguere link visitati e non visitati:
     - INDEX: prenota una donazione, scopri le nostre sedi
     - DONA ORA: accedi e registrati, torna al profilo
@@ -23,7 +22,6 @@ GENERALI
 - fare relazione --> tutti; cose da fare per relazione {
         - definire le convenzioni interne (bottoni, link, ecc)
     }
-- sistemare layout informazioni personali user in profilo --> 🔴
 
 
 EXTRA - da fare solo se avanza tempo (o da inserire nella relazione come estensioni possibili future)
