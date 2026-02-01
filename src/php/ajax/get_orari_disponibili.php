@@ -12,6 +12,17 @@ if (!isset($_GET['sede_id']) || !isset($_GET['data'])) {
 $sede_id = $_GET['sede_id'];
 $data = $_GET['data'];
 
+// Validazioni
+if (!validaInteroPositivo($sede_id)) {
+    echo json_encode(['error' => 'Sede non valida']);
+    exit();
+}
+
+if (!validaData($data)) {
+    echo json_encode(['error' => 'Data non valida']);
+    exit();
+}
+
 try {
     // Recupera il conteggio per ogni fascia oraria
     $stmt = $pdo->prepare(
@@ -32,6 +43,7 @@ try {
     echo json_encode(['orari_pieni' => $orari_occupati]);
     
 } catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]);
+    logError("Errore get_orari_disponibili: " . $e->getMessage());
+    echo json_encode(['error' => 'Errore durante il recupero degli orari']);
 }
 ?>

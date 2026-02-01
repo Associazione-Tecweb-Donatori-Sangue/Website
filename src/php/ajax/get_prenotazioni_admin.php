@@ -103,6 +103,7 @@ try {
     echo generaTabellaAdmin($passate, true, 'titolo-storico');
 
 } catch (PDOException $e) {
-    echo '<p class="text-standard">Errore nel caricamento dei dati.</p>';
+    logError("Errore get_prenotazioni_admin: " . $e->getMessage());
+    echo '<p class="text-standard msg-error">Errore durante il caricamento delle prenotazioni. Riprova più tardi.</p>';
 }
 ?>

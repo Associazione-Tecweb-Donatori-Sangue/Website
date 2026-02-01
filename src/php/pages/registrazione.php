@@ -44,11 +44,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: profilo.php");
                     exit;
                 } else {
-                    $messaggio = "<div class='msg-error'>Errore nel database.</div>";
+                    $messaggio = "<div class='msg-error'>Errore durante la registrazione. Riprova.</div>";
                 }
             }
         } catch (PDOException $e) {
-            $messaggio = "<div class='msg-error'>Errore tecnico: " . $e->getMessage() . "</div>";
+            logError("Errore registrazione: " . $e->getMessage());
+            $messaggio = "<div class='msg-error'>Errore durante la registrazione. Riprova più tardi.</div>";
         }
     }
 }

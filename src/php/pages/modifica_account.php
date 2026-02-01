@@ -81,7 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
     } catch (PDOException $e) {
-        $messaggio = '<div class="msg-error">Errore Database: ' . $e->getMessage() . '</div>';
+        logError("Errore modifica account: " . $e->getMessage());
+        $messaggio = '<div class="msg-error">Errore durante l\'aggiornamento. Riprova più tardi.</div>';
     }
 }
 

@@ -71,7 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $messaggioErrore = "<div class='msg-error'>Errore: Credenziali non corrette.</div>";
         }
     } catch (PDOException $e) {
-        $messaggioErrore = "<div class='msg-error'>Errore DB: " . $e->getMessage() . "</div>";
+        logError("Errore login: " . $e->getMessage());
+        $messaggioErrore = "<div class='msg-error'>Errore durante l'autenticazione. Riprova più tardi.</div>";
     }
 }
 

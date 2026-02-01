@@ -12,6 +12,12 @@ if (!isset($_GET['sede_id'])) {
 $sede_id = $_GET['sede_id'];
 $oggi = date('Y-m-d');
 
+// Validazione
+if (!validaInteroPositivo($sede_id)) {
+    echo json_encode(['error' => 'Sede non valida']);
+    exit();
+}
+
 try {
     // Trova tutti i giorni futuri con prenotazioni per questa sede
     $stmt = $pdo->prepare(
@@ -36,6 +42,7 @@ try {
     echo json_encode(['giorni_pieni' => $giorniPieni]);
     
 } catch (PDOException $e) {
-    echo json_encode(['error' => $e->getMessage()]);
+    logError("Errore get_giorni_pieni: " . $e->getMessage());
+    echo json_encode(['error' => 'Errore durante il recupero dei giorni disponibili']);
 }
 ?>

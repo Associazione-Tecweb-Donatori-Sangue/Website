@@ -15,6 +15,65 @@ function pulisciInput($data) {
 }
 
 /**
+ * Logga un errore in modo sicuro
+ */
+function logError($messaggio, $context = []) {
+    $timestamp = date('Y-m-d H:i:s');
+    $contextStr = !empty($context) ? json_encode($context) : '';
+    $logMessage = "[$timestamp] $messaggio";
+    if ($contextStr) {
+        $logMessage .= " - Context: $contextStr";
+    }
+    error_log($logMessage);
+}
+
+/**
+ * Redirect a pagina di errore 500 con messaggio
+ */
+function redirectToError500($messaggioUtente = "Si è verificato un errore. Riprova più tardi.") {
+    $_SESSION['errore_500'] = $messaggioUtente;
+    header("Location: /500.php");
+    exit();
+}
+
+/**
+ * Gestisce eccezioni PDO in modo sicuro
+ */
+function handleDatabaseError(PDOException $e, $messaggioUtente = "Errore durante l'operazione. Riprova più tardi.") {
+    logError("Errore Database: " . $e->getMessage(), [
+        'file' => $e->getFile(),
+        'line' => $e->getLine()
+    ]);
+    $_SESSION['messaggio_flash'] = $messaggioUtente;
+}
+
+/**
+ * Valida che un valore sia un intero positivo
+ */
+function validaInteroPositivo($valore, $nomecampo = 'valore') {
+    // Verifica che sia numerico, che sia uguale alla sua conversione intera, e che sia positivo
+    if (!is_numeric($valore) || $valore != intval($valore) || intval($valore) <= 0) {
+        return false;
+    }
+    return true;
+}
+
+/**
+ * Valida formato data (Y-m-d)
+ */
+function validaData($data) {
+    $d = DateTime::createFromFormat('Y-m-d', $data);
+    return $d && $d->format('Y-m-d') === $data;
+}
+
+/**
+ * Valida formato orario (HH:MM)
+ */
+function validaOrario($orario) {
+    return (bool) preg_match('/^([0-1][0-9]|2[0-3]):[0-5][0-9]$/', $orario);
+}
+
+/**
  * Verifica se l'utente è loggato. Se no, reindirizza.
  */
 function requireLogin($redirect = '../pages/login.php') {
@@ -83,10 +142,16 @@ function caricaTemplate($nomeFile) {
 
     $path = __DIR__ . '/../html/' . $nomeFile; 
     if (file_exists($path)) {
-        $cache[$nomeFile] = file_get_contents($path);
+        $contenuto = @file_get_contents($path);
+        if ($contenuto === false) {
+            logError("Impossibile leggere il template: $nomeFile");
+            redirectToError500("Errore nel caricamento della pagina");
+        }
+        $cache[$nomeFile] = $contenuto;
         return $cache[$nomeFile];
     }
-    return "Errore: Template $nomeFile non trovato.";
+    logError("Template non trovato: $nomeFile");
+    redirectToError500("Pagina non disponibile");
 }
 
 

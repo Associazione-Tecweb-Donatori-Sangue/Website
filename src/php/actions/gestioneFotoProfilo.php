@@ -50,7 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         $oldPhoto = $stmt->fetchColumn();
                         
                         if ($oldPhoto && file_exists($uploadDir . $oldPhoto)) {
-                            unlink($uploadDir . $oldPhoto);
+                            if (!@unlink($uploadDir . $oldPhoto)) {
+                                logError("Impossibile eliminare vecchia foto: $oldPhoto");
+                            }
                         }
 
                         // Aggiorna DB
@@ -59,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                         $response = ['success' => true, 'fileName' => $fileName];
                     } catch (PDOException $e) {
-                        $response = ['success' => false, 'message' => 'Errore DB: ' . $e->getMessage()];
+                        logError("Errore upload foto DB: " . $e->getMessage());
+                        $response = ['success' => false, 'message' => 'Errore durante il salvataggio. Riprova.'];
                     }
                 } else {
                     $response = ['success' => false, 'message' => 'Errore spostamento file. Permessi cartella?'];
@@ -77,7 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $oldPhoto = $stmt->fetchColumn();
 
             if ($oldPhoto && file_exists($uploadDir . $oldPhoto)) {
-                unlink($uploadDir . $oldPhoto); 
+                if (!@unlink($uploadDir . $oldPhoto)) {
+                    logError("Impossibile eliminare foto: $oldPhoto");
+                }
             }
 
             $stmt = $pdo->prepare("UPDATE utenti SET foto_profilo = NULL WHERE id = ?");
@@ -85,7 +90,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $response = ['success' => true];
         } catch (PDOException $e) {
-            $response = ['success' => false, 'message' => 'Errore DB'];
+            logError("Errore rimozione foto DB: " . $e->getMessage());
+            $response = ['success' => false, 'message' => 'Errore durante la rimozione. Riprova.'];
         }
     } else {
         $response = ['success' => false, 'message' => 'Azione non valida'];

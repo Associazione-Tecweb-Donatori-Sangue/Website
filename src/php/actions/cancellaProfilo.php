@@ -8,29 +8,31 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// 2. Elimino il profilo donatore se esiste
 try {
+    // 2. Elimino il profilo donatore se esiste
     $stmt = $pdo->prepare("DELETE FROM donatori WHERE user_id = ?");
     $stmt->execute([$_SESSION['user_id']]);
-} catch (PDOException $e) {
-    echo "Errore nell'eliminazione del profilo donatore: " . $e->getMessage();
-    exit();
-}
-
-// 3. Elimino l'account utente
-try {
+    
+    // 3. Elimino l'account utente
     $stmt = $pdo->prepare("DELETE FROM utenti WHERE id = ?");
     $stmt->execute([$_SESSION['user_id']]);
+    
+    // 4. Distruggo la sessione
+    session_unset();
+    session_destroy();
+    
+    // 5. Imposto messaggio di successo per la prossima sessione
+    session_start();
+    $_SESSION['messaggio_flash'] = "Account eliminato con successo.";
+    
+    // 6. Reindirizzo alla pagina di login
+    header("Location: ../pages/login.php");
+    exit();
+    
 } catch (PDOException $e) {
-    echo "Errore nell'eliminazione dell'account utente: " . $e->getMessage();
+    logError("Errore cancellazione profilo: " . $e->getMessage());
+    $_SESSION['messaggio_flash'] = "Errore durante l'eliminazione dell'account. Riprova più tardi.";
+    header("Location: ../pages/profilo.php");
     exit();
 }
-
-// 4. Distruggo la sessione
-session_unset();
-session_destroy();
-
-// 5. Reindirizzo alla pagina di login
-header("Location: ../pages/login.php");
-exit();
 ?>

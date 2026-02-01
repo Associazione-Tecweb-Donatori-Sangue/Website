@@ -16,9 +16,21 @@ try {
     $pdo = new PDO($dsn, $user, $pass, $options);
     $GLOBALS['pdo'] = $pdo;
 } catch (\PDOException $e) {
-    error_log("Errore DB: " . $e->getMessage());
-    die("Si è verificato un errore. Riprova più tardi.");
+    // Log dettagliato per il debug
+    error_log("Errore connessione DB: " . $e->getMessage() . " - File: " . $e->getFile() . " - Line: " . $e->getLine());
+    
+    // Avvia sessione se non già avviata
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Messaggio generico per l'utente
+    $_SESSION['errore_500'] = "Impossibile connettersi al database. Riprova più tardi.";
+    
+    // Redirect a pagina di errore 500
+    header("Location: /500.php");
+    exit();
 }
 
-return $pdo; // AGGIUNGI QUESTA RIGA
+return $pdo;
 ?>

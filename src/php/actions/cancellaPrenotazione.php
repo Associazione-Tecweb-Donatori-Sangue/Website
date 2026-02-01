@@ -8,8 +8,15 @@ requireLogin();
 // 2. Controllo se ricevo i dati via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prenotazione'])) {
     
-    $idPrenotazione = $_POST['id_prenotazione'];
+    $idPrenotazione = intval($_POST['id_prenotazione']);
     $userId = $_SESSION['user_id'];
+    
+    // Validazione ID
+    if (!validaInteroPositivo($idPrenotazione)) {
+        $_SESSION['messaggio_flash'] = "Errore: Prenotazione non valida.";
+        header("Location: ../pages/profilo.php");
+        exit();
+    }
     
     // Verifico se è admin
     $isAdmin = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
@@ -32,7 +39,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prenotazione'])) {
         }
 
     } catch (PDOException $e) {
-        $_SESSION['messaggio_flash'] = "Errore Database: " . $e->getMessage();
+        logError("Errore cancellazione prenotazione: " . $e->getMessage());
+        $_SESSION['messaggio_flash'] = "Errore durante l'eliminazione. Riprova più tardi.";
     }
 }
 

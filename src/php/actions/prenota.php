@@ -32,7 +32,37 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ? "../pages/modifica_prenotazione.php?id_prenotazione=" . $idPrenotazione 
         : "../pages/dona_ora.php";
 
-    // --- VALIDAZIONI ---
+    // --- VALIDAZIONI INPUT ---
+    
+    // Valida sede_id
+    if (!validaInteroPositivo($sede_id)) {
+        $_SESSION['messaggio_flash'] = "Errore: Sede non valida.";
+        header("Location: " . $redirectErrore);
+        exit();
+    }
+    
+    // Valida data
+    if (!validaData($data)) {
+        $_SESSION['messaggio_flash'] = "Errore: Formato data non valido.";
+        header("Location: " . $redirectErrore);
+        exit();
+    }
+    
+    // Valida orario
+    if (!validaOrario($ora)) {
+        $_SESSION['messaggio_flash'] = "Errore: Formato orario non valido.";
+        header("Location: " . $redirectErrore);
+        exit();
+    }
+    
+    // Valida user_id
+    if (!validaInteroPositivo($user_id)) {
+        $_SESSION['messaggio_flash'] = "Errore: Utente non valido.";
+        header("Location: " . $redirectErrore);
+        exit();
+    }
+
+    // --- VALIDAZIONI BUSINESS ---
     $oggi = date("Y-m-d");
 
     // A. Data nel passato
@@ -134,7 +164,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
 
     } catch (PDOException $e) {
-        $_SESSION['messaggio_flash'] = "Errore DB: " . $e->getMessage();
+        logError("Errore prenotazione: " . $e->getMessage());
+        $_SESSION['messaggio_flash'] = "Errore durante l'operazione. Riprova più tardi.";
         header("Location: " . $redirectErrore);
         exit();
     }

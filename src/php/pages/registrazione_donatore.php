@@ -271,7 +271,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
 
     } catch (PDOException $e) {
-        die("Errore salvataggio donatore: " . $e->getMessage());
+        logError("Errore salvataggio donatore: " . $e->getMessage());
+        
+        // Verifica se è un errore di duplicazione (codice fiscale già presente)
+        if ($e->getCode() == 23000) {
+            $_SESSION['messaggio_flash'] = "Errore: Il codice fiscale è già registrato.";
+        } else {
+            $_SESSION['messaggio_flash'] = "Errore durante il salvataggio. Riprova più tardi.";
+        }
+        
+        $_SESSION['dati_inseriti'] = $_POST;
+        header("Location: registrazione_donatore.php");
+        exit();
     }
 }
 
