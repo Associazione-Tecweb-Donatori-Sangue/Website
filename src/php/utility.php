@@ -37,17 +37,6 @@ function redirectToError500($messaggioUtente = "Si è verificato un errore. Ripr
 }
 
 /**
- * Gestisce eccezioni PDO in modo sicuro
- */
-function handleDatabaseError(PDOException $e, $messaggioUtente = "Errore durante l'operazione. Riprova più tardi.") {
-    logError("Errore Database: " . $e->getMessage(), [
-        'file' => $e->getFile(),
-        'line' => $e->getLine()
-    ]);
-    $_SESSION['messaggio_flash'] = $messaggioUtente;
-}
-
-/**
  * Valida che un valore sia un intero positivo
  */
 function validaInteroPositivo($valore, $nomecampo = 'valore') {
@@ -114,20 +103,6 @@ function getMessaggioFlashHTML() {
         return $html;
     }
     return '';
-}
-
-/**
- * Recupera la foto profilo dell'utente dal database
- */
-function getFotoProfilo($pdo, $userId) {
-    static $stmt = null;
-    
-    if ($stmt === null) {
-        $stmt = $pdo->prepare("SELECT foto_profilo FROM utenti WHERE id = ?");
-    }
-    
-    $stmt->execute([$userId]);
-    return $stmt->fetch();
 }
 
 /**
@@ -256,18 +231,5 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     $paginaFinale = str_replace('[FAVICON]', $favicon, $paginaFinale);
 
     return $paginaFinale;
-}
-
-/**
- * Calcola la data minima per la prossima donazione in base al sesso.
- * @param string $sesso 'Maschio' o 'Femmina'
- * @param string $ultimaData Data ultima donazione (Y-m-d)
- * @return DateTime Data minima calcolata
- */
-function getDataProssimaDonazione($sesso, $ultimaData) {
-    $mesiIntervallo = ($sesso === 'Maschio') ? 3 : 6;
-    $dataMinima = new DateTime($ultimaData);
-    $dataMinima->modify("+{$mesiIntervallo} months");
-    return $dataMinima;
 }
 ?>

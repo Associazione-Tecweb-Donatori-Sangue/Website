@@ -1072,17 +1072,6 @@ textarea:focus {
   box-shadow: 0 0 0 4px rgba(172, 210, 230, 0.15);
 }
 
-.select-locations {
-    width: 100%;
-    max-width: 300px;
-    margin: 0.6em 0; 
-    display: block;
-}
-
-.select-locations select {
-    width: 100%;
-}
-
 small {
   display: block;
   margin-top: 0.3em;

@@ -645,9 +645,6 @@ body.error-background {
 /* ========================================
    TABELLA ADMIN - MOBILE
 ======================================== */
-.select-locations select {
-  max-width: 100%;
-}
 
 /* Layout a card su mobile */
 .table-container {
