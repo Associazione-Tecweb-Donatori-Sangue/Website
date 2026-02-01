@@ -2,9 +2,6 @@
   /*PRINT.CSS - Foglio di stile per la stampa*/
 
   /*  TODO
-    -sistemare spaziature in index
-    -nelle tabelle dei profili non si vede annulla
-    -in login/registrati gli esempi sono blu
     -dona ora da non loggato fa schifo
   */
   
@@ -60,7 +57,12 @@
   h4 { font-size: 15px; line-height: 21px; margin-top: 8px; }
 
   p,
-  .text-standard {
+  .text-standard,
+  .text-standard p,
+  .text-standard li,
+  .text-standard dd,
+  #card-why-us p,
+  #card-locations div p {
     width: 100%;
     font-size: 12px;
     line-height: 18px;
@@ -71,7 +73,15 @@
     color: #000;
     orphans: 2;
     widows: 2;
+    box-shadow: none;
   }
+
+  .text-standard dt {
+    color: #000;
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 18px;
+  }  
 
   abbr {
     text-decoration: none;
@@ -174,10 +184,15 @@
   }
 
   .tertiary-title {
-  color: #000;
-  margin: 0;
-  padding-left: 0;
-  border-left: none;
+    font-size: 16px;
+    line-height: 20px;
+    border: none;
+    border-left: none;
+    padding: 0;
+    padding-left: 0;
+    margin: 10px 0 6px 0;
+    color: #000;
+    background: transparent;
   }
 
   #titolo-future,
@@ -290,6 +305,15 @@
   .right-footer,
   .vertical-divider,
   /* Carosello e animazioni */
+  /* nascondo immagini e carosello */
+  img,
+  #card-intro img,
+  #card-why-us img,
+  #card-join img,
+  .location img,
+  .profile-picture,
+  .profile-picture img,
+  .profile-header,
   .carousel,
   .carousel-track,
   /*dove_trovarci, ricerca nulla*/
@@ -307,13 +331,26 @@
   .back-button,
   button,
   input[type="submit"],
-  input[type="reset"] {
+  input[type="reset"],
+  .text-separator {
     display: none;
     visibility: hidden;
   }
 
   /* login e form */
   /* Form base per login e registrazione */
+
+  #info-user,
+  #info-pass {
+    width: 100%;
+    font-size: 8px;
+    line-height: 10px;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    color: #000;
+  }
+
   form,
   #prenotaForm {
     display: block;
@@ -421,9 +458,11 @@
   #card-join,
   #card-intro,
   #card-join,
+  #card-join ul,
+  #card-join li,
+  #card-join ul li p,
   #card-why-us,
-  .text-standard,
-  .location {
+  #card-locations {
     text-align: left;
     display: block;
     width: 100%;
@@ -433,100 +472,47 @@
     border-radius: 0;
     background: transparent;
     box-shadow: none;
-  }
-
-  /* Card intro - layout verticale */
-  #card-intro {
     flex-direction: column;
   }
 
-  #card-intro div {
+  .card-main-title,
+  #card-join-title h2 {
+    font-size: 22px; 
+    line-height: 28px; 
+    margin-top: 16px;
+    margin-bottom: 8px;
+    color: #000;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /*card intro*/
+  #card-intro div,
+  #card-locations div {
     width: 100%;
     margin: 0;
     padding: 0;
     text-align: left;
+    background: transparent;
+    box-shadow: none;
+    border-radius: 0;
+    position: relative;
   }
 
   /* Card join */
-  #card-join {
-    flex-direction: column;
-    margin: 0;
-    box-shadow: none;
-  }
-
-  #card-join-title {
-    height: auto;
-    margin: 0;
-    padding: 0;
+  #card-join-title p,
+  #card-intro p {
     text-align: left;
-  }
-
-  .card-main-title h2 {
-    color: #000;
-    font-size: 14px;
-    line-height: 20px;
-  }
-
-  #card-join-title h2 {
-    color: #000;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: left;
-    margin: 0;
-  }
-
-  #card-join-title p {
-    text-align: left;
-  }
-
-  #card-join ul {
-    display: block;
-    flex-direction: column;
-    width: 100%;
-    margin: 0;
-    text-align: left;
-    justify-content: flex-start;
-    align-items: flex-start;
-  }
-
-  #card-join li {
-    display: list-item;
-    width: auto;
-    height: auto;
-    margin-bottom: 6px;
-    padding: 0;
-    background: transparent;
-    text-align: left;
-    flex-direction: row;
-    justify-items: auto;
-    border-radius: 0;
-    margin-left: 0;
-  }
-
-  #card-join ul li p {
-    text-align: left;
-    margin-left: 0;
-    margin: 0;
     font-size: 12px;
     line-height: 18px;
-  }
-
-  #card-join img {
-    display: none;
-  }
-
-  /* Card why us */
-  #div-why-us {
-    width: 100%;
-    margin: 0;
-    margin-bottom: 0;
   }
 
   #div-why-us h3 {
     color: #000;
     font-size: 14px;
-    line-height: 20px;
     page-break-after: avoid;
+    margin-bottom: 0;
   }
 
   /*card location*/
@@ -536,89 +522,14 @@
     content: none;
   }
 
-  #card-locations {
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-    justify-content: flex-start;
-    align-items: flex-start;
-    text-align: left;
-  }
-
-  #card-locations div {
-    width: 100%;
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-    text-align: left;
-    border-radius: 0;
-  }
-
-  #card-locations h2 {
-    text-align: left;
-    margin: 0;
-  }
-
-  #card-locations div p {
-    color: #000000;
-    width: 100%;
-    padding: 0;
-    background: transparent;
-    box-shadow: none;
-    text-align: left;
-    margin: 0;
-  }
-
+  /*dove trovarci*/
   .location {
     box-shadow: none;
     text-align: left;
-  }
-
-  #card-locations div{
-  width:  100%;
-  height: auto;
-  padding: 0;
-  background-color: transparent;
-  text-align: left;
-  border-radius: 0;
-  position: relative;
-  z-index: 1;
-}
-
-  /* Titoli nelle card */
-  .card-main-title {
-    margin-top: 20px;
-    font-size: 18px;
-    line-height: 24px;
-    color: #000;
-  }
-
-  .tertiary-title {
-    font-size: 16px;
-    line-height: 20px;
-    border: none;
-    border-left: none;
-    padding: 0;
-    padding-left: 0;
-    margin: 10px 0 6px 0;
-    color: #000;
-    background: transparent;
-  }
-
-  /* Testo standard */
-  .text-standard p,
-  .text-standard li,
-  .text-standard dd {
-    color: #000;
-    font-size: 12px;
-    line-height: 18px;
-  }
-
-  .text-standard dt {
-    color: #000;
-    font-size: 12px;
-    font-weight: bold;
-    line-height: 18px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
   }
 
   /* Locations container */
@@ -627,18 +538,13 @@
     width: 100%;
   }
 
-  .location {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid #ccc;
-  }
-
   .location h3 {
     font-size: 14px;
     color: #000;
   }
 
-  .location p {
+  .location p,
+  .location a {
     color: #000;
   }
 
@@ -772,19 +678,6 @@
     color: #000;
   }
 
-  /* nascondo immagini e carosello */
-  img,
-  #card-intro img,
-  #card-why-us img,
-  #card-join img,
-  .location img,
-  .profile-picture,
-  .profile-picture img,
-  .profile-header {
-    display: none;
-    visibility: hidden;
-  }
-
   /* tabelle */
   table,
   .data-table {
@@ -833,7 +726,7 @@
     margin-bottom: 10px;
   }
 
-  /* Nascondere pulsanti nelle tabelle */
+  /* Nascondere pulsanti nelle tabelle*/
   .data-table button,
   .btn-cancel-booking,
   .form-inline-table {
@@ -854,10 +747,6 @@
   #disclaimer-title {
     font-size: 14px;
     font-weight: bold;
-    color: #000;
-  }
-
-  #disclaimer strong {
     color: #000;
   }
 
@@ -882,45 +771,101 @@
   }
 
   .profile-admin label[for="sede-donazioni"] {
-  display: block;
-  color: #000000;
-  margin: 0;
-  padding: 0;
-  text-align: left;
+    display: block;
+    color: #000000;
+    margin: 0;
+    padding: 0;
+    text-align: left;
   }
 
   .select-locations-admin,
   .select-locations-admin select {
-  justify-content: left;
-  width: 100%;
-  border: none;
-  background-color: none;
-  color: #000000;
-}
-
-  .data-list {
+    justify-content: left;
     width: 100%;
-  }
-
-  .data-list div {
     border: none;
-    padding: 5px 0;
-    margin: 0;
+    background-color: none;
+    color: #000000;
   }
 
-  .data-list dt {
-    font-size: 12px;
+  /* grid cards */
+  .profile-cards-grid {
+    display: block;
+    width: 100%;
+    margin: 20px 0;
+  }
+
+  .profile-card {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    background: transparent;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+    page-break-inside: avoid;
+  }
+
+  .profile-card-title {
+    border-bottom: 1px solid #ccc;
+    font-size: 14px;
     font-weight: bold;
     color: #000;
+    margin: 0 0 10px 0;
+    padding: 0;
+    page-break-after: avoid;
   }
 
-  .data-list dd,
-  .data-list dd.evidenziato {
+  .data-list-compact {
+    width: 100%;
     margin: 0;
     padding: 0;
-    font-size: 12px;
+  }
+
+  .data-list-compact div {
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+    border-bottom: none;
+    background: transparent;
+  }
+
+  .data-list-compact div:not(:last-child) {
+    border-bottom: none;
+  }
+
+  .data-list-compact dt {
+    font-size: 11px;
+    font-weight: bold;
     color: #000;
-    font-weight: 0;
+    display: inline;
+    margin: 0;
+    padding: 0;
+  }
+
+  .data-list-compact dd {
+    font-size: 11px;
+    color: #000;
+    display: inline;
+    margin: 0;
+    padding: 0;
+    margin-left: 5px;
+  }
+
+  .blood-type-badge {
+    border: none;
+    padding: 0;
+    font-weight: bold;
+    display: inline;
+    color: #000;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .text-uppercase {
+    text-transform: uppercase;
   }
 
   /* Messaggi di stato */
@@ -972,12 +917,5 @@
   * {
     position: static;
     float: none;
-  }
-
-  /* Eccezione per titoli con logo */
-  #title-standard,
-  #landing-title {
-    position: relative;
-    display: block;
   }
 }
