@@ -2,6 +2,66 @@
    GESTIONE DOM (Menu, Ricerca, Header)
 ========================================= */
 
+/* =========================================
+   HELPER FUNZIONE PER DIALOG
+========================================= */
+function setupDialog(config) {
+    const {
+        dialogId,
+        openTriggers = [],
+        closeBtnId,
+        onOpen = null,
+        closeOnBackdrop = true
+    } = config;
+
+    const dialog = document.getElementById(dialogId);
+    if (!dialog) return;
+
+    // Gestione apertura
+    openTriggers.forEach(trigger => {
+        if (typeof trigger === 'string') {
+            // È un ID di bottone
+            const btn = document.getElementById(trigger);
+            if (btn) {
+                btn.addEventListener('click', () => {
+                    if (onOpen) onOpen();
+                    dialog.showModal();
+                });
+            }
+        } else if (trigger.selector && trigger.event === 'click') {
+            // È un event delegation
+            document.addEventListener('click', (e) => {
+                if (e.target.classList.contains(trigger.selector)) {
+                    if (trigger.dataHandler) {
+                        trigger.dataHandler(e.target);
+                    }
+                    if (onOpen) onOpen();
+                    dialog.showModal();
+                }
+            });
+        }
+    });
+
+    // Gestione chiusura
+    if (closeBtnId) {
+        const closeBtn = document.getElementById(closeBtnId);
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                dialog.close();
+            });
+        }
+    }
+
+    // Chiusura su click backdrop
+    if (closeOnBackdrop) {
+        dialog.addEventListener('click', (e) => {
+            if (e.target === dialog) {
+                dialog.close();
+            }
+        });
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Menu mobile - Accessibilità hamburger menu
@@ -146,100 +206,51 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 6. GESTIONE DIALOG ELIMINA PROFILO
-    const btnEliminaProfilo = document.getElementById('btn-elimina-profilo');
-    const dialogEliminaProfilo = document.getElementById('dialog-elimina-profilo');
-    const btnAnnullaElimina = document.getElementById('btn-annulla-elimina');
-
-    if (btnEliminaProfilo && dialogEliminaProfilo) {
-        btnEliminaProfilo.addEventListener('click', () => {
-            dialogEliminaProfilo.showModal();
-        });
-
-        if (btnAnnullaElimina) {
-            btnAnnullaElimina.addEventListener('click', () => {
-                dialogEliminaProfilo.close();
-            });
-        }
-
-        dialogEliminaProfilo.addEventListener('click', (e) => {
-            if (e.target === dialogEliminaProfilo) {
-                dialogEliminaProfilo.close();
-            }
-        });
-    }
+    setupDialog({
+        dialogId: 'dialog-elimina-profilo',
+        openTriggers: ['btn-elimina-profilo'],
+        closeBtnId: 'btn-annulla-elimina'
+    });
 
     // 7. GESTIONE DIALOG ANNULLA PRENOTAZIONE
-    const dialogAnnullaPrenotazione = document.getElementById('dialog-annulla-prenotazione');
-    const btnAnnullaDialogPrenotazione = document.getElementById('btn-annulla-dialog-prenotazione');
     const hiddenIdPrenotazione = document.getElementById('hidden-id-prenotazione');
     const prenotazioneData = document.getElementById('prenotazione-data');
     const prenotazioneOra = document.getElementById('prenotazione-ora');
 
-    if (dialogAnnullaPrenotazione) {
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-annulla-prenotazione')) {
-                const idPrenotazione = e.target.dataset.idPrenotazione;
-                const data = e.target.dataset.data;
-                const ora = e.target.dataset.ora;
-
-                if (hiddenIdPrenotazione) hiddenIdPrenotazione.value = idPrenotazione;
-                if (prenotazioneData) prenotazioneData.textContent = data;
-                if (prenotazioneOra) prenotazioneOra.textContent = ora;
-
-                dialogAnnullaPrenotazione.showModal();
+    setupDialog({
+        dialogId: 'dialog-annulla-prenotazione',
+        openTriggers: [{
+            selector: 'btn-annulla-prenotazione',
+            event: 'click',
+            dataHandler: (target) => {
+                if (hiddenIdPrenotazione) hiddenIdPrenotazione.value = target.dataset.idPrenotazione;
+                if (prenotazioneData) prenotazioneData.textContent = target.dataset.data;
+                if (prenotazioneOra) prenotazioneOra.textContent = target.dataset.ora;
             }
-        });
-
-        if (btnAnnullaDialogPrenotazione) {
-            btnAnnullaDialogPrenotazione.addEventListener('click', () => {
-                dialogAnnullaPrenotazione.close();
-            });
-        }
-
-        dialogAnnullaPrenotazione.addEventListener('click', (e) => {
-            if (e.target === dialogAnnullaPrenotazione) {
-                dialogAnnullaPrenotazione.close();
-            }
-        });
-    }
+        }],
+        closeBtnId: 'btn-annulla-dialog-prenotazione'
+    });
 
     // 8. GESTIONE DIALOG ELIMINA PRENOTAZIONE ADMIN
-    const dialogEliminaPrenotazioneAdmin = document.getElementById('dialog-elimina-prenotazione-admin');
-    const btnAnnullaEliminaAdmin = document.getElementById('btn-annulla-elimina-admin');
     const hiddenIdPrenotazioneAdmin = document.getElementById('hidden-id-prenotazione-admin');
     const eliminaUsername = document.getElementById('elimina-username');
     const eliminaData = document.getElementById('elimina-data');
     const eliminaOra = document.getElementById('elimina-ora');
 
-    if (dialogEliminaPrenotazioneAdmin) {
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('btn-elimina-prenotazione-admin')) {
-                const idPrenotazione = e.target.dataset.idPrenotazione;
-                const username = e.target.dataset.username;
-                const data = e.target.dataset.data;
-                const ora = e.target.dataset.ora;
-
-                if (hiddenIdPrenotazioneAdmin) hiddenIdPrenotazioneAdmin.value = idPrenotazione;
-                if (eliminaUsername) eliminaUsername.textContent = username;
-                if (eliminaData) eliminaData.textContent = data;
-                if (eliminaOra) eliminaOra.textContent = ora;
-
-                dialogEliminaPrenotazioneAdmin.showModal();
+    setupDialog({
+        dialogId: 'dialog-elimina-prenotazione-admin',
+        openTriggers: [{
+            selector: 'btn-elimina-prenotazione-admin',
+            event: 'click',
+            dataHandler: (target) => {
+                if (hiddenIdPrenotazioneAdmin) hiddenIdPrenotazioneAdmin.value = target.dataset.idPrenotazione;
+                if (eliminaUsername) eliminaUsername.textContent = target.dataset.username;
+                if (eliminaData) eliminaData.textContent = target.dataset.data;
+                if (eliminaOra) eliminaOra.textContent = target.dataset.ora;
             }
-        });
-
-        if (btnAnnullaEliminaAdmin) {
-            btnAnnullaEliminaAdmin.addEventListener('click', () => {
-                dialogEliminaPrenotazioneAdmin.close();
-            });
-        }
-
-        dialogEliminaPrenotazioneAdmin.addEventListener('click', (e) => {
-            if (e.target === dialogEliminaPrenotazioneAdmin) {
-                dialogEliminaPrenotazioneAdmin.close();
-            }
-        });
-    }
+        }],
+        closeBtnId: 'btn-annulla-elimina-admin'
+    });
 
     // 9 + 10. VALIDAZIONE UNIFICATA: Campi vuoti + Mesi + Dialog conferma
     const prenotaForm = document.getElementById('prenotaForm');
@@ -488,9 +499,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Gestione dialog invalidFormatDialog
+    setupDialog({
+        dialogId: 'invalidFormatDialog',
+        closeBtnId: 'closeInvalidFormatBtn',
+        closeOnBackdrop: false
+    });
+
     if (invalidFormatDialog && closeInvalidFormatBtn) {
         closeInvalidFormatBtn.addEventListener('click', () => {
-            invalidFormatDialog.close();
             if (photoUpload) {
                 photoUpload.value = '';
                 photoUpload.focus();
@@ -502,9 +519,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Gestione dialog uploadErrorDialog
+    setupDialog({
+        dialogId: 'uploadErrorDialog',
+        closeBtnId: 'closeUploadErrorBtn',
+        closeOnBackdrop: false
+    });
+
     if (uploadErrorDialog && closeUploadErrorBtn) {
         closeUploadErrorBtn.addEventListener('click', () => {
-            uploadErrorDialog.close();
             if (photoUpload) {
                 photoUpload.value = '';
                 photoUpload.focus();

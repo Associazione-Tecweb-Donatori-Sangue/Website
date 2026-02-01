@@ -31,18 +31,12 @@ try {
 }
 
 // --- GESTIONE MESSAGGI FLASH ---
-$msgHTML = "";
-if (isset($_SESSION['messaggio_flash'])) {
-    $classe = 'msg-flash msg-success';
-    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) {
-        $classe = 'msg-flash msg-error';
-    }
-    $msgHTML = '<div class="' . $classe . '">' . htmlspecialchars($_SESSION['messaggio_flash']) . '</div>';
-    unset($_SESSION['messaggio_flash']);
-}
+$msgHTML = getMessaggioFlashHTML();
 
 $paginaHTML = caricaTemplate('dona_ora.html');
-$paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
+if (!empty($msgHTML)) {
+    $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
+}
 
 // --- RECUPERO DATI DONATORE E LOGICA POPUP ---
 $htmlDonatore = "";

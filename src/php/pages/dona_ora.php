@@ -2,21 +2,13 @@
 require_once "../utility.php";
 require_once "../db.php";
 
-// 1. GESTIONE MESSAGGI FLASH 
-$msgHTML = "";
-if (isset($_SESSION['messaggio_flash'])) {
-    $classe = 'msg-flash msg-success'; 
-    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) {
-        $classe = 'msg-flash msg-error';
-    }
-    $msgHTML = '<div class="' . $classe . '">' . htmlspecialchars($_SESSION['messaggio_flash']) . '</div>';
-    unset($_SESSION['messaggio_flash']);
-}
-
 $paginaHTML = caricaTemplate('dona_ora.html');
 
-// 2. INIEZIONE MESSAGGIO NELLA PAGINA
-$paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
+// Gestione messaggi flash unificata
+$msgHTML = getMessaggioFlashHTML();
+if (!empty($msgHTML)) {
+    $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
+}
 
 // 1. Controllo Logica Accesso
 if (!isset($_SESSION['user_id'])) {

@@ -315,16 +315,7 @@ $template = str_replace(
     $template
 );
 
-$messaggioErrore = ""; 
-if (isset($_SESSION['messaggio_flash'])) {
-    $classe = (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) ? 'msg-error' : 'msg-success';
-
-    $messaggioErrore = '<div class="' . $classe . '">
-                    ' . htmlspecialchars($_SESSION['messaggio_flash']) . '
-                </div>';
-    
-    unset($_SESSION['messaggio_flash']);
-}
+$messaggioErrore = getMessaggioFlashHTML();
 
 // Sostituisco il placeholder del messaggio
 $template = str_replace('[messaggioErrore]', $messaggioErrore, $template);

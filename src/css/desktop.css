@@ -46,6 +46,12 @@
   /* Altri colori comuni */
   --text-secondary: #2c5f7a;
   --accent-blue: #749BA3;
+
+  /* Transizioni standard */
+  --transition-standard: all 0.3s ease;
+  --transition-transform: transform 0.3s ease;
+  --transition-opacity: opacity 0.3s ease;
+  --transition-colors: background-color 0.3s ease, color 0.3s ease;
 }
 
 html{
@@ -211,7 +217,7 @@ header{
   width: 1.9em;
   height: 0.2em;
   background-color: var(--black);
-  transition: all 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 /*-----------------*/
@@ -886,7 +892,7 @@ footer {
   border: 2px solid var(--form-accent-color);
   border-radius: 2em;
   background-color: var(--white);
-  transition: all 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .search-container input:focus {
@@ -1041,7 +1047,7 @@ select {
   border-radius: 0.8em;
   font-size: 0.9em;
   background-color: var(--form-input-bg); 
-  transition: all 0.3s ease;
+  transition: var(--transition-standard);
   box-sizing: border-box;
 }
 
@@ -1096,7 +1102,7 @@ small {
   border-radius: 0.8em;
   margin-bottom: 1em;
   box-sizing: border-box;
-  transition: all 0.3s ease;
+  transition: var(--transition-standard);
   outline: none;
 }
 
@@ -1169,7 +1175,7 @@ small {
   border-radius: 0.8em;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-standard);
   text-transform: none;
   color: var(--white);
 }
@@ -1221,7 +1227,7 @@ small {
   object-fit: cover;
   border: 2px solid var(--btn-primary-bg);
   box-shadow: 0 4px 15px rgba(172, 210, 230, 0.3);
-  transition: opacity 0.3s ease;
+  transition: var(--transition-opacity);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -1243,7 +1249,7 @@ small {
   border-radius: 50%;
   border: 3px solid var(--btn-primary-bg);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: var(--transition-opacity);
   pointer-events: none;
   z-index: 2;
 }
@@ -1266,7 +1272,7 @@ small {
   font-weight: normal;
   text-align: center;
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: var(--transition-opacity);
   pointer-events: none;
   z-index: 1;
   white-space: nowrap;
@@ -1361,7 +1367,7 @@ small {
     white-space: nowrap;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s ease;
+    transition: var(--transition-opacity);
     z-index: 1001;
 }
 

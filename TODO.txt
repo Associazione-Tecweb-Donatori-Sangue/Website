@@ -3,7 +3,6 @@ HTML
 
 CSS
 - fare print.css --> MDP +
-- controllare che non ci sia codice duplicato --> GG +
 - distinguere link visitati e non visitati:
     - INDEX: prenota una donazione, scopri le nostre sedi
     - DONA ORA: accedi e registrati, torna al profilo

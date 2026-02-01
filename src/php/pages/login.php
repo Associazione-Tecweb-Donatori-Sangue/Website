@@ -14,22 +14,7 @@ elseif ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $paginaHTML = caricaTemplate('login.html');
 
 // Variabile per eventuali messaggi di errore
-$messaggioErrore = "";
-
-if (isset($_SESSION['messaggio_flash'])) {
-    // Determino il colore in base al contenuto del messaggio
-    if (strpos($_SESSION['messaggio_flash'], 'Errore') !== false) {
-        $classe = 'msg-error'; // Rosso errore
-    } else {
-        $classe = 'msg-success'; // Verde successo
-    }
-    
-    $messaggioErrore = "<div class='" . $classe . "'>" . htmlspecialchars($_SESSION['messaggio_flash']) . "</div>";
-    
-    // Importante: cancelliamo il messaggio subito dopo averlo salvato nella variabile
-    // così se ricarichi la pagina sparisce
-    unset($_SESSION['messaggio_flash']);
-}
+$messaggioErrore = getMessaggioFlashHTML();
 
 // Controllo se il form è stato inviato
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
