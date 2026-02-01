@@ -52,39 +52,72 @@ try {
         $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
 
         $htmlDonatore = '
-        <section>
-            <h3 class="dashboard-title">Il tuo profilo Donatore</h3>
-            <dl class="data-list">
-                <dt>Nome e Cognome:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
-                
-                <dt>Data di Nascita:</dt>
-                <dd>' . $dataNascitaFormatted . '</dd>
-                
-                <dt>Luogo di Nascita:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['luogo_nascita']) . '</dd>
-                
-                <dt>Codice Fiscale:</dt>
-                <dd class="text-uppercase">' . htmlspecialchars($datiDonatore['codice_fiscale']) . '</dd>
-                
-                <dt>Residenza:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['indirizzo']) . '</dd>
+        <section aria-labelledby="titolo-profilo-donatore">
+            <h2 id="titolo-profilo-donatore" class="dashboard-title">Il tuo profilo Donatore</h2>
+            
+            <div class="profile-cards-grid">
+                <!-- Card Dati Anagrafici -->
+                <div class="profile-card" role="region" aria-labelledby="titolo-anagrafica">
+                    <h3 id="titolo-anagrafica" class="profile-card-title">Dati Anagrafici</h3>
+                    <dl class="data-list-compact">
+                        <div>
+                            <dt>Nome e Cognome:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['nome']) . ' ' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Data di Nascita:</dt>
+                            <dd>' . $dataNascitaFormatted . '</dd>
+                        </div>
+                        <div>
+                            <dt>Luogo di Nascita:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['luogo_nascita']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Codice Fiscale:</dt>
+                            <dd class="text-uppercase">' . htmlspecialchars($datiDonatore['codice_fiscale']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Residenza:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['indirizzo']) . '</dd>
+                        </div>
+                    </dl>
+                </div>
 
-                <dt>Email:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
-                
-                <dt>Telefono:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
+                <!-- Card Contatti -->
+                <div class="profile-card" role="region" aria-labelledby="titolo-contatti">
+                    <h3 id="titolo-contatti" class="profile-card-title">Contatti</h3>
+                    <dl class="data-list-compact">
+                        <div>
+                            <dt>Email:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Telefono:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['telefono']) . '</dd>
+                        </div>
+                    </dl>
+                </div>
 
-                <dt>Gruppo Sanguigno:</dt>
-                <dd class="evidenziato">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</dd>
-                
-                <dt>Sesso:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['sesso']) . '</dd>
-                
-                <dt>Peso:</dt>
-                <dd>' . htmlspecialchars($datiDonatore['peso']) . ' Kg</dd>
-            </dl>
+                <!-- Card Dati Medici -->
+                <div class="profile-card" role="region" aria-labelledby="titolo-dati-medici">
+                    <h3 id="titolo-dati-medici" class="profile-card-title">Dati Medici</h3>
+                    <dl class="data-list-compact">
+                        <div>
+                            <dt>Gruppo Sanguigno:</dt>
+                            <dd><span class="blood-type-badge" aria-label="Gruppo sanguigno ' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '">' . htmlspecialchars($datiDonatore['gruppo_sanguigno']) . '</span></dd>
+                        </div>
+                        <div>
+                            <dt>Sesso:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['sesso']) . '</dd>
+                        </div>
+                        <div>
+                            <dt>Peso:</dt>
+                            <dd>' . htmlspecialchars($datiDonatore['peso']) . ' <abbr title="Chilogrammi">Kg</abbr></dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+            
             <div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std btn-profile">Modifica i tuoi dati</a></div>
         </section>';
         
@@ -199,10 +232,10 @@ try {
 // --- COSTRUZIONE HTML FINALE CON ID PER ARIA-LABEL ---
 $nuovoContenutoTabelle = '
     <section>
-        <h3 id="titolo-prenotazioni" class="tertiary-title">Prenotazioni Future</h3>
+        <h2 id="titolo-prenotazioni" class="tertiary-title">Prenotazioni Future</h2>
         ' . $sezioneFuture . '
 
-        <h3 id="titolo-storico" class="tertiary-title titolo-margin-top">Storico Donazioni (Ultime 5)</h3>
+        <h2 id="titolo-storico" class="tertiary-title titolo-margin-top">Storico Donazioni (Ultime 5)</h2>
         ' . $sezionePassate . '
     </section>
 ';

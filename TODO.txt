@@ -3,7 +3,6 @@ HTML
 
 CSS
 - fare print.css --> MDP +
-- sistemare i colori usando var quando ci sono colori in comune --> GG +
 - controllare che non ci sia codice duplicato --> GN +
 - sistemare dati donatore in modifica prenotazione --> GN
 - distinguere link visitati e non visitati:

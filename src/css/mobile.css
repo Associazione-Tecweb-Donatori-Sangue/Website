@@ -775,3 +775,11 @@ body.error-background {
 .btn-index {
     padding: 0.9em 1.5em;
 }
+
+/* ========================================
+   CARD PROFILO DONATORE
+======================================== */
+
+.profile-cards-grid {
+  grid-template-columns: 1fr;
+}

@@ -1499,6 +1499,92 @@ form .msg-error {
 }
 
 /* =========================================
+   CARD PROFILO DONATORE
+========================================= */
+
+.profile-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5em;
+  margin: 2em 0;
+}
+
+.profile-card {
+  background: linear-gradient(135deg, var(--white) 0%, #f8fbfc 100%);
+  border-radius: 1em;
+  padding: 1.5em;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--form-accent-color);
+}
+
+.profile-card-title {
+  font-size: 1.3em;
+  font-weight: 700;
+  color: var(--btn-primary-bg);
+  margin-bottom: 1em;
+  padding-bottom: 0.5em;
+  border-bottom: 2px solid var(--form-accent-color);
+}
+
+.data-list-compact {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.data-list-compact div {
+  padding: 0.6em 0;
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0.8em;
+  align-items: center;
+}
+
+.data-list-compact div:not(:last-child) {
+  border-bottom: 1px solid rgba(172, 210, 230, 0.3);
+}
+
+.data-list-compact dt {
+  font-size: 0.85em;
+  color: #7f8c8d;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.data-list-compact dd {
+  margin: 0;
+  font-size: 1em;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.blood-type-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #c1121f 0%, #d90429 100%);
+  color: var(--white);
+  padding: 0.4em 1em;
+  border-radius: 2em;
+  font-weight: 700;
+  font-size: 1.1em;
+  letter-spacing: 0.05em;
+  box-shadow: 0 2px 8px rgba(193, 18, 31, 0.3);
+  vertical-align: middle;
+}
+
+/* Stile per abbreviazioni accessibili */
+abbr[title] {
+  text-decoration: none;
+  border-bottom: 1px dotted currentColor;
+  cursor: help;
+}
+
+abbr[title]:hover,
+abbr[title]:focus {
+  border-bottom-style: solid;
+}
+
+/* =========================================
    ELEMENTI PROFILO
 ========================================= */
 
