@@ -88,41 +88,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtUtente = $pdo->prepare("SELECT sesso FROM donatori WHERE user_id = ?");
         $stmtUtente->execute([$user_id]);
         $donatore = $stmtUtente->fetch(PDO::FETCH_ASSOC);
-        $sogliaMesi = ($donatore['sesso'] === 'Maschio') ? 3 : 6;
+        // Default a 3 mesi se non specificato, altrimenti logica sesso
+        $sogliaMesi = ($donatore && $donatore['sesso'] === 'Femmina') ? 6 : 3;
 
-        // 1. Cerchiamo la prenotazione precedente più vicina alla data scelta
+        // 1. Cerchiamo la prenotazione precedente più vicina
         $stmtPrec = $pdo->prepare("SELECT MAX(data_prenotazione) FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione < ? AND id != ?");
         $stmtPrec->execute([$user_id, $data, $idPrenotazione ?? 0]);
         $dataPrecedente = $stmtPrec->fetchColumn();
 
-        // 2. Cerchiamo la prenotazione successiva più vicina alla data scelta
+        // 2. Cerchiamo la prenotazione successiva più vicina
         $stmtSucc = $pdo->prepare("SELECT MIN(data_prenotazione) FROM lista_prenotazioni WHERE user_id = ? AND data_prenotazione > ? AND id != ?");
         $stmtSucc->execute([$user_id, $data, $idPrenotazione ?? 0]);
         $dataSuccessiva = $stmtSucc->fetchColumn();
 
         $intervalloViolato = false;
+        $dataConflitto = null;
+        
+        // Oggetti DateTime
+        $dataSceltaObj = new DateTime($data);
+        $dataSceltaObj->setTime(0, 0, 0);
 
-        // Controllo rispetto alla precedente
+        // A. Controllo con la PRECEDENTE
         if ($dataPrecedente) {
-            $diffPrec = (new DateTime($data))->diff(new DateTime($dataPrecedente));
-            $mesiPrec = $diffPrec->m + ($diffPrec->y * 12);
-            if ($mesiPrec < $sogliaMesi) $intervalloViolato = true;
-        }
-
-        // Controllo rispetto alla successiva
-        if ($dataSuccessiva) {
-            $diffSucc = (new DateTime($dataSuccessiva))->diff(new DateTime($data));
-            $mesiSucc = $diffSucc->m + ($diffSucc->y * 12);
-            if ($mesiSucc < $sogliaMesi) $intervalloViolato = true;
-        }
-
-        if ($intervalloViolato) {
-            if (!$isAdminModifica) {
-                $_SESSION['messaggio_flash'] = "Errore: la data scelta non rispetta l'intervallo di {$sogliaMesi} mesi rispetto alle altre prenotazioni che hai effettuato.";
-                header("Location: " . $redirectErrore);
-                exit();
+            $dataPrecObj = new DateTime($dataPrecedente);
+            $dataPrecObj->setTime(0, 0, 0);
+            
+            $limiteSicuro = clone $dataPrecObj;
+            $limiteSicuro->modify("+$sogliaMesi months");
+            
+            if ($dataSceltaObj < $limiteSicuro) {
+                $intervalloViolato = true;
+                $dataConflitto = $dataPrecedente;
             }
+        }
 
+        // B. Controllo con la SUCCESSIVA (solo se non c'è già errore)
+        if (!$intervalloViolato && $dataSuccessiva) {
+            $dataSuccObj = new DateTime($dataSuccessiva);
+            $dataSuccObj->setTime(0, 0, 0);
+            
+            $limiteSicuro = clone $dataSceltaObj;
+            $limiteSicuro->modify("+$sogliaMesi months");
+
+            if ($dataSuccObj < $limiteSicuro) {
+                $intervalloViolato = true;
+                $dataConflitto = $dataSuccessiva;
+            }
+        }
+
+        // BLOCCO FINALE SE VIOLAZIONE TROVATA
+        if ($intervalloViolato) {
+            $dataSceltaFormatted = $dataSceltaObj->format('d/m/Y');
+            $dataConflictFormatted = (new DateTime($dataConflitto))->format('d/m/Y');
+
+            $msg = "Errore: non è possibile prenotare per il {$dataSceltaFormatted}, questa data risulta troppo vicina alla prenotazione del {$dataConflictFormatted}. ";
+            $msg .= "È necessario attendere almeno {$sogliaMesi} mesi tra una donazione e l'altra.";
+
+            $_SESSION['messaggio_flash'] = $msg;
+            
+            header("Location: " . $redirectErrore);
+            exit(); // BLOCCA IL SALVATAGGIO
         }
 
         // D. Controllo doppie prenotazioni
