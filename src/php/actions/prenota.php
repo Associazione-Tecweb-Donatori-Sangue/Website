@@ -68,9 +68,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // A. Data nel passato
     if ($data < $oggi) {
         if ($isAdminModifica) {
-            $_SESSION['messaggio_flash'] = "Errore: Non puoi spostare una prenotazione in una data passata!";
+            $_SESSION['messaggio_flash'] = "Errore: non puoi spostare una prenotazione in una data passata!";
         } else {
-            $_SESSION['messaggio_flash'] = "Errore: Non puoi prenotare in una data passata!";
+            $_SESSION['messaggio_flash'] = "Errore: non puoi prenotare in una data passata!";
         }
         header("Location: " . $redirectErrore);
         exit();
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // B. Campi obbligatori
     if (empty($data) || empty($sede_id) || empty($ora)) {
-        $_SESSION['messaggio_flash'] = "Errore: Compila tutti i campi obbligatori.";
+        $_SESSION['messaggio_flash'] = "Errore: compila tutti i campi obbligatori.";
         header("Location: " . $redirectErrore);
         exit();
     }
@@ -118,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($intervalloViolato) {
             if (!$isAdminModifica) {
-                $_SESSION['messaggio_flash'] = "Errore: La data scelta non rispetta l'intervallo di {$sogliaMesi} mesi rispetto alle altre prenotazioni che hai effettuato.";
+                $_SESSION['messaggio_flash'] = "Errore: la data scelta non rispetta l'intervallo di {$sogliaMesi} mesi rispetto alle altre prenotazioni che hai effettuato.";
                 header("Location: " . $redirectErrore);
                 exit();
             }
@@ -130,7 +130,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtCheck->execute([$user_id, $data, $idPrenotazione ?? 0]);
         
         if ($stmtCheck->rowCount() > 0) {
-            $_SESSION['messaggio_flash'] = "Errore: Esiste già una prenotazione per l'utente in questa data!";
+            $_SESSION['messaggio_flash'] = "Errore: esiste già una prenotazione per l'utente in questa data!";
             header("Location: " . $redirectErrore);
             exit();
         }
@@ -143,7 +143,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtDisp->execute([$sede_id, $data, $ora, $idPrenotazione ?? 0]);
         
         if ($stmtDisp->fetchColumn() >= 2) {
-            $_SESSION['messaggio_flash'] = "Errore: La fascia oraria selezionata è già completa.";
+            $_SESSION['messaggio_flash'] = "Errore: la fascia oraria selezionata è già completa.";
             header("Location: " . $redirectErrore);
             exit();
         }

@@ -268,6 +268,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (ultimaDataStr && inputData && inputData.value) {
                 const dataScelta = new Date(inputData.value);
+                const oggi = new Date();
+                oggi.setHours(0, 0, 0, 0); // Azzera ore per confronto corretto
+                
+                // NUOVO: Se la data è nel passato, lascia che PHP gestisca l'errore
+                if (dataScelta < oggi) {
+                    return; // Non bloccare il submit, PHP mostrerà il messaggio corretto
+                }
+                
                 const ultimaDonazione = new Date(ultimaDataStr);
                 
                 let diffMesi = (dataScelta.getFullYear() - ultimaDonazione.getFullYear()) * 12;
