@@ -3,12 +3,11 @@ HTML
 
 CSS
 - fare print.css --> MDP +
-- controllare che non ci sia codice duplicato --> GN +
+- controllare che non ci sia codice duplicato --> GG +
 - distinguere link visitati e non visitati:
     - INDEX: prenota una donazione, scopri le nostre sedi
     - DONA ORA: accedi e registrati, torna al profilo
     - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
-- sistemare stile tasti in 404 e 500
 
 PHP
 - problemi in dona_ora: --> GN
