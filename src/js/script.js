@@ -293,151 +293,141 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // GESTIONE FOTO PROFILO
-   if (profileContainer && photoUpload) {
-       
-       // Click sul container per aprire file picker
-       profileContainer.addEventListener('click', (e) => {
-           if (e.target.id === 'remove-photo-btn' || e.target.closest('#remove-photo-btn')) {
-               return;
-           }
-           photoUpload.click();
-       });
-   
-       // Tastiera sul container
-       profileContainer.addEventListener('keydown', (e) => {
-           if (e.key === 'Enter' || e.key === ' ') {
-               e.preventDefault();
-               if (e.target.id === 'remove-photo-btn' || e.target.closest('#remove-photo-btn')) {
-                   return;
-               }
-               photoUpload.click();
-           }
-       });
-   
-       // Quando viene selezionato un file
-       photoUpload.addEventListener('change', function () {
-           if (this.files && this.files[0]) {
-               const file = this.files[0];
-               
-               // Validazione formato client-side
-               const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-               if (!validTypes.includes(file.type)) {
-                   const invalidDialog = document.getElementById('invalidFormatDialog');
-                   if (invalidDialog) {
-                       invalidDialog.showModal();
-                   }
-                   this.value = '';
-                   return;
-               }
-   
-               // Validazione dimensione file (5MB massimo)
-               const maxSize = 5 * 1024 * 1024; // 5MB in bytes
-               if (file.size > maxSize) {
-                   const tooLargeDialog = document.getElementById('fileTooLargeDialog');
-                   if (tooLargeDialog) {
-                       tooLargeDialog.showModal();
-                   }
-                   this.value = '';
-                   return;
-               }
-   
-               // Upload del file
-               const formData = new FormData();
-               formData.append('foto_profilo', file);
-               formData.append('azione', 'upload');
-   
-               fetch('../actions/gestioneFotoProfilo.php', {
-                   method: 'POST',
-                   body: formData
-               })
-               .then(response => response.json())
-               .then(data => {
-                   if (data.success) {
-                       window.location.reload();
-                   } else {
-                       // Mostra errore generico con dialog
-                       showUploadError(data.message || 'Errore durante il caricamento della foto.');
-                       photoUpload.value = '';
-                   }
-               })
-               .catch(error => {
-                   console.error('Errore upload:', error);
-                   showUploadError('Si è verificato un errore durante il caricamento.');
-                   photoUpload.value = '';
-               });
-           }
-       });
-   }
-   
-   // ===== DIALOG FORMATO NON VALIDO =====
-   const invalidFormatDialog = document.getElementById('invalidFormatDialog');
-   const closeInvalidFormatBtn = document.getElementById('closeInvalidFormatBtn');
-   
-   if (invalidFormatDialog && closeInvalidFormatBtn) {
-       closeInvalidFormatBtn.addEventListener('click', () => {
-           invalidFormatDialog.close();
-           if (photoUpload) {
-               photoUpload.value = '';
-               photoUpload.focus();
-           }
-       });
-   
-       invalidFormatDialog.addEventListener('close', () => {
-           if (photoUpload) photoUpload.focus();
-       });
-   }
-   
-   // ===== DIALOG FILE TROPPO GRANDE =====
-   const fileTooLargeDialog = document.getElementById('fileTooLargeDialog');
-   const closeFileTooLargeBtn = document.getElementById('closeFileTooLargeBtn');
-   
-   if (fileTooLargeDialog && closeFileTooLargeBtn) {
-       closeFileTooLargeBtn.addEventListener('click', () => {
-           fileTooLargeDialog.close();
-           if (photoUpload) {
-               photoUpload.value = '';
-               photoUpload.focus();
-           }
-       });
-   
-       fileTooLargeDialog.addEventListener('close', () => {
-           if (photoUpload) photoUpload.focus();
-       });
-   }
-   
-   // ===== DIALOG ERRORE GENERICO UPLOAD =====
-   const uploadErrorDialog = document.getElementById('uploadErrorDialog');
-   const closeUploadErrorBtn = document.getElementById('closeUploadErrorBtn');
-   
-   if (uploadErrorDialog && closeUploadErrorBtn) {
-       closeUploadErrorBtn.addEventListener('click', () => {
-           uploadErrorDialog.close();
-           if (photoUpload) {
-               photoUpload.value = '';
-               photoUpload.focus();
-           }
-       });
-   
-       uploadErrorDialog.addEventListener('close', () => {
-           if (photoUpload) photoUpload.focus();
-       });
-   }
-   
-   // Funzione helper per mostrare errori generici
-   function showUploadError(message) {
-       const errorDialog = document.getElementById('uploadErrorDialog');
-       if (!errorDialog) {
-           alert(message);
-           return;
-       }
-   
-       const msgEl = document.getElementById('uploadErrorDesc');
-       if (msgEl) {
-           msgEl.textContent = message || "Si è verificato un errore durante il caricamento della foto.";
-       }
-   
-       errorDialog.showModal();
-   }
+    const profileContainer = document.getElementById('profile-picture-btn');
+    const photoUpload = document.getElementById('photo-upload');
+    const removePhotoBtn = document.getElementById('remove-photo-btn');
+    const deletePhotoDialog = document.getElementById('deletePhotoDialog');
+    const confirmDeleteBtn = document.getElementById('confirmDeleteBtn');
+    const cancelDeleteBtn = document.getElementById('cancelDeleteBtn');
+
+    if (profileContainer && photoUpload) {
+        // Click sul container per aprire file picker
+        profileContainer.addEventListener('click', (e) => {
+            if (e.target.id === 'remove-photo-btn' || e.target.closest('#remove-photo-btn')) return;
+            photoUpload.click();
+        });
+
+        // Tastiera sul container
+        profileContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (e.target.id === 'remove-photo-btn' || e.target.closest('#remove-photo-btn')) return;
+                e.preventDefault();
+                photoUpload.click();
+            }
+        });
+
+        // Quando viene selezionato un file
+        photoUpload.addEventListener('change', function () {
+            if (this.files && this.files[0]) {
+                const file = this.files[0];
+                const validTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+                
+                if (!validTypes.includes(file.type)) {
+                    const invalidDialog = document.getElementById('invalidFormatDialog');
+                    if (invalidDialog) invalidDialog.showModal();
+                    this.value = '';
+                    return;
+                }
+
+                const maxSize = 5 * 1024 * 1024;
+                if (file.size > maxSize) {
+                    const tooLargeDialog = document.getElementById('fileTooLargeDialog');
+                    if (tooLargeDialog) tooLargeDialog.showModal();
+                    this.value = '';
+                    return;
+                }
+
+                const formData = new FormData();
+                formData.append('foto_profilo', file);
+                formData.append('azione', 'upload');
+
+                fetch('../actions/gestioneFotoProfilo.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if (!response.ok) throw new Error('size_error');
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        window.location.reload();
+                    } else {
+                        if (data.message && (data.message.includes('1') || data.message.toLowerCase().includes('grande'))) {
+                            const d = document.getElementById('fileTooLargeDialog');
+                            if (d) d.showModal();
+                        } else {
+                            showUploadError(data.message);
+                        }
+                        photoUpload.value = '';
+                    }
+                })
+                .catch(() => {
+                    const d = document.getElementById('fileTooLargeDialog');
+                    if (d) d.showModal();
+                    photoUpload.value = '';
+                });
+            }
+        });
+    }
+
+    // ===== GESTIONE RIMOZIONE FOTO (Click e Tastiera) =====
+    if (removePhotoBtn && deletePhotoDialog) {
+        const openRemoveDialog = (e) => {
+            e.stopPropagation(); // Evita di aprire il file picker del parent
+            deletePhotoDialog.showModal();
+        };
+
+        // Evento Click
+        removePhotoBtn.addEventListener('click', openRemoveDialog);
+
+        // Evento Tastiera (Enter e Space) sulla "X"
+        removePhotoBtn.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openRemoveDialog(e);
+            }
+        });
+
+        if (confirmDeleteBtn) {
+            confirmDeleteBtn.addEventListener('click', () => {
+                const formData = new FormData();
+                formData.append('azione', 'rimuovi');
+                fetch('../actions/gestioneFotoProfilo.php', { method: 'POST', body: formData })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) window.location.reload();
+                    else showUploadError("Errore durante la rimozione.");
+                });
+            });
+        }
+
+        if (cancelDeleteBtn) {
+            cancelDeleteBtn.addEventListener('click', () => deletePhotoDialog.close());
+        }
+    }
+
+    // ===== CHIUSURA DIALOG ERRORI =====
+    const setupCloseBtn = (btnId, dialogId) => {
+        const btn = document.getElementById(btnId);
+        const dialog = document.getElementById(dialogId);
+        if (btn && dialog) {
+            btn.addEventListener('click', () => dialog.close());
+        }
+    };
+
+    setupCloseBtn('closeInvalidFormatBtn', 'invalidFormatDialog');
+    setupCloseBtn('closeFileTooLargeBtn', 'fileTooLargeDialog');
+    setupCloseBtn('closeUploadErrorBtn', 'uploadErrorDialog');
+
+    function showUploadError(message) {
+        const errorDialog = document.getElementById('uploadErrorDialog');
+        const msgEl = document.getElementById('uploadErrorDesc');
+        if (errorDialog && msgEl) {
+            msgEl.textContent = message;
+            errorDialog.showModal();
+        }
+    }
 });
 
 /* =========================================
@@ -475,4 +465,3 @@ window.addEventListener("resize", () => {
     document.body.classList.remove("resize-animation-stopper");
   }, 400);
 });
-
