@@ -9,8 +9,6 @@ CSS
     - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
 
 PHP
-- problemi in dona_ora: --> GN
-    - come testare se un orario è già pieno?
 - problemi in profilo.php: --> DG
     - provo a caricare una immagine profilo più grande di 5MB e non mi dice niente, invece dovrebbe dirmi "File > 5MB → "File troppo grande (Max 5MB)"
     - limitare il tipo di file da caricare già dalla finestra di sistema (solo JPG/PNG)
@@ -20,7 +18,6 @@ GENERALI
 - fare relazione --> tutti; cose da fare per relazione {
         - definire le convenzioni interne (bottoni, link, ecc)
     }
-
 
 EXTRA - da fare solo se avanza tempo (o da inserire nella relazione come estensioni possibili future)
 - dovrebbe essere più visibile il focus quando ci si sposta con il tab
