@@ -327,6 +327,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // 10. VALIDAZIONE CAMPI OBBLIGATORI CON DIALOG
+    const dialogCampiVuoti = document.getElementById('dialog-campi-vuoti');
+    const btnChiudiVuoti = document.getElementById('btn-chiudi-vuoti');
+    
+    if (prenotaForm && dialogCampiVuoti) {
+        const campiObbligatori = prenotaForm.querySelectorAll('[required]');
+        
+        prenotaForm.addEventListener('submit', function(e) {
+            // Salta la validazione se è una conferma forzata dall'admin
+            if (this.dataset.confermaForzata) return;
+            
+            let campiVuoti = [];
+            
+            campiObbligatori.forEach(campo => {
+                if (!campo.value || campo.value.trim() === '') {
+                    campiVuoti.push(campo);
+                }
+            });
+            
+            if (campiVuoti.length > 0) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                
+                dialogCampiVuoti.showModal();
+                return false;
+            }
+        });
+        
+        if (btnChiudiVuoti) {
+            btnChiudiVuoti.addEventListener('click', () => {
+                dialogCampiVuoti.close();
+                
+                // Focus sul primo campo vuoto
+                const primoVuoto = Array.from(campiObbligatori).find(c => !c.value || c.value.trim() === '');
+                if (primoVuoto) primoVuoto.focus();
+            });
+        }
+        
+        dialogCampiVuoti.addEventListener('click', (e) => {
+            if (e.target === dialogCampiVuoti) dialogCampiVuoti.close();
+        });
+    }
+
 // 5. GESTIONE FOTO PROFILO
 const photoUpload = document.getElementById('photo-upload');
 const profileContainer = document.querySelector('.profile-picture');
