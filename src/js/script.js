@@ -252,12 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtnId: 'btn-annulla-elimina-admin'
     });
 
-    // 9 + 10. VALIDAZIONE UNIFICATA: Campi vuoti + Mesi + Dialog conferma
+    //VALIDAZIONE UNIFICATA: Campi vuoti 
     const prenotaForm = document.getElementById('prenotaForm');
-    const dialogMesi = document.getElementById('dialog-conferma-mesi');
-    const descMesi = document.getElementById('dialog-mesi-desc');
-    const btnProcedi = document.getElementById('btn-procedi-mesi');
-    const btnAnnulla = document.getElementById('btn-annulla-mesi');
     const dialogCampiVuoti = document.getElementById('dialog-campi-vuoti');
     const btnChiudiVuoti = document.getElementById('btn-chiudi-vuoti');
 
@@ -266,10 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
         prenotaForm.parentNode.replaceChild(nuovoForm, prenotaForm);
         
         nuovoForm.addEventListener('submit', function(e) {
-            if (this.dataset.confermaForzata) {
-                return;
-            }
-
             const campiObbligatori = this.querySelectorAll('[required]');
             let campiVuoti = [];
             
@@ -285,84 +277,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 dialogCampiVuoti.showModal();
                 return false;
             }
-
-            const ultimaDataStr = this.dataset.ultima; 
-            const sesso = this.dataset.sesso || 'Maschio';
-            const isAdmin = this.dataset.isAdmin === 'true';
-            const inputData = document.getElementById('data');
-
-            if (ultimaDataStr && inputData && inputData.value) {
-                if (inputData.value === ultimaDataStr) {
-                    return;
-                }
-            }
-
-            if (ultimaDataStr && inputData && inputData.value && dialogMesi) {
-                const dataScelta = new Date(inputData.value);
-                const oggi = new Date();
-                oggi.setHours(0, 0, 0, 0);
-                
-                if (dataScelta < oggi) {
-                    return;
-                }
-
-                const ultimaDonazione = new Date(ultimaDataStr);
-                dataScelta.setHours(0, 0, 0, 0);
-                ultimaDonazione.setHours(0, 0, 0, 0);
-
-                let diffMesi = (dataScelta.getFullYear() - ultimaDonazione.getFullYear()) * 12;
-                diffMesi += dataScelta.getMonth() - ultimaDonazione.getMonth();
-                
-                if (diffMesi < 0) {
-                    return;
-                }
-                
-                const soglia = (sesso === 'Femmina') ? 6 : 3;
-
-                if (diffMesi < soglia) {
-                    e.preventDefault();
-                    e.stopImmediatePropagation();
-                    
-                    const dataFormattata = ultimaDataStr.split('-').reverse().join('/');
-                    
-                    if (isAdmin) {
-                        descMesi.innerHTML = `Il donatore ha già una prenotazione il <strong>${dataFormattata}</strong>. 
-                                              Non ci sono i <strong>${soglia} mesi</strong> di distanza previsti per un profilo <strong>${sesso}</strong>. 
-                                              <br><br>Vuoi forzare comunque il salvataggio?`;
-                        if (btnProcedi) btnProcedi.style.display = '';
-                        if (btnAnnulla) btnAnnulla.textContent = 'Annulla';
-                    } else {
-                        descMesi.innerHTML = `Errore: non sono ancora passati i ${soglia} mesi richiesti dalla tua ultima donazione (${dataFormattata}). <br>Per favore, scegli una data successiva.`;
-                        if (btnProcedi) btnProcedi.style.display = 'none';
-                        if (btnAnnulla) btnAnnulla.textContent = 'HO CAPITO';
-                    }
-                    
-                    dialogMesi.showModal();
-                    return false;
-                }
-            }
         });
-
-        if (btnProcedi && dialogMesi) {
-            btnProcedi.addEventListener('click', () => {
-                nuovoForm.dataset.confermaForzata = "true";
-                dialogMesi.close();
-                nuovoForm.requestSubmit();
-            });
-        }
-
-        if (btnAnnulla && dialogMesi) {
-            btnAnnulla.addEventListener('click', () => {
-                delete nuovoForm.dataset.confermaForzata;
-                dialogMesi.close();
-            });
-        }
-
-        if (dialogMesi) {
-            dialogMesi.addEventListener('click', (e) => {
-                if (e.target === dialogMesi) dialogMesi.close();
-            });
-        }
 
         if (btnChiudiVuoti && dialogCampiVuoti) {
             btnChiudiVuoti.addEventListener('click', () => {
@@ -377,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 5. GESTIONE FOTO PROFILO
+    // GESTIONE FOTO PROFILO
     const photoUpload = document.getElementById('photo-upload');
     const profileContainer = document.querySelector('.profile-picture');
     const removeBtn = document.getElementById('remove-photo-btn');
