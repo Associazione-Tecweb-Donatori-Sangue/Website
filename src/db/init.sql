@@ -65,7 +65,7 @@ CREATE TABLE `donatori` (
 
 -- Dump dei dati per la tabella `donatori`
 INSERT INTO `donatori` (`user_id`, `nome`, `cognome`, `data_nascita`, `luogo_nascita`, `codice_fiscale`, `indirizzo`, `telefono`, `email`, `gruppo_sanguigno`, `sesso`, `peso`) VALUES
-(1, 'Mario', 'Rossi', '1990-05-15', 'Milano', 'RSSMRA90E15F205X', 'Via Roma 1, Milano', '+39 1234567890', 'user@user.com', 'A+', 'Maschio', 82.5),
+(1, 'Maria', 'Rossi', '1990-05-15', 'Milano', 'RSSMRA90E15F205X', 'Via Roma 1, Milano', '+39 1234567890', 'user@user.com', 'A+', 'Femmina', 62.5),
 (4, 'Diana', 'Georgescu', '1983-07-15', 'Teolo', 'DGMRA90E15F205X', 'Via Cristoforo Colombo 4, Padova', '+39 1234567890', 'diana@gmail.com', 'A+', 'Femmina', 63.8),
 (7, 'Manuel', 'Dos Santos', '1999-01-21', 'Rio de Janeiro', 'MDSRA90E15F205X', 'Via Luzzatti 3, Padova', '+39 1234567890', 'manu@virgilio.com', '0-', 'Maschio', 74),
 (9, 'Lucia', 'Bianchi', '2007-11-5', 'Roma', 'LBCMRA90E15F205X', 'Via Piovega Sud 97, Villanova di Camposampiero', '+39 1234567890', 'luci@yahoo.it', 'AB+', 'Femmina', 80.5);
@@ -85,19 +85,32 @@ CREATE TABLE `lista_prenotazioni` (
 
 -- Dump dei dati per la tabella `lista_prenotazioni`
 INSERT INTO `lista_prenotazioni` (`id`, `user_id`, `sede_id`, `data_prenotazione`, `ora_prenotazione`, `tipo_donazione`) VALUES
-(1, 1, 1, '2026-02-15', '10:00', 'Sangue intero'),
-(2, 1, 3, '2026-07-20', '14:30', 'Plasma'),
-(3, 1, 5, '2026-11-01', '09:00', 'Piastrine'),
-(4, 1, 7, '2025-09-30', '10:45', 'Sangue intero'),
-(5, 4, 6, '2025-09-30', '09:30', 'Sangue intero'),
-(6, 4, 1, '2026-02-18', '07:45', 'Sangue intero'),
-(7, 4, 2, '2026-06-29', '08:15', 'Sangue intero'),
-(8, 7, 3, '2025-07-25', '15:30', 'Sangue intero'),
-(9, 7, 4, '2025-12-11', '15:00', 'Sangue intero'),
-(10, 7, 5, '2026-04-8', '17:45', 'Sangue intero'),
-(11, 9, 8, '2025-01-20', '16:15', 'Sangue intero'),
-(12, 9, 3, '2025-07-21', '08:00', 'Sangue intero'),
-(13, 9, 6, '2026-01-13', '10:45', 'Sangue intero');
+(1, 1, 1, '2025-03-15', '09:30', 'Plasma'),
+(2, 4, 3, '2025-04-10', '10:00', 'Sangue intero'),
+(3, 7, 2, '2025-05-22', '08:45', 'Sangue intero'),
+(4, 9, 5, '2025-06-18', '14:00', 'Sangue intero'),
+(5, 1, 4, '2025-07-08', '11:15', 'Piastrine'),
+(6, 7, 6, '2025-08-14', '09:00', 'Sangue intero'),
+(7, 4, 1, '2025-09-05', '15:30', 'Plasma'),
+(8, 9, 7, '2025-10-12', '10:30', 'Sangue intero'),
+(9, 1, 8, '2025-11-20', '08:00', 'Sangue intero'),
+(10, 7, 3, '2025-12-03', '16:00', 'Plasma'),
+(11, 4, 2, '2026-01-14', '09:15', 'Sangue intero'),
+(12, 9, 4, '2026-01-28', '14:30', 'Plasma'),
+(13, 1, 5, '2026-02-10', '10:45', 'Plasma'),
+(14, 7, 1, '2026-02-25', '08:30', 'Sangue intero'),
+(15, 4, 6, '2026-03-12', '11:00', 'Piastrine'),
+(16, 9, 8, '2026-03-20', '15:00', 'Sangue intero'),
+(17, 1, 3, '2026-04-08', '09:00', 'Sangue intero'),
+(18, 7, 7, '2026-05-15', '14:00', 'Piastrine'),
+(19, 4, 4, '2026-06-22', '10:30', 'Sangue intero'),
+(20, 9, 2, '2026-06-30', '08:15', 'Plasma'),
+(21, 1, 1, '2026-07-18', '16:30', 'Plasma'),
+(22, 7, 5, '2026-08-10', '09:45', 'Sangue intero'),
+(23, 4, 8, '2026-09-25', '11:30', 'Sangue intero'),
+(24, 9, 6, '2026-10-14', '14:45', 'Piastrine'),
+(25, 1, 7, '2026-11-05', '10:00', 'Sangue intero'),
+(26, 7, 3, '2026-12-18', '15:15', 'Sangue intero');
 
 -- --------------------------------------------------------
 
@@ -115,13 +128,13 @@ CREATE TABLE `sedi` (
 -- Dump dei dati per la tabella `sedi`
 INSERT INTO `sedi` (`id`, `nome`, `immagine`, `indirizzo`, `descrizione`, `link_maps`, `telefono`) VALUES
 (1, 'ATDS Piovego', 'images/sede_piovego.jpg', 'Viale Giuseppe Colombo, 1, 35131 Padova PD', 'Piccola struttura nel quartiere Piovego, facilmente raggiungibile, con personale qualificato e orari flessibili per le donazioni.', 'https://maps.app.goo.gl/vEC15q9E76uzmeAt6', '+39 0123456789'),
-(2, 'ATDS Lum250', 'images/sede_lum250.jpg', 'Via Luigi Luzzatti, 8, 35121 Padova PD', 'Piccolo punto donazioni vicino all\'Aula LuM250, comodo soprattutto per studenti e personale universitario per donare fra una lezione e l\'altra.', 'https://maps.app.goo.gl/fH1NsTRULSp1PnAG6', '+39 0123456789'),
+(2, 'ATDS Lum250', 'images/sede_lum250.jpg', 'Via Luigi Luzzatti, 8, 35121 Padova PD', 'Piccolo punto donazioni vicino all''Aula LuM250, comodo soprattutto per studenti e personale universitario per donare fra una lezione e l''altra.', 'https://maps.app.goo.gl/fH1NsTRULSp1PnAG6', '+39 0123456789'),
 (3, 'ATDS Stanga', 'images/sede_stanga.jpg', 'Piazzale Stanga, 35131 Padova PD', 'Punto donazioni nel bel mezzo della famosa Stanga, con un ambiente accogliente e pulito, e personale disponibile per ogni esigenza.', 'https://maps.app.goo.gl/4iB8YhxApCZcrsM88', '+39 0123456789'),
 (4, 'ATDS Portello', 'images/sede_portello.jpg', 'Via Giovanni Gradenigo, Via del Portello, 35131 Padova PD', 'Punto donazioni nella zona del Portello, appena rinnovato, con facile accesso e un ambiente confortevole per i donatori.', 'https://maps.app.goo.gl/o6FZ4fJ1Bzae7RTn6', '+39 0123456789'),
-(5, 'ATDS Prato della Valle', 'images/sede_prato.jpg', 'Prato della Valle, 35141 Padova PD', 'Sede principale e punto donazioni in una delle piazze più belle di Padova, con un ambiente accogliente e personale disponibile.', 'https://maps.app.goo.gl/3kNyunAYoqmqTya58', '+39 0123456789'),
-(6, 'ATDS Dietro Stazione', 'images/sede_dietro_stazione.jpg', 'Via Jacopo d\'Avanzo, 23, 35132 Padova PD', 'Punto donazioni situato dietro la stazione di Padova, comodo per chi arriva in treno e desidera donare sangue in modo rapido, semplice e pulito.', 'https://maps.app.goo.gl/SVBms5SxPz9xDRF66', '+39 0123456789'),
-(7, 'ATDS del Bo', 'images/sede_bo.jpg', 'Via VIII Febbraio, 2, 35122 Padova PD', 'Punto donazioni situato nello storico Palazzo del Bo, cuore dell\'Università di Padova. Immerso nella storia, ideale per chi desidera donare sangue in un ambiente unico e ricco di cultura.', 'https://maps.app.goo.gl/ZfPyJfsDZELLHR569', '+39 0123456789'),
-(8, 'ATDS Specola', 'images/sede_specola.jpg', 'Vicolo dell\'Osservatorio, 5, 35122 Padova PD', 'Suggestivo punto donazioni situato sulla torre accanto all\'Osservatorio Astronomico di Padova, ideale per chi è amante del brivido e non si limita a donare in tranquillità.', 'https://maps.app.goo.gl/tE6r3TuhKiPFextF8', '+39 0123456789');
+(5, 'ATDS Prato della Valle', 'images/sede_prato.jpg', 'Prato della Valle, 35141 Padova PD', 'Sede principale e punto donazioni in una delle piazze piu belle di Padova, con un ambiente accogliente e personale disponibile.', 'https://maps.app.goo.gl/3kNyunAYoqmqTya58', '+39 0123456789'),
+(6, 'ATDS Dietro Stazione', 'images/sede_dietro_stazione.jpg', 'Via Jacopo d''Avanzo, 23, 35132 Padova PD', 'Punto donazioni situato dietro la stazione di Padova, comodo per chi arriva in treno e desidera donare sangue in modo rapido, semplice e pulito.', 'https://maps.app.goo.gl/SVBms5SxPz9xDRF66', '+39 0123456789'),
+(7, 'ATDS del Bo', 'images/sede_bo.jpg', 'Via VIII Febbraio, 2, 35122 Padova PD', 'Punto donazioni situato nello storico Palazzo del Bo, cuore dell''Universita di Padova. Immerso nella storia, ideale per chi desidera donare sangue in un ambiente unico e ricco di cultura.', 'https://maps.app.goo.gl/ZfPyJfsDZELLHR569', '+39 0123456789'),
+(8, 'ATDS Specola', 'images/sede_specola.jpg', 'Vicolo dell''Osservatorio, 5, 35122 Padova PD', 'Suggestivo punto donazioni situato sulla torre accanto all''Osservatorio Astronomico di Padova, ideale per chi e amante del brivido e non si limita a donare in tranquillita.', 'https://maps.app.goo.gl/tE6r3TuhKiPFextF8', '+39 0123456789');
 
 -- --------------------------------------------------------
 
