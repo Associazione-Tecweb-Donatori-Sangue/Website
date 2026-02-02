@@ -23,7 +23,7 @@
   --card-title-color: #082636;
   --card-subtitle-color: #000000;
 
-  --card-locations-bg-color: #d9e6ef;
+  --card-locations-bg-color: #ddebf4;
   --card-locations-subtitle-color: #2c5f7a;
 
   /* Colori footer */
@@ -758,7 +758,7 @@ footer {
   color: var(--card-title-color);
   margin: 2em 0 1em;
   padding-left: 1em;
-  border-left: 5px solid var(--form-focus-color);
+  border-left: 5px solid var(--form-accent-color);
 }
 
 .text-standard {
@@ -841,7 +841,7 @@ footer {
 }
 
 #founders {
-  background: linear-gradient(135deg, #a0c7cf 0%, #d9e6ef 100%);
+  background: var(--card-bg-color);
   width: 80%;
   margin: 3em auto;
   padding: 2.5em;
@@ -850,7 +850,7 @@ footer {
   text-align: center;
 }
 
-#founders h4 {
+#founders h3 {
   font-size: 2em;
   font-weight: 700;
   color: var(--card-title-color);
@@ -859,7 +859,7 @@ footer {
 
 #founders p {
   font-size: 1.2em;
-  color: var(--text-secondary);
+  color: var(--card-subtitle-color);
   margin-bottom: 1.5em;
 }
 
@@ -1359,8 +1359,8 @@ small {
     right: -0.6em;
     width: 1.9em;
     height: 1.9em;
-    background-color: #ff4d4d;
-    color: white;
+    background-color: #d44040;
+    color: #ffffff;
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -1755,7 +1755,7 @@ button:focus-visible {
   max-width: 1000px; 
   margin: 8em auto 2em;
   padding: 1.5em 2em;
-  background-color: #d9e6ef; 
+  background-color: #ddebf4; 
   border-radius: 1.2em;
   font-size: 0.85em;
   line-height: 1.5;
