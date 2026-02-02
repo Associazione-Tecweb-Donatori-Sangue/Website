@@ -40,7 +40,7 @@ if (!empty($msgHTML)) {
 
 // --- RECUPERO DATI DONATORE E LOGICA POPUP ---
 $htmlDonatore = "";
-$sessoDonatore = "Maschio"; 
+$sessoDonatore = null; 
 $dataConfrontoPopup = "";
 
 try {
@@ -52,8 +52,21 @@ try {
     $stmt->execute([$prenotazioneCorrente['user_id']]);
     $datiDonatore = $stmt->fetch();
 
+    if (!$datiDonatore) {
+        $_SESSION['messaggio_flash'] = "Dati del donatore non trovati.";
+        header("Location: profilo_admin.php");
+        exit();
+    }
+
+    $sessoDonatore = $datiDonatore['sesso'];
+    
+    if (empty($sessoDonatore)) {
+        $_SESSION['messaggio_flash'] = "Sesso del donatore non specificato.";
+        header("Location: profilo_admin.php");
+        exit();
+    }
+
     if ($datiDonatore) {
-        $sessoDonatore = $datiDonatore['sesso'];
         $htmlDonatore = '
         <div class="admin-layout-container">
             <div class="back-button-container">
