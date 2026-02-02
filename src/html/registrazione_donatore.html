@@ -49,7 +49,7 @@
                         <input name="cognome" id="cognome" type="text" required value="[valore_cognome]">
                     </div>
                     <div>
-                        <label for="data_nascita">Data di Nascita: <span class="obligatory">(obbligatorio)</span></label>
+                        <label for="data_nascita">Data di Nascita: <span class="obligatory">(obbligatoria)</span></label>
                         <input name="data_nascita" id="data_nascita" type="date" required value="[valore_data_nascita]">
                     </div>
                     <div>
@@ -97,14 +97,16 @@
                         </select>
                     </div>
 
-                    <div>Sesso: <span class="obligatory">(obbligatorio)</span></div>
-                    <div class="radio-standard">
-                        <label for="maschio">Maschio</label>
-                        <input type="radio" id="maschio" name="sesso" value="Maschio">
-                    </div>
-                    <div class="radio-standard">
-                        <label for="femmina">Femmina</label>
-                        <input type="radio" id="femmina" name="sesso" value="Femmina">
+                    <div>
+                        <label>Sesso: <span class="obligatory">(obbligatorio)</span></label>
+                        <div class="radio-standard">
+                            <label for="maschio">Maschio</label>
+                            <input type="radio" id="maschio" name="sesso" value="Maschio" required>
+                        </div>
+                        <div class="radio-standard">
+                            <label for="femmina">Femmina</label>
+                            <input type="radio" id="femmina" name="sesso" value="Femmina" required>
+                        </div>
                     </div>
 
                     <div>
