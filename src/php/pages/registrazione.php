@@ -16,14 +16,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $usernamePreservato = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
 
     if ($password !== $confirm) {
-        $messaggio = "<div class='msg-error'>Errore: Le password non coincidono.</div>";
+        $messaggio = "<div class='msg-error' role='alert'>Errore: Le password non coincidono.</div>";
     } else {
         try {
             $stmt = $pdo->prepare("SELECT id FROM utenti WHERE username = ?");
             $stmt->execute([$username]);
             
             if ($stmt->rowCount() > 0) {
-                $messaggio = "<div class='msg-error'>Errore: Username già esistente!</div>";
+                $messaggio = "<div class='msg-error' role='alert'>Errore: Username già esistente!</div>";
             } else {
                 $hash = password_hash($password, PASSWORD_DEFAULT);
                 $stmt = $pdo->prepare("INSERT INTO utenti (username, password, ruolo) VALUES (?, ?, 'user')");
@@ -37,12 +37,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: profilo.php");
                     exit;
                 } else {
-                    $messaggio = "<div class='msg-error'>Errore durante la registrazione. Riprova.</div>";
+                    $messaggio = "<div class='msg-error' role='alert'>Errore durante la registrazione. Riprova.</div>";
                 }
             }
         } catch (PDOException $e) {
             logError("Errore registrazione: " . $e->getMessage());
-            $messaggio = "<div class='msg-error'>Errore durante la registrazione. Riprova più tardi.</div>";
+            $messaggio = "<div class='msg-error' role='alert'>Errore durante la registrazione. Riprova più tardi.</div>";
         }
     }
 }

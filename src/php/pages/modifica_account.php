@@ -31,7 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // Controllo validità password attuale
         if (!$user || !password_verify($oldPassword, $user['password'])) {
-            $messaggio = '<div class="msg-error">Errore: La password attuale inserita non è corretta.</div>';
+            $messaggio = '<div class="msg-error" role="alert">Errore: La password attuale inserita non è corretta.</div>';
         } else {
             // PASSWORD OK -> Inizio controlli modifiche
             $erroreTrovato = false;
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $check->execute([$newUsername, $userId]);
                 
                 if ($check->fetch()) {
-                    $messaggio .= '<div class="msg-error">Errore: Lo username scelto è già in uso.</div>';
+                    $messaggio .= '<div class="msg-error" role="alert">Errore: Lo username scelto è già in uso.</div>';
                     $erroreTrovato = true;
                 } else {
                     $updateUser = $pdo->prepare("UPDATE utenti SET username = ? WHERE id = ?");
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // B. Cambio Password
             if (!empty($newPassword)) {
                 if ($newPassword !== $confirmPassword) {
-                    $messaggio .= '<div class="msg-error">Errore: Le nuove password non coincidono.</div>';
+                    $messaggio .= '<div class="msg-error" role="alert">Errore: Le nuove password non coincidono.</div>';
                     $erroreTrovato = true;
                 } else {
                     $newHash = password_hash($newPassword, PASSWORD_DEFAULT);
@@ -79,7 +79,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     } catch (PDOException $e) {
         logError("Errore modifica account: " . $e->getMessage());
-        $messaggio = '<div class="msg-error">Errore durante l\'aggiornamento. Riprova più tardi.</div>';
+        $messaggio = '<div class="msg-error" role="alert">Errore durante l\'aggiornamento. Riprova più tardi.</div>';
     }
 }
 

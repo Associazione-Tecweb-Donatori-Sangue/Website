@@ -60,7 +60,7 @@
         </main>
         
         <!-- Dialog per conferma rimozione foto profilo -->
-        <dialog id="deletePhotoDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
+        <dialog id="deletePhotoDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="dialogTitle">Rimozione foto profilo</h2>
                 <p id="dialogDesc">Sei sicuro di voler rimuovere la tua foto profilo?</p>
@@ -73,7 +73,7 @@
         </dialog>
 
         <!-- Dialog per formato file non valido -->
-        <dialog id="invalidFormatDialog" role="alertdialog" aria-labelledby="invalidFormatTitle" aria-describedby="invalidFormatDesc">
+        <dialog id="invalidFormatDialog" role="alertdialog" aria-labelledby="invalidFormatTitle" aria-describedby="invalidFormatDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="invalidFormatTitle">Formato non valido</h2>
                 <p id="invalidFormatDesc">Sono consentiti solo file JPG o PNG.</p>
@@ -86,7 +86,7 @@
 
 
         <!-- Dialog per conferma eliminazione profilo -->
-        <dialog id="dialog-elimina-profilo" aria-labelledby="dialog-title" aria-describedby="dialog-desc">
+        <dialog id="dialog-elimina-profilo" aria-labelledby="dialog-title" aria-describedby="dialog-desc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="dialog-title">Conferma eliminazione</h2>
                 <p id="dialog-desc">Sei sicuro di voler eliminare il tuo account? Questa azione è irreversibile e comporterà la perdita di tutti i tuoi dati.</p>
@@ -100,7 +100,7 @@
         </dialog>
 
         <!-- Dialog per conferma annullamento prenotazione -->
-         <dialog id="dialog-annulla-prenotazione" aria-labelledby="dialog-prenotazione-title" aria-describedby="dialog-prenotazione-desc">
+         <dialog id="dialog-annulla-prenotazione" aria-labelledby="dialog-prenotazione-title" aria-describedby="dialog-prenotazione-desc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="dialog-prenotazione-title">Conferma annullamento</h2>
                 <p id="dialog-prenotazione-desc">Sei sicuro di voler annullare la prenotazione del <span id="prenotazione-data"></span> alle ore <span id="prenotazione-ora"></span>?</p>
@@ -115,7 +115,7 @@
         </dialog>
 
         <!-- Dialog per file troppo pesante -->
-        <dialog id="fileTooLargeDialog" role="alertdialog" aria-labelledby="fileTooLargeTitle" aria-describedby="fileTooLargeDesc">
+        <dialog id="fileTooLargeDialog" role="alertdialog" aria-labelledby="fileTooLargeTitle" aria-describedby="fileTooLargeDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="fileTooLargeTitle">File troppo grande</h2>
                 <p id="fileTooLargeDesc">Il file selezionato supera la dimensione massima consentita di 5MB.</p>
@@ -127,7 +127,7 @@
         </dialog>
 
         <!-- Dialog generico per errori upload -->
-        <dialog id="uploadErrorDialog" role="alertdialog" aria-labelledby="uploadErrorTitle" aria-describedby="uploadErrorDesc">
+        <dialog id="uploadErrorDialog" role="alertdialog" aria-labelledby="uploadErrorTitle" aria-describedby="uploadErrorDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="uploadErrorTitle">Errore caricamento</h2>
                 <p id="uploadErrorDesc">Si è verificato un errore durante il caricamento della foto.</p>

@@ -94,8 +94,9 @@ function getMessaggioFlashHTML() {
         $isError = (strpos($msg, 'Errore') !== false || strpos($msg, 'già') !== false || strpos($msg, 'Attenzione') !== false);
         
         $classe = $isError ? 'msg-error' : 'msg-success';
+        $role = $isError ? ' role="alert"' : '';
 
-        $html = '<div class="' . $classe . '">
+        $html = '<div class="' . $classe . '"' . $role . '>
                     ' . htmlspecialchars($msg) . '
                  </div>';
         

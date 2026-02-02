@@ -47,11 +47,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("Location: profilo.php");
             exit();
         } else {
-            $messaggioErrore = "<div class='msg-error'>Errore: Credenziali non corrette.</div>";
+            $messaggioErrore = "<div class='msg-error' role='alert'>Errore: Credenziali non corrette.</div>";
         }
     } catch (PDOException $e) {
         logError("Errore login: " . $e->getMessage());
-        $messaggioErrore = "<div class='msg-error'>Errore durante l'autenticazione. Riprova più tardi.</div>";
+        $messaggioErrore = "<div class='msg-error' role='alert'>Errore durante l'autenticazione. Riprova più tardi.</div>";
     }
 }
 $paginaHTML = str_replace('[messaggioErrore]', $messaggioErrore, $paginaHTML);

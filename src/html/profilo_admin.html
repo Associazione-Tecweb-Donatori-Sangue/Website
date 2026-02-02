@@ -72,7 +72,7 @@
         </main>
         
         <!-- Dialog per conferma rimozione foto profilo -->
-        <dialog id="deletePhotoDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc">
+        <dialog id="deletePhotoDialog" aria-labelledby="dialogTitle" aria-describedby="dialogDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="dialogTitle">Rimozione foto profilo</h2>
                 <p id="dialogDesc">Sei sicuro di voler rimuovere la tua foto profilo?</p>
@@ -85,7 +85,7 @@
         </dialog>
 
         <!-- Dialog per formato file non valido -->
-        <dialog id="invalidFormatDialog" role="alertdialog" aria-labelledby="invalidFormatTitle" aria-describedby="invalidFormatDesc">
+        <dialog id="invalidFormatDialog" role="alertdialog" aria-labelledby="invalidFormatTitle" aria-describedby="invalidFormatDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="invalidFormatTitle">Formato non valido</h2>
                 <p id="invalidFormatDesc">Sono consentiti solo file JPG o PNG.</p>
@@ -97,7 +97,7 @@
         </dialog>
 
         <!-- Dialog per conferma eliminazione prenotazione -->
-        <dialog id="dialog-elimina-prenotazione-admin" aria-labelledby="dialog-elimina-title" aria-describedby="dialog-elimina-desc">
+        <dialog id="dialog-elimina-prenotazione-admin" aria-labelledby="dialog-elimina-title" aria-describedby="dialog-elimina-desc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="dialog-elimina-title">Conferma eliminazione</h2>
                 <p id="dialog-elimina-desc">Sei sicuro di voler eliminare la prenotazione di <span id="elimina-username"></span> del <span id="elimina-data"></span> alle ore <span id="elimina-ora"></span>?</p>
@@ -112,7 +112,7 @@
         </dialog>
 
         <!-- Dialog per file troppo pesante -->
-        <dialog id="fileTooLargeDialog" role="alertdialog" aria-labelledby="fileTooLargeTitle" aria-describedby="fileTooLargeDesc">
+        <dialog id="fileTooLargeDialog" role="alertdialog" aria-labelledby="fileTooLargeTitle" aria-describedby="fileTooLargeDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="fileTooLargeTitle">File troppo grande</h2>
                 <p id="fileTooLargeDesc">Il file selezionato supera la dimensione massima consentita di 5MB.</p>
@@ -124,7 +124,7 @@
         </dialog>
 
            <!-- Dialog generico per errori upload -->
-        <dialog id="uploadErrorDialog" role="alertdialog" aria-labelledby="uploadErrorTitle" aria-describedby="uploadErrorDesc">
+        <dialog id="uploadErrorDialog" role="alertdialog" aria-labelledby="uploadErrorTitle" aria-describedby="uploadErrorDesc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="uploadErrorTitle">Errore caricamento</h2>
                 <p id="uploadErrorDesc">Si è verificato un errore durante il caricamento della foto.</p>
