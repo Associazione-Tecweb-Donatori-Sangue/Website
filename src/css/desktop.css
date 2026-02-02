@@ -747,9 +747,6 @@ footer {
   font-weight: 400;
 }
 
-/*-----------------*/
-/* DONA ORA */
-/*-----------------*/
 
 /*-----------------*/
 /* CHI SIAMO */
@@ -1466,13 +1463,6 @@ small {
   font-weight: bold;
 }
 
-/* Messaggi inline dentro i form */
-fieldset .msg-success,
-form .msg-success {
-  width: 90%;
-  margin: 0.2em auto;
-  margin-bottom: 0.6em;
-}
 
 /* Messaggi di errore (rosso) */
 .msg-error {
@@ -1517,7 +1507,7 @@ form .msg-error {
   justify-content: center;
 }
 
-/* Form inline senza bordi per pulsanti */
+/* Form inline per pulsanti */
 .form-inline {
   box-shadow: none;
   background: transparent;
@@ -2226,7 +2216,7 @@ button:focus-visible {
   background-color: #e8f4f8;
 }
 
-/* Bottoni nelle tabelle - stile compatto */
+/* Bottoni nelle tabelle */
 .btn-table {
   display: inline-flex;
   align-items: center;
