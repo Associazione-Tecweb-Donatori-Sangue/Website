@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
     exit();
 }
 
-// 2. Sicurezza Admin: L'admin non può stare qui
+// 2. Sicurezza Admin
 if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
     header("Location: profilo_admin.php");
     exit();
@@ -39,7 +39,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // A. Cambio Username
             if ($newUsername !== $user['username']) {
-                // Controllo se esiste già
                 $check = $pdo->prepare("SELECT id FROM utenti WHERE username = ? AND id != ?");
                 $check->execute([$newUsername, $userId]);
                 
@@ -49,12 +48,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 } else {
                     $updateUser = $pdo->prepare("UPDATE utenti SET username = ? WHERE id = ?");
                     $updateUser->execute([$newUsername, $userId]);
-                    $_SESSION['username'] = $newUsername; // Aggiorno la sessione corrente
+                    $_SESSION['username'] = $newUsername;
                     $modificaEffettuata = true;
                 }
             }
 
-            // B. Cambio Password (solo se compilata)
+            // B. Cambio Password
             if (!empty($newPassword)) {
                 if ($newPassword !== $confirmPassword) {
                     $messaggio .= '<div class="msg-error">Errore: Le nuove password non coincidono.</div>';
@@ -67,15 +66,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
             }
 
-            // C. REINDIRIZZAMENTO (Se non ci sono errori)
             if (!$erroreTrovato) {
                 if ($modificaEffettuata) {
                     $_SESSION['messaggio_flash'] = "Account aggiornato con successo!";
                 } else {
                     $_SESSION['messaggio_flash'] = "Nessuna modifica effettuata.";
                 }
-                
-                // Vado al profilo
+           
                 header("Location: profilo.php");
                 exit();
             }
@@ -86,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Visualizzazione (Questo codice viene eseguito SOLO se c'è un errore e non avviene il redirect)
+// Visualizzazione
 $template = caricaTemplate('modifica_account.html');
 $template = str_replace('[valore_username]', htmlspecialchars($_SESSION['username']), $template);
 $template = str_replace('[MESSAGGI]', $messaggio, $template);

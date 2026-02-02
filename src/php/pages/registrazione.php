@@ -4,12 +4,10 @@ require_once "../db.php";
 
 // Template HTML
 $paginaHTML = caricaTemplate('registrazione.html');
-
-// Variabile per la gestione degli errori e messaggi
 $messaggio = "";
 $usernamePreservato = "";
 
-// 3. Gestione del Form di Registrazione (POST)
+// Gestione del Form di Registrazione (POST)
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
     $username = pulisciInput($_POST['username']);
@@ -21,22 +19,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $messaggio = "<div class='msg-error'>Errore: Le password non coincidono.</div>";
     } else {
         try {
-            // 1. Controllo se l'utente esiste già
             $stmt = $pdo->prepare("SELECT id FROM utenti WHERE username = ?");
             $stmt->execute([$username]);
             
             if ($stmt->rowCount() > 0) {
                 $messaggio = "<div class='msg-error'>Errore: Username già esistente!</div>";
             } else {
-                // 2. Inserimento con HASH della password
                 $hash = password_hash($password, PASSWORD_DEFAULT);
-                // Di default il ruolo è 'user'
                 $stmt = $pdo->prepare("INSERT INTO utenti (username, password, ruolo) VALUES (?, ?, 'user')");
                 
                 if ($stmt->execute([$username, $hash])) {
-                    // Successo! Imposto la sessione e reindirizzo
                     $newUserId = $pdo->lastInsertId();
-
                     $_SESSION['user_id'] = $newUserId;
                     $_SESSION['username'] = $username;
                     $_SESSION['ruolo'] = 'user';
@@ -54,10 +47,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// 4. Sostituisco il placeholder del messaggio nel template
+// Sostituisco il placeholder del messaggio nel template
 $paginaHTML = str_replace('[messaggioErrore]', $messaggio, $paginaHTML);
 
-// Se c'è un errore, preservo l'username nel campo del form
 if (!empty($usernamePreservato)) {
     $paginaHTML = str_replace(
         'name="username" id="username"',
@@ -66,9 +58,9 @@ if (!empty($usernamePreservato)) {
     );
 }
 
-// 3. Definisco il Breadcrumb
+// Definisco il breadcrumb
 $breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span>Registrazione</span></p>';
 
-// 4. Costruisco la pagina
+// Costruisco la pagina
 echo costruisciPagina($paginaHTML, $breadcrumb, "registrazione.php");
 ?>
