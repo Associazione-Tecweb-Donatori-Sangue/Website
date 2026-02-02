@@ -60,13 +60,87 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 1. Menu mobile - Accessibilità hamburger menu
     const burgerInput = document.getElementById('burger-input');
+    const burgerMenu = document.querySelector('.burger-menu');
+    const menuUl = document.querySelector('#menu ul');
+    const logoImg = document.getElementById('logo');
     
-    if (burgerInput) {
+    if (burgerInput && burgerMenu && menuUl) {
+        // Funzione per gestire il focus trap quando il menu è aperto
+        function trapFocus(e) {
+            if (!burgerInput.checked) return;
+            
+            if (e.key === 'Tab') {
+                e.preventDefault();
+
+                const menuLinks = Array.from(menuUl.querySelectorAll('a:not(#currentLink)'));
+                const focusableElements = [...menuLinks, burgerInput];
+                
+                let currentIndex = focusableElements.indexOf(document.activeElement);
+                
+                if (currentIndex === -1) {
+                    currentIndex = 0;
+                }
+                
+                let nextIndex;
+                
+                if (e.shiftKey) {
+                    nextIndex = currentIndex === 0 ? focusableElements.length - 1 : currentIndex - 1;
+                } else {
+                    nextIndex = currentIndex === focusableElements.length - 1 ? 0 : currentIndex + 1;
+                }
+                
+                const nextElement = focusableElements[nextIndex];
+                if (nextElement) {
+                    nextElement.focus();
+                }
+            }
+        }
+        
         burgerInput.addEventListener('change', function() {
             const isChecked = this.checked;
             
             this.setAttribute('aria-expanded', isChecked);
             this.setAttribute('aria-label', isChecked ? 'Chiudi menu' : 'Apri menu');
+            
+            if (isChecked) {
+                burgerMenu.classList.add('menu-open');
+                menuUl.classList.add('menu-open');
+                if (logoImg) logoImg.style.opacity = '0.3';
+                
+                document.addEventListener('keydown', trapFocus);
+                
+                setTimeout(() => {
+                    const firstLink = menuUl.querySelector('a:not(#currentLink)');
+                    if (firstLink) {
+                        firstLink.focus();
+                    } else {
+                        const fallbackLink = menuUl.querySelector('a');
+                        if (fallbackLink) fallbackLink.focus();
+                    }
+                }, 100);
+            } else {
+                burgerMenu.classList.remove('menu-open');
+                menuUl.classList.remove('menu-open');
+                if (logoImg) logoImg.style.opacity = '1';
+                
+                document.removeEventListener('keydown', trapFocus);
+            }
+        });
+
+        burgerInput.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.checked = !this.checked;
+                this.dispatchEvent(new Event('change'));
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && burgerInput.checked) {
+                burgerInput.checked = false;
+                burgerInput.dispatchEvent(new Event('change'));
+                burgerInput.focus();
+            }
         });
     }
 

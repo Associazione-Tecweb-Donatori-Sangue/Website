@@ -11,6 +11,20 @@ body {
 /*  MENU AD HAMBURGER  */
 /* ------------------- */
 
+#burger-input {
+    display: block;
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+}
+
+#burger-input:focus-visible + #logo + ul + a + .burger-menu,
+#burger-input:focus-visible ~ .burger-menu {
+    outline: 2px solid black;
+    outline-offset: 2px;
+    border-radius: 0.3em;
+}
+
 .burger-menu{
     display: flex;
     margin-left: 2em;
@@ -24,15 +38,15 @@ body {
     padding: 0 10px;
 }
 
-#burger-input:checked ~ .burger-menu span:nth-child(1){
+.burger-menu.menu-open span:nth-child(1){
     transform: rotate(45deg) translate(6px, 5px);
 }
 
-#burger-input:checked ~ .burger-menu span:nth-child(2){
+.burger-menu.menu-open span:nth-child(2){
     opacity: 0;
 }
 
-#burger-input:checked ~ .burger-menu span:nth-child(3){
+.burger-menu.menu-open span:nth-child(3){
     transform: rotate(-45deg) translate(6px, -5px);
 }
 
@@ -60,7 +74,7 @@ body {
 }
 
 
-#burger-input:checked ~ ul {
+#menu ul.menu-open {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
@@ -508,9 +522,7 @@ footer{
 }
 
 
-#burger-input:checked ~ #logo {
-    opacity: 0.3;
-}
+
 
 
 .button-standard button,
