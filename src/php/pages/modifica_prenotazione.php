@@ -30,7 +30,7 @@ try {
     exit();
 }
 
-// --- GESTIONE MESSAGGI FLASH ---
+// GESTIONE MESSAGGI FLASH
 $msgHTML = getMessaggioFlashHTML();
 
 $paginaHTML = caricaTemplate('dona_ora.html');
@@ -38,7 +38,7 @@ if (!empty($msgHTML)) {
     $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 }
 
-// --- RECUPERO DATI DONATORE E LOGICA POPUP ---
+// RECUPERO DATI DONATORE E LOGICA POPUP
 $htmlDonatore = "";
 $sessoDonatore = null; 
 $dataConfrontoPopup = "";
@@ -106,7 +106,7 @@ try {
             <div class="form-container-admin">';
     }
 
-    // 2. Cerchiamo la data più vicina (precedente o successiva) per il popup smart
+    // 2. Cerchiamo la data più vicina (precedente o successiva) per il popup
     $stmtVicini = $pdo->prepare("
         SELECT data_prenotazione 
         FROM lista_prenotazioni 
@@ -120,9 +120,9 @@ try {
     ]);
     $dataConfrontoPopup = $stmtVicini->fetchColumn() ?: '';
 
-} catch (PDOException $e) { /* silent fail */ }
+} catch (PDOException $e) { /**/ }
 
-// --- CONFIGURAZIONE FORM ---
+// CONFIGURAZIONE FORM
 // Iniettiamo data-is-admin="true" e la data di confronto per il JavaScript
 $formModificato = '<form id="prenotaForm" data-ultima="'.$dataConfrontoPopup.'" data-sesso="'.$sessoDonatore.'" data-is-admin="true"';
 $paginaHTML = str_replace('<form id="prenotaForm"', $htmlDonatore . $formModificato, $paginaHTML);
@@ -152,7 +152,7 @@ $paginaHTML = str_replace(
     $paginaHTML
 );
 
-// Aggiornamento titoli e Breadcrumb
+// Aggiornamento titoli e breadcrumb
 $paginaHTML = str_replace(['<h1>Dona ora</h1>', '<h2>Prenota la tua donazione di sangue</h2>'], ['<h1>Modifica Prenotazione</h1>', '<h2>Modifica i dati della prenotazione</h2>'], $paginaHTML);
 $breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <a href="profilo_admin.php">Profilo Admin</a> / <span>Modifica Prenotazione</span></p>';
 
