@@ -12,7 +12,6 @@ if (!empty($msgHTML)) {
 
 // 1. Controllo Logica Accesso
 if (!isset($_SESSION['user_id'])) {
-    // Utente non loggato -> Messaggio di login/registrazione
     $messaggioAvviso = '
     <div class="text-standard">
         <h3 class="section-title">Accesso Richiesto</h3>
