@@ -10,14 +10,9 @@ $response = ['success' => false, 'message' => 'Errore sconosciuto'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $azione = $_POST['azione'] ?? '';
-    
-    // --- PERCORSO IMMAGINI (Corretto per la tua struttura Docker) ---
-    // Actions è in /var/www/html/php/actions
-    // Images è in /var/www/html/images
-    // Quindi devo salire di 2 livelli: ../../
     $uploadDir = '../../images/profili/';
 
-    // --- LOGICA UPLOAD ---
+    // UPLOAD
     if ($azione === 'upload' && isset($_FILES['foto_profilo'])) {
         $file = $_FILES['foto_profilo'];
 
@@ -44,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 if (move_uploaded_file($file['tmp_name'], $uploadDir . $fileName)) {
                     try {
-                        // Rimuovi vecchia foto
+                        // Rimuovo vecchia foto
                         $stmt = $pdo->prepare("SELECT foto_profilo FROM utenti WHERE id = ?");
                         $stmt->execute([$user_id]);
                         $oldPhoto = $stmt->fetchColumn();
@@ -70,7 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
     } 
-    // --- LOGICA RIMOZIONE ---
+    // RIMOZIONE
     elseif ($azione === 'rimuovi') {
         $user_id = $_SESSION['user_id'];
 
