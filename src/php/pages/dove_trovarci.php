@@ -14,7 +14,6 @@ try {
         // Preparo i dati per l'HTML
         
         // A. Gestione Nome con ABBR
-        // Se nel DB c'è scritto "ATDS Piovego", lo trasformo in "<abbr...>ATDS</abbr> Piovego"
         $nomeSede = htmlspecialchars($sede['nome']);
         $nomeSedeFormattato = str_replace(
             "ATDS", 
@@ -23,12 +22,10 @@ try {
         );
 
         // B. Gestione Percorso Immagine
-        // Nel DB è salvato come "images/nomefile.jpg", ma noi siamo in php/pages/
-        // quindi dobbiamo aggiungere "../../" davanti.
+        
         $percorsoImmagine = "../../" . htmlspecialchars($sede['immagine']);
         
         // C. Gestione Telefono (pulizia per il link tel:)
-        // Rimuovo spazi e caratteri non numerici per l'href
         $telefonoVisualizzato = htmlspecialchars($sede['telefono']);
         $telefonoLink = preg_replace('/[^0-9+]/', '', $telefonoVisualizzato);
 
