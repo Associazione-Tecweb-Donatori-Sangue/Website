@@ -63,18 +63,16 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     $cognome = strtoupper(trim($cognome));
     
     // ========================================
-    // CONTROLLO LUNGHEZZA (DEVE ESSERE IL PRIMO!)
+    // CONTROLLO LUNGHEZZA
     // ========================================
     if (strlen($cf) != 16) {
         return ['valido' => false, 'errore' => 'il codice fiscale deve essere lungo esattamente 16 caratteri, attualmente ne hai inseriti ' . strlen($cf) . '.'];
     }
-    
-    // Controllo formato con regex
+
     if (!preg_match('/^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/', $cf)) {
         return ['valido' => false, 'errore' => 'Il formato del codice fiscale non è corretto. Deve contenere 6 lettere, 2 numeri, 1 lettera, 2 numeri, 1 lettera, 3 numeri e 1 lettera finale.'];
     }
     
-    // Funzioni helper
     function estraiConsonanti($stringa) {
         return preg_replace('/[AEIOU]/i', '', $stringa);
     }
@@ -84,7 +82,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     }
     
     // ========================================
-    // 1. CONTROLLO COGNOME (posizioni 1-3)
+    // CONTROLLO COGNOME
     // ========================================
     $cognomeCF = substr($cf, 0, 3);
     $consonantiCognome = estraiConsonanti($cognome);
@@ -96,7 +94,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     }
     
     // ========================================
-    // 2. CONTROLLO NOME (posizioni 4-6)
+    // CONTROLLO NOME
     // ========================================
     $nomeCF = substr($cf, 3, 3);
     $consonantiNome = estraiConsonanti($nome);
@@ -113,7 +111,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     }
     
     // ========================================
-    // 3. CONTROLLO ANNO (posizioni 7-8)
+    // CONTROLLO ANNO
     // ========================================
     $annoCF = substr($cf, 6, 2);
     $annoNascita = date('y', strtotime($dataNascita));
@@ -123,7 +121,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     }
     
     // ========================================
-    // 4. CONTROLLO MESE (posizione 9)
+    // CONTROLLO MESE
     // ========================================
     $meseCF = substr($cf, 8, 1);
     $mesiCF = [
@@ -140,15 +138,14 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
             '05' => 'maggio', '06' => 'giugno', '07' => 'luglio', '08' => 'agosto',
             '09' => 'settembre', '10' => 'ottobre', '11' => 'novembre', '12' => 'dicembre'
         ];
-        
-        // Determina se usare "nato" o "nata"
+
         $natoNata = ($sesso == 'Femmina') ? 'nata' : 'nato';
         
         return ['valido' => false, 'errore' => "il mese di nascita del codice fiscale non corrisponde, hai inserito '$meseCF' (posizione 9) ma sei $natoNata a " . $nomiMesi[$meseNascita] . ", quindi dovrebbe essere '$meseAtteso'."];
     }
     
     // ========================================
-    // 5. CONTROLLO GIORNO (posizioni 10-11)
+    // CONTROLLO GIORNO
     // ========================================
     $giornoCF = intval(substr($cf, 9, 2));
     $giornoNascita = intval(date('d', strtotime($dataNascita)));
@@ -171,7 +168,7 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
     }
     
     // ========================================
-    // 6. CONTROLLO CHECKSUM (SOLO ALLA FINE!)
+    // CONTROLLO CHECKSUM
     // ========================================
     if (!validaCodiceFiscale($cf)) {
         return ['valido' => false, 'errore' => 'il carattere di controllo del codice fiscale non è valido, tutti gli altri dati (nome, cognome, data) sono corretti ma probabilmente hai sbagliato a digitare l\'ultima lettera.'];
@@ -182,7 +179,6 @@ function validaCoerenzaCF($cf, $nome, $cognome, $dataNascita, $sesso) {
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // 1. Controllo Età
     $dataNascita = new DateTime($_POST['data_nascita']);
     $oggi = new DateTime();
     $eta = $oggi->diff($dataNascita)->y;
@@ -194,7 +190,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // 2. Controllo Peso (Standard 50kg)
+
     $peso = floatval($_POST['peso_corporeo_in_kg']);
     if ($peso < 50) {
         $_SESSION['messaggio_flash'] = "Errore: Il peso minimo per donare è 50 Kg.";
@@ -203,7 +199,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // 3. VALIDAZIONE CODICE FISCALE
+    // VALIDAZIONE CODICE FISCALE
     $risultatoValidazione = validaCoerenzaCF(
         $_POST['codice_fiscale'],
         $_POST['nome'],
@@ -220,16 +216,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     try {
-        // Controllo se sto facendo INSERT (nuovo) o UPDATE (modifica)
-        // Verifico se esiste già un record per questo user_id
         $checkStmt = $pdo->prepare("SELECT user_id FROM donatori WHERE user_id = ?");
         $checkStmt->execute([$_SESSION['user_id']]);
         $esiste = $checkStmt->fetch();
 
         if ($esiste) {
-            // UPDATE
             $sql = "UPDATE donatori SET nome=?, cognome=?, data_nascita=?, luogo_nascita=?, codice_fiscale=?, indirizzo=?, telefono=?, email=?, gruppo_sanguigno=?, sesso=?, peso=? WHERE user_id=?";
-            // Aggiungo user_id alla fine per il WHERE
             $params = [
                 pulisciInput($_POST['nome']),
                 pulisciInput($_POST['cognome']),
@@ -245,7 +237,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id']
             ];
         } else {
-            // INSERT
             $sql = "INSERT INTO donatori (nome, cognome, data_nascita, luogo_nascita, codice_fiscale, indirizzo, telefono, email, gruppo_sanguigno, sesso, peso, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $params = [
                 pulisciInput($_POST['nome']),
@@ -272,8 +263,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     } catch (PDOException $e) {
         logError("Errore salvataggio donatore: " . $e->getMessage());
-        
-        // Verifica se è un errore di duplicazione (codice fiscale già presente)
+      
         if ($e->getCode() == 23000) {
             $_SESSION['messaggio_flash'] = "Errore: Il codice fiscale è già registrato.";
         } else {
@@ -286,7 +276,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// 2. PREPARAZIONE DELLA PAGINA (Visualizzazione)
+// PREPARAZIONE DELLA PAGINA
 $template = caricaTemplate('registrazione_donatore.html');
 
 $template = str_replace('<form method="post"', '<form method="post" autocomplete="new-password"', $template);
@@ -320,7 +310,7 @@ $messaggioErrore = getMessaggioFlashHTML();
 // Sostituisco il placeholder del messaggio
 $template = str_replace('[messaggioErrore]', $messaggioErrore, $template);
 
-// Inizializzo variabili vuote (caso "Nuova Registrazione")
+// Inizializzo variabili vuote
 $dati = [
     'nome' => '', 
     'cognome' => '', 
@@ -334,59 +324,49 @@ $dati = [
     'sesso' => '', 
     'peso' => ''
 ];
-// Variabili per il corpo della pagina
+
 $titoloPagina = "Registrazione donatore";
 $sottotitoloPagina = "Diventa un eroe, entra nella nostra rete di donatori";
 $testoSubmit = "Invia Registrazione";
 
-// Variabili per il SEO (Head)
 $metaTitle = "Registrazione donatore - ATDS";
 $metaDescription = "Pagina per registrarsi come nuovo donatore presso l'Associazione Tecweb Donatori Sangue";
 $metaKeywords = "registrazione, donatore, sangue, volontariato, ATDS";
 
-// Controllo se l'utente ha già i dati nel DB
 $stmt = $pdo->prepare("SELECT * FROM donatori WHERE user_id = ?");
 $stmt->execute([$_SESSION['user_id']]);
 $userDB = $stmt->fetch();
 
-// Se l'utente HA già i dati, li carico (caso "Modifica")
 if ($userDB) {
     $dati = $userDB;
 
-    // Aggiorno testi pagina
     $titoloPagina = "Modifica dati donatore";
     $sottotitoloPagina = "Modifica le tue informazioni di donatore";
     $testoSubmit = "Salva modifiche";
-    
-    // Aggiorno testi SEO
+
     $metaTitle = "Modifica profilo donatore - ATDS";
     $metaDescription = "Pagina per modificare i dati del profilo donatore ATDS";
     $metaKeywords = "modifica, profilo, donatore, aggiornamento, dati, ATDS";
 }
 
-// Se ci sono dati inseriti precedentemente (errore di validazione), li uso per precompilare il form
 if (isset($_SESSION['dati_inseriti'])) {
     $temp = $_SESSION['dati_inseriti'];
-    
-    // Mappo i campi del FORM ($temp) sui campi attesi dall'array $dati (DB)
-    // Nota: alcuni nomi nel form sono diversi da quelli nel DB/Array interno
     $dati['nome'] = $temp['nome'];
     $dati['cognome'] = $temp['cognome'];
     $dati['data_nascita'] = $temp['data_nascita'];
     $dati['luogo_nascita'] = $temp['luogo_nascita'];
     $dati['codice_fiscale'] = $temp['codice_fiscale'];
-    $dati['indirizzo'] = $temp['residenza']; // Nel form si chiama 'residenza', nell'array 'indirizzo'
+    $dati['indirizzo'] = $temp['residenza'];
     $dati['telefono'] = $temp['telefono'];
     $dati['email'] = $temp['email'];
     $dati['gruppo_sanguigno'] = $temp['gruppo_sanguigno'];
     $dati['sesso'] = isset($temp['sesso']) ? $temp['sesso'] : '';
-    $dati['peso'] = $temp['peso_corporeo_in_kg']; // Nel form è 'peso_corporeo_in_kg', nell'array 'peso'
+    $dati['peso'] = $temp['peso_corporeo_in_kg'];
 
-    // Pulisco la sessione per non rivedere questi dati se ricarico la pagina domani
     unset($_SESSION['dati_inseriti']);
 }
 
-// 3. SOSTITUZIONE DEI SEGNAPOSTI (Input di testo)
+// SOSTITUZIONE DEI SEGNAPOSTI
 $template = str_replace('[valore_nome]', $dati['nome'], $template);
 $template = str_replace('[valore_cognome]', $dati['cognome'], $template);
 $template = str_replace('[valore_data_nascita]', $dati['data_nascita'], $template);
@@ -397,37 +377,33 @@ $template = str_replace('[valore_telefono]', $dati['telefono'], $template);
 $template = str_replace('[valore_email]', $dati['email'], $template);
 $template = str_replace('[valore_peso]', $dati['peso'], $template);
 
-// B. Testi Dinamici (H1, H2, Button)
+// Testi Dinamici
 $template = str_replace('[titoloPagina]', $titoloPagina,  $template);
 $template = str_replace('[sottotitoloPagina]', $sottotitoloPagina , $template);
 $template = str_replace('[testoSubmit]', $testoSubmit , $template);
 
-// C. SEO Dinamico (Head)
+// SEO Dinamico
 $template = str_replace('[metaTitolo]', $metaTitle, $template);
 $template = str_replace('[metaDescrizione]', $metaDescription, $template);
 $template = str_replace('[metaKeywords]', $metaKeywords, $template);
 
-// 4. GESTIONE SELEZIONI (Select e Radio)
-// Trucco: cerchiamo il valore nell'HTML e aggiungiamo l'attributo "selected" o "checked"
+// GESTIONE SELEZIONI
 if ($dati['gruppo_sanguigno'] != "") {
     $find = 'value="'.$dati['gruppo_sanguigno'].'"'; 
     $replace = 'value="'.$dati['gruppo_sanguigno'].'" selected';
     $template = str_replace($find, $replace, $template);
 }
 
-// Gestione radio button sesso
 if ($dati['sesso'] == 'Maschio') {
     $template = str_replace('value="Maschio"', 'value="Maschio" checked', $template);
 } elseif ($dati['sesso'] == 'Femmina') {
     $template = str_replace('value="Femmina"', 'value="Femmina" checked', $template);
 }
 
-// 1. Imposto la data massima selezionabile (Oggi - 18 anni)
 $dataMassima = date('Y-m-d', strtotime('-18 years'));
-// Aggiungo l'attributo max all'input data_nascita
 $template = str_replace('id="data_nascita"', 'id="data_nascita" max="'.$dataMassima.'"', $template);
 
-// 5. STAMPA FINALE
+// STAMPA FINALE
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <a href="/php/pages/profilo.php">Profilo</a> / <span>'.$titoloPagina.'</span></p>';
 echo costruisciPagina($template, $breadcrumb, "registrazione_donatore.php");
 ?>
