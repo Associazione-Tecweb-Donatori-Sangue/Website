@@ -2,9 +2,7 @@ HTML
 - aggiungere pochini strong --> 🔴
 
 CSS
-- distinguere link visitati e non visitati: --> 🔴
-    - DONA ORA: accedi e registrati, torna al profilo
-    - DOVE SIAMO: visualizza su google maps, numero di telefono
+----------
 
 PHP
 -----------
