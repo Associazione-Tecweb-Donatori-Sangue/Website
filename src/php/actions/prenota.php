@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         ? "../pages/modifica_prenotazione.php?id_prenotazione=" . $idPrenotazione 
         : "../pages/dona_ora.php";
 
-    // --- VALIDAZIONI INPUT ---
+    // VALIDAZIONI INPUT
     
     // Valida sede_id
     if (!validaInteroPositivo($sede_id)) {
@@ -62,7 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // --- VALIDAZIONI BUSINESS ---
+    // VALIDAZIONI BUSINESS
     $oggi = date("Y-m-d");
 
     // A. Data nel passato
@@ -88,7 +88,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmtUtente = $pdo->prepare("SELECT sesso FROM donatori WHERE user_id = ?");
         $stmtUtente->execute([$user_id]);
         $donatore = $stmtUtente->fetch(PDO::FETCH_ASSOC);
-        // Default a 3 mesi se non specificato, altrimenti logica sesso
         $sogliaMesi = ($donatore && $donatore['sesso'] === 'Femmina') ? 6 : 3;
 
         // 1. Cerchiamo la prenotazione precedente più vicina
@@ -108,7 +107,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $dataSceltaObj = new DateTime($data);
         $dataSceltaObj->setTime(0, 0, 0);
 
-        // A. Controllo con la PRECEDENTE
+        // A. Controllo con la precedente
         if ($dataPrecedente) {
             $dataPrecObj = new DateTime($dataPrecedente);
             $dataPrecObj->setTime(0, 0, 0);
@@ -122,7 +121,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // B. Controllo con la SUCCESSIVA (solo se non c'è già errore)
+        // B. Controllo con la successiva
         if (!$intervalloViolato && $dataSuccessiva) {
             $dataSuccObj = new DateTime($dataSuccessiva);
             $dataSuccObj->setTime(0, 0, 0);
@@ -136,7 +135,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // BLOCCO FINALE SE VIOLAZIONE TROVATA
+        // Trovata violazione
         if ($intervalloViolato) {
             $dataSceltaFormatted = $dataSceltaObj->format('d/m/Y');
             $dataConflictFormatted = (new DateTime($dataConflitto))->format('d/m/Y');
@@ -147,7 +146,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['messaggio_flash'] = $msg;
             
             header("Location: " . $redirectErrore);
-            exit(); // BLOCCA IL SALVATAGGIO
+            exit();
         }
 
         // D. Controllo doppie prenotazioni
