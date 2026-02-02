@@ -418,6 +418,32 @@ document.addEventListener('DOMContentLoaded', () => {
             errorDialog.showModal();
         }
     }
+
+    // GESTIONE PAUSE/PLAY CAROSELLO
+    const carouselToggle = document.getElementById('carousel-toggle');
+    const carouselTrack = document.querySelector('.carousel-track');
+    
+    if (carouselToggle && carouselTrack) {
+        let isPaused = false;
+        
+        carouselToggle.addEventListener('click', function() {
+            isPaused = !isPaused;
+            
+            if (isPaused) {
+                carouselTrack.classList.add('manually-paused');
+                this.setAttribute('aria-label', 'Riprendi il carosello');
+                this.setAttribute('aria-pressed', 'true');
+                this.querySelector('.pause-icon').classList.add('hidden');
+                this.querySelector('.play-icon').classList.remove('hidden');
+            } else {
+                carouselTrack.classList.remove('manually-paused');
+                this.setAttribute('aria-label', 'Metti in pausa il carosello');
+                this.setAttribute('aria-pressed', 'false');
+                this.querySelector('.pause-icon').classList.remove('hidden');
+                this.querySelector('.play-icon').classList.add('hidden');
+            }
+        });
+    }
 });
 
 /* =========================================
