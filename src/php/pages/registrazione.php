@@ -4,8 +4,6 @@ require_once "../db.php";
 
 // Template HTML
 $paginaHTML = caricaTemplate('registrazione.html');
-
-// Variabile per la gestione degli errori e messaggi
 $messaggio = "";
 $usernamePreservato = "";
 
@@ -21,7 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $messaggio = "<div class='msg-error'>Errore: Le password non coincidono.</div>";
     } else {
         try {
-            // Controllo se l'utente esiste già
             $stmt = $pdo->prepare("SELECT id FROM utenti WHERE username = ?");
             $stmt->execute([$username]);
             
@@ -53,7 +50,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Sostituisco il placeholder del messaggio nel template
 $paginaHTML = str_replace('[messaggioErrore]', $messaggio, $paginaHTML);
 
-// Se c'è un errore, preservo l'username nel campo del form
 if (!empty($usernamePreservato)) {
     $paginaHTML = str_replace(
         'name="username" id="username"',
@@ -62,7 +58,7 @@ if (!empty($usernamePreservato)) {
     );
 }
 
-// Definisco il Breadcrumb
+// Definisco il breadcrumb
 $breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span>Registrazione</span></p>';
 
 // Costruisco la pagina
