@@ -40,10 +40,10 @@ try {
             <p>' . htmlspecialchars($sede['descrizione']) . '</p>
             <p> 
                 Indirizzo: ' . htmlspecialchars($sede['indirizzo']) . '
-                <a href="' . htmlspecialchars($sede['link_maps']) . '" target="_blank">Visualizza su Google Maps</a>
+                <a href="' . htmlspecialchars($sede['link_maps']) . '" target="_blank" rel="noopener noreferrer" aria-label="Visualizza ' . $nomeSede . ' su Google Maps (si apre in una nuova finestra)">Visualizza su Google Maps</a>
             </p>
             <p>Telefono: <a href="tel:' . $telefonoLink . '" aria-label="Chiama ' . $telefonoVisualizzato . '">' . $telefonoVisualizzato . '</a></p>
-            <a href="../../php/pages/dona_ora.php?sede_id=' . $sede['id'] . '" class="btn-link">Dona qui</a>
+            <a href="../../php/pages/dona_ora.php?sede_id=' . $sede['id'] . '" class="btn-link" aria-label="Dona alla sede ' . $nomeSede . '">Dona qui</a>
         </div>';
     }
 

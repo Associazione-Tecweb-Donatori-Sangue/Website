@@ -1,6 +1,5 @@
 HTML
 - aggiungere pochini strong --> 🔴
-- rimuovere alt immagini decorative --> 🔴
 
 CSS
 - distinguere link visitati e non visitati: --> 🔴
