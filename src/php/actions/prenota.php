@@ -66,15 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
-    // B. Campi obbligatori
-    if (empty($data) || empty($sede_id) || empty($ora)) {
-        $_SESSION['messaggio_flash'] = "Errore: compila tutti i campi obbligatori.";
-        header("Location: " . $redirectErrore);
-        exit();
-    }
-
     try {
-        // C. Controllo intervallo minimo
+        // B. Controllo intervallo minimo
         $stmtUtente = $pdo->prepare("SELECT sesso FROM donatori WHERE user_id = ?");
         $stmtUtente->execute([$user_id]);
         $donatore = $stmtUtente->fetch(PDO::FETCH_ASSOC);
