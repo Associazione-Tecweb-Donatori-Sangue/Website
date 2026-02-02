@@ -12,19 +12,18 @@ body {
 /* ------------------- */
 
 .burger-menu{
-    display: flex; /* mostra l'hamburger su mobile */
+    display: flex;
     margin-left: 2em;
-    z-index: 1001; /* Sopra il menu a tendina */
+    z-index: 1001;
 }
 
 #menu{
     margin-left: -0.5em;
     display: flex;
     width: 100%;
-    padding: 0 10px; /* Un po' di margine laterale */
+    padding: 0 10px;
 }
 
-/* Animazione hamburger, diventa una X */
 #burger-input:checked ~ .burger-menu span:nth-child(1){
     transform: rotate(45deg) translate(6px, 5px);
 }
@@ -37,54 +36,45 @@ body {
     transform: rotate(-45deg) translate(6px, -5px);
 }
 
-/* Menu a tendina */
-/* Lo stato di default (chiuso) */
+
 #menu ul {
-    display: flex; /* Flex per centrare il contenuto */
-    position: fixed; /* Fisso su tutto lo schermo */
+    display: flex;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh; /* Tutta l'altezza */
-    
-    /* Sfondo sfumato elegante con i colori del brand */
+    height: 100vh;
     background: linear-gradient(180deg, #acd2e6 0%, #f7fbfc 100%);
-    
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Centra verticalmente */
-    gap: 25px; /* Spazio tra i bottoni */
-    
-    z-index: 999; /* Sta sotto l'hamburger ma sopra il resto del sito */
-    
-    /* Animazione Entrata/Uscita */
+    justify-content: center;
+    gap: 25px;
+    z-index: 999;
     opacity: 0;
-    visibility: hidden; /* Nasconde anche al lettore schermo quando chiuso */
-    transform: translateY(-20px); /* Parte leggermente spostato in alto */
+    visibility: hidden;
+    transform: translateY(-20px);
     transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
-    
-    padding-top: 60px; /* Spazio extra in alto */
-    list-style: none; /* Rimuove i pallini della lista */
+    padding-top: 60px;
+    list-style: none;
     margin: 0;
 }
 
-/* Lo stato APERTO (quando il checkbox è checked) */
+
 #burger-input:checked ~ ul {
     opacity: 1;
     visibility: visible;
-    transform: translateY(0); /* Torna in posizione naturale */
+    transform: translateY(0);
 }
 
 #menu ul li a {
     display: flex;
     justify-content: center;
     align-items: center;
-    
-    width: 260px; /* Larghezza fissa per uniformità */
+    width: 260px;
     padding: 15px 0;
     
     background-color: #ffffff;
-    color: #082636; /* Blu scuro elegante */
+    color: #082636;
     
     font-family: 'Jost', sans-serif;
     font-size: 1.2rem;
@@ -92,23 +82,21 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     text-decoration: none;
-    
-    border-radius: 50px; /* Forma a pillola */
+    border-radius: 50px;
     border: none;
-    box-shadow: 0 4px 15px rgba(8, 38, 54, 0.1); /* Ombra morbida */
-    
+    box-shadow: 0 4px 15px rgba(8, 38, 54, 0.1);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-/* Effetto pressione (Active) */
+
 #menu ul li a:active {
     transform: scale(0.95);
     box-shadow: 0 2px 5px rgba(8, 38, 54, 0.1);
 }
 
-/* Link della pagina corrente (Evidenziato) */
+
 #menu ul li a#currentLink {
-    background-color: #4f5abb; /* Blu Brand */
+    background-color: #4f5abb;
     color: #ffffff;
     box-shadow: 0 4px 15px rgba(79, 90, 187, 0.3);
 }
@@ -129,13 +117,12 @@ body {
     width: 90%;
 }
 
-/* Adattamento Sticky Header */
 .sticky-header {
-    width: 95%; /* Più largo su mobile */
+    width: 95%;
     top: 5px;
 }
 
-/* Drop button più largo per touch */
+
 .drop {
     width: 10%;
 }
@@ -144,9 +131,9 @@ body {
     height: calc(100vh - 10.8em);
 }
 
-/* Adattamento Titoli Grandi */
+
 #landing-title h1 {
-    font-size: 3.5em; /* Ridotto per mobile */
+    font-size: 3.5em;
     width: 80%;
     margin-left: 10%;
     text-align: center;
@@ -159,7 +146,7 @@ body {
     font-size: 1.4em;
 }
 
-/* Ottimizzazione per landscape su mobile */
+
 @media screen and (orientation: landscape) {
     
     #landing-title {
@@ -191,7 +178,6 @@ body {
 /*  HOMEPAGE - CARDS   */
 /* ------------------- */
 
-/* Card Intro - Stack verticale */
 #card-intro {
     flex-direction: column;
     height: auto;
@@ -228,7 +214,7 @@ body {
     object-fit: cover;
 }
 
-/* Card Join - Requisiti a griglia 2x2 */
+
 #card-join {
     height: auto;
     padding-bottom: 0.4em;
@@ -273,7 +259,6 @@ body {
     padding: 0.8em 0.5em;
 }
 
-/* Card Why Us - Stack verticale */
 #card-why-us {
     flex-direction: column;
     height: auto;
@@ -308,7 +293,6 @@ body {
     object-fit: cover;
 }
 
-/* Card Locations */
 #card-locations {
     height: auto;
     min-height: 300px;
@@ -511,7 +495,6 @@ footer{
 /*  UTILITY MOBILE     */
 /* ------------------- */
 
-/* Back button in modalità mobile - blocco normale invece di posizione assoluta */
 .back-button-container {
     position: static;
     margin: 1em;
@@ -524,19 +507,19 @@ footer{
     width: fit-content;
 }
 
-/* Nascondi logo quando il menu è aperto per più spazio */
+
 #burger-input:checked ~ #logo {
     opacity: 0.3;
 }
 
-/* Migliora leggibilità dei bottoni */
+
 .button-standard button,
 .button-standard input[type="submit"] {
     font-size: 15px;
     padding: 14px;
 }
 
-/* Disclaimer in dove trovarci */
+
 #disclaimer {
     margin: 4rem auto 2rem;
     padding: 1rem 1.5rem;
@@ -635,7 +618,7 @@ body.error-background {
 }
 
 /* ========================================
-   CAROUSEL - MOBILE
+   CAROSELLO - MOBILE
 ======================================== */
 .carousel img {
     width: 250px;
@@ -645,8 +628,6 @@ body.error-background {
 /* ========================================
    TABELLA ADMIN - MOBILE
 ======================================== */
-
-/* Layout a card su mobile */
 .table-container {
   box-shadow: none;
 }
