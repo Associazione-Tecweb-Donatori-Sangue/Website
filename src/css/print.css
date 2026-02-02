@@ -133,7 +133,7 @@
     font-weight: bold;
   }
 
-  /* titoli*/
+  /* titoli */
   #landing-title {
     height: auto;
     width: 100%;
@@ -325,7 +325,7 @@
   .no-results-message,
   /* dialoghi*/
   dialog,
-  /* altri elementi da nascoindere */
+  /* altri elementi da nascondere */
   .drop,
   .btn-full,
   .btn-link,
@@ -597,7 +597,6 @@
   }
 
   /* faq */
-
   .faq-atds,
   .faq {
     display: block;
