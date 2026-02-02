@@ -92,7 +92,7 @@ $template = str_replace('[MESSAGGI]', $messaggio, $template);
 $backLink = "profilo.php";
 $template = str_replace('href="profilo.php"', 'href="'.$backLink.'"', $template);
 
-$breadcrumb = '<p><a href="/index.php">Home</a> / <a href="'.$backLink.'">Profilo</a> / <span>Gestione utente</span></p>';
+$breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <a href="'.$backLink.'">Profilo</a> / <span>Gestione utente</span></p>';
 
 echo costruisciPagina($template, $breadcrumb, "modifica_account.php");
 ?>

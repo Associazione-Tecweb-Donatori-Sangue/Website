@@ -88,7 +88,7 @@ try {
                     <h3 id="titolo-contatti" class="profile-card-title">Contatti</h3>
                     <dl class="data-list-compact">
                         <div>
-                            <dt>Email:</dt>
+                            <dt><span lang="en">Email</span>:</dt>
                             <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
                         </div>
                         <div>

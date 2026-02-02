@@ -77,7 +77,7 @@ try {
                     <h2 id="titolo-dati-donatore" class="profile-card-title">Dati del Donatore</h2>
                     <dl class="data-list-compact">
                         <div>
-                            <dt>Username:</dt>
+                            <dt><span lang="en">Username</span>:</dt>
                             <dd>' . htmlspecialchars($datiDonatore['username']) . '</dd>
                         </div>
                         <div>
@@ -89,7 +89,7 @@ try {
                             <dd>' . htmlspecialchars($datiDonatore['cognome']) . '</dd>
                         </div>
                         <div>
-                            <dt>Email:</dt>
+                            <dt><span lang="en">Email</span>:</dt>
                             <dd>' . htmlspecialchars($datiDonatore['email']) . '</dd>
                         </div>
                         <div>
