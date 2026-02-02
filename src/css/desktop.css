@@ -1152,6 +1152,12 @@ small {
   box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
 }
 
+.btn-submit:focus,
+.btn-submit:focus-visible {
+  background-color: var(--btn-primary-bg);
+  color: var(--white);
+}
+
 .btn-link {
   text-align: center;
   padding: 0.5em 1.1em;
@@ -1607,6 +1613,7 @@ abbr[title]:focus {
 }
 
 .donor-info-sidebar {
+  margin-top: 5em;
   width: 100%;
 }
 

@@ -56,6 +56,9 @@ try {
         $sessoDonatore = $datiDonatore['sesso'];
         $htmlDonatore = '
         <div class="admin-layout-container">
+            <div class="back-button-container">
+                <a href="profilo.php" class="back-button">&larr; Torna al profilo</a>
+            </div>
             <aside class="donor-info-sidebar" role="complementary" aria-labelledby="titolo-dati-donatore">
                 <div class="profile-card">
                     <h2 id="titolo-dati-donatore" class="profile-card-title">Dati del Donatore</h2>
