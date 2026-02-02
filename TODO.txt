@@ -8,7 +8,6 @@ PHP
 -----------
 
 GENERALI
-- sistemare tutti i commenti --> DG
 - fare relazione --> tutti; cose da fare per relazione {
         - definire le convenzioni interne (bottoni, link, ecc)
     }
