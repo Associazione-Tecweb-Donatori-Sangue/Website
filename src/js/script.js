@@ -16,11 +16,8 @@ function setupDialog(config) {
 
     const dialog = document.getElementById(dialogId);
     if (!dialog) return;
-
-    // Gestione apertura
     openTriggers.forEach(trigger => {
         if (typeof trigger === 'string') {
-            // È un ID di bottone
             const btn = document.getElementById(trigger);
             if (btn) {
                 btn.addEventListener('click', () => {
@@ -29,7 +26,6 @@ function setupDialog(config) {
                 });
             }
         } else if (trigger.selector && trigger.event === 'click') {
-            // È un event delegation
             document.addEventListener('click', (e) => {
                 if (e.target.classList.contains(trigger.selector)) {
                     if (trigger.dataHandler) {
@@ -42,7 +38,6 @@ function setupDialog(config) {
         }
     });
 
-    // Gestione chiusura
     if (closeBtnId) {
         const closeBtn = document.getElementById(closeBtnId);
         if (closeBtn) {
@@ -52,7 +47,6 @@ function setupDialog(config) {
         }
     }
 
-    // Chiusura su click backdrop
     if (closeOnBackdrop) {
         dialog.addEventListener('click', (e) => {
             if (e.target === dialog) {
@@ -191,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. GESTIONE PAGINE ADMIN
+    // GESTIONE PAGINE ADMIN
     const isAdminPage = document.body.classList.contains('profile-admin');
     const selectSede = document.getElementById('sede-donazioni');
 
@@ -205,14 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 6. GESTIONE DIALOG ELIMINA PROFILO
+    // GESTIONE DIALOG ELIMINA PROFILO
     setupDialog({
         dialogId: 'dialog-elimina-profilo',
         openTriggers: ['btn-elimina-profilo'],
         closeBtnId: 'btn-annulla-elimina'
     });
 
-    // 7. GESTIONE DIALOG ANNULLA PRENOTAZIONE
+    // GESTIONE DIALOG ANNULLA PRENOTAZIONE
     const hiddenIdPrenotazione = document.getElementById('hidden-id-prenotazione');
     const prenotazioneData = document.getElementById('prenotazione-data');
     const prenotazioneOra = document.getElementById('prenotazione-ora');
@@ -231,7 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtnId: 'btn-annulla-dialog-prenotazione'
     });
 
-    // 8. GESTIONE DIALOG ELIMINA PRENOTAZIONE ADMIN
+    // GESTIONE DIALOG ELIMINA PRENOTAZIONE ADMIN
     const hiddenIdPrenotazioneAdmin = document.getElementById('hidden-id-prenotazione-admin');
     const eliminaUsername = document.getElementById('elimina-username');
     const eliminaData = document.getElementById('elimina-data');
@@ -252,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtnId: 'btn-annulla-elimina-admin'
     });
 
-    //VALIDAZIONE UNIFICATA: Campi vuoti 
+    //VALIDAZIONE: Campi vuoti 
     const prenotaForm = document.getElementById('prenotaForm');
     const dialogCampiVuoti = document.getElementById('dialog-campi-vuoti');
     const btnChiudiVuoti = document.getElementById('btn-chiudi-vuoti');
@@ -371,17 +365,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ===== GESTIONE RIMOZIONE FOTO (Click e Tastiera) =====
+    // GESTIONE RIMOZIONE FOTO (Click e Tastiera)
     if (removePhotoBtn && deletePhotoDialog) {
         const openRemoveDialog = (e) => {
-            e.stopPropagation(); // Evita di aprire il file picker del parent
+            e.stopPropagation();
             deletePhotoDialog.showModal();
         };
-
-        // Evento Click
         removePhotoBtn.addEventListener('click', openRemoveDialog);
-
-        // Evento Tastiera (Enter e Space) sulla "X"
         removePhotoBtn.addEventListener('keydown', (e) => {
             if (e.key === 'Enter' || e.key === ' ') {
                 e.preventDefault();
@@ -407,7 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ===== CHIUSURA DIALOG ERRORI =====
+    // CHIUSURA DIALOG ERRORI
     const setupCloseBtn = (btnId, dialogId) => {
         const btn = document.getElementById(btnId);
         const dialog = document.getElementById(dialogId);
