@@ -14,7 +14,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
 // 2. Carico il template HTML
 $paginaHTML = caricaTemplate('profilo.html');
 
-// --- LOGICA GESTIONE FOTO PROFILO ---
+// LOGICA GESTIONE FOTO PROFILO
 $fotoPath = "../../images/profilo.jpg"; 
 $isDefaultClass = "is-default";
 
@@ -39,7 +39,7 @@ try {
 $paginaHTML = str_replace('[FOTO_PROFILO]', htmlspecialchars($fotoPath), $paginaHTML);
 $paginaHTML = str_replace('[CLASS_DEFAULT]', $isDefaultClass, $paginaHTML);
 
-// --- SEZIONE DATI DONATORE ---
+// SEZIONE DATI DONATORE
 $htmlDonatore = "";
 try {
     $stmt = $pdo->prepare("SELECT * FROM donatori WHERE user_id = ?");
@@ -129,7 +129,7 @@ try {
 
 $paginaHTML = str_replace('[sezioneDonatore]', $htmlDonatore, $paginaHTML);
 
-// --- SEZIONE TABELLE PRENOTAZIONI PASSATE E FUTURE ---
+// SEZIONE TABELLE PRENOTAZIONI PASSATE E FUTURE
 $sezioneFuture = "";
 $sezionePassate = "";
 
@@ -158,13 +158,12 @@ try {
     $future = array_filter($prenotazioni, fn($p) => $p['stato'] === 'futura');
     $passate = array_filter($prenotazioni, fn($p) => $p['stato'] === 'passata');
 
-    // Tabella future
+    // Tabella futura
     if (count($future) > 0) {
         $righeTabella = "";
         foreach ($future as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
-            // Sostituisci il trattino con lo spazio per la visualizzazione
             $tipoDonazione = str_replace('-', ' ', $p['tipo_donazione']);
             
             $righeTabella .= '<tr>
@@ -196,13 +195,12 @@ try {
         $sezioneFuture = '<p class="text-standard">Nessuna prenotazione in programma.</p>';
     }
 
-    // Tabella passate
+    // Tabella passata
     if (count($passate) > 0) {
         $righeTabella = "";
         foreach ($passate as $p) {
             $dataIt = date("d/m/Y", strtotime($p['data_prenotazione']));
             $oraIt = substr($p['ora_prenotazione'], 0, 5);
-            // Sostituisci il trattino con lo spazio per la visualizzazione
             $tipoDonazione = str_replace('-', ' ', $p['tipo_donazione']);
 
             $righeTabella .= '<tr>
@@ -235,7 +233,7 @@ try {
     $sezioneFuture = '<p class="text-standard">Errore caricamento dati.</p>';
 }
 
-// --- COSTRUZIONE HTML FINALE CON ID PER ARIA-LABEL ---
+// COSTRUZIONE FINALE CON ID PER ARIA-LABEL
 $nuovoContenutoTabelle = '
     <section>
         <h2 id="titolo-prenotazioni" class="tertiary-title">Prenotazioni Future</h2>
