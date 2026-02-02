@@ -62,7 +62,11 @@
   .text-standard li,
   .text-standard dd,
   #card-why-us p,
-  #card-locations div p {
+  #card-locations div p,
+  .text-standard a,
+  .text-standard a:visited,
+  .location a,
+  .location a:visited {
     width: 100%;
     font-size: 12px;
     line-height: 18px;
