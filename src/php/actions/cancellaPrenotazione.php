@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['id_prenotazione'])) {
     }
 }
 
-// 4. Redirect Intelligente
+// 4. Redirect
 // Se sono admin torno alla dashboard admin, altrimenti al profilo utente
 if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
     header("Location: ../pages/profilo_admin.php");
