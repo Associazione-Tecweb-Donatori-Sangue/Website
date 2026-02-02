@@ -2,15 +2,15 @@
 require_once "../utility.php";
 require_once "../db.php";
 
-// 1. Cntrollo sicurezza: solo admin
+// Cntrollo sicurezza: admin
 requireAdmin();
 
-// 2. Carico il template HTML
+// Carico il template HTML
 $paginaHTML = caricaTemplate('profilo_admin.html');
 
-// --- LOGICA GESTIONE FOTO PROFILO (stessa dell'utente normale) ---
+// LOGICA GESTIONE FOTO PROFILO
 $fotoPath = "../../images/profilo.jpg"; 
-$isDefaultClass = "is-default"; // Assumiamo sia default all'inizio
+$isDefaultClass = "is-default";
 
 try {
     $stmt = $pdo->prepare("SELECT foto_profilo FROM utenti WHERE id = ?");
@@ -24,7 +24,7 @@ try {
         
         if (file_exists($percorsoFisico)) {
             $fotoPath = $percorsoFisico . "?v=" . time();
-            $isDefaultClass = ""; // C'è una foto valida: togliamo is-default per mostrare il tasto
+            $isDefaultClass = "";
         }
     }
 } catch (PDOException $e) {
@@ -35,18 +35,17 @@ try {
 $paginaHTML = str_replace('[FOTO_PROFILO]', htmlspecialchars($fotoPath), $paginaHTML);
 $paginaHTML = str_replace('[CLASS_DEFAULT]', $isDefaultClass, $paginaHTML);
 
-// --- GESTIONE NOME UTENTE ---
+// GESTIONE NOME UTENTE
 $nomeUtente = '<h1>' . htmlspecialchars(ucfirst($_SESSION['username'])) . '</h1>';
 $paginaHTML = str_replace('[nomeUtente]', $nomeUtente, $paginaHTML);
 
-// 3. Gestione messaggi flash
+// Gestione messaggi flash
 $msgHTML = getMessaggioFlashHTML();
-// Inserimento nel main (come facevi prima)
 if (!empty($msgHTML)) {
     $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 }
 
-// 3. Gestione breadcrumb
+// Gestione breadcrumb
 $breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo Admin</span></p>';
 
 echo costruisciPagina($paginaHTML, $breadcrumb, "profilo_admin.php");
