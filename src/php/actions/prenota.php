@@ -10,24 +10,14 @@ if (!isset($_SESSION['user_id'])) {
 
 // 2. Controllo Metodo POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    
-    // Recupero dati
     $sede_id = pulisciInput($_POST['luogo']);
     $data = $_POST['data'];
     $ora = pulisciInput($_POST['ora']);
     $tipo = pulisciInput($_POST['donazione']);
-    
-    // Se l'admin sta modificando, user_id viene dal form, altrimenti dalla sessione
     $user_id = isset($_POST['user_id']) ? intval($_POST['user_id']) : $_SESSION['user_id'];
-    
-    // Controllo se è una modifica
     $modalitaModifica = isset($_POST['id_prenotazione']);
     $idPrenotazione = $modalitaModifica ? intval($_POST['id_prenotazione']) : null;
-    
-    // Determino se chi opera è admin
     $isAdminModifica = isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true;
-    
-    // Determino la pagina di redirect per gli errori
     $redirectErrore = ($modalitaModifica && $isAdminModifica) 
         ? "../pages/modifica_prenotazione.php?id_prenotazione=" . $idPrenotazione 
         : "../pages/dona_ora.php";
@@ -135,7 +125,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
-        // Trovata violazione
+        // Violazione
         if ($intervalloViolato) {
             $dataSceltaFormatted = $dataSceltaObj->format('d/m/Y');
             $dataConflictFormatted = (new DateTime($dataConflitto))->format('d/m/Y');
