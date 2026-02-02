@@ -751,7 +751,6 @@ footer {
 /* DONA ORA */
 /*-----------------*/
 
-
 /*-----------------*/
 /* CHI SIAMO */
 /*-----------------*/
@@ -818,6 +817,30 @@ footer {
 
 .text-standard .text-separator {
   margin: 0;
+}
+
+.text-standard a {
+  color: #0000FF;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+  transition: color 0.3s ease;
+  margin-top: auto;
+}
+
+.text-standard a:visited {
+  color: #800080;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+  transition: color 0.3s ease;
+  margin-top: auto;
+}
+
+.text-standard a:hover,
+.text-standard a:visited:hover {
+  color: #FF0000;
+  text-decoration: underline;
 }
 
 #founders {
@@ -961,7 +984,7 @@ footer {
 }
 
 .location a {
-  color: #4f5abb;
+  color: #0000FF;
   text-decoration: none;
   font-weight: 600;
   font-size: 1em;
@@ -969,8 +992,18 @@ footer {
   margin-top: auto;
 }
 
-.location a:hover {
-  color: #3d4799;
+.location a:visited {
+  color: #800080;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1em;
+  transition: color 0.3s ease;
+  margin-top: auto;
+}
+
+.location a:hover,
+.location a:visited:hover {
+  color: #FF0000;
   text-decoration: underline;
 }
 
