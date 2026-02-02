@@ -1,12 +1,11 @@
 HTML
-------------
+- aggiungere pochini strong --> 🔴
+- rimuovere alt immagini decorative --> 🔴
 
 CSS
-- fare print.css --> MDP +
-- distinguere link visitati e non visitati:
-    - INDEX: prenota una donazione, scopri le nostre sedi
+- distinguere link visitati e non visitati: --> 🔴
     - DONA ORA: accedi e registrati, torna al profilo
-    - DOVE SIAMO: visualizza su google maps, dona qui, numero di telefono
+    - DOVE SIAMO: visualizza su google maps, numero di telefono
 
 PHP
 -----------

@@ -2328,3 +2328,8 @@ dialog::backdrop {
   margin: 2rem 0;
   border-top: 1px solid #ccc;
 }
+
+.obligatory{
+  font-size: 0.9em;
+  color: rgb(164, 7, 7);
+}

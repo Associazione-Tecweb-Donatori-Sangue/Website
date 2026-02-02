@@ -41,23 +41,23 @@
                 <fieldset>
                     <legend>Dati Personali</legend>
                     <div>
-                        <label for="nome">Nome:</label>
+                        <label for="nome">Nome: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="nome" id="nome" type="text" required value="[valore_nome]">
                     </div>
                     <div>
-                        <label for="cognome">Cognome:</label>
+                        <label for="cognome">Cognome: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="cognome" id="cognome" type="text" required value="[valore_cognome]">
                     </div>
                     <div>
-                        <label for="data_nascita">Data di Nascita:</label>
+                        <label for="data_nascita">Data di Nascita: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="data_nascita" id="data_nascita" type="date" required value="[valore_data_nascita]">
                     </div>
                     <div>
-                        <label for="luogo_nascita">Luogo di Nascita:</label>
+                        <label for="luogo_nascita">Luogo di Nascita: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="luogo_nascita" id="luogo_nascita" type="text" required value="[valore_luogo_nascita]">
                     </div>
                     <div>
-                        <label for="codice_fiscale">Codice Fiscale:</label>
+                        <label for="codice_fiscale">Codice Fiscale: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="codice_fiscale" id="codice_fiscale" type="text" required minlength="16" maxlength="16" pattern="^[a-zA-Z0-9]{16}$" title="Inserisci un codice fiscale di 16 caratteri" value="[valore_codice_fiscale]">
                     </div>
                 </fieldset>
@@ -65,15 +65,15 @@
                 <fieldset>
                     <legend>Contatti e Residenza</legend>
                     <div>
-                        <label for="residenza">Indirizzo di Residenza Completo:</label>
+                        <label for="residenza">Indirizzo di Residenza Completo: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="residenza" id="residenza" type="text" required value="[valore_residenza]">
                     </div>
                     <div>
-                        <label for="telefono">Numero di Telefono:</label>
+                        <label for="telefono">Numero di Telefono: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="telefono" id="telefono" type="tel" required pattern="^(\+39)?\s?\d{3}[\s-]?\d{3}[\s-]?\d{4}$" title="Esempio: 333 1234567" value="[valore_telefono]">
                     </div>
                     <div>
-                        <label for="email">Email:</label>
+                        <label for="email">Email: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="email" id="email" type="email" required value="[valore_email]">
                     </div>
                 </fieldset>
@@ -82,7 +82,7 @@
                     <legend>Informazioni Sanitarie</legend>
 
                     <div>
-                        <label for="gruppo_sanguigno">Gruppo Sanguigno:</label>
+                        <label for="gruppo_sanguigno">Gruppo Sanguigno: <span class="obligatory">(obbligatorio)</span></label>
                         <select name="gruppo_sanguigno" id="gruppo_sanguigno" required>
                         <option value="">Seleziona...</option>
                         <option value="A+">A+</option>
@@ -97,7 +97,7 @@
                         </select>
                     </div>
 
-                    <div>Sesso:</div>
+                    <div>Sesso: <span class="obligatory">(obbligatorio)</span></div>
                     <div class="radio-standard">
                         <label for="maschio">Maschio</label>
                         <input type="radio" id="maschio" name="sesso" value="Maschio">
@@ -108,7 +108,7 @@
                     </div>
 
                     <div>
-                        <label for="peso_corporeo_in_kg">Peso Corporeo in <abbr title="chilogrammi">Kg</abbr>:</label>
+                        <label for="peso_corporeo_in_kg">Peso Corporeo in <abbr title="chilogrammi">Kg</abbr>: <span class="obligatory">(obbligatorio)</span></label>
                         <input name="peso_corporeo_in_kg" id="peso_corporeo_in_kg" type="number" min="0" step="0.1" required value="[valore_peso]">
                     </div>
                 </fieldset>
