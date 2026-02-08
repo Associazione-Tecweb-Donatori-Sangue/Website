@@ -13,7 +13,8 @@ services:
       - "80:80"
     volumes:
       - ./src:/var/www/html
-      - ./images:/var/www/html/images
+      - ./src:/var/www/html/ggiora/src
+      - ./images:/var/www/html/ggiora/images
     depends_on:
       - db
     networks:
@@ -24,10 +25,10 @@ services:
     image: mariadb:11.8.3 
     container_name: database_universita
     environment:
-      MARIADB_ROOT_PASSWORD: root  # Password del database
-      MARIADB_DATABASE: miodb      # Il nome del database
-      MARIADB_USER: studente       # Username
-      MARIADB_PASSWORD: pass       # Password
+      MARIADB_ROOT_PASSWORD: root   # Password del database
+      MARIADB_DATABASE: ggiora        # Il nome del database
+      MARIADB_USER: ggiora                # Username
+      MARIADB_PASSWORD: Eith6isheixei3ko       # Password
     volumes:
       - db_data:/var/lib/mysql
       - ./src/db/init.sql:/docker-entrypoint-initdb.d/init.sql
