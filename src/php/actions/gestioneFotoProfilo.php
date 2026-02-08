@@ -10,7 +10,7 @@ $response = ['success' => false, 'message' => 'Errore sconosciuto'];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $azione = $_POST['azione'] ?? '';
-    $uploadDir = '../../images/profili/';
+    $uploadDir = '../../../images/profili/';
 
     // UPLOAD
     if ($azione === 'upload' && isset($_FILES['foto_profilo'])) {

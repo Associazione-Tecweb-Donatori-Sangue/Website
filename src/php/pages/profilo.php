@@ -15,7 +15,7 @@ if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
 $paginaHTML = caricaTemplate('profilo.html');
 
 // LOGICA GESTIONE FOTO PROFILO
-$fotoPath = "../../images/profilo.jpg"; 
+$fotoPath = "/ggiora/images/profilo.jpg"; 
 $isDefaultClass = "is-default";
 
 try {
@@ -25,10 +25,10 @@ try {
     
     if ($user && !empty($user['foto_profilo'])) {
         $nomeFile = $user['foto_profilo'];
-        $percorsoFisico = "../../images/profili/" . $nomeFile;
+        $percorsoFisico = "../../../images/profili/" . $nomeFile;
         
         if (file_exists($percorsoFisico)) {
-            $fotoPath = $percorsoFisico . "?v=" . time();
+            $fotoPath = "/ggiora/images/profili/" . $nomeFile . "?v=" . time();
             $isDefaultClass = ""; 
         }
     }
@@ -47,7 +47,7 @@ try {
     $datiDonatore = $stmt->fetch();
 
     if (!$datiDonatore) {
-        $htmlDonatore = '<div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std btn-profile">Completa la registrazione come donatore</a></div>';
+        $htmlDonatore = '<div class="btn-wrapper"><a href="/ggiora/src/php/pages/registrazione_donatore.php" class="btn-std btn-profile">Completa la registrazione come donatore</a></div>';
     } else {
         $dataNascitaFormatted = date("d/m/Y", strtotime($datiDonatore['data_nascita']));
 
@@ -118,7 +118,7 @@ try {
                 </div>
             </div>
             
-            <div class="btn-wrapper"><a href="/php/pages/registrazione_donatore.php" class="btn-std btn-profile">Modifica i tuoi dati</a></div>
+            <div class="btn-wrapper"><a href="/ggiora/src/php/pages/registrazione_donatore.php" class="btn-std btn-profile">Modifica i tuoi dati</a></div>
         </section>';
         
         $_SESSION['dati_donatore'] = $datiDonatore;
@@ -254,6 +254,6 @@ if (!empty($msgHTML)) {
     $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 }
 
-$breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo</span></p>';
+$breadcrumb = '<p><a href="/ggiora/src/index.php" lang="en">Home</a> / <span>Profilo</span></p>';
 echo costruisciPagina($paginaHTML, $breadcrumb, "profilo.php");
 ?>

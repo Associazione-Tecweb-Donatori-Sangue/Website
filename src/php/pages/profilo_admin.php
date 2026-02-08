@@ -9,7 +9,7 @@ requireAdmin();
 $paginaHTML = caricaTemplate('profilo_admin.html');
 
 // LOGICA GESTIONE FOTO PROFILO
-$fotoPath = "../../images/profilo.jpg"; 
+$fotoPath = "/ggiora/images/profilo.jpg"; 
 $isDefaultClass = "is-default";
 
 try {
@@ -20,10 +20,10 @@ try {
     // Se il campo non è vuoto, verifichiamo il file
     if ($user && !empty($user['foto_profilo'])) {
         $nomeFile = $user['foto_profilo'];
-        $percorsoFisico = "../../images/profili/" . $nomeFile;
+        $percorsoFisico = "../../../images/profili/" . $nomeFile;
         
         if (file_exists($percorsoFisico)) {
-            $fotoPath = $percorsoFisico . "?v=" . time();
+            $fotoPath = "/ggiora/images/profili/" . $nomeFile . "?v=" . time();
             $isDefaultClass = "";
         }
     }
@@ -46,7 +46,7 @@ if (!empty($msgHTML)) {
 }
 
 // Gestione breadcrumb
-$breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span>Profilo Admin</span></p>';
+$breadcrumb = '<p><a href="/ggiora/src/index.php" lang="en">Home</a> / <span>Profilo Admin</span></p>';
 
 echo costruisciPagina($paginaHTML, $breadcrumb, "profilo_admin.php");
 ?>

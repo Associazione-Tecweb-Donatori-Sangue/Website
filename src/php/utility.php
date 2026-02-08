@@ -150,27 +150,27 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
     $footer = file_get_contents($pathTemplates . 'footer.html');
 
     // 2. GESTIONE FAVICON
-    $favicon = '<link rel="icon" type="image/png" href="/images/favicons/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/images/favicons/favicon.svg" />
-    <link rel="shortcut icon" href="/images/favicons/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicons/apple-touch-icon.png" />
-    <link rel="manifest" href="/images/favicons/site.webmanifest" />';
+    $favicon = '<link rel="icon" type="image/png" href="/ggiora/images/favicons/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/ggiora/images/favicons/favicon.svg" />
+    <link rel="shortcut icon" href="/ggiora/images/favicons/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/ggiora/images/favicons/apple-touch-icon.png" />
+    <link rel="manifest" href="/ggiora/images/favicons/site.webmanifest" />';
 
     // 3. GESTIONE link profilo
-    $linkDestinazione = "/php/pages/login.php";
+    $linkDestinazione = "/ggiora/src/php/pages/login.php";
     $altText = "Accedi";
     $tagHTML = "a";
     
-    $fotoNavbar = "/images/profilo.png";
+    $fotoNavbar = "/ggiora/images/profilo.png";
 
     // Se l'utente è loggato
     if (isset($_SESSION['username'])) {
         
-        $linkDestinazione = "/php/pages/profilo.php";
+        $linkDestinazione = "/ggiora/src/php/pages/profilo.php";
         $altText = "Profilo di " . $_SESSION['username'];
         
         if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
-            $linkDestinazione = "/php/pages/profilo_admin.php";
+            $linkDestinazione = "/ggiora/src/php/pages/profilo_admin.php";
             $altText = "Profilo admin";
         }
 
@@ -183,7 +183,7 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
                 
                 if ($userFoto) {
                     $version = time();
-                    $fotoNavbar = "/images/profili/" . $userFoto . "?v=" . $version;
+                    $fotoNavbar = "/ggiora/images/profili/" . $userFoto . "?v=" . $version;
                 }
             } catch (PDOException $e) {
             }
@@ -215,9 +215,9 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
 
     // 5. Gestione "currentLink" nel menu
     if ($paginaAttiva != "") {
-        $pathDaCercare = "/php/pages/" . $paginaAttiva;
+        $pathDaCercare = "/ggiora/src/php/pages/" . $paginaAttiva;
         if ($paginaAttiva == "index.php") {
-            $pathDaCercare = "/index.php";
+            $pathDaCercare = "/ggiora/src/index.php";
         }
 
         $find = 'href="'.$pathDaCercare.'"';

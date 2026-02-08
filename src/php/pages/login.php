@@ -55,7 +55,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 $paginaHTML = str_replace('[messaggioErrore]', $messaggioErrore, $paginaHTML);
-$breadcrumb = '<p><a href="/index.php" lang="en">Home</a> / <span lang="en">Login</span></p>';
+$breadcrumb = '<p><a href="/ggiora/src/index.php" lang="en">Home</a> / <span lang="en">Login</span></p>';
 
 // 4. Costruisco la pagina
 // Passo "login.php" così se non sono loggato l'icona diventa non cliccabile

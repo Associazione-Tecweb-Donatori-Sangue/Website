@@ -1,8 +1,9 @@
 <?php
-$host = 'db';
-$db   = 'miodb';
-$user = 'studente';
-$pass = 'pass';
+$host = 'localhost';
+$db   = 'ggiora';
+$user = 'ggiora';
+$pass = 'Eith6isheixei3ko';
+
 $charset = 'utf8mb4';
 
 $dsn = "mysql:host=$host;dbname=$db;charset=$charset";

@@ -18,7 +18,6 @@ GENERALI
 EXTRA - da fare solo se avanza tempo (o da inserire nella relazione come estensioni possibili future)
 - dovrebbe essere più visibile il focus quando ci si sposta con il tab
 - fare in modo che le pagine di errore abbiano lo stesso stile del sito (heading e footer/sfondo)
-- il file picker è accessibile?
 - aggiungere foto ai fondatori 
 - Modalità scura
 - inserire un widget per visualizzare quanto manca a poter prenotare un'altra prenotazione 

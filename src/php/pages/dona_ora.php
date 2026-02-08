@@ -37,7 +37,7 @@ if (!isset($_SESSION['user_id'])) {
         $messaggioAdmin = '
         <div class="text-standard">
             <h3 class="section-title">Profilo Admin</h3>
-            <p>Ciao' . htmlspecialchars($_SESSION['username']) . '! Gli account amministratori non possono effettuare donazioni.</p>
+            <p>Ciao ' . htmlspecialchars($_SESSION['username']) . '! Gli account amministratori non possono effettuare donazioni.</p>
             <div class="action-container-single">
                 <form action="profilo.php" method="get" class="form-inline">
                     <div class="btn-wrapper"><button type="submit" class="btn-std">Torna al Profilo</button></div>
@@ -58,7 +58,7 @@ if (!isset($_SESSION['user_id'])) {
                 $messaggioIncompleto = '
                 <div class="text-standard">
                     <h3 class="section-title">Profilo donatore incompleto</h3>
-                    <p>Ciao' . htmlspecialchars($_SESSION['username']) . '! Devi completare la registrazione dei dati sanitari prima di poter prenotare una donazione.</p>
+                    <p>Ciao ' . htmlspecialchars($_SESSION['username']) . '! Devi completare la registrazione dei dati sanitari prima di poter prenotare una donazione.</p>
                     <div class="action-container-single">
                         <form action="registrazione_donatore.php" method="get" class="form-inline">
                             <div class="btn-wrapper"><button type="submit" class="btn-std">Diventa Donatore</button></div>

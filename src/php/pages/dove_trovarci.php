@@ -23,7 +23,7 @@ try {
 
         // B. Gestione Percorso Immagine
         
-        $percorsoImmagine = "../../" . htmlspecialchars($sede['immagine']);
+        $percorsoImmagine = "/ggiora/" . htmlspecialchars($sede['immagine']);
         
         // C. Gestione Telefono (pulizia per il link tel:)
         $telefonoVisualizzato = htmlspecialchars($sede['telefono']);
@@ -40,7 +40,7 @@ try {
                 <a href="' . htmlspecialchars($sede['link_maps']) . '" target="_blank" rel="noopener noreferrer" aria-label="Visualizza ' . $nomeSede . ' su Google Maps (si apre in una nuova finestra)">Visualizza su Google Maps</a>
             </p>
             <p>Telefono: <a href="tel:' . $telefonoLink . '" aria-label="Chiama ' . $telefonoVisualizzato . '">' . $telefonoVisualizzato . '</a></p>
-            <a href="../../php/pages/dona_ora.php?sede_id=' . $sede['id'] . '" class="btn-link" aria-label="Dona alla sede ' . $nomeSede . '">Dona qui</a>
+            <a href="/ggiora/src/php/pages/dona_ora.php?sede_id=' . $sede['id'] . '" class="btn-link" aria-label="Dona alla sede ' . $nomeSede . '">Dona qui</a>
         </div>';
     }
 
@@ -59,7 +59,7 @@ try {
 }
 
 // 2. Definisco il breadcrumb per questa pagina
-$breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span>Dove trovarci</span></p>';
+$breadcrumb = '<p><a href="/ggiora/src/index.php" lang="en">Home</a> / <span>Dove trovarci</span></p>';
 
 // 3. Costruisco e stampo la pagina finale
 echo costruisciPagina($paginaHTML, $breadcrumb, 'dove_trovarci.php');

@@ -59,7 +59,7 @@ if (!empty($usernamePreservato)) {
 }
 
 // Definisco il breadcrumb
-$breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <span>Registrazione</span></p>';
+$breadcrumb = '<p><a href="/ggiora/src/index.php" lang="en">Home</a> / <span>Registrazione</span></p>';
 
 // Costruisco la pagina
 echo costruisciPagina($paginaHTML, $breadcrumb, "registrazione.php");

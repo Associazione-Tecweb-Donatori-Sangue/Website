@@ -154,7 +154,7 @@ $paginaHTML = str_replace(
 
 // Aggiornamento titoli e breadcrumb
 $paginaHTML = str_replace(['<h1>Dona ora</h1>', '<h2>Prenota la tua donazione di sangue</h2>'], ['<h1>Modifica Prenotazione</h1>', '<h2>Modifica i dati della prenotazione</h2>'], $paginaHTML);
-$breadcrumb = '<p><a href="../../index.php" lang="en">Home</a> / <a href="profilo_admin.php">Profilo Admin</a> / <span>Modifica Prenotazione</span></p>';
+$breadcrumb = '<p><a href="/ggiora/src/index.php" lang="en">Home</a> / <a href="profilo_admin.php">Profilo Admin</a> / <span>Modifica Prenotazione</span></p>';
 
 echo costruisciPagina($paginaHTML, $breadcrumb, 'modifica_prenotazione.php');
 ?>

@@ -409,7 +409,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 formData.append('foto_profilo', file);
                 formData.append('azione', 'upload');
 
-                fetch('../actions/gestioneFotoProfilo.php', {
+                fetch('/ggiora/src/php/actions/gestioneFotoProfilo.php', {
                     method: 'POST',
                     body: formData
                 })
@@ -457,7 +457,7 @@ document.addEventListener('DOMContentLoaded', () => {
             confirmDeleteBtn.addEventListener('click', () => {
                 const formData = new FormData();
                 formData.append('azione', 'rimuovi');
-                fetch('../actions/gestioneFotoProfilo.php', { method: 'POST', body: formData })
+                fetch('/ggiora/src/php/actions/gestioneFotoProfilo.php', { method: 'POST', body: formData })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) window.location.reload();
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ========================================= */
 
 function caricaPrenotazioniAdmin(sede = 'tutte') {
-    fetch(`../ajax/get_prenotazioni_admin.php?sede=${sede}`) 
+    fetch(`/ggiora/src/php/ajax/get_prenotazioni_admin.php?sede=${sede}`) 
         .then(response => {
             if (!response.ok) throw new Error('Errore nel caricamento');
             return response.text();
