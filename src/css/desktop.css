@@ -439,7 +439,6 @@ main{
   border-radius: 1.2em;
   height: 100%;
   width: 20%;
-  transition: all 0.4s ease;
 }
 
 #card-join li p{
@@ -452,11 +451,6 @@ main{
   height: 88%;
   width: 100%;
   object-fit: cover;
-}
-
-#card-join li:hover{
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
-  transform: scale(1.05);
 }
 
 #card-why-us{
@@ -873,12 +867,6 @@ footer {
   font-weight: 600;
   color: var(--card-title-color);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-#founders li:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /*-----------------*/
@@ -1174,7 +1162,7 @@ small {
   text-align: center;
   padding: 0.5em 1.1em;
   margin-top: 0.6em;
-  font-size: 14px;
+  font-size: 0.9em;
   font-weight: 600;
   background-color: var(--btn-primary-bg);
   text-decoration: none;
@@ -1658,7 +1646,7 @@ button:focus-visible {
 /* Status completata */
 .status-completed {
   color: rgb(7, 2, 24);
-  font-size: 14px;
+  font-size: 0.9em;
 }
 
 /* Titolo terziario con margine superiore */
@@ -1804,7 +1792,7 @@ button:focus-visible {
 
 .data-list dt {
     width: 11.2em;
-    font-size: 0.85rem;
+    font-size: 0.85em;
     color: #7f8c8d;
     text-transform: uppercase;
     font-weight: 600;
@@ -2034,7 +2022,7 @@ button:focus-visible {
 }
 
 .faq dd li {
-    margin-bottom: 0.75rem;
+    margin-bottom: 0.75em;
     color: #37474f;
 }
 
@@ -2371,7 +2359,7 @@ dialog::backdrop {
 
 /* Spazio in dashboard admin fra le due tabelle*/
 .spacer-admin {
-  margin: 2rem 0;
+  margin: 2em 0;
   border-top: 1px solid #ccc;
 }
 

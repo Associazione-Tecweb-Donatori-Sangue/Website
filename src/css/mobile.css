@@ -50,7 +50,6 @@ body {
     transform: rotate(-45deg) translate(6px, -5px);
 }
 
-
 #menu ul {
     display: flex;
     position: fixed;
@@ -91,7 +90,7 @@ body {
     color: #082636;
     
     font-family: 'Jost', sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.2em;
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -527,15 +526,15 @@ footer{
 
 .button-standard button,
 .button-standard input[type="submit"] {
-    font-size: 15px;
-    padding: 14px;
+    font-size: 0.9em;
+    padding: 0.8em;
 }
 
 
 #disclaimer {
-    margin: 4rem auto 2rem;
-    padding: 1rem 1.5rem;
-    font-size: 0.8rem;
+    margin: 4em auto 2em;
+    padding: 1em 1.5em;
+    font-size: 0.8em;
 }
 
 /* ========================================
@@ -619,14 +618,14 @@ body.error-background {
 }
 
 .faq dt {
-    font-size: 1.15rem;
+    font-size: 1.15em;
     flex-direction: row;
     text-align: left;
 }
 
 .faq dt::before {
     margin-left: 0;
-    margin-right: 0.75rem;
+    margin-right: 0.75em;
 }
 
 /* ========================================

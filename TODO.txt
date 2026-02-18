@@ -1,14 +1,17 @@
-HTML
-----------
-
-CSS
-----------
-
-PHP
-----------
-
-GENERALI
-----------
+DA SISTEMARE
+---HTML----
+- Headings --> 🔴
+- Il p dentro dd  ???
+- Caption tabelle --> 🔴
+----CSS----
+- Titolo stampa --> 🔴
+- Link visitati in tutti i siti --> 🔴
+- I meta ????
+------ACCESSIBILITA------
+- Freccia XXXXXXX
+----PHP------
+- Controlli nella registrazione (username di tutti spazi o caratteri speciali) --> GG
+- pagine errore --> 🔴
 
 CONCORSO ACCATTIVANTE ACCESSIBILE:
 - fare in modo che le pagine di errore abbiano lo stesso stile del sito (heading e footer/sfondo) --> GN
@@ -25,6 +28,7 @@ CONCORSO ACCATTIVANTE ACCESSIBILE:
     - tribunale
     - ikea
 
+- relazione nuova --> 🔴
 
 
 

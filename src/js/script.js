@@ -105,7 +105,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (isChecked) {
                 burgerMenu.classList.add('menu-open');
                 menuUl.classList.add('menu-open');
-                if (logoImg) logoImg.style.opacity = '0.3';
                 
                 document.addEventListener('keydown', trapFocus);
                 
@@ -121,7 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 burgerMenu.classList.remove('menu-open');
                 menuUl.classList.remove('menu-open');
-                if (logoImg) logoImg.style.opacity = '1';
                 
                 document.removeEventListener('keydown', trapFocus);
             }
