@@ -819,35 +819,37 @@ function initAdminTabs() {
     
     if (tabs.length === 0) return;
 
-    // Gestione click sulle tab
-    tabs.forEach(tab => {
+        // Gestione click sulle tab
+        tabs.forEach(tab => {
         tab.addEventListener('click', () => {
             selectTab(tab);
         });
 
         // Gestione navigazione da tastiera (frecce)
         tab.addEventListener('keydown', (e) => {
-            let targetTab = null;
-            
-            if (e.key === 'ArrowRight') {
-                e.preventDefault();
-                targetTab = tab.nextElementSibling || tabs[0];
-            } else if (e.key === 'ArrowLeft') {
-                e.preventDefault();
-                targetTab = tab.previousElementSibling || tabs[tabs.length - 1];
-            } else if (e.key === 'Home') {
-                e.preventDefault();
-                targetTab = tabs[0];
-            } else if (e.key === 'End') {
-                e.preventDefault();
-                targetTab = tabs[tabs.length - 1];
-            }
-            
-            if (targetTab) {
-                selectTab(targetTab);
-                targetTab.focus();
-            }
-        });
+        const tabsArray = Array.from(tabs);
+        const index = tabsArray.indexOf(tab);
+        let nuovoIndex = null;
+
+        if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            nuovoIndex = (index + 1) % tabsArray.length;
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            nuovoIndex = (index - 1 + tabsArray.length) % tabsArray.length;
+        } else if (e.key === 'Home') {
+            e.preventDefault();
+            nuovoIndex = 0;
+        } else if (e.key === 'End') {
+            e.preventDefault();
+            nuovoIndex = tabsArray.length - 1;
+        }
+
+        if (nuovoIndex !== null) {
+            selectTab(tabsArray[nuovoIndex]);
+            tabsArray[nuovoIndex].focus();
+        }
+    });
     });
 
     function selectTab(selectedTab) {
@@ -862,7 +864,7 @@ function initAdminTabs() {
         if (isAlreadySelected) {
             // Deseleziona la tab
             selectedTab.setAttribute('aria-selected', 'false');
-            selectedTab.setAttribute('tabindex', '-1');
+            selectedTab.setAttribute('tabindex', '0');
             
             // Nascondi il panel
             targetPanel.hidden = true;
