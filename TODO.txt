@@ -22,10 +22,6 @@ CONCORSO ACCATTIVANTE ACCESSIBILE:
     - Gestione Utenti: una tabella per vedere tutti gli iscritti, non solo chi ha prenotato.  Permetterebbe all'admin di disattivare account problematici o promuovere altri utenti ad admin.  --> GG
     - Statistiche: per visualizzare grafici: "Numero donazioni questo mese", "Gruppo sanguigno più diffuso tra gli iscritti", "Sede più frequentata". --> GG
     - aggiungere bottoni nelle pagine dei profili ("Lista prenotazioni", "Statistiche", "Gestione utenti"), in base al bottone schiacciato viene visualizzata la sezione corrispondente. --> GG
-- aggiungere sedi: --> GG
-    - stadio euganeo
-    - tribunale
-    - ikea
 
 - relazione nuova --> 🔴
 
