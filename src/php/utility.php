@@ -309,8 +309,12 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
 
     $header = str_replace('[linkProfilo]', $linkProfilo, $header);
 
-    // 4. Gestione Breadcrumb
-    $header = str_replace('[BREADCRUMB]', $breadcrumb, $header);
+    // Gestione Breadcrumb: se vuota, rimuovo l'intero blocco nav
+    if (empty($breadcrumb)) {
+        $header = preg_replace('/<nav id="breadcrumb">.*?<\/nav>/s', '', $header);
+    } else {
+        $header = str_replace('[BREADCRUMB]', $breadcrumb, $header);
+    }
 
     // 5. Gestione "currentLink" nel menu
     if ($paginaAttiva != "") {
