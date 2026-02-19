@@ -4,13 +4,11 @@ require_once "../db.php";
 
 $paginaHTML = caricaTemplate('dona_ora.html');
 
-// Gestione messaggi flash unificata
 $msgHTML = getMessaggioFlashHTML();
 if (!empty($msgHTML)) {
     $paginaHTML = str_replace('<main id="content" class="main-standard">', '<main id="content" class="main-standard">' . $msgHTML, $paginaHTML);
 }
 
-// 1. Controllo Logica Accesso
 if (!isset($_SESSION['user_id'])) {
     $messaggioAvviso = '
     <div class="text-standard">
@@ -32,7 +30,6 @@ if (!isset($_SESSION['user_id'])) {
     $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioAvviso, $paginaHTML);
 
 } else {
-    // Utente loggato -> controllo se è admin
     if (isset($_SESSION['is_admin']) && $_SESSION['is_admin'] === true) {
         $messaggioAdmin = '
         <div class="text-standard">
@@ -45,16 +42,13 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>';
         $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioAdmin, $paginaHTML);
-    } else { 
-        // Utente normale 
+    } else {
         try {
-            // Recupero dati donatore
             $stmtDonatore = $pdo->prepare("SELECT sesso FROM donatori WHERE user_id = ?");
             $stmtDonatore->execute([$_SESSION['user_id']]);
             $datiDonatore = $stmtDonatore->fetch();
 
             if (!$datiDonatore) {
-                // Utente loggato ma non donatore -> Messaggio di completamento profilo donatore
                 $messaggioIncompleto = '
                 <div class="text-standard">
                     <h3 class="section-title">Profilo donatore incompleto</h3>
@@ -67,33 +61,133 @@ if (!isset($_SESSION['user_id'])) {
                 </div>';
                 $paginaHTML = preg_replace('/<form id="prenotaForm".*?<\/form>/s', $messaggioIncompleto, $paginaHTML);
             } else {
-                // Utente donatore -> Configurazione form prenotazione
-                
-                // Recupero ultima data prenotazione per JavaScript
+
+                // Widget prossima donazione disponibile
+                $mesiAttesa = ($datiDonatore['sesso'] === 'Maschio') ? 3 : 6;
+
+                $stmtTutte = $pdo->prepare("
+                    SELECT data_prenotazione
+                    FROM lista_prenotazioni
+                    WHERE user_id = ?
+                    ORDER BY data_prenotazione ASC
+                ");
+                $stmtTutte->execute([$_SESSION['user_id']]);
+                $tutteLeDate = $stmtTutte->fetchAll(PDO::FETCH_COLUMN);
+
+                $widgetHTML = '';
+
+                if (!empty($tutteLeDate)) {
+                    $oggi        = new DateTime();
+                    $oggiISO     = $oggi->format('Y-m-d');
+
+                    $prenotazioniFuture = array_values(array_filter($tutteLeDate, fn($d) => $d >= $oggiISO));
+                    $ultimaInAssoluto   = new DateTime(end($tutteLeDate));
+                    $dateOccupate       = array_map(fn($d) => new DateTime($d), $tutteLeDate);
+
+                    $slotLiberi = [];
+                    for ($i = 0; $i < count($dateOccupate) - 1; $i++) {
+                        $fineBlocco             = (clone $dateOccupate[$i])->modify("+{$mesiAttesa} months");
+                        $inizioBloccoSuccessivo = (clone $dateOccupate[$i + 1])->modify("-{$mesiAttesa} months");
+
+                        if ($fineBlocco < $dateOccupate[$i + 1] && $fineBlocco <= $inizioBloccoSuccessivo) {
+                            $slotDa = clone $fineBlocco;
+                            $slotA  = clone $inizioBloccoSuccessivo;
+                            if ($slotA >= $oggi) {
+                                $slotLiberi[] = [
+                                    'da_raw' => $slotDa,
+                                    'a_raw'  => $slotA,
+                                    'da'     => $slotDa->format('d.m.Y'),
+                                    'a'      => $slotA->format('d.m.Y'),
+                                ];
+                            }
+                        }
+                    }
+
+                    $slotFuturi          = array_values(array_filter($slotLiberi, fn($s) => $s['a_raw'] >= $oggi));
+                    $dopoultimaData      = (clone $ultimaInAssoluto)->modify("+{$mesiAttesa} months");
+                    $primaDisponibile    = $dopoultimaData->format('d.m.Y');
+                    $primaDisponibileISO = $dopoultimaData->format('Y-m-d');
+
+                    $widgetHTML = '<aside class="dona-sidebar" role="complementary">';
+                    $widgetHTML .= '<div class="profile-card">';
+
+                    if (!empty($prenotazioniFuture)) {
+                        $widgetHTML .= '<h2 class="profile-card-title">Prenotazioni attive</h2>';
+                        $widgetHTML .= '<dl class="data-list-compact">';
+                        foreach ($prenotazioniFuture as $data) {
+                            $widgetHTML .= '<div><dt>Data</dt><dd>' . (new DateTime($data))->format('d.m.Y') . '</dd></div>';
+                        }
+                        $widgetHTML .= '</dl>';
+
+                        if (!empty($slotFuturi)) {
+                            $widgetHTML .= '<h2 class="profile-card-title">Slot disponibili</h2>';
+                            $widgetHTML .= '<dl class="data-list-compact">';
+                            foreach ($slotFuturi as $slot) {
+                                $da = $slot['da_raw'] < $oggi ? $oggi->format('d.m.Y') : $slot['da'];
+                                $widgetHTML .= '<div><dt>Dal</dt><dd>' . $da . '</dd></div>';
+                                $widgetHTML .= '<div><dt>Al</dt><dd>' . $slot['a'] . '</dd></div>';
+                            }
+                            $widgetHTML .= '</dl>';
+                        }
+
+                        $widgetHTML .= '<h2 class="profile-card-title">Prossima disponibilità</h2>';
+                        $widgetHTML .= '<dl class="data-list-compact">';
+                        $widgetHTML .= '<div><dt>Dal</dt><dd>' . $primaDisponibile . '</dd></div>';
+                        $widgetHTML .= '</dl>';
+                    } else {
+                        if ($primaDisponibileISO <= $oggiISO) {
+                            $widgetHTML .= '<h2 class="profile-card-title">Disponibile</h2>';
+                            $widgetHTML .= '<dl class="data-list-compact">';
+                            $widgetHTML .= '<div><dt>Stato</dt><dd>Puoi prenotare subito</dd></div>';
+                            $widgetHTML .= '</dl>';
+                        } else {
+                            $widgetHTML .= '<h2 class="profile-card-title">Prossima disponibilità</h2>';
+                            $widgetHTML .= '<dl class="data-list-compact">';
+                            $widgetHTML .= '<div><dt>Dal</dt><dd>' . $primaDisponibile . '</dd></div>';
+                            $widgetHTML .= '<div><dt>Attesa</dt><dd>' . $mesiAttesa . ' mesi dall\'ultima donazione del ' . $ultimaInAssoluto->format('d.m.Y') . '</dd></div>';
+                            $widgetHTML .= '</dl>';
+                        }
+                    }
+
+                 $widgetHTML .= '</div></aside>';
+
+                $paginaHTML = str_replace(
+                    '<form id="prenotaForm"',
+                            '<div class="admin-layout-container">' . 
+                            '<aside class="donor-info-sidebar">' . $widgetHTML . '</aside>' . 
+                            '<div class="form-container-admin"><form id="prenotaForm"',
+                            $paginaHTML
+                );
+
+                $paginaHTML = str_replace(
+                    '</form>',
+                    '</form></div></div>',
+                    $paginaHTML
+                );
+                }
+                // fine widget
+
                 $stmtUltima = $pdo->prepare("SELECT MAX(data_prenotazione) FROM lista_prenotazioni WHERE user_id = ?");
                 $stmtUltima->execute([$_SESSION['user_id']]);
                 $ultimaData = $stmtUltima->fetchColumn() ?: '';
 
-                // Iniettiamo i metadati nel tag form per farli leggere a script.js
                 $formConDati = '<form id="prenotaForm" data-ultima="' . $ultimaData . '" data-sesso="' . $datiDonatore['sesso'] . '" data-is-admin="false"';
-                $paginaHTML = str_replace('<form id="prenotaForm"', $formConDati, $paginaHTML);
+                $paginaHTML  = str_replace('<form id="prenotaForm"', $formConDati, $paginaHTML);
 
-                // Popolamento Sedi
                 $stmtSedi = $pdo->query("SELECT id, nome FROM sedi ORDER BY nome ASC");
-                $sedi = $stmtSedi->fetchAll();
+                $sedi     = $stmtSedi->fetchAll();
 
-                $sedePre = $_GET['sede_id'] ?? ($_SESSION['form_preservato']['sede_id'] ?? '');
+                $sedePre     = $_GET['sede_id'] ?? ($_SESSION['form_preservato']['sede_id'] ?? '');
                 $optionsSedi = "";
                 foreach ($sedi as $s) {
-                    $sel = ($s['id'] == $sedePre) ? 'selected' : '';
+                    $sel          = ($s['id'] == $sedePre) ? 'selected' : '';
                     $optionsSedi .= '<option value="' . $s['id'] . '" ' . $sel . '>' . htmlspecialchars($s['nome']) . '</option>';
                 }
                 $paginaHTML = str_replace('[listaNomiSedi]', $optionsSedi, $paginaHTML);
 
-                // Ripristino dati form se presenti
                 if (isset($_SESSION['form_preservato'])) {
-                    $oraP = $_SESSION['form_preservato']['ora'];
-                    $tipoP = $_SESSION['form_preservato']['tipo'];
+                    $oraP       = $_SESSION['form_preservato']['ora'];
+                    $tipoP      = $_SESSION['form_preservato']['tipo'];
                     $paginaHTML = str_replace('value="' . $oraP . '">', 'value="' . $oraP . '" selected>', $paginaHTML);
                     $paginaHTML = str_replace('name="donazione" value="' . $tipoP . '"', 'name="donazione" value="' . $tipoP . '" checked', $paginaHTML);
                     unset($_SESSION['form_preservato']);
