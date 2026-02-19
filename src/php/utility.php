@@ -110,6 +110,58 @@ function validaUsername($username) {
 }
 
 /**
+ * Valida numero di telefono italiano
+ * Accetta formati comuni: 3331234567, 333 123 4567, +39 333 1234567, 041 2345678, etc.
+ * 
+ * @param string $telefono Il numero di telefono da validare
+ * @return array ['valido' => bool, 'errore' => string|null]
+ */
+function validaTelefono($telefono) {
+    // Rimuove spazi all'inizio e alla fine
+    $telefono = trim($telefono);
+    
+    // Verifica che non sia vuoto
+    if (empty($telefono)) {
+        return ['valido' => false, 'errore' => 'Il numero di telefono non può essere vuoto'];
+    }
+    
+    // Verifica lunghezza massima (con prefisso internazionale)
+    if (strlen($telefono) > 20) {
+        return ['valido' => false, 'errore' => 'Il numero di telefono è troppo lungo'];
+    }
+    
+    // Verifica che contenga solo caratteri validi (numeri, spazi, +, -, parentesi)
+    if (!preg_match('/^[\d\s+\-()]+$/', $telefono)) {
+        return ['valido' => false, 'errore' => 'Il numero di telefono può contenere solo numeri, spazi, +, - e parentesi'];
+    }
+    
+    // Estrae solo le cifre per contarle
+    $soloCifre = preg_replace('/\D/', '', $telefono);
+    
+    // Verifica numero minimo di cifre (almeno 9 cifre per numeri italiani)
+    if (strlen($soloCifre) < 9) {
+        return ['valido' => false, 'errore' => 'Il numero di telefono deve contenere almeno 9 cifre'];
+    }
+    
+    // Verifica numero massimo di cifre (max 13 cifre con prefisso internazionale)
+    if (strlen($soloCifre) > 13) {
+        return ['valido' => false, 'errore' => 'Il numero di telefono contiene troppe cifre'];
+    }
+    
+    // Se inizia con +39, verifica che abbia 10 cifre dopo il prefisso
+    if (preg_match('/^\+39/', $telefono)) {
+        $cifreSenzaPrefisso = preg_replace('/^\+39\D*/', '', $telefono);
+        $cifreSenzaPrefisso = preg_replace('/\D/', '', $cifreSenzaPrefisso);
+        
+        if (strlen($cifreSenzaPrefisso) != 10) {
+            return ['valido' => false, 'errore' => 'I numeri italiani con +39 devono avere 10 cifre'];
+        }
+    }
+    
+    return ['valido' => true, 'errore' => null];
+}
+
+/**
  * Verifica se l'utente è loggato. Se no, reindirizza.
  */
 function requireLogin($redirect = '../pages/login.php') {

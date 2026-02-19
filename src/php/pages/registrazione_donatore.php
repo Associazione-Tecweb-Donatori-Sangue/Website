@@ -199,6 +199,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit();
     }
 
+    // VALIDAZIONE TELEFONO
+    $risultatoTelefono = validaTelefono($_POST['telefono']);
+    if (!$risultatoTelefono['valido']) {
+        $_SESSION['messaggio_flash'] = "Errore: " . $risultatoTelefono['errore'] . ".";
+        $_SESSION['dati_inseriti'] = $_POST;
+        header("Location: registrazione_donatore.php");
+        exit();
+    }
+
     // VALIDAZIONE CODICE FISCALE
     $risultatoValidazione = validaCoerenzaCF(
         $_POST['codice_fiscale'],

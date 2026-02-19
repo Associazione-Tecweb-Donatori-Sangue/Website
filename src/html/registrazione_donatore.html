@@ -36,7 +36,7 @@
                 <a href="profilo.php" class="back-button">&larr; Indietro</a>
             </div>
 
-            <form action="registrazione_donatore.php" method="POST">
+            <form id="form-registrazione-donatore" action="registrazione_donatore.php" method="POST">
                 [messaggioErrore]
                 <fieldset>
                     <legend>Dati Personali</legend>
@@ -70,7 +70,7 @@
                     </div>
                     <div>
                         <label for="telefono">Numero di Telefono: <span class="obligatory">(obbligatorio)</span></label>
-                        <input name="telefono" id="telefono" type="tel" required pattern="^(\+39)?\s?\d{3}[\s-]?\d{3}[\s-]?\d{4}$" title="Esempio: 333 1234567" value="[valore_telefono]">
+                        <input name="telefono" id="telefono" type="tel" required title="Esempio: 333 1234567 oppure +39 333 1234567" value="[valore_telefono]">
                     </div>
                     <div>
                         <label for="email"><span lang="en">Email</span>: <span class="obligatory">(obbligatorio)</span></label>

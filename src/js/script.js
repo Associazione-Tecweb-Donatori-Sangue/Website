@@ -670,6 +670,77 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // VALIDAZIONE REGISTRAZIONE DONATORE
+    const formDonatore = document.getElementById('form-registrazione-donatore');
+    
+    if (formDonatore) {
+        const telefonoInput = document.getElementById('telefono');
+        
+        // Funzione di validazione telefono
+        function validaTelefonoClient(telefono) {
+            telefono = telefono.trim();
+            
+            if (telefono === '') {
+                return { valido: false, errore: 'Il numero di telefono non può essere vuoto' };
+            }
+            
+            if (telefono.length > 20) {
+                return { valido: false, errore: 'Il numero di telefono è troppo lungo' };
+            }
+            
+            if (!/^[\d\s+\-()]+$/.test(telefono)) {
+                return { valido: false, errore: 'Il numero di telefono può contenere solo numeri, spazi, +, - e parentesi' };
+            }
+            
+            const soloCifre = telefono.replace(/\D/g, '');
+            
+            if (soloCifre.length < 9) {
+                return { valido: false, errore: 'Il numero di telefono deve contenere almeno 9 cifre' };
+            }
+            
+            if (soloCifre.length > 13) {
+                return { valido: false, errore: 'Il numero di telefono contiene troppe cifre' };
+            }
+            
+            if (/^\+39/.test(telefono)) {
+                const cifreSenzaPrefisso = telefono.replace(/^\+39\D*/, '').replace(/\D/g, '');
+                if (cifreSenzaPrefisso.length !== 10) {
+                    return { valido: false, errore: 'I numeri italiani con +39 devono avere 10 cifre' };
+                }
+            }
+            
+            return { valido: true, errore: null };
+        }
+
+        // Reset validità quando l'utente digita
+        if (telefonoInput) {
+            telefonoInput.addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+        }
+
+        // Validazione al submit
+        formDonatore.addEventListener('submit', function(e) {
+            if (telefonoInput && telefonoInput.value.trim() !== '') {
+                const risultatoTelefono = validaTelefonoClient(telefonoInput.value);
+                
+                if (!risultatoTelefono.valido) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    telefonoInput.setCustomValidity(risultatoTelefono.errore);
+                    telefonoInput.reportValidity();
+                    telefonoInput.focus();
+                    
+                    return false;
+                }
+                
+                // Resetta validità se è ok
+                telefonoInput.setCustomValidity('');
+            }
+        });
+    }
 });
 
 /* =========================================
