@@ -46,28 +46,74 @@
                     </div>
                 </div>
             
-            <p class="text-standard">Gestisci qui le operazioni relative ai donatori e alle donazioni di sangue dell'Associazione.</p>
+            <p class="text-standard">Seleziona una delle voci per accedere alle operazioni relative ai donatori, alle donazioni di sangue prenotate e alle statistiche.</p>
 
-            <h3 class="tertiary-title-centered">Riepilogo donazioni prenotate</h3>
-            
-            <label for="sede-donazioni">Filtra per sede:</label>
-            <div class="select-locations-admin">
-                <select id="sede-donazioni" name="sede-donazioni">
-                    <option value="tutte">Tutte le sedi</option>
-                    <option value="ATDS Piovego">ATDS Piovego</option>
-                    <option value="ATDS Lum250">ATDS Lum250</option>
-                    <option value="ATDS Stanga">ATDS Stanga</option>
-                    <option value="ATDS Portello">ATDS Portello</option>
-                    <option value="ATDS Prato della Valle">ATDS Prato della Valle</option>
-                    <option value="ATDS Dietro Stazione">ATDS Dietro Stazione</option>
-                    <option value="ATDS del Bo">ATDS del Bo</option>
-                    <option value="ATDS Specola">ATDS Specola</option>
-                </select>
+            <!-- Tab Navigation -->
+            <div class="admin-tabs" role="tablist" aria-label="Sezioni di gestione admin">
+                <button role="tab" 
+                        aria-selected="false" 
+                        aria-controls="panel-utenti" 
+                        id="tab-utenti"
+                        tabindex="-1"
+                        class="admin-tab">
+                    Gestione utenti
+                </button>
+                <button role="tab" 
+                        aria-selected="false" 
+                        aria-controls="panel-prenotazioni" 
+                        id="tab-prenotazioni"
+                        tabindex="-1"
+                        class="admin-tab">
+                    Lista prenotazioni
+                </button>
+                <button role="tab" 
+                        aria-selected="false" 
+                        aria-controls="panel-statistiche" 
+                        id="tab-statistiche"
+                        tabindex="-1"
+                        class="admin-tab">
+                    Statistiche
+                </button>
             </div>
 
-            <div id="prenotazioni-wrapper">
-                <div class="table-container">
+            <!-- Tab Panels -->
+            <div id="panel-utenti" role="tabpanel" aria-labelledby="tab-utenti" hidden class="admin-tabpanel">
+                <h3 class="tertiary-title-centered">Gestione utenti</h3>
+                
+                <div id="utenti-wrapper">
+                    <div class="table-container">
+                        <!-- La tabella sarà popolata via JavaScript -->
+                    </div>
                 </div>
+            </div>
+
+            <div id="panel-prenotazioni" role="tabpanel" aria-labelledby="tab-prenotazioni" hidden class="admin-tabpanel">
+                <h3 class="tertiary-title-centered">Riepilogo donazioni prenotate</h3>
+                
+                <label for="sede-donazioni">Filtra per sede:</label>
+                <div class="select-locations-admin">
+                    <select id="sede-donazioni" name="sede-donazioni">
+                        <option value="tutte">Tutte le sedi</option>
+                        <option value="ATDS Piovego">ATDS Piovego</option>
+                        <option value="ATDS Lum250">ATDS Lum250</option>
+                        <option value="ATDS Stanga">ATDS Stanga</option>
+                        <option value="ATDS Portello">ATDS Portello</option>
+                        <option value="ATDS Prato della Valle">ATDS Prato della Valle</option>
+                        <option value="ATDS Dietro Stazione">ATDS Dietro Stazione</option>
+                        <option value="ATDS del Bo">ATDS del Bo</option>
+                        <option value="ATDS Specola">ATDS Specola</option>
+                    </select>
+                </div>
+
+                <div id="prenotazioni-wrapper">
+                    <div class="table-container">
+                    </div>
+                </div>
+            </div>
+
+            <div id="panel-statistiche" role="tabpanel" aria-labelledby="tab-statistiche" hidden class="admin-tabpanel">
+                <h3 class="tertiary-title-centered">Statistiche</h3>
+                <p class="text-standard">Sezione in fase di sviluppo. Le statistiche saranno disponibili prossimamente.</p>
             </div>
         </main>
         
@@ -132,6 +178,54 @@
                 <div class="dialog-buttons">
                     <button type="button" class="btn-std" id="closeUploadErrorBtn">Chiudi</button>
                 </div>
+            </div>
+        </dialog>
+
+        <!-- Dialog per conferma eliminazione utente -->
+        <dialog id="dialog-elimina-utente" aria-labelledby="dialog-elimina-utente-title" aria-describedby="dialog-elimina-utente-desc" aria-modal="true">
+            <div class="dialog-content">
+                <h2 id="dialog-elimina-utente-title">Conferma eliminazione utente</h2>
+                <p id="dialog-elimina-utente-desc">Sei sicuro di voler eliminare l'utente <strong id="elimina-utente-username"></strong>? Questa azione è irreversibile.</p>
+                <div class="dialog-buttons">
+                    <form action="../actions/cancellaUtente.php" method="POST" class="dialog-form" id="form-elimina-utente">
+                        <input type="hidden" name="id_utente" id="hidden-id-utente" value="">
+                        <button type="submit" class="btn-delete">Elimina utente</button>
+                    </form>
+                    <button type="button" id="btn-annulla-elimina-utente" class="btn-std">Annulla</button>
+                </div>
+            </div>
+        </dialog>
+
+        <!-- Dialog per modifica ruolo utente -->
+        <dialog id="dialog-modifica-ruolo" aria-labelledby="dialog-modifica-ruolo-title" aria-describedby="dialog-modifica-ruolo-desc" aria-modal="true">
+            <div class="dialog-content">
+                <h2 id="dialog-modifica-ruolo-title">Modifica ruolo utente</h2>
+                <p id="dialog-modifica-ruolo-desc">Modifica il ruolo dell'utente <strong id="modifica-ruolo-username"></strong>.</p>
+                
+                <form action="../actions/modificaRuoloUtente.php" method="POST" id="form-modifica-ruolo">
+                    <input type="hidden" name="id_utente" id="hidden-id-utente-ruolo" value="">
+                    
+                    <fieldset>
+                        <legend>Seleziona il nuovo ruolo</legend>
+                        <div class="radio-standard">
+                            <input type="radio" id="ruolo-utente" name="nuovo_ruolo" value="utente" required>
+                            <label for="ruolo-utente">Utente</label>
+                        </div>
+                        <div class="radio-standard">
+                            <input type="radio" id="ruolo-donatore" name="nuovo_ruolo" value="donatore" required>
+                            <label for="ruolo-donatore">Donatore</label>
+                        </div>
+                        <div class="radio-standard">
+                            <input type="radio" id="ruolo-admin" name="nuovo_ruolo" value="admin" required>
+                            <label for="ruolo-admin">Admin</label>
+                        </div>
+                    </fieldset>
+
+                    <div class="dialog-buttons">
+                        <button type="submit" class="btn-submit">Salva modifiche</button>
+                        <button type="button" id="btn-annulla-modifica-ruolo" class="btn-std">Annulla</button>
+                    </div>
+                </form>
             </div>
         </dialog>
         

@@ -724,6 +724,11 @@ footer {
     width: 100%;
 }
 
+/* Dashboard admin con tabelle più larghe */
+.profile-admin .dashboard-container {
+    max-width: 1000px;
+}
+
 .page-background{
   background-image: url(/ggiora/images/back.jpg);
 }
@@ -2109,6 +2114,79 @@ button:focus-visible {
 }
 
 /* =========================================
+   LAYOUT A SCHEDE ADMIN
+========================================= */
+
+.admin-tabs {
+  display: flex;
+  gap: 0.3em;
+  margin: 2em 0 0 0;
+  justify-content: center;
+  flex-wrap: wrap;
+  background: linear-gradient(135deg, var(--accent-blue) 0%, var(--card-bg-color) 100%);
+  padding: 0.5em 1em 0 1em;
+  border-radius: 1em;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: border-radius 0.3s ease;
+}
+
+.admin-tabs:has(.admin-tab[aria-selected="true"]) {
+  border-radius: 1em 1em 0 0;
+}
+
+.admin-tab {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 1em 2em;
+  font-size: 1.2em;
+  font-weight: 600;
+  color: var(--card-title-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  font-family: 'Jost', sans-serif;
+  border-radius: 0.8em 0.8em 0 0;
+  margin-bottom: 0;
+  flex: 1;
+  text-align: center;
+}
+
+.admin-tab:hover {
+  background: rgba(255, 255, 255, 0.35);
+  color: var(--card-title-color);
+}
+
+.admin-tab:focus-visible {
+  outline: 3px solid white;
+  outline-offset: 2px;
+}
+
+.admin-tab[aria-selected="true"] {
+  background: var(--white);
+  color: var(--card-title-color);
+  cursor: pointer;
+  z-index: 2;
+}
+
+.admin-tab[aria-selected="true"]:hover {
+  background: var(--white);
+}
+
+.admin-tabpanel {
+  padding: 2em;
+  background: var(--white);
+  border-radius: 0 0 1em 1em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: -1px;
+  position: relative;
+  z-index: 1;
+}
+
+.admin-tabpanel[hidden] {
+  display: none;
+}
+
+/* =========================================
    TABELLA PRENOTAZIONI ADMIN
 ========================================= */
 
@@ -2122,12 +2200,13 @@ button:focus-visible {
 .tertiary-title-centered {
   font-size: 2em;
   color: var(--card-title-color);
-  margin: 2em auto 1em auto;
+  margin: 1em auto 1em auto;
   padding-bottom: 0.5em;
   text-align: center;
   border-left: none;
   padding-left: 0;
   width: 100%;
+  height: fit-content;
 }
 
 .profile-admin label[for="sede-donazioni"] {
@@ -2274,6 +2353,103 @@ button:focus-visible {
   }
 }
 
+/* Layout mobile per tabella utenti sotto 1000px */
+@media screen and (max-width: 950px) {
+  #panel-utenti .table-container {
+    box-shadow: none;
+  }
+
+  #panel-utenti .data-table thead {
+    display: none;
+  }
+
+  #panel-utenti .data-table,
+  #panel-utenti .data-table tbody,
+  #panel-utenti .data-table tr,
+  #panel-utenti .data-table td,
+  #panel-utenti .data-table th {
+    display: block;
+    width: 100%;
+  }
+
+  #panel-utenti .data-table tr {
+    margin-bottom: 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    padding: 1.5em;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fbfc 100%);
+    border: 1px solid #e0e7ec;
+  }
+
+  #panel-utenti .data-table td,
+  #panel-utenti .data-table th {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: right;
+    padding: 0.9em 0;
+    border: none;
+    border-bottom: 1px solid #f0f4f8;
+    position: relative;
+    font-size: 1.05em;
+    flex-wrap: nowrap;
+    gap: 1em;
+  }
+
+  #panel-utenti .data-table td:last-child,
+  #panel-utenti .data-table th:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.8em;
+  }
+
+  #panel-utenti .data-table td::before,
+  #panel-utenti .data-table th::before {
+    content: attr(data-label);
+    font-weight: 600;
+    color: #2c5f7a;
+    font-size: 1em;
+    text-transform: none;
+    text-align: left;
+    flex-shrink: 0;
+  }
+
+  #panel-utenti .data-table th {
+    font-weight: 600;
+    color: #082636;
+    font-size: 1.1em;
+  }
+
+  #panel-utenti .data-table td:has(.status-completed),
+  #panel-utenti .data-table th:has(.status-completed) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+  }
+
+  #panel-utenti .data-table .status-completed {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 1em;
+  }
+
+  #panel-utenti .data-table button,
+  #panel-utenti .data-table .btn-table {
+    width: 100%;
+    margin: 0;
+    display: block;
+    padding: 1em;
+    font-size: 1em;
+  }
+
+  #panel-utenti .data-table .btn-table + .btn-table {
+    margin-top: 0.8em;
+  }
+}
+
 /* ========================================
    DIALOG MODALE ACCESSIBILE
 ======================================== */
@@ -2348,6 +2524,33 @@ dialog::backdrop {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Dialog con form più complessi (es. modifica ruolo) */
+#dialog-modifica-ruolo .dialog-content {
+  padding: 2em 2.5em;
+}
+
+#dialog-modifica-ruolo fieldset {
+  margin: 1.5em 0;
+  padding: 0;
+  border: none;
+}
+
+#dialog-modifica-ruolo legend {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 1em;
+  padding: 0;
+  background: transparent;
+}
+
+#dialog-modifica-ruolo .radio-standard {
+  margin-bottom: 0.8em;
+}
+
+#dialog-modifica-ruolo .dialog-buttons {
+  margin-top: 2em;
 }
 
 /* Nasconde la ricerca di aria-live su dove_trovarci*/

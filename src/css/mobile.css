@@ -768,3 +768,45 @@ body.error-background {
   max-width: 21em;
   min-width: min-content;
 }
+
+/* ========================================
+   TAB ADMIN RESPONSIVE
+======================================== */
+
+.admin-tabs {
+  flex-direction: column;
+  gap: 0.2em;
+  padding: 0.5em;
+  border-radius: 0.8em;
+  transition: border-radius 0.3s ease;
+}
+
+/* Quando una tab è selezionata, arrotonda solo in alto */
+.admin-tabs:has(.admin-tab[aria-selected="true"]) {
+  border-radius: 0.8em 0.8em 0 0;
+}
+
+.admin-tab {
+  padding: 1em 1.5em;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 0;
+  border-radius: 0.6em;
+  background: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.admin-tab[aria-selected="true"] {
+  background: var(--white);
+  color: var(--card-bg-color);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transform: none;
+}
+
+.admin-tabpanel {
+  padding: 1.5em;
+  background: var(--white);
+  border-radius: 0 0 0.8em 0.8em;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  margin-top: -0.2em;
+}

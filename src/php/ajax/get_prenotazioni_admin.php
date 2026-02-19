@@ -94,7 +94,7 @@ try {
         return $html;
     }
 
-    echo '<h3 id="titolo-future" class="tertiary-title">Prenotazioni in programma</h3>';
+    echo '<h3 id="titolo-future" class="tertiary-title">In programma</h3>';
     echo generaTabellaAdmin($future, false, 'titolo-future');
 
      echo '<div class="spacer-admin" aria-hidden="true"></div>';

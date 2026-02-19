@@ -262,7 +262,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectSede = document.getElementById('sede-donazioni');
 
     if (isAdminPage) {
-        caricaPrenotazioniAdmin();
+        // Inizializza gestione tab
+        initAdminTabs();
+        
+        // Carica prenotazioni solo quando si apre la tab corrispondente
+        // Non più caricamento automatico all'apertura pagina
         
         if (selectSede) {
             selectSede.addEventListener('change', function() {
@@ -316,6 +320,45 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }],
         closeBtnId: 'btn-annulla-elimina-admin'
+    });
+
+    // GESTIONE DIALOG ELIMINA UTENTE
+    const hiddenIdUtente = document.getElementById('hidden-id-utente');
+    const eliminaUtenteUsername = document.getElementById('elimina-utente-username');
+
+    setupDialog({
+        dialogId: 'dialog-elimina-utente',
+        openTriggers: [{
+            selector: 'btn-elimina-utente',
+            event: 'click',
+            dataHandler: (target) => {
+                if (hiddenIdUtente) hiddenIdUtente.value = target.dataset.idUtente;
+                if (eliminaUtenteUsername) eliminaUtenteUsername.textContent = target.dataset.username;
+            }
+        }],
+        closeBtnId: 'btn-annulla-elimina-utente'
+    });
+
+    // GESTIONE DIALOG MODIFICA RUOLO UTENTE
+    const hiddenIdUtenteRuolo = document.getElementById('hidden-id-utente-ruolo');
+    const modificaRuoloUsername = document.getElementById('modifica-ruolo-username');
+
+    setupDialog({
+        dialogId: 'dialog-modifica-ruolo',
+        openTriggers: [{
+            selector: 'btn-modifica-ruolo',
+            event: 'click',
+            dataHandler: (target) => {
+                if (hiddenIdUtenteRuolo) hiddenIdUtenteRuolo.value = target.dataset.idUtente;
+                if (modificaRuoloUsername) modificaRuoloUsername.textContent = target.dataset.username;
+                
+                // Pre-seleziona il ruolo corrente
+                const ruoloCorrente = target.dataset.ruolo;
+                const radioRuolo = document.getElementById(`ruolo-${ruoloCorrente}`);
+                if (radioRuolo) radioRuolo.checked = true;
+            }
+        }],
+        closeBtnId: 'btn-annulla-modifica-ruolo'
     });
 
     //VALIDAZIONE: Campi vuoti 
@@ -760,6 +803,130 @@ function caricaPrenotazioniAdmin(sede = 'tutte') {
         .catch(error => {
             console.error('Errore caricamento prenotazioni:', error);
             const wrapper = document.getElementById('prenotazioni-wrapper');
+            if (wrapper) {
+                wrapper.innerHTML = '<p class="text-standard">Errore nel caricamento dei dati.</p>';
+            }
+        });
+}
+
+/* =========================================
+   GESTIONE TAB ADMIN
+========================================= */
+
+function initAdminTabs() {
+    const tabs = document.querySelectorAll('.admin-tab');
+    const panels = document.querySelectorAll('.admin-tabpanel');
+    
+    if (tabs.length === 0) return;
+
+    // Gestione click sulle tab
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            selectTab(tab);
+        });
+
+        // Gestione navigazione da tastiera (frecce)
+        tab.addEventListener('keydown', (e) => {
+            let targetTab = null;
+            
+            if (e.key === 'ArrowRight') {
+                e.preventDefault();
+                targetTab = tab.nextElementSibling || tabs[0];
+            } else if (e.key === 'ArrowLeft') {
+                e.preventDefault();
+                targetTab = tab.previousElementSibling || tabs[tabs.length - 1];
+            } else if (e.key === 'Home') {
+                e.preventDefault();
+                targetTab = tabs[0];
+            } else if (e.key === 'End') {
+                e.preventDefault();
+                targetTab = tabs[tabs.length - 1];
+            }
+            
+            if (targetTab) {
+                selectTab(targetTab);
+                targetTab.focus();
+            }
+        });
+    });
+
+    function selectTab(selectedTab) {
+        const targetPanelId = selectedTab.getAttribute('aria-controls');
+        const targetPanel = document.getElementById(targetPanelId);
+        
+        if (!targetPanel) return;
+
+        // Se la tab è già selezionata, chiudi tutto (toggle)
+        const isAlreadySelected = selectedTab.getAttribute('aria-selected') === 'true';
+        
+        if (isAlreadySelected) {
+            // Deseleziona la tab
+            selectedTab.setAttribute('aria-selected', 'false');
+            selectedTab.setAttribute('tabindex', '-1');
+            
+            // Nascondi il panel
+            targetPanel.hidden = true;
+            return;
+        }
+
+        // Deseleziona tutte le tab
+        tabs.forEach(tab => {
+            tab.setAttribute('aria-selected', 'false');
+            tab.setAttribute('tabindex', '-1');
+        });
+
+        // Nascondi tutti i panel
+        panels.forEach(panel => {
+            panel.hidden = true;
+        });
+
+        // Seleziona la tab corrente
+        selectedTab.setAttribute('aria-selected', 'true');
+        selectedTab.setAttribute('tabindex', '0');
+
+        // Mostra il panel corrispondente
+        targetPanel.hidden = false;
+
+        // Carica i dati in base alla tab selezionata
+        if (targetPanelId === 'panel-prenotazioni') {
+            const selectSede = document.getElementById('sede-donazioni');
+            const sedeSelezionata = selectSede ? selectSede.value : 'tutte';
+            caricaPrenotazioniAdmin(sedeSelezionata);
+        } else if (targetPanelId === 'panel-utenti') {
+            caricaUtentiAdmin();
+        }
+    }
+
+    // Apri automaticamente una tab se specificata nell'URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const tabParam = urlParams.get('tab');
+    
+    if (tabParam) {
+        const tabToOpen = document.getElementById(`tab-${tabParam}`);
+        if (tabToOpen) {
+            selectTab(tabToOpen);
+            tabToOpen.focus();
+        }
+    }
+}
+
+/* =========================================
+   GESTIONE UTENTI ADMIN (AJAX)
+========================================= */
+
+function caricaUtentiAdmin() {
+    fetch('/ggiora/src/php/ajax/get_utenti_admin.php') 
+        .then(response => {
+            if (!response.ok) throw new Error('Errore nel caricamento');
+            return response.text();
+        })
+        .then(html => {
+            const wrapper = document.getElementById('utenti-wrapper');
+            if (wrapper) wrapper.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('Errore caricamento utenti:', error);
+            const wrapper = document.getElementById('utenti-wrapper');
             if (wrapper) {
                 wrapper.innerHTML = '<p class="text-standard">Errore nel caricamento dei dati.</p>';
             }
