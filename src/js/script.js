@@ -339,28 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
         closeBtnId: 'btn-annulla-elimina-utente'
     });
 
-    // GESTIONE DIALOG MODIFICA RUOLO UTENTE
-    const hiddenIdUtenteRuolo = document.getElementById('hidden-id-utente-ruolo');
-    const modificaRuoloUsername = document.getElementById('modifica-ruolo-username');
-
-    setupDialog({
-        dialogId: 'dialog-modifica-ruolo',
-        openTriggers: [{
-            selector: 'btn-modifica-ruolo',
-            event: 'click',
-            dataHandler: (target) => {
-                if (hiddenIdUtenteRuolo) hiddenIdUtenteRuolo.value = target.dataset.idUtente;
-                if (modificaRuoloUsername) modificaRuoloUsername.textContent = target.dataset.username;
-                
-                // Pre-seleziona il ruolo corrente
-                const ruoloCorrente = target.dataset.ruolo;
-                const radioRuolo = document.getElementById(`ruolo-${ruoloCorrente}`);
-                if (radioRuolo) radioRuolo.checked = true;
-            }
-        }],
-        closeBtnId: 'btn-annulla-modifica-ruolo'
-    });
-
     //VALIDAZIONE: Campi vuoti 
     const prenotaForm = document.getElementById('prenotaForm');
     const dialogCampiVuoti = document.getElementById('dialog-campi-vuoti');

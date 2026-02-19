@@ -195,39 +195,6 @@
                 </div>
             </div>
         </dialog>
-
-        <!-- Dialog per modifica ruolo utente -->
-        <dialog id="dialog-modifica-ruolo" aria-labelledby="dialog-modifica-ruolo-title" aria-describedby="dialog-modifica-ruolo-desc" aria-modal="true">
-            <div class="dialog-content">
-                <h2 id="dialog-modifica-ruolo-title">Modifica ruolo utente</h2>
-                <p id="dialog-modifica-ruolo-desc">Modifica il ruolo dell'utente <strong id="modifica-ruolo-username"></strong>.</p>
-                
-                <form action="../actions/modificaRuoloUtente.php" method="POST" id="form-modifica-ruolo">
-                    <input type="hidden" name="id_utente" id="hidden-id-utente-ruolo" value="">
-                    
-                    <fieldset>
-                        <legend>Seleziona il nuovo ruolo</legend>
-                        <div class="radio-standard">
-                            <input type="radio" id="ruolo-utente" name="nuovo_ruolo" value="utente" required>
-                            <label for="ruolo-utente">Utente</label>
-                        </div>
-                        <div class="radio-standard">
-                            <input type="radio" id="ruolo-donatore" name="nuovo_ruolo" value="donatore" required>
-                            <label for="ruolo-donatore">Donatore</label>
-                        </div>
-                        <div class="radio-standard">
-                            <input type="radio" id="ruolo-admin" name="nuovo_ruolo" value="admin" required>
-                            <label for="ruolo-admin">Admin</label>
-                        </div>
-                    </fieldset>
-
-                    <div class="dialog-buttons">
-                        <button type="submit" class="btn-submit">Salva modifiche</button>
-                        <button type="button" id="btn-annulla-modifica-ruolo" class="btn-std">Annulla</button>
-                    </div>
-                </form>
-            </div>
-        </dialog>
         
         [FOOTER]
     </body>
