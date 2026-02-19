@@ -2369,3 +2369,13 @@ dialog::backdrop {
   font-size: 0.9em;
   color: rgb(164, 7, 7);
 }
+
+/* Extra widget donazioni */
+.dona-sidebar .profile-card-title {
+    margin-top: 2.5em;
+    margin-bottom: 1.2em;
+}
+
+.dona-sidebar .profile-card-title:first-child {
+    margin-top: 0;
+}
