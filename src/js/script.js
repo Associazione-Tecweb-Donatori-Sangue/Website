@@ -842,17 +842,16 @@ function initAdminTabs() {
         if (isAlreadySelected) {
             // Deseleziona la tab
             selectedTab.setAttribute('aria-selected', 'false');
-            selectedTab.setAttribute('tabindex', '0');
             
             // Nascondi il panel
             targetPanel.hidden = true;
+            
             return;
         }
 
         // Deseleziona tutte le tab
         tabs.forEach(tab => {
             tab.setAttribute('aria-selected', 'false');
-            tab.setAttribute('tabindex', '-1');
         });
 
         // Nascondi tutti i panel
@@ -862,7 +861,6 @@ function initAdminTabs() {
 
         // Seleziona la tab corrente
         selectedTab.setAttribute('aria-selected', 'true');
-        selectedTab.setAttribute('tabindex', '0');
 
         // Mostra il panel corrispondente
         targetPanel.hidden = false;

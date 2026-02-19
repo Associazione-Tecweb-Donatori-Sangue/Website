@@ -442,8 +442,8 @@ footer{
 }
 
 .dashboard-container {
-    width: 95%;
-    padding: 0 1em;
+    width: 97%;
+    padding: 0;
 }
 
 .data-list dt {
@@ -474,6 +474,11 @@ footer{
 .tertiary-title {
     font-size: 1.6em;
     padding-left: 0.8em;
+}
+
+.tertiary-title-centered {
+    font-size: 1.6em;
+    margin: 1.5em auto;
 }
 
 #founders h4 {
@@ -519,10 +524,6 @@ footer{
     display: block;
     width: fit-content;
 }
-
-
-
-
 
 .button-standard button,
 .button-standard input[type="submit"] {
@@ -777,30 +778,31 @@ body.error-background {
   flex-direction: column;
   gap: 0.2em;
   padding: 0.5em;
-  border-radius: 0.8em;
+  border-radius: 1.2em;
   transition: border-radius 0.3s ease;
 }
 
-/* Quando una tab è selezionata, arrotonda solo in alto */
 .admin-tabs:has(.admin-tab[aria-selected="true"]) {
-  border-radius: 0.8em 0.8em 0 0;
+  border-radius: 1.2em 1.2em 0 0;
 }
 
 .admin-tab {
-  padding: 1em 1.5em;
+  padding: 1em 1.2em;
   text-align: left;
   width: 100%;
   margin-bottom: 0;
-  border-radius: 0.6em;
+  border-radius: 0.8em;
   background: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--card-title-color);
 }
 
 .admin-tab[aria-selected="true"] {
   background: var(--white);
-  color: var(--card-bg-color);
+  color: var(--card-title-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  transform: none;
+  border-radius: 0.8em; 
+  margin-bottom: 0;
+  padding-bottom: 1em;
 }
 
 .admin-tabpanel {
@@ -808,5 +810,5 @@ body.error-background {
   background: var(--white);
   border-radius: 0 0 0.8em 0.8em;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  margin-top: -0.2em;
+  margin-top: 0;
 }
