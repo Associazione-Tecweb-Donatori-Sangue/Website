@@ -516,6 +516,160 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // VALIDAZIONE USERNAME - Registrazione
+    const usernameInput = document.getElementById('username');
+    const formRegistrazione = document.querySelector('form[action="registrazione.php"]');
+
+    if (usernameInput && formRegistrazione) {
+        // Funzione di validazione username
+        function validaUsernameClient(username) {
+            username = username.trim();
+            
+            if (username === '') {
+                return { valido: false, errore: 'L\'username non può essere vuoto' };
+            }
+            
+            if (username.length < 4 || username.length > 50) {
+                return { valido: false, errore: 'L\'username deve essere tra 4 e 50 caratteri' };
+            }
+            
+            if (!/^[a-zA-Z0-9]/.test(username)) {
+                return { valido: false, errore: 'L\'username deve iniziare con una lettera o un numero' };
+            }
+            
+            if (!/[a-zA-Z0-9]$/.test(username)) {
+                return { valido: false, errore: 'L\'username deve finire con una lettera o un numero' };
+            }
+            
+            const alfanumericiCount = (username.match(/[a-zA-Z0-9]/g) || []).length;
+            if (alfanumericiCount < 2) {
+                return { valido: false, errore: 'L\'username deve contenere almeno 2 caratteri alfanumerici' };
+            }
+            
+            if (!/^[a-zA-Z0-9._-]+$/.test(username)) {
+                return { valido: false, errore: 'L\'username può contenere solo lettere, numeri, underscore, trattino e punto' };
+            }
+            
+            return { valido: true, errore: null };
+        }
+
+        usernameInput.addEventListener('input', function() {
+            this.setCustomValidity('');
+        });
+
+        // Validazione al submit
+        formRegistrazione.addEventListener('submit', function(e) {
+            const risultato = validaUsernameClient(usernameInput.value);
+            
+            if (!risultato.valido) {
+                e.preventDefault();
+                usernameInput.setCustomValidity(risultato.errore);
+                usernameInput.reportValidity();
+                usernameInput.focus();
+                return false;
+            }
+        });
+    }
+
+    // VALIDAZIONE MODIFICA ACCOUNT
+    const formModificaAccount = document.querySelector('form[action="modifica_account.php"]');
+    
+    if (formModificaAccount) {
+        const usernameModifica = document.getElementById('username');
+        const newPasswordInput = document.getElementById('new_password');
+        const confirmPasswordInput = document.getElementById('confirm_password');
+
+        // Funzione di validazione username (riutilizzata)
+        function validaUsernameClient(username) {
+            username = username.trim();
+            
+            if (username === '') {
+                return { valido: false, errore: 'L\'username non può essere vuoto' };
+            }
+            
+            if (username.length < 4 || username.length > 50) {
+                return { valido: false, errore: 'L\'username deve essere tra 4 e 50 caratteri' };
+            }
+            
+            if (!/^[a-zA-Z0-9]/.test(username)) {
+                return { valido: false, errore: 'L\'username deve iniziare con una lettera o un numero' };
+            }
+            
+            if (!/[a-zA-Z0-9]$/.test(username)) {
+                return { valido: false, errore: 'L\'username deve finire con una lettera o un numero' };
+            }
+            
+            const alfanumericiCount = (username.match(/[a-zA-Z0-9]/g) || []).length;
+            if (alfanumericiCount < 2) {
+                return { valido: false, errore: 'L\'username deve contenere almeno 2 caratteri alfanumerici' };
+            }
+            
+            if (!/^[a-zA-Z0-9._-]+$/.test(username)) {
+                return { valido: false, errore: 'L\'username può contenere solo lettere, numeri, underscore, trattino e punto' };
+            }
+            
+            return { valido: true, errore: null };
+        }
+
+        // Reset validità quando l'utente digita
+        if (usernameModifica) {
+            usernameModifica.addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+        }
+
+        if (newPasswordInput) {
+            newPasswordInput.addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+        }
+
+        if (confirmPasswordInput) {
+            confirmPasswordInput.addEventListener('input', function() {
+                this.setCustomValidity('');
+            });
+        }
+
+        // Validazione al submit
+        formModificaAccount.addEventListener('submit', function(e) {
+            // Validazione username
+            if (usernameModifica) {
+                const risultatoUsername = validaUsernameClient(usernameModifica.value);
+                if (!risultatoUsername.valido) {
+                    e.preventDefault();
+                    usernameModifica.setCustomValidity(risultatoUsername.errore);
+                    usernameModifica.reportValidity();
+                    usernameModifica.focus();
+                    return false;
+                }
+            }
+
+            // Validazione password solo se è stata inserita
+            if (newPasswordInput && newPasswordInput.value.trim() !== '') {
+                const newPass = newPasswordInput.value;
+                const confirmPass = confirmPasswordInput ? confirmPasswordInput.value : '';
+
+                // Controllo lunghezza password
+                if (newPass.length < 4 || newPass.length > 50) {
+                    e.preventDefault();
+                    newPasswordInput.setCustomValidity('La password deve essere tra 4 e 50 caratteri');
+                    newPasswordInput.reportValidity();
+                    newPasswordInput.focus();
+                    return false;
+                }
+
+                // Controllo che le password coincidano
+                if (newPass !== confirmPass) {
+                    e.preventDefault();
+                    confirmPasswordInput.setCustomValidity('Le password non coincidono');
+                    confirmPasswordInput.reportValidity();
+                    confirmPasswordInput.focus();
+                    return false;
+                }
+            }
+        });
+    }
 });
 
 /* =========================================

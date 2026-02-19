@@ -63,6 +63,53 @@ function validaOrario($orario) {
 }
 
 /**
+ * Valida username per la registrazione
+ * Controlla che: 
+ * - Non sia vuoto o composto solo da spazi
+ * - Lunghezza tra 4 e 50 caratteri
+ * - Inizi con lettera o numero
+ * - Finisca con lettera o numero
+ * - Contenga almeno 2 caratteri alfanumerici
+ * - Contenga solo caratteri alfanumerici, underscore, trattino e punto
+ */
+function validaUsername($username) {
+    // Rimuove spazi all'inizio e alla fine
+    $username = trim($username);
+    
+    // Verifica che non sia vuoto
+    if (empty($username)) {
+        return ['valido' => false, 'errore' => 'L\'username non può essere vuoto'];
+    }
+    
+    // Verifica lunghezza (4-50 caratteri)
+    if (strlen($username) < 4 || strlen($username) > 50) {
+        return ['valido' => false, 'errore' => 'L\'username deve essere tra 4 e 50 caratteri'];
+    }
+    
+    // Verifica che inizi con una lettera o numero
+    if (!preg_match('/^[a-zA-Z0-9]/', $username)) {
+        return ['valido' => false, 'errore' => 'L\'username deve iniziare con una lettera o un numero'];
+    }
+    
+    // Verifica che finisca con una lettera o numero
+    if (!preg_match('/[a-zA-Z0-9]$/', $username)) {
+        return ['valido' => false, 'errore' => 'L\'username deve finire con una lettera o un numero'];
+    }
+    
+    // Verifica che contenga almeno 2 caratteri alfanumerici
+    if (preg_match_all('/[a-zA-Z0-9]/', $username) < 2) {
+        return ['valido' => false, 'errore' => 'L\'username deve contenere almeno 2 caratteri alfanumerici'];
+    }
+    
+    // Verifica che contenga solo caratteri validi (alfanumerici, underscore, trattino, punto)
+    if (!preg_match('/^[a-zA-Z0-9._-]+$/', $username)) {
+        return ['valido' => false, 'errore' => 'L\'username può contenere solo lettere, numeri, underscore, trattino e punto'];
+    }
+    
+    return ['valido' => true, 'errore' => null];
+}
+
+/**
  * Verifica se l'utente è loggato. Se no, reindirizza.
  */
 function requireLogin($redirect = '../pages/login.php') {

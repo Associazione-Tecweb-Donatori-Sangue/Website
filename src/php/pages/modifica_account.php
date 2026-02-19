@@ -39,23 +39,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
             // A. Cambio Username
             if ($newUsername !== $user['username']) {
-                $check = $pdo->prepare("SELECT id FROM utenti WHERE username = ? AND id != ?");
-                $check->execute([$newUsername, $userId]);
-                
-                if ($check->fetch()) {
-                    $messaggio .= '<div class="msg-error" role="alert">Errore: Lo username scelto è già in uso.</div>';
+                // Validazione username
+                $validazioneUsername = validaUsername($newUsername);
+                if (!$validazioneUsername['valido']) {
+                    $messaggio .= '<div class="msg-error" role="alert">Errore: ' . htmlspecialchars($validazioneUsername['errore']) . '</div>';
                     $erroreTrovato = true;
                 } else {
-                    $updateUser = $pdo->prepare("UPDATE utenti SET username = ? WHERE id = ?");
-                    $updateUser->execute([$newUsername, $userId]);
-                    $_SESSION['username'] = $newUsername;
-                    $modificaEffettuata = true;
+                    $check = $pdo->prepare("SELECT id FROM utenti WHERE username = ? AND id != ?");
+                    $check->execute([$newUsername, $userId]);
+                    
+                    if ($check->fetch()) {
+                        $messaggio .= '<div class="msg-error" role="alert">Errore: Lo username scelto è già in uso.</div>';
+                        $erroreTrovato = true;
+                    } else {
+                        $updateUser = $pdo->prepare("UPDATE utenti SET username = ? WHERE id = ?");
+                        $updateUser->execute([$newUsername, $userId]);
+                        $_SESSION['username'] = $newUsername;
+                        $modificaEffettuata = true;
+                    }
                 }
             }
 
             // B. Cambio Password
             if (!empty($newPassword)) {
-                if ($newPassword !== $confirmPassword) {
+                // Validazione lunghezza password
+                if (strlen($newPassword) < 4 || strlen($newPassword) > 50) {
+                    $messaggio .= '<div class="msg-error" role="alert">Errore: La password deve essere tra 4 e 50 caratteri.</div>';
+                    $erroreTrovato = true;
+                } elseif ($newPassword !== $confirmPassword) {
                     $messaggio .= '<div class="msg-error" role="alert">Errore: Le nuove password non coincidono.</div>';
                     $erroreTrovato = true;
                 } else {

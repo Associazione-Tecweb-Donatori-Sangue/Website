@@ -10,7 +10,6 @@ DA SISTEMARE
 ------ACCESSIBILITA------
 - Freccia XXXXXXX
 ----PHP------
-- Controlli nella registrazione (username di tutti spazi o caratteri speciali) --> GG
 - pagine errore --> 🔴
 
 CONCORSO ACCATTIVANTE ACCESSIBILE:

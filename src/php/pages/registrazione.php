@@ -15,7 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $confirm  = $_POST['password_confirm'];
     $usernamePreservato = htmlspecialchars($username, ENT_QUOTES, 'UTF-8');
 
-    if ($password !== $confirm) {
+    // Validazione username
+    $validazioneUsername = validaUsername($username);
+    if (!$validazioneUsername['valido']) {
+        $messaggio = "<div class='msg-error' role='alert'>Errore: " . htmlspecialchars($validazioneUsername['errore']) . "</div>";
+    } elseif ($password !== $confirm) {
         $messaggio = "<div class='msg-error' role='alert'>Errore: Le password non coincidono.</div>";
     } else {
         try {

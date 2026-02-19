@@ -41,7 +41,7 @@
                 <legend>Modifica username</legend>
                 <div>
                     <label for="username"><span lang="en">Username</span>: <span class="obligatory">(obbligatorio)</span></label>
-                    <input type="text" name="username" id="username" value="[valore_username]" required>
+                    <input type="text" name="username" id="username" value="[valore_username]" minlength="4" maxlength="50" required>
                 </div>
             </fieldset>
 
@@ -49,12 +49,12 @@
                 <legend>Modifica Password</legend>
                 <div>
                     <label for="new_password">Nuova password: <span class="obligatory">(obbligatoria)</span></label>
-                    <input type="password" name="new_password" id="new_password">
+                    <input type="password" name="new_password" id="new_password" minlength="4" maxlength="50">
                 </div>
                 
                 <div>
                     <label for="confirm_password">Conferma nuova password: <span class="obligatory">(obbligatoria)</span></label>
-                    <input type="password" name="confirm_password" id="confirm_password">
+                    <input type="password" name="confirm_password" id="confirm_password" minlength="4" maxlength="50">
                 </div>
             </fieldset>
 

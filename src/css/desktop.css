@@ -318,12 +318,14 @@ header{
 
 .drop span:nth-child(1){
   height: 1em;
-  transform: rotate(45deg) translate(-7px, -5px);
+  /* transform: rotate(45deg) translate(-7px, -5px); */
+  transform: rotate(45deg) translate(12px, 1px);
 }
 
 .drop span:nth-child(3){
   height: 1em;
-  transform: rotate(-45deg) translate(7px, -5px);
+  /* transform: rotate(-45deg) translate(7px, -5px); */
+  transform: rotate(-45deg) translate(-12px, 1px);
 }
 
 main{
