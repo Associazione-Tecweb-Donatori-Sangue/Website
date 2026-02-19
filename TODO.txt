@@ -10,15 +10,12 @@ DA SISTEMARE
 ------ACCESSIBILITA------
 - Freccia XXXXXXX
 
-
 CONCORSO ACCATTIVANTE ACCESSIBILE:
 - aggiungere foto ai fondatori --> GN
 
-
 - aggiungere funzioni all'admin:
-    - Gestione Utenti: una tabella per vedere tutti gli iscritti, non solo chi ha prenotato.  Permetterebbe all'admin di disattivare account problematici o promuovere altri utenti ad admin.  --> GG
-    - Statistiche: per visualizzare grafici: "Numero donazioni questo mese", "Gruppo sanguigno più diffuso tra gli iscritti", "Sede più frequentata". --> GG
-    - aggiungere bottoni nelle pagine dei profili ("Lista prenotazioni", "Statistiche", "Gestione utenti"), in base al bottone schiacciato viene visualizzata la sezione corrispondente. --> GG
+    - gestione utenti: aggiungere la possibilità di ordinare la tabella per nome utente, ecc ecc. E la possibilità di filtrare per gruppo sanguigno, ecc ecc. --> 🔴
+    - Statistiche: per visualizzare grafici: "Numero donazioni questo mese", "Gruppo sanguigno più diffuso tra gli iscritti", "Sede più frequentata". --> GN
 
 - relazione nuova --> 🔴
 

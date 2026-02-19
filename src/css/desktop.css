@@ -1159,8 +1159,7 @@ small {
   box-shadow: 0 6px 20px rgba(8, 46, 65, 0.4);
 }
 
-.btn-submit:focus,
-.btn-submit:focus-visible {
+.btn-submit:focus {
   background-color: var(--btn-primary-bg);
   color: var(--white);
 }
@@ -1207,14 +1206,6 @@ small {
   font: inherit;
   color: inherit;
   text-align: inherit;
-  flex-shrink: 0;
-  position: relative;
-  cursor: pointer;
-  width: 8.1em;
-  height: 8.1em;
-}
-
-.profile-picture {
   flex-shrink: 0;
   position: relative;
   cursor: pointer;
@@ -1642,9 +1633,13 @@ abbr[title]:focus {
    TABELLE E PRENOTAZIONI  
 ========================================= */
 
-/* Focus per tutti i bottoni */
+/* Focus per tutti i bottoni e link interattivi */
 .btn-std:focus-visible,
 .btn-delete:focus-visible,
+.btn-submit:focus-visible,
+.btn-link:focus-visible,
+.btn-table:focus-visible,
+.back-button:focus-visible,
 button:focus-visible {
   outline: 2px solid #000000;
   outline-offset: 2px;
@@ -1838,7 +1833,7 @@ button:focus-visible {
   font-size: 0.9em;
   font-weight: 700;
   border-radius: 0.8em;
-  transition: all 0.3s ease;
+  transition: var(--transition-standard);
   box-shadow: 0 4px 10px rgba(18, 66, 92, 0.3);
   border: none;
 }
@@ -1847,11 +1842,6 @@ button:focus-visible {
   background-color: var(--btn-primary-hover);
   color: var(--white);
   box-shadow: 0 6px 15px rgba(8, 46, 65, 0.4);
-}
-
-.back-button:focus-visible {
-  outline: 2px solid #000000;
-  outline-offset: 2px;
 }
 
 .error-page {
@@ -2131,7 +2121,6 @@ button:focus-visible {
   z-index: 2;
 }
 
-
 .admin-tabs:has(.admin-tab[aria-selected="true"]) {
   border-radius: 1.2em 1.2em 0 0;
 }
@@ -2228,7 +2217,7 @@ button:focus-visible {
   background-color: var(--white);
   color: var(--black);
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: var(--transition-standard);
 }
 
 .table-container {
@@ -2345,7 +2334,7 @@ button:focus-visible {
   }
 }
 
-/* Layout mobile per tabella utenti sotto 1000px */
+/* Layout per tabella utenti sotto 850px */
 @media screen and (max-width: 850px) {
   #panel-utenti .table-container {
     box-shadow: none;

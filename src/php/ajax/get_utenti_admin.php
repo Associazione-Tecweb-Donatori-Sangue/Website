@@ -9,12 +9,13 @@ if (!isset($_SESSION['is_admin']) || $_SESSION['is_admin'] !== true) {
 }
 
 try {
-    // Query per ottenere tutti gli utenti con dati donatore (se esistono)
+    // Query per ottenere tutti gli utenti con dati donatore (se esistono), esclusi gli admin
     $sql = "SELECT u.id, u.username,
                    d.nome, d.cognome, d.email, d.gruppo_sanguigno,
                    CASE WHEN d.user_id IS NOT NULL THEN 'Sì' ELSE 'No' END as e_donatore
             FROM utenti u
             LEFT JOIN donatori d ON u.id = d.user_id
+            WHERE u.ruolo != 'admin'
             ORDER BY u.ruolo DESC, u.username ASC";
     
     $stmt = $pdo->prepare($sql);
