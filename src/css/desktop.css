@@ -2158,7 +2158,7 @@ button:focus-visible {
 }
 
 .admin-tabpanel {
-  padding: 2em;
+  padding: 1em;
   background: var(--white);
   border-radius: 0 0 1em 1em;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
@@ -2190,7 +2190,8 @@ button:focus-visible {
   height: fit-content;
 }
 
-.profile-admin label[for="sede-donazioni"] {
+.profile-admin label[for="sede-donazioni"],
+.profile-admin label[for="filtro-utenti"] {
   display: block;
   font-size: 1.1em;
   font-weight: 600;
@@ -2562,4 +2563,94 @@ dialog::backdrop {
 
 .dona-sidebar .profile-card-title:first-child {
     margin-top: 0;
+}
+
+
+/* Stile per logica di filtraggio dahsboard admin*/
+.th-sort-btn {
+    background: none;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: inherit;
+    font-weight: 600;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    white-space: nowrap;
+}
+
+.th-sort-btn:hover {
+    opacity: 0.75;
+}
+
+.th-sort-btn:focus-visible {
+    outline: 2px solid var(--white);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+
+/* Eye Icon pw */
+.password-field-container {
+    position: relative;
+    display: flex; 
+    align-items: stretch;
+    width: 100%;
+}
+
+.password-field-container input {
+    width: 100%;
+    padding: 10px 45px 10px 10px;
+    box-sizing: border-box;
+    line-height: 1.5;
+}
+
+
+#togglePassword, 
+#togglePasswordConfirm {
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 5;
+}
+
+#togglePassword svg, 
+#togglePasswordConfirm svg {
+    display: block;
+    width: 20px;
+    height: 20px;
+    margin: 0;
+    padding: 0;
+    opacity: 0.5;
+    transition: opacity 0.3s ease, stroke 0.3s ease;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.password-field-container input:focus + #togglePassword svg,
+.password-field-container input:focus + #togglePasswordConfirm svg {
+    opacity: 1;
+    stroke: #000000;
+}
+
+#togglePassword:hover svg,
+#togglePasswordConfirm:hover svg {
+    opacity: 1;
 }
