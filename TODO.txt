@@ -14,7 +14,7 @@ CONCORSO ACCATTIVANTE ACCESSIBILE:
 - aggiungere foto ai fondatori --> GN
 
 - aggiungere funzioni all'admin:
-    - gestione utenti: aggiungere la possibilità di ordinare la tabella per nome utente, ecc ecc. E la possibilità di filtrare per gruppo sanguigno, ecc ecc. --> 🔴
+    - gestione utenti: aggiungere la possibilità di ordinare la tabella per nome utente, ecc ecc. E la possibilità di filtrare per gruppo sanguigno, ecc ecc. --> diana
     - Statistiche: per visualizzare grafici: "Numero donazioni questo mese", "Gruppo sanguigno più diffuso tra gli iscritti", "Sede più frequentata". --> GN
 
 - relazione nuova --> 🔴
