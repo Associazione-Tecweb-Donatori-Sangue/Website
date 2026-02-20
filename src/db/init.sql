@@ -45,7 +45,13 @@ INSERT INTO `utenti` (`id`, `username`, `password`, `ruolo`, `foto_profilo`) VAL
 (7, 'minus', '$2a$12$2PsKyinVraG2t7M.lBr7Uu5KngM39A/imteBI9eXGxctYVGdrWsCG', 'user', NULL),
 (8, 'prova2', '$2a$12$bKho7vn7YrFQ7nqxwSJf9uNDPRzh7kHHpwZlDrTByB4I259g6pzRm', 'user', NULL),
 (9, 'nuovo', '$2a$12$Lg7yantqUdEPV2FArn//nO/xR3kS/35FDDh9vUWHZipyJPl5m/AwS', 'user', NULL),
-(10, 'xG42', '$2a$12$Gb3sLNnBKcjbfrOiNulrpeQdd/QNkrG.vpUOlE9Ueh3HaLfntQypW', 'user', NULL);
+(10, 'xG42', '$2a$12$Gb3sLNnBKcjbfrOiNulrpeQdd/QNkrG.vpUOlE9Ueh3HaLfntQypW', 'user', NULL),
+(11, 'mrossi', '$2a$12$2Be3oXoCO3GEKATIGAk.NukX05iMsAeqcZ9f/mUR5YpwqEM1dxPd2', 'user', NULL),
+(12, 'lskywalker', '$2a$12$B5fTt5qS.xs1sdbFaWoAy.MPGaRfHEDCSIoaP/WQ9MtyBAl/SZJ76', 'user', NULL),
+(13, 'gino', '$2a$12$X2xNK8sLwtb3j5W1zJpw8.jypXx8ZhR0X5WRzEmrlB0sEGkrLuKzu', 'user', NULL),
+(14, 'tonyyy', '$2a$12$l9qs/.wZPum3d4F8CigKHOeHyWNCK3f12FVlTYLbc.harDj.wwSzW', 'user', NULL),
+(15, 'igor', '$2a$12$3dkA0izOmUJRvM0eXsjVauZcVhFdD0ZX2FoXczSY2v2eeUMVe24d2', 'user', NULL),
+(16, 'julius', '$2a$12$6x2SUPhZI6K9jOtReQ70I.I7G/5V9gaM0wLwNjnmFBNJ0.AjwiWvW', 'user', NULL);
 
 -- --------------------------------------------------------
 
@@ -70,8 +76,13 @@ INSERT INTO `donatori` (`user_id`, `nome`, `cognome`, `data_nascita`, `luogo_nas
 (1, 'Maria', 'Rossi', '1990-05-15', 'Milano', 'RSSMRA90E15F205X', 'Via Roma 1, Milano', '+39 1234567890', 'user@user.com', 'A+', 'Femmina', 62.5),
 (4, 'Diana', 'Georgescu', '1983-07-15', 'Teolo', 'DGMRA90E15F205X', 'Via Cristoforo Colombo 4, Padova', '+39 1234567890', 'diana@gmail.com', 'A+', 'Femmina', 63.8),
 (7, 'Manuel', 'Dos Santos', '1999-01-21', 'Rio de Janeiro', 'MDSRA90E15F205X', 'Via Luzzatti 3, Padova', '+39 1234567890', 'manu@virgilio.com', '0-', 'Maschio', 74),
-(9, 'Lucia', 'Bianchi', '2007-11-5', 'Roma', 'LBCMRA90E15F205X', 'Via Piovega Sud 97, Villanova di Camposampiero', '+39 1234567890', 'luci@yahoo.it', 'AB+', 'Femmina', 80.5);
-
+(9, 'Lucia', 'Bianchi', '2007-11-05', 'Roma', 'LBCMRA90E15F205X', 'Via Piovega Sud 97, Villanova di Camposampiero', '+39 1234567890', 'luci@yahoo.it', 'AB+', 'Femmina', 80.5),
+(11, 'Marco', 'Rossi', '1993-04-10', 'Milano', 'RSSMRC93D10F205X', 'Via Torino 12, Milano', '+39 3311111111', 'mrossi@gmail.com', '0-', 'Maschio', 75),
+(12, 'Luca', 'Skywalker', '1995-08-22', 'Roma', 'SKWLCA95M22H501X', 'Via delle Stelle 5, Roma', '+39 3312222222', 'lskywalker@gmail.com', '0+', 'Maschio', 72),
+(13, 'Gino', 'Mino', '2003-02-14', 'Torino', 'MNOGNO03B14L219V', 'Via Gino 5, Torino', '+39 3313333333', 'gmail@gino.mino', 'B+', 'Maschio', 70),
+(14, 'Tony', 'Stark', '1990-06-05', 'Genova', 'STRTNY90H05D969X','Via Industria 44, Genova', '+39 3314444444', 'tstark@libero.com', 'AB-', 'Maschio', 82),
+(15, 'Igor', 'Miti', '1987-11-19', 'Padova', 'MTIGRI87S19G224K', 'Via Notte 11, Milano', '+39 3315555555', 'mitico@yahoo.com', 'A-', 'Maschio', 95),
+(16, 'Giulio', 'Cesare', '1970-12-07', 'Roma', 'CSRGLI70L12H501T','Via del Senato 23, Roma', '+39 3316666666', 'caesar1@gvirgilio.com', '0-', 'Maschio', 68);
 
 -- --------------------------------------------------------
 
