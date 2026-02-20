@@ -76,14 +76,37 @@
             <!-- Tab Panels -->
             <div id="panel-utenti" role="tabpanel" aria-labelledby="tab-utenti" hidden class="admin-tabpanel">
                 <h3 class="tertiary-title-centered">Gestione utenti</h3>
-                
-                <div id="utenti-wrapper">
-                    <div class="table-container">
-                        <!-- La tabella sarà popolata via JavaScript -->
-                    </div>
+
+              <div class="admin-controls">
+                <label for="filtro-utenti">Filtra per:</label>
+                <div class="select-locations-admin">
+                    <select id="filtro-utenti">
+                        <option value="tutti">Tutti</option>
+                        <optgroup label="Donatori">
+                            <option value="donatori">Donatori</option>
+                        </optgroup>
+                        <optgroup label="Sesso">
+                            <option value="maschio">Maschio</option>
+                            <option value="femmina">Femmina</option>
+                        </optgroup>
+                        <optgroup label="Gruppo sanguigno">
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="0+">0+</option>
+                            <option value="0-">0-</option>
+                        </optgroup>
+                    </select>
                 </div>
             </div>
 
+                <div id="utenti-wrapper">
+                    <div class="table-container"></div>
+                </div>
+            </div>
             <div id="panel-prenotazioni" role="tabpanel" aria-labelledby="tab-prenotazioni" hidden class="admin-tabpanel">
                 <h3 class="tertiary-title-centered">Riepilogo donazioni prenotate</h3>
                 
@@ -182,7 +205,7 @@
         <dialog id="dialog-elimina-utente" aria-labelledby="dialog-elimina-utente-title" aria-describedby="dialog-elimina-utente-desc" aria-modal="true">
             <div class="dialog-content">
                 <h2 id="dialog-elimina-utente-title">Conferma eliminazione utente</h2>
-                <p id="dialog-elimina-utente-desc">Sei sicuro di voler eliminare l'utente <strong id="elimina-utente-username"></strong>? Questa azione è irreversibile.</p>
+                <p id="dialog-elimina-utente-desc">Sei sicuro di voler eliminare l'utente <span id="elimina-utente-username"></span>? Questa azione è irreversibile.</p>
                 <div class="dialog-buttons">
                     <form action="../actions/cancellaUtente.php" method="POST" class="dialog-form" id="form-elimina-utente">
                         <input type="hidden" name="id_utente" id="hidden-id-utente" value="">
