@@ -33,27 +33,40 @@
 
         <main id="content" class="main-standard">
             <form action="registrazione.php" method="post">
-                <fieldset>  
-                    <legend>Dati di Accesso</legend>
-                    [messaggioErrore]
-                    <div> 
-                        <label for="username"><span lang="en">Username</span>: <span class="obligatory">(obbligatorio)</span></label>
-                        <input type="text" name="username" id="username" minlength="4" maxlength="50" required autocomplete="username" aria-describedby="info-user"> 
-                        <small id="info-user"> Esempio: supermario (minimo 4 caratteri)</small>
-                    </div>
-                    <div>
-                        <label for="password"><span lang="en">Password</span>: <span class="obligatory">(obbligatoria)</span></label>
-                        <input type="password" name="password" id="password" minlength="4" maxlength="50" required autocomplete="new-password" aria-describedby="info-pass"> 
-                        <small id="info-pass">Esempio: Password1! (minimo 4 caratteri)</small>
-                    </div>
-                    <div>
-                        <label for="password_confirm">Conferma <span lang="en">Password</span>: <span class="obligatory">(obbligatoria)</span></label>
-                        <input type="password" name="password_confirm" id="password_confirm" minlength="4" maxlength="50" required>
-                    </div>
-                    <input type="submit" value="Registrati" class="btn-submit">
-                </fieldset>
-            </form>
+    <fieldset>  
+        <legend>Dati di Accesso</legend>
+        [messaggioErrore]
+        
+        <div> 
+            <label for="username"><span lang="en">Username</span>: <span class="obligatory">(obbligatorio)</span></label>
+            <input type="text" name="username" id="username" minlength="4" maxlength="50" required autocomplete="username" aria-describedby="info-user"> 
+            <small id="info-user"> Esempio: supermario (minimo 4 caratteri)</small>
+        </div>
 
+        <div>
+            <label for="password"><span lang="en">Password</span>: <span class="obligatory">(obbligatoria)</span></label>
+            <div class="password-field-container">
+                <input type="password" name="password" id="password" minlength="4" maxlength="50" required autocomplete="new-password" aria-describedby="info-pass"> 
+                <button type="button" id="togglePassword" aria-label="Mostra password">
+                    <span id="eye-icon-container"></span>
+                </button>
+            </div>
+            <small id="info-pass">Esempio: Password1! (minimo 4 caratteri)</small>
+        </div>
+
+        <div>
+            <label for="password_confirm">Conferma <span lang="en">Password</span>: <span class="obligatory">(obbligatoria)</span></label>
+            <div class="password-field-container">
+                <input type="password" name="password_confirm" id="password_confirm" minlength="4" maxlength="50" required autocomplete="new-password">
+                <button type="button" id="togglePasswordConfirm" aria-label="Mostra conferma password">
+                    <span id="eye-icon-container-confirm"></span>
+                </button>
+            </div>
+        </div>
+
+        <input type="submit" value="Registrati" class="btn-submit">
+    </fieldset>
+</form>
             <p class="text-standard">
                 Hai già un <span lang="en">account</span>? Vai al <a href="login.php"><span lang="en">Login</span></a>.
             </p>

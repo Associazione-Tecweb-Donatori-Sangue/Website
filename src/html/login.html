@@ -51,16 +51,22 @@
                     </div>
                     <div>
                         <label for="password"><span lang="en">Password</span>:</label>
-                        <input 
-                            type="password" 
-                            name="password" 
-                            id="password"
-                            minlength="4"
-                            maxlength="50"
-                            required
-                            autocomplete="current-password"
-                            aria-describedby="info-pass"> 
-                        <small id="info-pass">Deve contenere almeno 4 caratteri</small>
+                        <div class="password-field-container">
+                            <input 
+                                type="password" 
+                                name="password" 
+                                id="password"
+                                minlength="4"
+                                maxlength="50"
+                                required
+                                autocomplete="current-password"
+                                aria-describedby="info-pass"> 
+
+                            <button type="button" id="togglePassword" aria-label="Mostra password">
+                                <span id="eye-icon-container"></span>
+                            </button>
+                        </div>
+                            <small id="info-pass">Deve contenere almeno 4 caratteri</small>
                     </div>
                     <input type="submit" value="Accedi" class="btn-submit">
                 </fieldset>
