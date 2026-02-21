@@ -132,8 +132,45 @@
             </div>
 
             <div id="panel-statistiche" role="tabpanel" aria-labelledby="tab-statistiche" hidden class="admin-tabpanel">
-                <h3 class="tertiary-title-centered">Statistiche</h3>
-                <p class="text-standard">Sezione in fase di sviluppo. Le statistiche saranno disponibili prossimamente.</p>
+                <h3 class="tertiary-title-centered">Statistiche dell'Associazione</h3>
+                
+                <div class="stats-grid">
+                    <!-- Card 1: Donazioni Mese -->
+                    <div class="stat-card">
+                        <h4>Donazioni questo mese</h4>
+                        <div class="stat-value" id="stat-donazioni-mese">-</div>
+                        <p class="stat-trend">Dati aggiornati in tempo reale</p>
+                    </div>
+
+                    <!-- Card 2: Donazioni Totali -->
+                    <div class="stat-card">
+                        <h4>Donazioni totali</h4>
+                        <div class="stat-value" id="stat-donazioni-totali">-</div>
+                        <p class="stat-trend">Dalla fondazione dell'associazione</p>
+                    </div>
+
+                    <!-- Card 3: Sede più frequentata -->
+                    <div class="stat-card">
+                        <h4>Sede più frequentata</h4>
+                        <div class="stat-value" id="stat-sede-nome">-</div>
+                        <p class="stat-sub"><span id="stat-sede-count">0</span> prenotazioni totali</p>
+                    </div>
+
+                    <!-- Card 4: Orario più frequentato -->
+                    <div class="stat-card">
+                        <h4>Orario più frequentato</h4>
+                        <div class="stat-value" id="stat-orario-top">-</div>
+                        <p class="stat-sub"><span id="stat-orario-count">0</span> prenotazioni in questo orario</p>
+                    </div>
+
+                    <!-- Card 5: Gruppi Sanguigni (occupa tutta la larghezza) -->
+                    <div class="stat-card full-width">
+                        <h4>Distribuzione Gruppi Sanguigni</h4>
+                        <div class="chart-container" id="stat-chart-container">
+                            <p>Caricamento dati...</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
         

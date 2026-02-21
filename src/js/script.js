@@ -262,11 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const selectSede = document.getElementById('sede-donazioni');
 
     if (isAdminPage) {
-        // Inizializza gestione tab
         initAdminTabs();
-        
-        // Carica prenotazioni solo quando si apre la tab corrispondente
-        // Non più caricamento automatico all'apertura pagina
         
         if (selectSede) {
             selectSede.addEventListener('change', function() {
@@ -274,8 +270,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         document.getElementById('filtro-utenti')?.addEventListener('change', (e) => {
-        caricaUtentiAdmin(e.target.value);
-    });
+            caricaUtentiAdmin(e.target.value);
+        });
     }
 
     // GESTIONE DIALOG ELIMINA PROFILO
@@ -765,6 +761,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Caricamento statistiche admin
+    if (document.getElementById('panel-statistiche')) {
+        loadAdminStats();
+    }
 });
 
 /* =========================================
@@ -875,6 +876,8 @@ function initAdminTabs() {
             caricaPrenotazioniAdmin(sedeSelezionata);
         } else if (targetPanelId === 'panel-utenti') {
             caricaUtentiAdmin();
+        } else if (targetPanelId === 'panel-statistiche') {
+            loadAdminStats(); 
         }
     }
 
@@ -933,6 +936,68 @@ window.addEventListener("resize", () => {
   }, 400);
 });
 
+/* =========================================
+   GESTIONE STATISTICHE ADMIN
+========================================= */
+
+async function loadAdminStats() {
+    try {
+        const response = await fetch('/ggiora/src/php/actions/get_stats.php'); 
+        
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        console.log("Dati statistiche:", data); 
+
+        // 1. Donazioni questo mese
+        const donazioniEl = document.getElementById('stat-donazioni-mese');
+        if (donazioniEl) donazioniEl.textContent = data.donazioni_mese;
+
+        // 2. Donazioni totali
+        const donazioniTotaliEl = document.getElementById('stat-donazioni-totali');
+        if (donazioniTotaliEl) donazioniTotaliEl.textContent = data.donazioni_totali;
+
+        // 3. Sede più frequentata
+        const sedeNomeEl = document.getElementById('stat-sede-nome');
+        const sedeCountEl = document.getElementById('stat-sede-count');
+        if (sedeNomeEl) sedeNomeEl.textContent = data.sede_top !== 'N/D' ? data.sede_top : 'Nessuna prenotazione';
+        if (sedeCountEl) sedeCountEl.textContent = data.sede_top_count;
+
+        // 3. Orario più frequentato
+        const orarioEl = document.getElementById('stat-orario-top');
+        const orarioCountEl = document.getElementById('stat-orario-count');
+        if (orarioEl) orarioEl.textContent = data.orario_top !== 'N/D' ? data.orario_top : '-';
+        if (orarioCountEl) orarioCountEl.textContent = data.orario_top_count;
+
+        // 4. Grafico Gruppi Sanguigni
+        const chartContainer = document.getElementById('stat-chart-container');
+        if (chartContainer && data.gruppi.length > 0) {
+            chartContainer.innerHTML = '';
+            data.gruppi.forEach(gruppo => {
+                const row = document.createElement('div');
+                row.className = 'chart-row';
+                row.innerHTML = `
+                    <span class="chart-label">${gruppo.label || '?'}</span>
+                    <div class="chart-bar-bg" role="progressbar" aria-valuenow="${gruppo.percent}" aria-valuemin="0" aria-valuemax="100" aria-label="Percentuale ${gruppo.label}">
+                        <div class="chart-bar" style="width: ${gruppo.percent}%;"></div>
+                    </div>
+                    <span class="chart-value">${gruppo.percent}%</span>
+                `;
+                chartContainer.appendChild(row);
+            });
+        } else if (chartContainer) {
+            chartContainer.innerHTML = '<p>Nessun dato sui gruppi sanguigni disponibile.</p>';
+        }
+
+    } catch (error) {
+        console.error('Errore caricamento statistiche:', error);
+        const chartContainer = document.getElementById('stat-chart-container');
+        if (chartContainer) chartContainer.innerHTML = '<p class="error-msg">Errore nel caricamento dei dati.</p>';
+    }
+}
+
 
 /* =========================================
    LOGICA MOSTRA NASCONDI PW
@@ -940,7 +1005,7 @@ window.addEventListener("resize", () => {
 
 document.addEventListener('DOMContentLoaded', function() {
     const eyeOpen = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-password"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>`;
-    const eyeClosed = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-password"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
+    const eyeClosed = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon-password"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c-7 0-11 8-11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>`;
 
     const togglePassword = document.querySelector('#togglePassword');
     const passwordInput = document.querySelector('#password');

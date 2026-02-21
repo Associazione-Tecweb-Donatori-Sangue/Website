@@ -15,7 +15,7 @@ CONCORSO ACCATTIVANTE ACCESSIBILE:
 
 - aggiungere funzioni all'admin:
     - gestione utenti: aggiungere la possibilità di ordinare la tabella per nome utente, ecc ecc. E la possibilità di filtrare per gruppo sanguigno, ecc ecc. --> diana
-    - Statistiche: per visualizzare grafici: "Numero donazioni questo mese", "Gruppo sanguigno più diffuso tra gli iscritti", "Sede più frequentata". --> GN
+    - Statistiche: per visualizzare grafici: "Numero donazioni questo mese", "Gruppo sanguigno più diffuso tra gli iscritti", "Sede più frequentata". --> GN, rimane da sistemare mobile.css
 
 - relazione nuova --> 🔴
 
