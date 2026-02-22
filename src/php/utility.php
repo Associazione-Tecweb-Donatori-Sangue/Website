@@ -316,18 +316,32 @@ function costruisciPagina($contentHTML, $breadcrumb, $paginaAttiva = "") {
         $header = str_replace('[BREADCRUMB]', $breadcrumb, $header);
     }
 
-    // 5. Gestione "currentLink" nel menu
-    if ($paginaAttiva != "") {
+    // 5. Gestione "currentLink" e "visited" nel menu
+  if ($paginaAttiva != "") {
+    if ($paginaAttiva == "index.php") {
+        $pathDaCercare = "/ggiora/src/index.php";
+    } else {
         $pathDaCercare = "/ggiora/src/php/pages/" . $paginaAttiva;
-        if ($paginaAttiva == "index.php") {
-            $pathDaCercare = "/ggiora/src/index.php";
-        }
-
-        $find = 'href="'.$pathDaCercare.'"';
-        $replace = 'id="currentLink" aria-current="page"';
-        $header = str_replace($find, $replace, $header);
     }
 
+    if (!isset($_SESSION['pagine_visitate'])) {
+        $_SESSION['pagine_visitate'] = [];
+    }
+    if (!in_array($pathDaCercare, $_SESSION['pagine_visitate'])) {
+        $_SESSION['pagine_visitate'][] = $pathDaCercare;
+    }
+
+    $find = 'href="' . $pathDaCercare . '"';
+    $replace = 'id="currentLink" aria-current="page"';
+    $header = str_replace($find, $replace, $header);
+
+    foreach ($_SESSION['pagine_visitate'] as $pathVisitato) {
+        if ($pathVisitato === $pathDaCercare) continue;
+        $find = 'href="' . $pathVisitato . '"';
+        $replace = 'href="' . $pathVisitato . '" class="visited"';
+        $header = str_replace($find, $replace, $header);
+    }
+}
     // 6. Unisco tutto
     $paginaFinale = str_replace('[HEADER]', $header, $contentHTML);
     $paginaFinale = str_replace('[FOOTER]', $footer, $paginaFinale);
