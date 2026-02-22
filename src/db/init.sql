@@ -82,7 +82,7 @@ INSERT INTO `donatori` (`user_id`, `nome`, `cognome`, `data_nascita`, `luogo_nas
 (13, 'Gino', 'Mino', '2003-02-14', 'Torino', 'MNOGNO03B14L219V', 'Via Gino 5, Torino', '+39 3313333333', 'gmail@gino.mino', 'B+', 'Maschio', 70),
 (14, 'Tony', 'Stark', '1990-06-05', 'Genova', 'STRTNY90H05D969X','Via Industria 44, Genova', '+39 3314444444', 'tstark@libero.com', 'AB-', 'Maschio', 82),
 (15, 'Igor', 'Miti', '1987-11-19', 'Padova', 'MTIGRI87S19G224K', 'Via Notte 11, Milano', '+39 3315555555', 'mitico@yahoo.com', 'A-', 'Maschio', 95),
-(16, 'Giulio', 'Cesare', '1970-12-07', 'Roma', 'CSRGLI70L12H501T','Via del Senato 23, Roma', '+39 3316666666', 'caesar1@gvirgilio.com', '0-', 'Maschio', 68);
+(16, 'Giulio', 'Cesare', '1970-12-07', 'Roma', 'CSRGLI70L12H501T','Via del Senato 23, Roma', '+39 3316666666', 'caesar1@virgilio.com', '0-', 'Maschio', 68);
 
 -- --------------------------------------------------------
 
