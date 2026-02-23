@@ -1006,16 +1006,6 @@ async function loadAdminStats() {
             const r = 90;
             let startAngle = -Math.PI / 2;
             
-            const colors = [
-                '#12425C', '#C1121F', '#2E7D32', '#E65100',
-                '#4A148C', '#00695C', '#827717', '#880E4F'
-            ];
-            // Colore etichetta: scuro su fette a basso contrasto con bianco (#E65100, #827717)
-            const labelColors = [
-                '#ffffff', '#ffffff', '#ffffff', '#222222',
-                '#ffffff', '#ffffff', '#222222', '#ffffff'
-            ];
-
             let slices = '';
             let total = gruppiFiltered.reduce((sum, g) => sum + g.count, 0);
 
@@ -1035,8 +1025,6 @@ async function loadAdminStats() {
                 const lx = cx + labelR * Math.cos(midAngle);
                 const ly = cy + labelR * Math.sin(midAngle);
 
-                const color = colors[i % colors.length];
-
                 slices += `
                     <path 
                         d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${largeArc},1 ${x2},${y2} Z"
@@ -1055,9 +1043,8 @@ async function loadAdminStats() {
                         font-size="11"
                         font-weight="700"
                         font-family="Jost, Arial, sans-serif"
-                        fill="${labelColors[i % labelColors.length]}"
                         aria-hidden="true"
-                        class="pie-slice-label"
+                        class="pie-slice-label pie-slice-label-${i}"
                     >${gruppo.percent > 8 ? gruppo.label : ''}</text>
                 `;
 

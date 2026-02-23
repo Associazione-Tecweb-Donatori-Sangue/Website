@@ -2769,6 +2769,12 @@ dialog::backdrop {
   fill: white;
 }
 
+/* Fette a basso contrasto con bianco: testo scuro */
+.pie-slice-label-3,
+.pie-slice-label-6 {
+  fill: #222222;
+}
+
 .pie-slice-0 { fill: #12425C; }
 .pie-slice-1 { fill: #C1121F; }
 .pie-slice-2 { fill: #2E7D32; }
