@@ -955,23 +955,43 @@ async function loadAdminStats() {
         const donazioniEl = document.getElementById('stat-donazioni-mese');
         if (donazioniEl) donazioniEl.textContent = data.donazioni_mese;
 
-        // 2. Donazioni totali
+        // 2. Donatori totali
+        const donatoriTotaliEl = document.getElementById('stat-donatori-totali');
+        if (donatoriTotaliEl) donatoriTotaliEl.textContent = data.donatori_totali;
+
+        // 3. Donazioni totali
         const donazioniTotaliEl = document.getElementById('stat-donazioni-totali');
         if (donazioniTotaliEl) donazioniTotaliEl.textContent = data.donazioni_totali;
 
-        // 3. Sede più frequentata
+        // 3. Prenotazioni future
+        const prenotazioniFutureEl = document.getElementById('stat-prenotazioni-future');
+        if (prenotazioniFutureEl) prenotazioniFutureEl.textContent = data.prenotazioni_future;
+
+        // 4. Sede più frequentata
         const sedeNomeEl = document.getElementById('stat-sede-nome');
         const sedeCountEl = document.getElementById('stat-sede-count');
         if (sedeNomeEl) sedeNomeEl.textContent = data.sede_top !== 'N/D' ? data.sede_top : 'Nessuna prenotazione';
         if (sedeCountEl) sedeCountEl.textContent = data.sede_top_count;
 
-        // 3. Orario più frequentato
+        // 5. Sede meno frequentata
+        const sedeNomeMinEl = document.getElementById('stat-sede-nome-min');
+        const sedeCountMinEl = document.getElementById('stat-sede-count-min');
+        if (sedeNomeMinEl) sedeNomeMinEl.textContent = data.sede_min !== 'N/D' ? data.sede_min : 'Nessuna prenotazione';
+        if (sedeCountMinEl) sedeCountMinEl.textContent = data.sede_min_count;
+
+        // 6. Orario più frequentato
         const orarioEl = document.getElementById('stat-orario-top');
         const orarioCountEl = document.getElementById('stat-orario-count');
         if (orarioEl) orarioEl.textContent = data.orario_top !== 'N/D' ? data.orario_top : '-';
         if (orarioCountEl) orarioCountEl.textContent = data.orario_top_count;
 
-        // 4. Grafico a Torta Gruppi Sanguigni
+        // 7. Tipo di donazione più scelto
+        const tipoDonazioneEl = document.getElementById('stat-tipo-donazione');
+        const tipoCountEl = document.getElementById('stat-tipo-count');
+        if (tipoDonazioneEl) tipoDonazioneEl.textContent = data.tipo_donazione_top !== 'N/D' ? data.tipo_donazione_top : '-';
+        if (tipoCountEl) tipoCountEl.textContent = data.tipo_donazione_count;
+
+        // 8. Grafico a Torta Gruppi Sanguigni
         const chartContainer = document.getElementById('stat-chart-container');
         if (chartContainer && data.gruppi.length > 0) {
             chartContainer.innerHTML = '';
@@ -989,6 +1009,11 @@ async function loadAdminStats() {
             const colors = [
                 '#12425C', '#C1121F', '#2E7D32', '#E65100',
                 '#4A148C', '#00695C', '#827717', '#880E4F'
+            ];
+            // Colore etichetta: scuro su fette a basso contrasto con bianco (#E65100, #827717)
+            const labelColors = [
+                '#ffffff', '#ffffff', '#ffffff', '#222222',
+                '#ffffff', '#ffffff', '#222222', '#ffffff'
             ];
 
             let slices = '';
@@ -1030,6 +1055,7 @@ async function loadAdminStats() {
                         font-size="11"
                         font-weight="700"
                         font-family="Jost, Arial, sans-serif"
+                        fill="${labelColors[i % labelColors.length]}"
                         aria-hidden="true"
                         class="pie-slice-label"
                     >${gruppo.percent > 8 ? gruppo.label : ''}</text>

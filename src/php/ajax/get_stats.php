@@ -8,8 +8,14 @@ header('Content-Type: application/json');
 $response = [
     'donazioni_mese' => 0,
     'donazioni_totali' => 0,
+    'donatori_totali' => 0,
+    'prenotazioni_future' => 0,
     'sede_top' => 'N/D',
     'sede_top_count' => 0,
+    'sede_min' => 'N/D',
+    'sede_min_count' => 0,
+    'tipo_donazione_top' => 'N/D',
+    'tipo_donazione_count' => 0,
     'gruppi' => [],
     'orario_top' => 'N/D',
     'orario_top_count' => 0
@@ -35,7 +41,23 @@ try {
     $stmt->execute();
     $response['donazioni_totali'] = (int)$stmt->fetchColumn();
 
-    // 3. Sede più frequentata
+    // 3. Prenotazioni future totali
+    $stmt = $pdo->prepare("
+        SELECT COUNT(*)
+        FROM lista_prenotazioni
+        WHERE data_prenotazione > CURRENT_DATE()
+    ");
+    $stmt->execute();
+    $response['prenotazioni_future'] = (int)$stmt->fetchColumn();
+
+    // 4. Donatori totali registrati
+    $stmt = $pdo->prepare("
+        SELECT COUNT(*) FROM donatori
+    ");
+    $stmt->execute();
+    $response['donatori_totali'] = (int)$stmt->fetchColumn();
+
+    // 5. Sede più frequentata
     $stmt = $pdo->prepare("
         SELECT s.nome, COUNT(*) as cnt 
         FROM lista_prenotazioni lp
@@ -51,7 +73,38 @@ try {
         $response['sede_top_count'] = (int)$row['cnt'];
     }
 
-    // 4. Distribuzione gruppi sanguigni nelle DONAZIONI EFFETTUATE (passate)
+    // 5. Sede meno frequentata
+    $stmt = $pdo->prepare("
+        SELECT s.nome, COUNT(*) as cnt 
+        FROM lista_prenotazioni lp
+        JOIN sedi s ON lp.sede_id = s.id
+        GROUP BY lp.sede_id, s.nome 
+        ORDER BY cnt ASC 
+        LIMIT 1
+    ");
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($row) {
+        $response['sede_min'] = $row['nome'];
+        $response['sede_min_count'] = (int)$row['cnt'];
+    }
+
+    // 7. Tipo di donazione più scelto
+    $stmt = $pdo->prepare("
+        SELECT tipo_donazione, COUNT(*) as cnt
+        FROM lista_prenotazioni
+        GROUP BY tipo_donazione
+        ORDER BY cnt DESC
+        LIMIT 1
+    ");
+    $stmt->execute();
+    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+    if ($row) {
+        $response['tipo_donazione_top'] = $row['tipo_donazione'];
+        $response['tipo_donazione_count'] = (int)$row['cnt'];
+    }
+
+    // 8. Distribuzione gruppi sanguigni nelle DONAZIONI EFFETTUATE (passate)
     //    JOIN tra lista_prenotazioni e donatori per ottenere il gruppo del donatore
     $stmt = $pdo->prepare("
         SELECT d.gruppo_sanguigno, COUNT(*) as cnt

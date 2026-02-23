@@ -138,35 +138,63 @@
                     <!-- Card 1: Donazioni Mese -->
                     <div class="stat-card">
                         <h4>Donazioni questo mese</h4>
-                        <div class="stat-value" id="stat-donazioni-mese">-</div>
+                        <div class="stat-value" id="stat-donazioni-mese" aria-live="polite" aria-atomic="true">-</div>
                         <p class="stat-trend">Dati aggiornati in tempo reale</p>
                     </div>
 
-                    <!-- Card 2: Donazioni Totali -->
+                    <!-- Card 2: Donatori totali -->
+                    <div class="stat-card">
+                        <h4>Donatori totali</h4>
+                        <div class="stat-value" id="stat-donatori-totali" aria-live="polite" aria-atomic="true">-</div>
+                        <p class="stat-trend">Dati aggiornati in tempo reale</p>
+                    </div>
+
+                    <!-- Card 3: Donazioni Totali -->
                     <div class="stat-card">
                         <h4>Donazioni totali</h4>
-                        <div class="stat-value" id="stat-donazioni-totali">-</div>
+                        <div class="stat-value" id="stat-donazioni-totali" aria-live="polite" aria-atomic="true">-</div>
                         <p class="stat-trend">Dalla fondazione dell'associazione</p>
                     </div>
 
-                    <!-- Card 3: Sede più frequentata -->
+                    <!-- Card 4: Prenotazioni future totali -->
                     <div class="stat-card">
-                        <h4>Sede più frequentata</h4>
-                        <div class="stat-value" id="stat-sede-nome">-</div>
-                        <p class="stat-sub"><span id="stat-sede-count">0</span> prenotazioni totali</p>
+                        <h4>Prenotazioni future totali</h4>
+                        <div class="stat-value" id="stat-prenotazioni-future" aria-live="polite" aria-atomic="true">-</div>
+                        <p class="stat-trend">Prenotazioni future totali</p>
                     </div>
 
-                    <!-- Card 4: Orario più frequentato -->
+                    <!-- Card 5: Sede più frequentata -->
+                    <div class="stat-card">
+                        <h4>Sede più frequentata</h4>
+                        <div class="stat-value" id="stat-sede-nome" aria-live="polite" aria-atomic="true">-</div>
+                        <p class="stat-sub"><span id="stat-sede-count">0</span> prenotazioni totali</p>
+                    </div>
+                    
+                    <!-- Card 6: Sede meno frequentata -->
+                    <div class="stat-card">
+                        <h4>Sede meno frequentata</h4>
+                        <div class="stat-value" id="stat-sede-nome-min" aria-live="polite" aria-atomic="true">-</div>
+                        <p class="stat-sub"><span id="stat-sede-count-min">0</span> prenotazioni totali</p>
+                    </div>
+
+                    <!-- Card 7: Orario più frequentato -->
                     <div class="stat-card">
                         <h4>Orario più frequentato</h4>
-                        <div class="stat-value" id="stat-orario-top">-</div>
+                        <div class="stat-value" id="stat-orario-top" aria-live="polite" aria-atomic="true">-</div>
                         <p class="stat-sub"><span id="stat-orario-count">0</span> prenotazioni in questo orario</p>
                     </div>
 
-                    <!-- Card 5: Gruppi Sanguigni (occupa tutta la larghezza) -->
+                    <!-- Card 8: Tipo di donazione -->
+                    <div class="stat-card">
+                        <h4>Tipo di donazione più scelto</h4>
+                        <div class="stat-value" id="stat-tipo-donazione" aria-live="polite" aria-atomic="true">-</div>
+                        <p class="stat-sub"><span id="stat-tipo-count">0</span> prenotazioni di questo tipo</p>
+                    </div>
+
+                    <!-- Card 9: Gruppi Sanguigni (occupa tutta la larghezza) -->
                     <div class="stat-card full-width">
                         <h4>Distribuzione Gruppi Sanguigni</h4>
-                        <div class="chart-container" id="stat-chart-container">
+                        <div class="chart-container" id="stat-chart-container" aria-live="polite" aria-atomic="true">
                             <p>Caricamento dati...</p>
                         </div>
                     </div>

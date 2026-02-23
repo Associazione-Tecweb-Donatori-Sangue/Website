@@ -165,11 +165,6 @@ header{
   cursor: default;
 }
 
-#menu ul li a.visited {
-    font-style: italic;
-}
-
-
 #logo {
   height: 4.8em; 
   width: auto;

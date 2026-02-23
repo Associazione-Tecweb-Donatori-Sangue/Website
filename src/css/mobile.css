@@ -812,3 +812,49 @@ body.error-background {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   margin-top: 0;
 }
+
+/* ========================================
+   STATISTICHE ADMIN
+======================================== */
+
+.stats-grid {
+  grid-template-columns: 1fr;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.stat-card {
+  padding: 1.2em;
+}
+
+.stat-card.full-width {
+  grid-column: 1;
+}
+
+.stat-value {
+  font-size: 2.2em;
+}
+
+.pie-chart-wrapper {
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2em;
+  padding: 0.5em 0;
+}
+
+.pie-chart-svg {
+  width: 180px;
+  height: 180px;
+}
+
+.pie-legend {
+  width: 100%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.4em 1em;
+  justify-content: center;
+}
+
+.pie-legend-item {
+  margin-bottom: 0;
+}
