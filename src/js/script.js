@@ -942,7 +942,7 @@ window.addEventListener("resize", () => {
 
 async function loadAdminStats() {
     try {
-        const response = await fetch('/ggiora/src/php/actions/get_stats.php'); 
+        const response = await fetch('/ggiora/src/php/ajax/get_stats.php'); 
         
         if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`);
