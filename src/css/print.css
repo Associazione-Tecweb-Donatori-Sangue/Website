@@ -26,10 +26,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: relative;
     width: 100%;
     padding: 8px 25px;
     border-bottom: 1px solid #000;
@@ -65,7 +62,7 @@
     visibility: visible;
     width: 100%;
     padding: 8px 0;
-    margin: 45px 0 15px 0;
+    margin: 10px 0 15px 0;
     border-bottom: 1px solid #000;
     border-radius: 0;
     text-align: left;
@@ -1004,14 +1001,14 @@
     flex-shrink: 0;
   }
 
-  .pie-color-0 { background-color: #12425C; fill: #12425C; }
-  .pie-color-1 { background-color: #C1121F; fill: #C1121F; }
-  .pie-color-2 { background-color: #2E7D32; fill: #2E7D32; }
-  .pie-color-3 { background-color: #E65100; fill: #E65100; } /*3.79*/
-  .pie-color-4 { background-color: #4A148C; fill: #4A148C; }
-  .pie-color-5 { background-color: #00695C; fill: #00695C; }
-  .pie-color-6 { background-color: #827717; fill: #827717; }
-  .pie-color-7 { background-color: #880E4F; fill: #880E4F; }
+  .pie-color-0 { background-color: #12425C; }
+  .pie-color-1 { background-color: #C1121F; }
+  .pie-color-2 { background-color: #2E7D32; }
+  .pie-color-3 { background-color: #E65100; }
+  .pie-color-4 { background-color: #4A148C; }
+  .pie-color-5 { background-color: #00695C; }
+  .pie-color-6 { background-color: #827717; }
+  .pie-color-7 { background-color: #880E4F; }
   .pie-slice-label { fill: white; }
 
   /* Messaggi di stato */
@@ -1060,7 +1057,7 @@
   }
 
   /* resetto posizioni strane */
-  * {
+  *:not(#print-site-title):not(#print-site-title h1::before):not(#landing-title h1):not(#title-standard h1):not(#landing-title h1::before):not(#title-standard h1::before) {
     position: static;
     float: none;
   }

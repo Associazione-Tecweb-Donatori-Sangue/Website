@@ -1,13 +1,9 @@
 DA SISTEMARE
 ---HTML----
-- p dentro dd --> 🔴
 - Caption tabelle --> 🔴
 ----CSS----
 - Titolo stampa --> MDP
 - Link visitati in tutti i siti --> 🔴
 - I meta ????
-
-CONCORSO ACCATTIVANTE ACCESSIBILE:
-- aggiungere foto ai fondatori --> GN
 
 - relazione nuova --> 🔴
