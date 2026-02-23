@@ -455,6 +455,36 @@ footer{
     font-size: 1em;
 }
 
+.data-list-compact div {
+    grid-template-columns: 120px 1fr;
+    gap: 0.5em;
+    padding: 0.7em 0;
+}
+
+.data-list-compact dt {
+    font-size: 0.75em;
+}
+
+.data-list-compact dd {
+    font-size: 0.95em;
+}
+
+@media screen and (max-width: 400px) {
+    .data-list-compact div {
+        grid-template-columns: 1fr;
+        gap: 0.3em;
+    }
+    
+    .data-list-compact dt {
+        font-size: 0.75em;
+    }
+    
+    .data-list-compact dd {
+        font-size: 0.95em;
+        padding-left: 0.5em;
+    }
+}
+
 /* ------------------- */
 /*  ABOUT US / FAQ     */
 /* ------------------- */

@@ -2,7 +2,6 @@ DA SISTEMARE
 ---HTML----
 - Caption tabelle --> 🔴
 ----CSS----
-- Titolo stampa --> MDP
 - Link visitati in tutti i siti --> 🔴
 - I meta ????
 
