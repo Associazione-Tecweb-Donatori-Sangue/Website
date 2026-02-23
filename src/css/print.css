@@ -1,18 +1,12 @@
 
   /*PRINT.CSS - Foglio di stile per la stampa*/
 
-  /*  TODO
-    -dona ora da non loggato fa schifo
-  */
-  
-
-
 @media print {
 
   /*Impostazioni pagina default*/
   @page {
     size: A4 portrait;
-    margin: 20px 25px 20px 25px;
+    margin: 90px 25px 20px 25px;
   }
 
   * {
@@ -24,6 +18,11 @@
     box-shadow: none;
     text-shadow: none;
     color: #000000
+  }
+
+  * {
+  position: static;
+  float: none;
   }
 
   html, body {
@@ -115,8 +114,9 @@
     display: block;
     visibility: visible;
     width: 100%;
+    margin-top: 0px;
     padding: 8px 0;
-    margin: 0 0 15px 0;
+    margin-bottom: 15px;
     border-bottom: 1px solid #000;
     border-radius: 0;
     text-align: left;
@@ -133,11 +133,62 @@
     font-weight: bold;
   }
 
+  #print-site-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    padding: 8px 25px;
+    border-bottom: 1px solid #000;
+    background: #fff;
+    z-index: 999;
+  }
+
+  #print-site-title h1 {
+    text-align: left;
+    margin: 0;
+    font-size: 22px;
+    line-height: 26px;
+    padding-left: 36px;
+  }
+
+  #print-site-title h2 {
+    text-align: left;
+    margin: 0;
+    font-size: 16px;
+    line-height: 26px;
+    padding-left: 0;
+  }
+
+  #print-site-title h1::before {
+    content: "";
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background: url("../images/logo.jpg") no-repeat center center;
+    background-size: contain;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  #print-site-title h1 abbr[title]::after {
+    content: "";
+  }
+
   /* titoli */
   #landing-title {
     height: auto;
     width: 100%;
     padding: 20px 0;
+    margin-top: 0px;
     border-bottom: 2px solid #000;
   }
 
@@ -165,9 +216,9 @@
   #title-standard {
     display: block;
     text-align: left;
+    margin-top: 0px;
     margin-bottom: 20px;
     padding-bottom: 10px;
-    margin: 0;
     border-bottom: 2px solid #000;
   }
 
@@ -445,6 +496,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
+    margin-top: 70px;
     padding: 15px 0;
     background: #fff;
   }

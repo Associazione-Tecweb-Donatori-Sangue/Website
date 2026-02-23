@@ -1,10 +1,9 @@
 DA SISTEMARE
 ---HTML----
-- Headings --> 🔴
 - Il p dentro dd  ???
 - Caption tabelle --> 🔴
 ----CSS----
-- Titolo stampa --> 🔴
+- Titolo stampa --> MDP
 - Link visitati in tutti i siti --> 🔴
 - I meta ????
 ------ACCESSIBILITA------
