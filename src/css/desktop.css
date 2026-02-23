@@ -874,6 +874,19 @@ footer {
   font-weight: 600;
   color: var(--card-title-color);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8em;
+}
+
+#founders li img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent-blue);
+  display: block;
 }
 
 /*-----------------*/
