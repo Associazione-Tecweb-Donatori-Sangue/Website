@@ -2704,50 +2704,64 @@ dialog::backdrop {
   margin: 0.1em 0;
 }
 
-/* Grafico a barre */
-.chart-container {
-  margin-top: 0.8em;
-  display: flex;
-  flex-direction: column;
-  gap: 0.9em;
+/* Grafico a torta */
+.pie-chart-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 1em 0;
 }
 
-.chart-row {
-  display: flex;
-  align-items: center;
-  gap: 0.8em;
+.pie-chart-svg {
+    flex-shrink: 0;
+    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
 }
 
-.chart-label {
-  width: 3em;
-  font-weight: 700;
-  font-size: 0.95em;
-  color: var(--btn-primary-bg);
-  flex-shrink: 0;
-  text-align: right;
+.pie-legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1em;
 }
 
-.chart-bar-bg {
-  flex-grow: 1;
-  background-color: #e8f4f8;
-  height: 1.6em;
-  border-radius: 2em;
-  overflow: hidden;
+.pie-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-.chart-bar {
-  background: linear-gradient(90deg, var(--btn-primary-bg) 0%, var(--accent-blue) 100%);
-  height: 100%;
-  border-radius: 2em;
-  transition: width 1s ease-in-out;
-  min-width: 2px;
-}
-
-.chart-value {
-  width: 3em;
-  text-align: right;
-  font-weight: 600;
-  font-size: 0.95em;
-  color: var(--text-secondary);
+.pie-legend-color {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.2em;
   flex-shrink: 0;
 }
+
+.pie-color-0 { background-color: #12425C; }
+.pie-color-1 { background-color: #C1121F; }
+.pie-color-2 { background-color: #2E7D32; }
+.pie-color-3 { background-color: #E65100; }
+.pie-color-4 { background-color: #4A148C; }
+.pie-color-5 { background-color: #00695C; }
+.pie-color-6 { background-color: #827717; }
+.pie-color-7 { background-color: #880E4F; }
+
+.pie-slice-label {
+  fill: white;
+}
+
+.pie-slice-0 { fill: #12425C; }
+.pie-slice-1 { fill: #C1121F; }
+.pie-slice-2 { fill: #2E7D32; }
+.pie-slice-3 { fill: #E65100; }
+.pie-slice-4 { fill: #4A148C; }
+.pie-slice-5 { fill: #00695C; }
+.pie-slice-6 { fill: #827717; }
+.pie-slice-7 { fill: #880E4F; }

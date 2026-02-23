@@ -51,24 +51,27 @@ try {
         $response['sede_top_count'] = (int)$row['cnt'];
     }
 
-    // 4. Distribuzione Gruppi Sanguigni
+    // 4. Distribuzione gruppi sanguigni nelle DONAZIONI EFFETTUATE (passate)
+    //    JOIN tra lista_prenotazioni e donatori per ottenere il gruppo del donatore
     $stmt = $pdo->prepare("
-        SELECT gruppo_sanguigno, COUNT(*) as cnt 
-        FROM donatori 
-        WHERE gruppo_sanguigno IS NOT NULL 
-        GROUP BY gruppo_sanguigno 
+        SELECT d.gruppo_sanguigno, COUNT(*) as cnt
+        FROM lista_prenotazioni lp
+        JOIN donatori d ON lp.user_id = d.user_id
+        WHERE lp.data_prenotazione <= CURRENT_DATE()
+          AND d.gruppo_sanguigno IS NOT NULL
+        GROUP BY d.gruppo_sanguigno
         ORDER BY cnt DESC
     ");
     $stmt->execute();
     $gruppi = $stmt->fetchAll(PDO::FETCH_ASSOC);
     
-    $total_users = array_sum(array_column($gruppi, 'cnt'));
+    $total_donazioni = array_sum(array_column($gruppi, 'cnt'));
     
     foreach ($gruppi as $gruppo) {
         $response['gruppi'][] = [
             'label'   => $gruppo['gruppo_sanguigno'],
             'count'   => (int)$gruppo['cnt'],
-            'percent' => $total_users > 0 ? round(($gruppo['cnt'] / $total_users) * 100) : 0
+            'percent' => $total_donazioni > 0 ? round(($gruppo['cnt'] / $total_donazioni) * 100) : 0
         ];
     }
 

@@ -971,22 +971,124 @@ async function loadAdminStats() {
         if (orarioEl) orarioEl.textContent = data.orario_top !== 'N/D' ? data.orario_top : '-';
         if (orarioCountEl) orarioCountEl.textContent = data.orario_top_count;
 
-        // 4. Grafico Gruppi Sanguigni
+        // 4. Grafico a Torta Gruppi Sanguigni
         const chartContainer = document.getElementById('stat-chart-container');
         if (chartContainer && data.gruppi.length > 0) {
             chartContainer.innerHTML = '';
-            data.gruppi.forEach(gruppo => {
-                const row = document.createElement('div');
-                row.className = 'chart-row';
-                row.innerHTML = `
-                    <span class="chart-label">${gruppo.label || '?'}</span>
-                    <div class="chart-bar-bg" role="progressbar" aria-valuenow="${gruppo.percent}" aria-valuemin="0" aria-valuemax="100" aria-label="Percentuale ${gruppo.label}">
-                        <div class="chart-bar" style="width: ${gruppo.percent}%;"></div>
-                    </div>
-                    <span class="chart-value">${gruppo.percent}%</span>
+
+            // Filtra i gruppi con percentuale > 0
+            const gruppiFiltered = data.gruppi.filter(g => g.percent > 0);
+
+            // Genera SVG a torta
+            const size = 220;
+            const cx = size / 2;
+            const cy = size / 2;
+            const r = 90;
+            let startAngle = -Math.PI / 2;
+            
+            const colors = [
+                '#12425C', '#C1121F', '#2E7D32', '#E65100',
+                '#4A148C', '#00695C', '#827717', '#880E4F'
+            ];
+
+            let slices = '';
+            let total = gruppiFiltered.reduce((sum, g) => sum + g.count, 0);
+
+            gruppiFiltered.forEach((gruppo, i) => {
+                const angle = (gruppo.count / total) * 2 * Math.PI;
+                const endAngle = startAngle + angle;
+
+                const x1 = cx + r * Math.cos(startAngle);
+                const y1 = cy + r * Math.sin(startAngle);
+                const x2 = cx + r * Math.cos(endAngle);
+                const y2 = cy + r * Math.sin(endAngle);
+                const largeArc = angle > Math.PI ? 1 : 0;
+
+                // Punto centrale della fetta per l'etichetta
+                const midAngle = startAngle + angle / 2;
+                const labelR = r * 0.65;
+                const lx = cx + labelR * Math.cos(midAngle);
+                const ly = cy + labelR * Math.sin(midAngle);
+
+                const color = colors[i % colors.length];
+
+                slices += `
+                    <path 
+                        d="M${cx},${cy} L${x1},${y1} A${r},${r} 0 ${largeArc},1 ${x2},${y2} Z"
+                        class="pie-slice-${i}"
+                        stroke="white"
+                        stroke-width="2"
+                        role="img"
+                        aria-label="${gruppo.label}: ${gruppo.percent}%"
+                    >
+                        <title>${gruppo.label}: ${gruppo.percent}% (${gruppo.count} donazioni)</title>
+                    </path>
+                    <text 
+                        x="${lx}" y="${ly}" 
+                        text-anchor="middle" 
+                        dominant-baseline="middle"
+                        font-size="11"
+                        font-weight="700"
+                        font-family="Jost, Arial, sans-serif"
+                        aria-hidden="true"
+                        class="pie-slice-label"
+                    >${gruppo.percent > 8 ? gruppo.label : ''}</text>
                 `;
-                chartContainer.appendChild(row);
+
+                startAngle = endAngle;
             });
+
+            // Legenda
+            let legendItems = gruppiFiltered.map((gruppo, i) => `
+                <li class="pie-legend-item">
+                    <span class="pie-legend-color pie-color-${i}" aria-hidden="true"></span>
+                    <span><strong>${gruppo.label}</strong>: ${gruppo.percent}% (${gruppo.count} donazioni)</span>
+                </li>
+            `).join('');
+
+            // Tabella accessibile per screen reader
+            let tableRows = gruppiFiltered.map(g => `
+                <tr>
+                    <td>${g.label}</td>
+                    <td>${g.count}</td>
+                    <td>${g.percent}%</td>
+                </tr>
+            `).join('');
+
+            chartContainer.innerHTML = `
+                <div class="pie-chart-wrapper">
+                    <!-- SVG visibile, nascosto agli screen reader perché c'è la tabella -->
+                    <svg 
+                        width="${size}" height="${size}" 
+                        viewBox="0 0 ${size} ${size}"
+                        aria-hidden="true"
+                        focusable="false"
+                        class="pie-chart-svg"
+                    >
+                        ${slices}
+                    </svg>
+
+                    <!-- Legenda visiva -->
+                    <ul class="pie-legend" aria-hidden="true">
+                        ${legendItems}
+                    </ul>
+                </div>
+
+                <!-- Tabella accessibile per screen reader (visivamente nascosta) -->
+                <table class="sr-only">
+                    <caption>Distribuzione gruppi sanguigni dei donatori</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Gruppo sanguigno</th>
+                            <th scope="col">Numero donatori</th>
+                            <th scope="col">Percentuale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${tableRows}
+                    </tbody>
+                </table>
+            `;
         } else if (chartContainer) {
             chartContainer.innerHTML = '<p>Nessun dato sui gruppi sanguigni disponibile.</p>';
         }
