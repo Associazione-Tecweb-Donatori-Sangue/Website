@@ -1,6 +1,6 @@
 DA SISTEMARE
 ---HTML----
-- Headings --> 🔴
+- p dentro dd --> 🔴
 - Caption tabelle --> 🔴
 ----CSS----
 - Titolo stampa --> MDP
