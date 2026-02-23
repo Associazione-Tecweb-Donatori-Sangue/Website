@@ -44,7 +44,7 @@ try {
     $passate = $stmtS->fetchAll(PDO::FETCH_ASSOC);
 
    
-    function generaTabellaAdmin($dati, $isStorico = false, $idDescrizione = '') {
+    function generaTabellaAdmin($dati, $isStorico = false, $idDescrizione = '', $caption = '') {
         if (count($dati) === 0) {
             return '<p class="text-standard">Nessuna prenotazione trovata.</p>';
         }
@@ -53,6 +53,11 @@ try {
 
         $html = '<div class="table-container">';
         $html .= '<table class="data-table"' . $ariaAttribute . '>';
+        
+        if (!empty($caption)) {
+            $html .= '<caption>' . htmlspecialchars($caption) . '</caption>';
+        }
+        
         $html .= '<thead><tr>
                     <th scope="col">Username donatore</th>
                     <th scope="col">Data</th>
@@ -95,12 +100,12 @@ try {
     }
 
     echo '<h3 id="titolo-future" class="tertiary-title">In programma</h3>';
-    echo generaTabellaAdmin($future, false, 'titolo-future');
+    echo generaTabellaAdmin($future, false, 'titolo-future', 'Elenco prenotazioni future');
 
      echo '<div class="spacer-admin" aria-hidden="true"></div>';
 
     echo '<h3 id="titolo-storico" class="tertiary-title">Storico donazioni passate (Tutti gli utenti)</h3>';
-    echo generaTabellaAdmin($passate, true, 'titolo-storico');
+    echo generaTabellaAdmin($passate, true, 'titolo-storico', 'Storico donazioni completate');
 
 } catch (PDOException $e) {
     logError("Errore get_prenotazioni_admin: " . $e->getMessage());

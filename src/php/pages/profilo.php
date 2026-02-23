@@ -179,6 +179,7 @@ try {
         $sezioneFuture = '
         <div class="table-container">
             <table class="data-table" aria-describedby="titolo-prenotazioni">
+                <caption>Elenco delle tue prenotazioni future</caption>
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
@@ -214,6 +215,7 @@ try {
         $sezionePassate = '
         <div class="table-container">
             <table class="data-table" aria-describedby="titolo-storico">
+                <caption>Storico delle tue donazioni completate</caption>
                 <thead>
                     <tr>
                         <th scope="col">Data</th>
