@@ -74,7 +74,7 @@ CREATE TABLE `donatori` (
 -- Dump dei dati per la tabella `donatori`
 INSERT INTO `donatori` (`user_id`, `nome`, `cognome`, `data_nascita`, `luogo_nascita`, `codice_fiscale`, `indirizzo`, `telefono`, `email`, `gruppo_sanguigno`, `sesso`, `peso`) VALUES
 (1, 'Maria', 'Rossi', '1990-05-15', 'Milano', 'RSSMRA90E15F205X', 'Via Roma 1, Milano', '+39 1234567890', 'user@user.com', 'A+', 'Femmina', 62.5),
-(4, 'Diana', 'Georgescu', '1983-07-15', 'Teolo', 'DGMRA90E15F205X', 'Via Cristoforo Colombo 4, Padova', '+39 1234567890', 'diana@gmail.com', 'A+', 'Femmina', 63.8),
+(4, 'Diana', 'Georgescu', '1983-07-15', 'Teolo', 'DGMRA90E15F205X', 'Via Cristoforo Colombo 4, Padova', '+39 1234567890', 'diana@gmail.com', 'B-', 'Femmina', 63.8),
 (7, 'Manuel', 'Dos Santos', '1999-01-21', 'Rio de Janeiro', 'MDSRA90E15F205X', 'Via Luzzatti 3, Padova', '+39 1234567890', 'manu@virgilio.com', '0-', 'Maschio', 74),
 (9, 'Lucia', 'Bianchi', '2007-11-05', 'Roma', 'LBCMRA90E15F205X', 'Via Piovega Sud 97, Villanova di Camposampiero', '+39 1234567890', 'luci@yahoo.it', 'AB+', 'Femmina', 80.5),
 (11, 'Marco', 'Rossi', '1993-04-10', 'Milano', 'RSSMRC93D10F205X', 'Via Torino 12, Milano', '+39 3311111111', 'mrossi@gmail.com', '0-', 'Maschio', 75),
@@ -123,7 +123,22 @@ INSERT INTO `lista_prenotazioni` (`id`, `user_id`, `sede_id`, `data_prenotazione
 (23, 4, 8, '2026-09-25', '11:30', 'Sangue intero'),
 (24, 9, 6, '2026-10-14', '14:30', 'Piastrine'),
 (25, 1, 7, '2026-11-05', '10:00', 'Sangue intero'),
-(26, 7, 3, '2026-12-18', '15:30', 'Sangue intero');
+(26, 7, 3, '2026-12-18', '15:30', 'Sangue intero'),
+(27, 11, 2, '2026-02-15', '09:00', 'Sangue intero'),
+(28, 11, 5, '2026-05-28', '10:30', 'Sangue intero'),
+(29, 11, 9, '2026-09-08', '14:00', 'Plasma'),
+(30, 12, 3, '2026-03-05', '08:30', 'Sangue intero'),
+(31, 12, 6, '2026-06-17', '11:00', 'Sangue intero'),
+(32, 12, 10, '2026-10-12', '15:00', 'Plasma'),
+(33, 13, 4, '2026-11-20', '09:00', 'Sangue intero'),
+(34, 13, 7, '2026-04-30', '10:30', 'Piastrine'),
+(35, 13, 11, '2026-06-15', '14:30', 'Piastrine'),
+(36, 14, 1, '2026-06-10', '10:00', 'Plasma'),
+(37, 14, 8, '2026-08-26', '08:30', 'Plasma'),
+(38, 15, 6, '2026-03-10', '09:30', 'Sangue intero'),
+(39, 15, 9, '2026-06-20', '11:30', 'Sangue intero'),
+(40, 16, 5, '2026-04-05', '10:00', 'Sangue intero'),
+(41, 16, 10, '2026-11-10', '09:00', 'Sangue intero');
 
 -- --------------------------------------------------------
 
@@ -197,7 +212,7 @@ ALTER TABLE `utenti`
 -- AUTO_INCREMENT per la tabella `lista_prenotazioni`
 --
 ALTER TABLE `lista_prenotazioni`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT per la tabella `sedi`
