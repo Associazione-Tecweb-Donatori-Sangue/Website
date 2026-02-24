@@ -1,7 +1,13 @@
 ----CSS----
 - Link visitati in tutti i siti --> 🔴
-- I meta ????
 - sistemare css caption tabelle in profilo user --> 🔴
+- centrare i form di prenotazione 
+----PRINT----
+- qunado si stampa profilo_admin con tab chiuse bisogna far vedere le tab selezionabili
+- compattare i blocchi di dove trovarci
+- compattare i blocchi di statistiche in profilo profilo_admin
+- togliere ombre tabelle lista prenotazioni profilo_admin
+
 
 
 - relazione nuova --> 🔴
