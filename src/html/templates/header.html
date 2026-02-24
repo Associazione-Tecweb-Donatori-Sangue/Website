@@ -1,6 +1,6 @@
 <div class="sticky-header">
     <header>
-        <nav aria-label = "Aiuti alla navigazione" class="navigation-helper">
+        <nav aria-label="Aiuti alla navigazione" class="navigation-helper">
             <a href="#content" class="nav-helper">Vai al contenuto</a>
         </nav>
         
@@ -15,23 +15,22 @@
             </ul>
             [linkProfilo]
 
-            <input type="checkbox" id="burger-input" aria-label="Apri menu" aria-expanded="false" aria-controls="menu">
+            <input type="checkbox" id="burger-input" aria-hidden="true" tabindex="-1">
 
-            <label class="burger-menu" for="burger-input">    
+            <button 
+                id="burger-button"
+                aria-expanded="false"
+                aria-controls="menu"
+                aria-label="Apri menu"
+                class="burger-menu">
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
                 <span aria-hidden="true"></span>
-            </label>
+            </button>
         </nav>           
     </header>     
-</div>
-
-<div id="print-site-title" aria-hidden="true">
-    <p>ATDS - Associazione Tecweb Donatori Sangue</p>
 </div>
 
 <nav id="breadcrumb">
         [BREADCRUMB]
 </nav>
-
-
