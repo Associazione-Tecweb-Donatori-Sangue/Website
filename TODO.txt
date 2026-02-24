@@ -1,7 +1,5 @@
 ----CSS----
 - Link visitati in tutti i siti --> 🔴
-- sistemare css caption tabelle in profilo user --> 🔴
-- centrare i form di prenotazione 
 ----PRINT----
 - i singoli blocchi in dove trovarci e stats admin vanno a capo tra le pagine, opzionale ma carino da fare
 

@@ -786,7 +786,7 @@ body.error-background {
 ======================================== */
 
 .admin-layout-container {
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr 1fr;
   gap: 1.5em;
   padding: 0 1em;
   display: flex;
@@ -795,9 +795,10 @@ body.error-background {
 }
 
 .donor-info-sidebar {
-  width: auto;
+  width: 100%;
   max-width: 21em;
   min-width: min-content;
+  margin-top: 0;
 }
 
 /* ========================================
