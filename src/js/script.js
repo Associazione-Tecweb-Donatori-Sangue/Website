@@ -58,89 +58,90 @@ function setupDialog(config) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Menu mobile - Accessibilità hamburger menu
-    const burgerInput = document.getElementById('burger-input');
-    const burgerMenu = document.querySelector('.burger-menu');
-    const menuUl = document.querySelector('#menu ul');
-    const logoImg = document.getElementById('logo');
-    
-    if (burgerInput && burgerMenu && menuUl) {
-        // Funzione per gestire il focus trap quando il menu è aperto
-        function trapFocus(e) {
-            if (!burgerInput.checked) return;
-            
-            if (e.key === 'Tab') {
-                e.preventDefault();
-
-                const menuLinks = Array.from(menuUl.querySelectorAll('a:not(#currentLink)'));
-                const focusableElements = [...menuLinks, burgerInput];
-                
-                let currentIndex = focusableElements.indexOf(document.activeElement);
-                
-                if (currentIndex === -1) {
-                    currentIndex = 0;
-                }
-                
-                let nextIndex;
-                
-                if (e.shiftKey) {
-                    nextIndex = currentIndex === 0 ? focusableElements.length - 1 : currentIndex - 1;
-                } else {
-                    nextIndex = currentIndex === focusableElements.length - 1 ? 0 : currentIndex + 1;
-                }
-                
-                const nextElement = focusableElements[nextIndex];
-                if (nextElement) {
-                    nextElement.focus();
-                }
-            }
-        }
-        
-        burgerInput.addEventListener('change', function() {
-            const isChecked = this.checked;
-            
-            this.setAttribute('aria-expanded', isChecked);
-            this.setAttribute('aria-label', isChecked ? 'Chiudi menu' : 'Apri menu');
-            
-            if (isChecked) {
-                burgerMenu.classList.add('menu-open');
-                menuUl.classList.add('menu-open');
-                
-                document.addEventListener('keydown', trapFocus);
-                
-                setTimeout(() => {
-                    const firstLink = menuUl.querySelector('a:not(#currentLink)');
-                    if (firstLink) {
-                        firstLink.focus();
-                    } else {
-                        const fallbackLink = menuUl.querySelector('a');
-                        if (fallbackLink) fallbackLink.focus();
-                    }
-                }, 100);
-            } else {
-                burgerMenu.classList.remove('menu-open');
-                menuUl.classList.remove('menu-open');
-                
-                document.removeEventListener('keydown', trapFocus);
-            }
-        });
-
-        burgerInput.addEventListener('keydown', function(e) {
-            if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                this.checked = !this.checked;
-                this.dispatchEvent(new Event('change'));
-            }
-        });
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && burgerInput.checked) {
-                burgerInput.checked = false;
-                burgerInput.dispatchEvent(new Event('change'));
-                burgerInput.focus();
-            }
-        });
-    }
+        // 1. Menu mobile - Accessibilità hamburger menu
+      const burgerButton = document.getElementById('burger-button');
+      const burgerInput = document.getElementById('burger-input');
+      const burgerMenu = document.querySelector('.burger-menu');
+      const menuUl = document.querySelector('#menu ul');
+      const logoImg = document.getElementById('logo');
+      
+      if (burgerButton && burgerInput && burgerMenu && menuUl) {
+      
+          function trapFocus(e) {
+              if (!burgerInput.checked) return;
+              
+              if (e.key === 'Tab') {
+                  e.preventDefault();
+      
+                  const menuLinks = Array.from(menuUl.querySelectorAll('a:not(#currentLink)'));
+                  const focusableElements = [...menuLinks, burgerButton];
+                  
+                  let currentIndex = focusableElements.indexOf(document.activeElement);
+                  
+                  if (currentIndex === -1) {
+                      currentIndex = 0;
+                  }
+                  
+                  let nextIndex;
+                  
+                  if (e.shiftKey) {
+                      nextIndex = currentIndex === 0 ? focusableElements.length - 1 : currentIndex - 1;
+                  } else {
+                      nextIndex = currentIndex === focusableElements.length - 1 ? 0 : currentIndex + 1;
+                  }
+                  
+                  const nextElement = focusableElements[nextIndex];
+                  if (nextElement) {
+                      nextElement.focus();
+                  }
+              }
+          }
+      
+          function apriMenu() {
+              burgerInput.checked = true;
+              burgerButton.setAttribute('aria-expanded', 'true');
+              burgerButton.setAttribute('aria-label', 'Chiudi menu');
+              burgerMenu.classList.add('menu-open');
+              menuUl.classList.add('menu-open');
+              
+              document.addEventListener('keydown', trapFocus);
+              
+              setTimeout(() => {
+                  const firstLink = menuUl.querySelector('a:not(#currentLink)');
+                  if (firstLink) {
+                      firstLink.focus();
+                  } else {
+                      const fallbackLink = menuUl.querySelector('a');
+                      if (fallbackLink) fallbackLink.focus();
+                  }
+              }, 100);
+          }
+      
+          function chiudiMenu() {
+              burgerInput.checked = false;
+              burgerButton.setAttribute('aria-expanded', 'false');
+              burgerButton.setAttribute('aria-label', 'Apri menu');
+              burgerMenu.classList.remove('menu-open');
+              menuUl.classList.remove('menu-open');
+              
+              document.removeEventListener('keydown', trapFocus);
+          }
+      
+          burgerButton.addEventListener('click', function() {
+              if (burgerInput.checked) {
+                  chiudiMenu();
+              } else {
+                  apriMenu();
+              }
+          });
+      
+          document.addEventListener('keydown', function(e) {
+              if (e.key === 'Escape' && burgerInput.checked) {
+                  chiudiMenu();
+                  burgerButton.focus();
+              }
+          });
+      }
 
     // 2. Ricerca sedi con debouncing
     const searchInput = document.getElementById('searchInput');
