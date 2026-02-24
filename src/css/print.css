@@ -33,7 +33,7 @@
     background: none;
   }
 
-  #print-site-title h1 {
+  #print-site-title p {
     text-align: left;
     margin: 0;
     font-size: 22px;
@@ -41,7 +41,7 @@
     padding-left: 36px;
   }
 
-  #print-site-title h1::before {
+  #print-site-title p::before {
     content: "";
     display: inline-block;
     width: 30px;
