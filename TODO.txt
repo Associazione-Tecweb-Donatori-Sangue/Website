@@ -1,8 +1,7 @@
-DA SISTEMARE
----HTML----
-- Caption tabelle --> 🔴
 ----CSS----
 - Link visitati in tutti i siti --> 🔴
 - I meta ????
+- sistemare css caption tabelle in profilo user --> 🔴
+
 
 - relazione nuova --> 🔴

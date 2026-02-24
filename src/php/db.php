@@ -1,8 +1,8 @@
 <?php
-$host = 'db';
+$host = 'localhost';
 $db   = 'ggiora';
 $user = 'ggiora';
-$pass = 'Eith6isheixei3ko';
+$pass = 'wah3OvuodueNgee8';
 
 $charset = 'utf8mb4';
 
@@ -29,7 +29,7 @@ try {
     $_SESSION['errore_500'] = "Impossibile connettersi al database. Riprova più tardi.";
     
     // Redirect a pagina di errore 500
-    header("Location: /500.php");
+    header("Location: /ggiora/src/500.php");
     exit();
 }
 

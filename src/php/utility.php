@@ -32,7 +32,7 @@ function logError($messaggio, $context = []) {
  */
 function redirectToError500($messaggioUtente = "Si è verificato un errore. Riprova più tardi.") {
     $_SESSION['errore_500'] = $messaggioUtente;
-    header("Location: /500.php");
+    header("Location: /ggiora/src/500.php");
     exit();
 }
 
