@@ -949,7 +949,6 @@ async function loadAdminStats() {
         }
         
         const data = await response.json();
-        console.log("Dati statistiche:", data); 
 
         // 1. Donazioni questo mese
         const donazioniEl = document.getElementById('stat-donazioni-mese');

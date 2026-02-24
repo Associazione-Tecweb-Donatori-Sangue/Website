@@ -55,7 +55,7 @@ try {
         $html .= '<table class="data-table"' . $ariaAttribute . '>';
         
         if (!empty($caption)) {
-            $html .= '<caption>' . htmlspecialchars($caption) . '</caption>';
+            $html .= '<caption class="sr-only">' . htmlspecialchars($caption) . '</caption>';
         }
         
         $html .= '<thead><tr>
