@@ -272,6 +272,10 @@ body {
     padding: 0.8em 0.5em;
 }
 
+#card-join a {
+    width: 88%;
+}
+
 #card-why-us {
     flex-direction: column;
     height: auto;

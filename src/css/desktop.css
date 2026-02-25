@@ -342,21 +342,12 @@ main{
 
 #card-intro,
 #card-why-us,
+#card-join,
 #card-locations {
   display: flex;
   width: 90%;
   max-width: 1200px;
   height: 28em;
-  margin: 3em auto 0;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
-  border-radius: 1.4em;
-}
-
-#card-join {
-  display: flex;
-  width: 90%;
-  max-width: 1200px;
-  min-height: 28em;
   margin: 3em auto 0;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 4px 8px rgba(0, 0, 0, 0.08);
   border-radius: 1.4em;
